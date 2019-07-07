@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T03:51:57.872Z">
+<meta property="og:updated_time" content="2019-07-07T04:39:42.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三次日记">
 <meta name="twitter:description" content="摘要">
@@ -94,7 +94,7 @@
 		        
 			</div>
 		</nav>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=40 src="//music.163.com/outchain/player?type=2&id=167937&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=80 src="//music.163.com/outchain/player?type=2&id=167937&auto=1&height=66"></iframe>
 
 		
 	</header>		
@@ -362,6 +362,11 @@ A5:简要过程如下：
 <p>　　(7) 绑定源地址(因为一个客户端可能不止一个IP)  ssh -b 192.168.0.200 -l roger 192.168.1.1 </p>
 <p>　　(8) 显示版本 :  ssh -V 192.168.1.1 </p>
 <p>　　(9) 指定认证文件:  ssh -i identify_file 192.168.1.1 </p>
+<h5 id="查看22端口号被使用的情况"><a href="#查看22端口号被使用的情况" class="headerlink" title="查看22端口号被使用的情况"></a>查看22端口号被使用的情况</h5><p>cmd 进去后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\PC_2017&gt;netstat -ano|findstr 22</span><br><span class="line">  TCP    10.8.34.199:5219       223.202.25.15:443      CLOSE_WAIT      26872</span><br><span class="line">  TCP    10.8.34.199:5279       60.167.222.67:80       CLOSE_WAIT      25540</span><br><span class="line">  TCP    10.8.34.199:5342       183.66.108.220:80      ESTABLISHED     31244</span><br><span class="line">  TCP    10.8.34.199:5345       114.115.221.211:80     ESTABLISHED     29256</span><br><span class="line">  TCP    10.8.34.199:5369       182.92.244.228:443     ESTABLISHED     4600</span><br><span class="line">  UDP    127.0.0.1:6622         *:*                                    20936</span><br></pre></td></tr></table></figure>
+
+<p>昨天使用taskkill -F 强制关闭了22端口对应的进程号并没什么用！</p>
+<p>？？？我按照网上的更改到443端口后，重新打开ssh下git bash后，启动测试正常了？？？<br>这到底咋回事啊？？<br>不过还好能提交了。</p>
 
       
 
@@ -511,7 +516,7 @@ A5:简要过程如下：
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH学习"><span class="toc-number">1.</span> <span class="toc-text">SSH学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSH的工作过程"><span class="toc-number">1.1.</span> <span class="toc-text">SSH的工作过程</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH学习"><span class="toc-number">1.</span> <span class="toc-text">SSH学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSH的工作过程"><span class="toc-number">1.1.</span> <span class="toc-text">SSH的工作过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#查看22端口号被使用的情况"><span class="toc-number">1.1.1.</span> <span class="toc-text">查看22端口号被使用的情况</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -644,15 +649,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
             
             <div class="clearfix"></div>
