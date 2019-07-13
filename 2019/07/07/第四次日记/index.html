@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-13T14:06:35.258Z">
+<meta property="og:updated_time" content="2019-07-13T14:26:10.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第四次日记">
 <meta name="twitter:description" content="摘要">
@@ -192,6 +192,8 @@
 <p>这个原因是因为在安装JDK的时候在C:\Windows\System32生成的java.exe、javaw.exe、javaws.exe这个3个引起的；</p>
 <p>把这3个运行文件删除掉就可以了</p>
 <p>学习vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;vue&lt;/title&gt;	</span><br><span class="line">	&lt;script src=&quot;vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;!--&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">		&lt;input type=&quot;text&quot; name=&quot;&quot; value=&quot;&quot; placeholder=&quot;在这里输入文字，下面会跟着变化&quot; v-model=&quot;message&quot;&gt;</span><br><span class="line">		&lt;hr&gt;</span><br><span class="line">		&lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/p&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var app = new Vue(&#123;</span><br><span class="line">		  el: &apos;#app&apos;,</span><br><span class="line">		  data: &#123;</span><br><span class="line">		    message: &apos;Hello Vue!&apos;</span><br><span class="line">		  &#125;</span><br><span class="line">		&#125;)</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">	&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">		&#123;&#123;msg&#125;&#125;</span><br><span class="line">		&lt;div v-html=&quot;hi&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var app=new Vue(&#123;</span><br><span class="line">			el:&apos;#app&apos;,</span><br><span class="line">			data:&#123;</span><br><span class="line">				msg: &apos;hello wor&apos;,</span><br><span class="line">				hi:&apos;&lt;h1&gt;hi&lt;/h1&gt;&apos;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">      &lt;div id=&quot;app&quot;&gt;&#123;&#123;message&#125;&#125;</span><br><span class="line">         &lt;button v-on:click=&quot;sayhello&quot;&gt;click me&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">      	var app=new Vue(&#123;</span><br><span class="line">      		el:&apos;#app&apos;,</span><br><span class="line">      		data:&#123;</span><br><span class="line">      			message: &apos;hello &apos;,</span><br><span class="line">      			sayhello:function()</span><br><span class="line">      			&#123;</span><br><span class="line">      				console.log(1)</span><br><span class="line">      			&#125;</span><br><span class="line">      		&#125;</span><br><span class="line">      	&#125;)</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">      &lt;/script&gt;--&gt;</span><br><span class="line">      &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">      	&lt;p v-once&gt;&#123;&#123;num+2&#125;&#125;&lt;/p&gt;</span><br><span class="line">      	&lt;p v-if=&apos;seen&apos;&gt;&#123;&#123;message+&apos;star&apos;&#125;&#125;&lt;/p&gt;</span><br><span class="line">      	&lt;ol&gt;</span><br><span class="line">      		&lt;li v-for=&apos;item in items&apos;&gt;</span><br><span class="line">      			&#123;&#123;item.text&#125;&#125;</span><br><span class="line">      		&lt;/li&gt;</span><br><span class="line">      	&lt;/ol&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">            &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">            	var app=new Vue(&#123;</span><br><span class="line">            		el:&apos;#app&apos;,</span><br><span class="line">            		data:&#123;</span><br><span class="line">            		 num:10,</span><br><span class="line">            		 message: &quot;hello&quot;,</span><br><span class="line">            		 seen:true,</span><br><span class="line">            		 items:[</span><br><span class="line">            		 &#123;text: &quot;vUe&quot; &#125;,</span><br><span class="line">            		 &#123;text: &apos;Java&apos;&#125;,</span><br><span class="line">            		 &#123;text: &apos;lll&apos; &#125;</span><br><span class="line">            		 ]</span><br><span class="line">            		&#125;</span><br><span class="line">            	&#125;)</span><br><span class="line">            &lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;!--	app.$el===document.getElementById(&apos;app&apos;);</span><br><span class="line">      	app.$data.message;--&gt;</span><br><span class="line">      	&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -483,6 +485,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
@@ -491,7 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,18 +514,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
