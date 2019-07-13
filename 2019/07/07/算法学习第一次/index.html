@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="重学算法和数据结构，计划用多种编程语言实现同一个题，巩固知识。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T13:54:29.658Z">
+<meta property="og:updated_time" content="2019-07-07T15:13:15.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法学习第一次">
 <meta name="twitter:description" content="重学算法和数据结构，计划用多种编程语言实现同一个题，巩固知识。">
@@ -192,9 +192,25 @@
 <p>STL容器内容调试输出<br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//使用C++的IO流对集合进行输出</span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">ostream&amp; operator&lt;&lt;(ostream&amp; os,const vector&lt;T&gt; &amp; v)&#123;</span><br><span class="line">	for(int i=0;i&lt;v.size();i++)</span><br><span class="line">	os&lt;&lt;v[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">	return os;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">ostream &amp; operator&lt;&lt;(ostream &amp;os,const set&lt;T&gt; &amp; v)&#123;</span><br><span class="line">	for(typename set&lt;T&gt;::iterator it=v.begin();it!=v.end;it++)</span><br><span class="line">	os&lt;&lt;*it&lt;&lt;&quot; &quot;;</span><br><span class="line">	return os;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用方法</span><br><span class="line">vector&lt;int&gt; a;</span><br><span class="line">a.push_back(1);</span><br><span class="line">a.push_back(2);</span><br><span class="line">a.push_back(3);</span><br><span class="line">cout&lt;&lt;a;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set&lt;string&gt; b;b.insert(&quot;1&quot;);</span><br><span class="line">b.insert(&quot;2&quot;);</span><br><span class="line">b.insert(&quot;3&quot;);</span><br><span class="line">cout&lt;&lt;b;</span><br></pre></td></tr></table></figure>
 
-<p>题目一：<br>给出一个由O和X组成的串（长度为1~80），统计得分。每个O的得分为目前连续出现的O的个数，X的得分为0。<br>输入 ：<br>OOOOXOOOOXOOOOX<br>输出：<br>30             </p>
+<p>#####题目一：统计字符串出现次数<br>给出一个由O和X组成的串（长度为1~80），统计得分。每个O的得分为目前连续出现的O的个数，X的得分为0。<br>输入 ：<br>15<br>OOOOXOOOOXOOOOX<br>输出：<br>30             </p>
 <p>C++实现代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#define maxn 85</span><br><span class="line">char buf[maxn];    // 输入的OX字符串缓冲区</span><br><span class="line">int main() &#123;</span><br><span class="line">    int T;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        scanf(&quot;%s&quot;, buf);</span><br><span class="line">        int count = 0, score = 0;</span><br><span class="line">        for(int i = 0; buf[i]; i++)</span><br><span class="line">            if(buf[i] == &apos;O&apos;) score += (++count);</span><br><span class="line">            else count = 0;</span><br><span class="line">        printf(&quot;%d\n&quot;, score);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Js代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>java代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>#####题目二：找出数组中重复的数字<br>给定一个长度为 nn 的整数数组 nums，数组中所有的数字都在 0∼n−10∼n−1 的范围内。</p>
+<p>数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。</p>
+<p>请找出数组中任意一个重复的数字。</p>
+<p>注意：如果某些数字不在 0∼n−10∼n−1 的范围内，或数组中不包含重复数字，则返回 -1；</p>
+<p>样例：</p>
+<p>给定 nums = [2, 3, 5, 4, 3, 2, 6, 7]。</p>
+<p>返回 2 或 3。</p>
+<p>C++实现代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int duplicateInArray(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>Js代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -491,10 +507,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
@@ -503,15 +515,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
