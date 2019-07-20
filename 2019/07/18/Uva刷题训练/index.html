@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="刷题训练">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T08:35:28.655Z">
+<meta property="og:updated_time" content="2019-07-20T11:03:27.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Uva、LeetCode刷题训练">
 <meta name="twitter:description" content="刷题训练">
@@ -241,10 +241,41 @@
 <p>C++</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int father[210];</span><br><span class="line">    //查找祖先节点，当节点记录的祖先是自己，则表示查找到祖先了</span><br><span class="line">    int findFather(int x)</span><br><span class="line">    &#123;</span><br><span class="line">        while(x!=father[x])</span><br><span class="line">        &#123;</span><br><span class="line">            x = father[x];</span><br><span class="line">        &#125;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line">    //合并节点：设置共同祖先</span><br><span class="line">    void Union(int a,int b)</span><br><span class="line">    &#123;</span><br><span class="line">        int fa = findFather(a);</span><br><span class="line">        int fb = findFather(b);</span><br><span class="line">        if(fa!=fb)</span><br><span class="line">        &#123;</span><br><span class="line">            father[fa] = fb;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //最开始的时候，每个节点时分散的，都是自己的祖先</span><br><span class="line">    void init()</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=0;i&lt;210;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            father[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //主函数</span><br><span class="line">    int findCircleNum(vector&lt;vector&lt;int&gt;&gt;&amp; M) &#123;</span><br><span class="line">        init();</span><br><span class="line">        //对N个学生两两做判断</span><br><span class="line">        for(int i=0;i&lt;M.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=i+1;j&lt;M.size();j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(M[i][j]==1)</span><br><span class="line">                &#123;</span><br><span class="line">                    Union(i,j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //一次遍历找到所有祖先节点，即为朋友圈的个数</span><br><span class="line">        int res = 0;</span><br><span class="line">        for(int i=0;i&lt;M.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(i==father[i])</span><br><span class="line">            &#123;</span><br><span class="line">                res++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Uva10391"><a href="#Uva10391" class="headerlink" title="Uva10391"></a>Uva10391</h3><p>复合词</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="跳跃游戏"><a href="#跳跃游戏" class="headerlink" title="跳跃游戏"></a>跳跃游戏</h4><p>给定一个非负整数数组，你最初位于数组的第一个位置。</p>
+<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
+<p>示例:</p>
+<p>输入: [2,3,1,1,4]<br>输出: 2<br>解释: 跳到最后一个位置的最小跳跃数是 2。<br>     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。<br>说明:</p>
+<p>假设你总是可以到达数组的最后一个位置。<br>链接：<a href="https://leetcode-cn.com/problems/jump-game-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/jump-game-ii</a></p>
+<p>Java代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">顺序模拟：时间复杂度O(n),</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public int jump(int[] nums) &#123;</span><br><span class="line">          int end=0;</span><br><span class="line">          int MaxPosition=0;</span><br><span class="line">          int steps=0;</span><br><span class="line">          for(int i=0;i&lt;nums.length-1;i++)</span><br><span class="line">          &#123;</span><br><span class="line">              MaxPosition=Math.max(MaxPosition,nums[i]+i);</span><br><span class="line">              </span><br><span class="line">              if(end==i)</span><br><span class="line">              &#123;</span><br><span class="line">                  end=MaxPosition;</span><br><span class="line">                  steps++;</span><br><span class="line">              &#125;                </span><br><span class="line">                </span><br><span class="line">          &#125; </span><br><span class="line">        return steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//https://leetcode-cn.com/problems/jump-game-ii/solution/20190717jump-game-iizui-chang-gui-de-yi-chong-si-l/</span><br><span class="line">class Solution &#123;</span><br><span class="line">    //用这个函数去寻找我的下一个位置</span><br><span class="line">    public static int search(int i,int j,int[] num)//i为我所在的位置，j为我所能走的距离。</span><br><span class="line">    &#123;</span><br><span class="line">        int t  = 0;</span><br><span class="line">        if(i + j &lt;  num.length - 1)</span><br><span class="line">        //到不了的话，就用t记录下能到达的最远位置，然后一个个去比较，看哪个合适。</span><br><span class="line">        &#123;</span><br><span class="line">            t = i + j;</span><br><span class="line">        &#125;</span><br><span class="line">        else//如果能够达到最后一个位置，或者再往后，那么想都不用想，直接返回最后一个位置。</span><br><span class="line">        &#123;</span><br><span class="line">            return num.length - 1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //从我所在位置的下一个位置开始走</span><br><span class="line">        for(int k = i + 1; k &lt;= i + j &amp;&amp; k &lt;= num.length - 1; k++)</span><br><span class="line">        &#123;</span><br><span class="line">//一般我们更想走得更远，会选最远的那个位置，除非中间有一个位置，能够使我走得比最远还要远。</span><br><span class="line">//这样的位置必须满足两个条件。1、使我走得比最远还远。2、在可能存在多个这样的点中，它是最强大的那一个。</span><br><span class="line">            if(k + num[k] &gt;= i + j &amp;&amp; k + num[k]&gt;=num[t] + t)</span><br><span class="line">            &#123;</span><br><span class="line">                t = k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return t;//简而言之，我们每一次选择距离与潜在距离最远的那一个。</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static int jump(int[] nums) &#123;</span><br><span class="line"></span><br><span class="line">        int i = 0,j = -1,cut = 0;//与跳跃游戏I相比，新增的一个计数器cut.</span><br><span class="line">        while(i&lt;nums.length-1 &amp;&amp; i!=j)//两个停止情况:走到最后一个位置了。遇到走不过去的“0”了。</span><br><span class="line">        &#123;</span><br><span class="line">            j = i;</span><br><span class="line">            i = search(i,nums[i],nums);//走到下一个位置</span><br><span class="line">            cut++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return cut;//与跳跃游戏I相比，此处返回的不是true or false.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="螺旋矩阵"><a href="#螺旋矩阵" class="headerlink" title="螺旋矩阵"></a>螺旋矩阵</h3><p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。</p>
+<p>示例 1:</p>
+<p>输入:<br>[<br> [ 1, 2, 3 ],<br> [ 4, 5, 6 ],<br> [ 7, 8, 9 ]<br>]
+输出: [1,2,3,6,9,8,7,4,5]<br>示例 2:</p>
+<p>输入:<br>[<br>  [1, 2, 3, 4],<br>  [5, 6, 7, 8],<br>  [9,10,11,12]<br>]
+输出: [1,2,3,4,8,12,11,10,9,5,6,7]<br>链接：<a href="https://leetcode-cn.com/problems/spiral-matrix" target="_blank" rel="noopener">https://leetcode-cn.com/problems/spiral-matrix</a></p>
+<ul>
+<li><p>算法思路：<br>最外层所有元素按照顺时针顺序输出，其次是次外层，类推。</p>
+<p>从左上方开始以顺时针的顺序遍历所有元素，假设当前层左上角坐标是(r1,c1),右下角坐标是(r2,c2)<br>首先，遍历上方的所有元素(r1,c);<br>然后，遍历右侧的所有元素(r,c2);<br>然后，遍历下方的所有元素(r2,c);<br>最后，遍历左侧的所有元素(r,c1);</p>
+<p>判断条件：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  即：这一层有四条边，然后开始遍历</span><br><span class="line"></span><br><span class="line">Java代码：</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<p>class Solution{<br>    public List<integer> spiralOrder(int[][] matrix)<br>    {<br>        List ans=new ArrayList();<br>        //List内存消耗低于ArrayList<br>        if(matrix.length==0)<br>        return ans;<br>        int r1=0,r2=matrix.length-1;//行<br>        int c1=0,c2=matrix[0].length-1;//列<br>        while(r1&lt;=r2&amp;&amp;c1&lt;=c2)<br>        {<br>               for(int c=c1;c&lt;=c2;c++) ans.add(matrix[r1][c]);<br>               //r1+1—&gt;r2行<br>               for(int r=r1+1;r&lt;=r2;r++) ans.add(matrix[r][c2]);<br>               if(r1&lt;r2&amp;&amp;c1&lt;c2){<br>                //c2-1—&gt;c1<br>                for(int c=c2-1;c&gt;c1;c–) ans.add(matrix[r2][c]);<br>                for(int r=r2;r&gt;r1;r–) ans.add(matrix[r][c1]);<br>               }<br>               r1++;<br>               r2–;<br>               c1++;<br>               c2–;<br>        }<br>        return ans;</integer></p>
+<pre><code>}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">代码疑问：ArrayList会装箱成Object来存储，拆箱会把object再转换回来，因此比较慢。</span><br><span class="line">ArrayList与LinkedList比较：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 螺旋矩阵二</span><br><span class="line">给定一个正整数 n，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: 3</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 8, 9, 4 ],</span><br><span class="line"> [ 7, 6, 5 ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">链接：https://leetcode-cn.com/problems/spiral-matrix-ii</span><br><span class="line">* 算法思路：</span><br><span class="line">   生成一个n * n的空矩阵mat,随后模拟整个向内环绕的填入过程。</span><br><span class="line">   1. 定义当前左右上下边界，l,r,t,b,初始值num=1,迭代终止值tar=n * n</span><br><span class="line">   2. 当num&lt;=tar时，按l-&gt;r,t-&gt;b,r-&gt;l,b-&gt;t,的顺序填入顺序循环，每次填入后执行num+=1:得到下一个需要填入的数字.更新边界：例如从左到右填完后，上边界t+=1，相当于上边界向内缩1。</span><br><span class="line">   3. 使用num&lt;=tar作为迭代条件，而不选用l&lt; r || t&lt; b作为迭代条件的原因是为了解决当n为奇数时，矩阵中心数字无法在迭代过程中被填充的问题。</span><br><span class="line">   4. 最终返回mat.</span><br><span class="line">Java代码：</span><br></pre></td></tr></table></figure>
 
+<p>class Solution{<br>    public int[][] generateMatrix(int n)<br>    {<br>        in l=0,r=n-1,t=0,b=n-1;<br>        int[][] mat=new int[n][n];<br>        int num=1,tar=n*n;<br>        while(num&lt;=tar)<br>        {<br>            for(int i=l;i&lt;=r;i++) mat[t][i]=num++;<br>            t++;<br>            for(int i=t;i&lt;=b;i++) mat[i][r]=num++;<br>            r–;<br>            for(int i=r;i&gt;=l;i–) mat[b][i]=num++;<br>            b–;<br>            for(int i=b;i&gt;=t;i–) mat[i][l]=num++;<br>            l++;<br>        }<br>        return mat;<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python代码：</span><br></pre></td></tr></table></figure>
+
+<p>//代码执行出错<br>class Solution:<br>     def generateMatrix(self,n:int)-&gt;[[int]]:<br>         l,r,t,b=0,n-1,0,n-1<br>         mat=[[0 for _ in range(n)] for _ in range(n)]<br>         num,tar=1,n*n<br>         while num&lt;=tar:<br>             for i in range(l,r+1):<br>                 mat[t][i]=num<br>                 num+=1<br>             t+=1<br>             for i in range(t,b+1):<br>                 mat[i][r]=num<br>                 num+=1<br>             r-=1<br>             for i in range(r,l-1,-1):<br>                 mat[b][i]=num<br>                 num+=1<br>             b-=1<br>             for i in range(b,t-1,-1):<br>                 mat[i][1]=num<br>                 num+=1<br>             l+=1<br>         return mat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 爬楼梯</span><br><span class="line">假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</span><br><span class="line"></span><br><span class="line">每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</span><br><span class="line"></span><br><span class="line">注意：给定 n 是一个正整数。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入： 2</span><br><span class="line">输出： 2</span><br><span class="line">解释： 有两种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶</span><br><span class="line">2.  2 阶</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入： 3</span><br><span class="line">输出： 3</span><br><span class="line">解释： 有三种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶 + 1 阶</span><br><span class="line">2.  1 阶 + 2 阶</span><br><span class="line">3.  2 阶 + 1 阶</span><br><span class="line">链接：https://leetcode-cn.com/problems/climbing-stairs</span><br><span class="line">* 算法思路：</span><br><span class="line"></span><br><span class="line">   1. 暴力法climestairs(i,n)=climbstairs(i+1,n)+climbstairs(i+2,n)</span><br><span class="line">     i 定义为当前阶数，n定义为目标阶数</span><br><span class="line">   2. 记忆化递归：</span><br><span class="line"></span><br><span class="line">Java代码：</span><br></pre></td></tr></table></figure>
+
+<p>//1.暴力法，时间复杂度达到O(2^n)<br>public class Solution{<br>    public int climbStairs(int n)<br>    {<br>        climb_Stairs(0,n);<br>    }<br>    public int climb_Stairs(int i,int n)<br>    {<br>        if(i&gt;n)<br>        {<br>            return 0;<br>        }<br>        if(i==n)<br>        {<br>            return 1;<br>        }<br>        return climb_Stairs(i+1,n)+climb_Stairs(i+2,n);<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Uva10391</span><br><span class="line">复合词</span><br></pre></td></tr></table></figure>
+
+<pre><code></code></pre>
       
 
       
@@ -402,7 +433,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Longest-Common-Prefix"><span class="toc-number">1.</span> <span class="toc-text">Longest Common Prefix</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#题目描述"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">题目描述</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Implement-Trie"><span class="toc-number">2.</span> <span class="toc-text">Implement Trie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#friend-circles"><span class="toc-number">3.</span> <span class="toc-text">friend-circles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Uva10391"><span class="toc-number">4.</span> <span class="toc-text">Uva10391</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Longest-Common-Prefix"><span class="toc-number">1.</span> <span class="toc-text">Longest Common Prefix</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#题目描述"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">题目描述</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Implement-Trie"><span class="toc-number">2.</span> <span class="toc-text">Implement Trie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#friend-circles"><span class="toc-number">3.</span> <span class="toc-text">friend-circles</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#跳跃游戏"><span class="toc-number">3.1.</span> <span class="toc-text">跳跃游戏</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#螺旋矩阵"><span class="toc-number">4.</span> <span class="toc-text">螺旋矩阵</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -531,23 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaWeb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,7 +574,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,7 +582,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,11 +594,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,11 +602,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,7 +610,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaWeb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,6 +647,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
             
             <div class="clearfix"></div>

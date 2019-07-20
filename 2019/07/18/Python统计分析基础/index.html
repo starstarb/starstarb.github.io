@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="Python统计分析基础代码练习及总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T03:29:15.149Z">
+<meta property="og:updated_time" content="2019-07-20T11:20:20.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python统计分析基础">
 <meta name="twitter:description" content="Python统计分析基础代码练习及总结">
@@ -186,7 +186,24 @@
 <h3 id="二、python基础语法"><a href="#二、python基础语法" class="headerlink" title="二、python基础语法"></a>二、python基础语法</h3><h3 id="三、数据预处理"><a href="#三、数据预处理" class="headerlink" title="三、数据预处理"></a>三、数据预处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import timeit </span><br><span class="line">def python_multi(n):</span><br><span class="line">    a=range(n)</span><br><span class="line">    b=range(n)</span><br><span class="line">    c=[]</span><br><span class="line">    for i in range(len(a)):</span><br><span class="line">        a[i]=i**2</span><br><span class="line">        b[i]=i**3</span><br><span class="line">        c.append(a[i]*b[i])</span><br><span class="line">    return c</span><br><span class="line">def numpy_multi(n):</span><br><span class="line">    c=np.arrange(n)**2*np.arange(n)**3</span><br><span class="line">    return c</span><br><span class="line">#上述结果测试</span><br><span class="line">a=timeit.Timer(&quot;python_multi&quot;,setup=&quot;from __main__ import python_multi&quot;)</span><br><span class="line">print(a.timeit(number=1000000))</span><br><span class="line">b=timeit.Timer(&quot;numpy_multi&quot;,setup=&quot;from __main__ import numpy_multi&quot;)</span><br><span class="line">print(b.timeit(number=1000000))</span><br><span class="line">#明显numpy内置的基本库函数快于自己实现的</span><br><span class="line"></span><br><span class="line">#测试</span><br><span class="line">def func():</span><br><span class="line">    normal_list=range(10000)</span><br><span class="line">    L = [i**2 for i in normal_list]</span><br><span class="line">timer1 = timeit.Timer(&quot;func()&quot;, setup=&quot;from __main__ import func&quot;)</span><br><span class="line">print(timer1.timeit(number=10))</span><br><span class="line">#0.122326436316035`</span><br></pre></td></tr></table></figure>
 
 <p>Python3 range() 函数返回的是一个可迭代对象（类型是对象），而不是列表类型， 所以打印的时候不会打印列表。<br>Python3 list() 函数是对象迭代器，可以把range()返回的可迭代对象转为一个列表，返回的变量类型为列表。</p>
-<h3 id="Python的数据描述"><a href="#Python的数据描述" class="headerlink" title="Python的数据描述"></a>Python的数据描述</h3><h3 id="Python统计图形与可视化"><a href="#Python统计图形与可视化" class="headerlink" title="Python统计图形与可视化"></a>Python统计图形与可视化</h3><h6 id="matplotlib基本绘图"><a href="#matplotlib基本绘图" class="headerlink" title="matplotlib基本绘图"></a>matplotlib基本绘图</h6>
+<h3 id="Python的数据描述"><a href="#Python的数据描述" class="headerlink" title="Python的数据描述"></a>Python的数据描述</h3><h3 id="Python统计图形与可视化"><a href="#Python统计图形与可视化" class="headerlink" title="Python统计图形与可视化"></a>Python统计图形与可视化</h3><h6 id="matplotlib基本绘图"><a href="#matplotlib基本绘图" class="headerlink" title="matplotlib基本绘图"></a>matplotlib基本绘图</h6><h3 id="Python简单统计推断"><a href="#Python简单统计推断" class="headerlink" title="Python简单统计推断"></a>Python简单统计推断</h3><p>   常用数据分析工具库：<br>   scipy常用功能：</p>
+<ul>
+<li>scipy.cluster:矢量量化、K-均值</li>
+<li>scipy.integrate：积分</li>
+<li>scipy.interpolate：插值</li>
+<li>scipy.fftpack:傅里叶变换</li>
+<li>scipy.linalg:线性代数程序</li>
+<li>scipy.singal:信号处理</li>
+<li>scipy.stats:统计</li>
+<li>scipy.spatial:空间数据结构和算法</li>
+<li>scipy.optimize:优化</li>
+<li>scipy.ndimage:n维图像包</li>
+<li>scipy.io:数据输入输出</li>
+<li>scipy.sparse:稀疏矩阵<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from scipy import stats</span><br><span class="line">import statsmodels.api as sm</span><br><span class="line">from sklearn import svm</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
       
 
       
@@ -344,7 +361,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、打开jupyter-notebook，方便记录python代码"><span class="toc-number">1.</span> <span class="toc-text">一、打开jupyter notebook，方便记录python代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、python基础语法"><span class="toc-number">2.</span> <span class="toc-text">二、python基础语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、数据预处理"><span class="toc-number">3.</span> <span class="toc-text">三、数据预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python的数据描述"><span class="toc-number">4.</span> <span class="toc-text">Python的数据描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python统计图形与可视化"><span class="toc-number">5.</span> <span class="toc-text">Python统计图形与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#matplotlib基本绘图"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">matplotlib基本绘图</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、打开jupyter-notebook，方便记录python代码"><span class="toc-number">1.</span> <span class="toc-text">一、打开jupyter notebook，方便记录python代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、python基础语法"><span class="toc-number">2.</span> <span class="toc-text">二、python基础语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、数据预处理"><span class="toc-number">3.</span> <span class="toc-text">三、数据预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python的数据描述"><span class="toc-number">4.</span> <span class="toc-text">Python的数据描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python统计图形与可视化"><span class="toc-number">5.</span> <span class="toc-text">Python统计图形与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#matplotlib基本绘图"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">matplotlib基本绘图</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python简单统计推断"><span class="toc-number">6.</span> <span class="toc-text">Python简单统计推断</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -473,23 +490,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaWeb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,7 +502,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,7 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,11 +522,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,11 +530,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,7 +538,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaWeb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,6 +575,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
             
             <div class="clearfix"></div>
