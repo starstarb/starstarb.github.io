@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/06/29/Java%E5%BC%80%E5%8F%91/</loc>
+    
+    <lastmod>2019-07-21T12:05:55.172Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/18/Uva%E5%88%B7%E9%A2%98%E8%AE%AD%E7%BB%83/</loc>
+    
+    <lastmod>2019-07-21T10:32:49.182Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/07/Spring%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E7%AC%AC%E4%B8%80%E6%AC%A1/</loc>
+    
+    <lastmod>2019-07-21T09:53:31.704Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/20/%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     
     <lastmod>2019-07-20T13:47:22.420Z</lastmod>
@@ -19,20 +40,6 @@
     <loc>http://yoursite.com/2019/07/18/Python%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2019-07-20T11:20:20.577Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/18/Uva%E5%88%B7%E9%A2%98%E8%AE%AD%E7%BB%83/</loc>
-    
-    <lastmod>2019-07-20T11:03:27.259Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/06/29/Java%E5%BC%80%E5%8F%91/</loc>
-    
-    <lastmod>2019-07-20T08:23:52.149Z</lastmod>
     
   </url>
   
@@ -138,13 +145,6 @@
     <loc>http://yoursite.com/2019/07/17/JVM%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2019-07-17T08:58:59.231Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/07/Spring%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E7%AC%AC%E4%B8%80%E6%AC%A1/</loc>
-    
-    <lastmod>2019-07-17T08:46:01.689Z</lastmod>
     
   </url>
   

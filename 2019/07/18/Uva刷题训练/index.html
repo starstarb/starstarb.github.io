@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="刷题训练">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-20T11:03:27.259Z">
+<meta property="og:updated_time" content="2019-07-21T10:32:49.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Uva、LeetCode刷题训练">
 <meta name="twitter:description" content="刷题训练">
@@ -273,9 +273,49 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 爬楼梯</span><br><span class="line">假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</span><br><span class="line"></span><br><span class="line">每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</span><br><span class="line"></span><br><span class="line">注意：给定 n 是一个正整数。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入： 2</span><br><span class="line">输出： 2</span><br><span class="line">解释： 有两种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶</span><br><span class="line">2.  2 阶</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入： 3</span><br><span class="line">输出： 3</span><br><span class="line">解释： 有三种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶 + 1 阶</span><br><span class="line">2.  1 阶 + 2 阶</span><br><span class="line">3.  2 阶 + 1 阶</span><br><span class="line">链接：https://leetcode-cn.com/problems/climbing-stairs</span><br><span class="line">* 算法思路：</span><br><span class="line"></span><br><span class="line">   1. 暴力法climestairs(i,n)=climbstairs(i+1,n)+climbstairs(i+2,n)</span><br><span class="line">     i 定义为当前阶数，n定义为目标阶数</span><br><span class="line">   2. 记忆化递归：</span><br><span class="line"></span><br><span class="line">Java代码：</span><br></pre></td></tr></table></figure>
 
 <p>//1.暴力法，时间复杂度达到O(2^n)<br>public class Solution{<br>    public int climbStairs(int n)<br>    {<br>        climb_Stairs(0,n);<br>    }<br>    public int climb_Stairs(int i,int n)<br>    {<br>        if(i&gt;n)<br>        {<br>            return 0;<br>        }<br>        if(i==n)<br>        {<br>            return 1;<br>        }<br>        return climb_Stairs(i+1,n)+climb_Stairs(i+2,n);<br>    }<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Uva10391</span><br><span class="line">复合词</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">### 字母异位词分组</span><br><span class="line">给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br><span class="line">说明：</span><br><span class="line"></span><br><span class="line">所有输入均为小写字母。</span><br><span class="line">不考虑答案输出的顺序。</span><br><span class="line">链接：https://leetcode-cn.com/problems/group-anagrams</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* 算法思路：</span><br><span class="line">1. 排序数组分类</span><br><span class="line">   当且仅当它们的排序字符串相等时，两个字符串是字母异位词</span><br><span class="line"></span><br><span class="line">   维护一个ans：&#123;string-&gt;List&#125;,其中每个键K是一个排序字符串，每个值是初始输入的字符串列表，排序后等于K。</span><br><span class="line"></span><br><span class="line">   Java中，将键存储为字符串，</span><br><span class="line"></span><br><span class="line">Java代码：</span><br></pre></td></tr></table></figure>
 
-<pre><code></code></pre>
+<pre><code>class Solution{
+    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs)
+    {
+        if(strs.length==0) return new ArrayList();
+        Map&lt;String,List&gt; ans=new HashMap&lt;String,List&gt;();
+        for(String s: strs){
+            char[] ca=s.toCharArray();
+            Arrays.sort(ca);
+            String key=String.valueOf(ca);
+            if(!ans.containsKey(key)) ans.put(key,new ArrayList());
+            ans.get(key).add(s);
+        }
+        return new ArrayList(ans.values());
+    }
+}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(NKlogK) N为strs的长度，K为strs中字符串的最大长度</span><br><span class="line"></span><br><span class="line">2. 按计数分类</span><br><span class="line">   当且仅当它们的字符计数（每个字符的出现次数）相同时，两个字符串是字母异位词。</span><br><span class="line"></span><br><span class="line">   将每个字符串s转换成字符数count,由26个非负整数组成，表示a，b，c的数量相等，使用这些计数作为哈希映射的基础。</span><br><span class="line"></span><br><span class="line">   Java中，将字符数count的散列化表示是一个用 * * # * * 字符分隔的字符串。例如：abbccc将表示为#1#2#3#0#0#0...#0，其中共有26个条目。</span><br><span class="line">  </span><br><span class="line">  java代码：</span><br></pre></td></tr></table></figure>
+
+<p>class Solution {<br>    public List&lt;List<string>&gt; groupAnagrams(String[] strs){<br>        if(strs.length==0) return new ArrayList();<br>        Map&lt;String,List&gt; ans=new HashMap(String,List)();<br>        int[] count=new int[26];<br>        for(String s:strs){<br>            Arrays.fill(count,0);<br>            for(char c: s.toCharArray()) count[c-‘a’]++;<br>            StringBuilder sb=new StringBuilder(“”);<br>            for(int i=0;i&lt;26;i++)<br>            {<br>                sb.append(‘#’);<br>                sb.append(count[i]);<br>            }<br>            String key=sb.toString();<br>            if(!ans.containsKey(key)) ans.put(key,new ArrayList());<br>            ans.get(key).add(s);<br>        }<br>        return new ArrayList(ans.values());<br>    }<br>}</string></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度： O(NK)</span><br><span class="line">3. 对于每个字符串，比较它们的每个字符出现的个数是否相等，相等就将它们放在一个List中，作为一个类别。最外层写一个for循环然后一一比较就可以，或者用一个等大的bool数组来记录当前字符串是否已经加入List，比较两个字符串的字符出现的次数用一个HashMap。</span><br><span class="line">Java代码：</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Uva10391</span><br><span class="line">复合词</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">###  二叉树的最大深度</span><br><span class="line">给定一个二叉树，找出其最大深度。</span><br><span class="line"></span><br><span class="line">二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</span><br><span class="line"></span><br><span class="line">说明: 叶子节点是指没有子节点的节点。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">给定二叉树 [3,9,20,null,null,15,7]，</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br><span class="line">返回它的最大深度 3 。</span><br><span class="line">链接：https://leetcode-cn.com/problems/maximum-depth-of-binary-tree</span><br><span class="line">算法思路：</span><br><span class="line">1. DFS求解，递归</span><br><span class="line">Java代码：</span><br></pre></td></tr></table></figure>
+
+<p>//**</p>
+<ul>
+<li>Definition for a binary tree node.</li>
+<li>public class TreeNode {</li>
+<li>int val;</li>
+<li>TreeNode left;</li>
+<li>TreeNode right;</li>
+<li>TreeNode(int x) { val = x; }</li>
+<li>}</li>
+<li>/</li>
+</ul>
+<p>class Solution {<br>    public int maxDepth(TreeNode root) {<br>        if(root==null)<br>        {<br>            return 0;<br>        }else<br>        {<br>            int left_height=maxDepth(root.left);<br>            int right_height=maxDepth(root.right);<br>            return Math.max(left_height,right_height)+1;<br>        }<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2. 迭代</span><br><span class="line">  使用DFS策略访问每个结点，同时在每次访问时更新最大深度。</span><br><span class="line">  从包含根节点且相应深度为1的栈开始，然后迭代，将当前节点弹出栈并推入子节点，每一步都会更新深度。</span><br></pre></td></tr></table></figure>
+
+<p>import javafx.util.Pair;<br>import java.lang.Math;<br>class Solution{<br>    public int maxDepth(TreeNode root)<br>    {<br>        Queue&lt;Pair&lt;TreeNode,Integer&gt;&gt; stack=new LinkedList&lt;&gt;();<br>        if(root !=null)<br>        {<br>            stack.add(new Pair(root,1));<br>        }<br>        int depth=0;<br>        while(!stack.isEmpty())<br>        {<br>            Pair&lt;TreeNode,Integer&gt; current=stack.poll();<br>            root =current.getKey();<br>            int current_depth=current.getValue();<br>            if(root!=null)<br>            {<br>                depth=Math.max(depth,current_depth);<br>                stack.add(new Pair(root.left,current_depth+1));<br>                stack.add(new Pair(root.right,current_depth+1));<br>            }<br>        }<br>        return depth;<br>    }<br>}
+```
+时间复杂度：O(N)<br>空间复杂度：O(N)</p>
+
       
 
       
@@ -562,11 +602,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,11 +614,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,11 +630,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,7 +638,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,15 +662,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">

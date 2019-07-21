@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-20T08:23:52.149Z">
+<meta property="og:updated_time" content="2019-07-21T12:05:55.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java开发">
 <meta name="twitter:description" content="摘要">
@@ -240,9 +240,48 @@
 <pre><code>System.out.println(&quot;&lt;---清空list3-&gt;&quot;);
 list3.clear();
 System.out.println(&quot;&lt;--list3中是否为空: &quot; + (list3.isEmpty()?&quot;是&quot;:&quot;否&quot;) + &quot;--&gt;&quot;);
-System.out.println(&quot;&lt;--list3中共有&gt;&quot; + list3.size()+ &quot;个元素&quot;); </code></pre><p>  //System.out.println(“hello world!”);<br> }<br>}
-```</p>
+System.out.println(&quot;&lt;--list3中共有&gt;&quot; + list3.size()+ &quot;个元素&quot;); </code></pre><p>  //System.out.println(“hello world!”);<br> }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">## java中的Pair</span><br><span class="line">配对(Pair)。配对提供了一种方便方式来处理简单的键值关联，当我们想从方法返回两个值时特别有用。</span><br><span class="line"></span><br><span class="line">在核心Java库中可以使用配对(Pair)的实现。除此之外，某些第三方库，比如Apache Commons和Vavr，已经在各自的api中公开了这个功能。</span><br><span class="line"></span><br><span class="line">#####  核心java配对实现</span><br><span class="line"></span><br><span class="line">###### Pair类</span><br><span class="line"></span><br><span class="line">Pair类在javafx.util 包中，类构造函数有两个参数，键及对应值：</span><br></pre></td></tr></table></figure>
 
+<pre><code>Pair&lt;Integer, String&gt; pair = new Pair&lt;&gt;(1, &quot;One&quot;);
+Integer key = pair.getKey();
+String value = pair.getValue();</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">示例描述使用Pair类实现简单Integer到String的映射。示例中getKey方法返回key对象，getValue方法返回对应值对象。</span><br><span class="line"></span><br><span class="line">#### AbstractMap.SimpleEntry 和 AbstractMap.SimpleImmutableEntry</span><br><span class="line"></span><br><span class="line">SimpleEntry定义在抽象类AbstractMap里面，其构造方法与Pair类似：</span><br></pre></td></tr></table></figure>
+
+<pre><code>AbstractMap.SimpleEntry&lt;Integer, String&gt; entry 
+  = new AbstractMap.SimpleEntry&lt;&gt;(1, &quot;one&quot;);
+Integer key = entry.getKey();
+String value = entry.getValue();</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">其键和值可以通过标准的getter和setter方法获得。</span><br><span class="line"></span><br><span class="line">另外AbstractMap 类还包含一个嵌套类，表示不可变配对：SimpleImmutableEntry 类。</span><br></pre></td></tr></table></figure>
+
+<pre><code>AbstractMap.SimpleImmutableEntry&lt;Integer, String&gt; entry
+  = new AbstractMap.SimpleImmutableEntry&lt;&gt;(1, &quot;one&quot;);</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">应用方式与可变的配对一样，除了配置的值不能修改，尝试修改会抛出UnsupportedOperationException异常。</span><br><span class="line"></span><br><span class="line">##### Apache Commons</span><br><span class="line"></span><br><span class="line">在Apache Commons库中，org.apache.commons.lang3.tuple 包中提供Pair抽象类，不能被直接实例化。 </span><br><span class="line">其有两个子类，分别代表可变与不可变配对：ImmutablePair 和 MutablePair。两者都实现了访问key/value以及setter和getter方法：</span><br></pre></td></tr></table></figure>
+
+<pre><code>ImmutablePair&lt;Integer, String&gt; pair = new ImmutablePair&lt;&gt;(2, &quot;Two&quot;);
+Integer key = pair.getKey();
+String value = pair.getValue();</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">尝试在ImmutablePair 执行setValue方法，会抛出UnsupportedOperationException异常。但在可变配对上执行完全正常：</span><br><span class="line"></span><br><span class="line">    Pair&lt;Integer, String&gt; pair = new MutablePair&lt;&gt;(3, &quot;Three&quot;);</span><br><span class="line">    pair.setValue(&quot;New Three&quot;);</span><br><span class="line"></span><br><span class="line">##### Vavr库</span><br><span class="line"></span><br><span class="line">Vavr库中不可变的Tuple2类提供配对功能：</span><br></pre></td></tr></table></figure>
+
+<pre><code>Tuple2&lt;Integer, String&gt; pair = new Tuple2&lt;&gt;(4, &quot;Four&quot;);
+Integer key = pair._1();
+String value = pair._2();</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在这个实现中，创建对象后不能修改，所以更新方法返回改变后的新实例：</span><br></pre></td></tr></table></figure>
+
+<pre><code>tuplePair = pair.update2(&quot;New Four&quot;);</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### java中Pop和 poll 的区别：</span><br><span class="line">poll是队列数据结构实现类的方法，从队首获取元素，同时获取的这个元素将从原队列删除； </span><br><span class="line">pop是栈结构的实现类的方法，表示返回栈顶的元素，同时该元素从栈中删除，当栈中没有元素时，调用该方法会发生异常</span><br><span class="line">#### Java集合之LinkedList</span><br><span class="line">   LinkedList是基于链表实现。</span><br><span class="line">   LinkedList是一种双向链表</span><br><span class="line">   1. 链表中任意一个存储单元都可以通过向前或向后寻址的方式获取到其前一个存储单元和其后一个存储单元。</span><br><span class="line">   2. 链表的尾结点的后一个结点是链表的头结点，链表的头结点的前一个结点是链表的尾结点。</span><br><span class="line"></span><br><span class="line">   LinkedList底层的数据结构是基于双向循环链表的，且头结点不存放数据。</span><br><span class="line"></span><br><span class="line">   双向链表，存在“节点”这样一种数据结构，保存业务数据、前一个节点的位置信息和后一个节点位置信息。</span><br><span class="line"></span><br><span class="line">   私有属性：</span><br><span class="line">   LinkedList定义了两个私有属性：</span><br></pre></td></tr></table></figure>
+
+<p>   private transient Entry<e> header =new Entry<e>(null,null,null);</e></e></p>
+<p>   private transient int size=0;</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> header是双向链表的头节点，它是双向链表节点所对应的类Entry的实例。Entry中包含成员变量：previous,next,element。</span><br><span class="line"> 其中，previous是该节点的上一个节点，next是该节点的下一个节点，element是该节点所包含的值。</span><br><span class="line"> size是双向链表中节点实例的个数。</span><br><span class="line"></span><br><span class="line">__节点类Entry类的代码__</span><br></pre></td></tr></table></figure>
+
+<p> private static class Entry<e>{
+  E element;<br>  Entry<e> next;<br>  Entry<e> previous;</e></e></e></p>
+<p>  Entry(E element,Entry<e> next,Entry<e> previous)<br>  {<br>    this.element=element;<br>    this.next=next;<br>    this.previous=previous;</e></e></p>
+<p>  }<br> }</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LinkedList的Entry的“E element”，就是它真正存储的数据。</span><br><span class="line">&quot;Entry&lt;E&gt; next&quot;和&quot;Entry&lt;E&gt; previous&quot;表示的是这个存储单元的前一个存储单元的引用地址和后一个存储单元的引用地址。</span><br><span class="line"></span><br><span class="line">__构造函数__</span><br><span class="line">LinkedList提供了两个构造方法，</span><br></pre></td></tr></table></figure>
+
+<p>public LinkedList()<br>{
+  header.next=header.previous=header;<br>}
+public LinkedList(Collection&lt;? extends E&gt; c)<br>{
+  this();<br>  addAll(c);<br>}</p>
+<p>```
+第一个构造方法不接受参数，将header实例的previous和next全部指向header实例（注意，这个是一个双向循环链表，如果不是循环链表，空链表的情况应该是header节点的前一节点和后一节点均为null），这样整个链表其实就只有header一个节点，用于表示一个空的链表。</p>
+<h3 id="负载均衡面试题"><a href="#负载均衡面试题" class="headerlink" title="负载均衡面试题"></a>负载均衡面试题</h3>
       
 
       
@@ -395,7 +434,7 @@ System.out.println(&quot;&lt;--list3中共有&gt;&quot; + list3.size()+ &quot;�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java注解基本原理"><span class="toc-number">1.</span> <span class="toc-text">Java注解基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个注解的方式："><span class="toc-number">2.</span> <span class="toc-text">定义一个注解的方式：</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java注解基本原理"><span class="toc-number">1.</span> <span class="toc-text">Java注解基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个注解的方式："><span class="toc-number">2.</span> <span class="toc-text">定义一个注解的方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#负载均衡面试题"><span class="toc-number">3.</span> <span class="toc-text">负载均衡面试题</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -524,11 +563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,11 +575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +591,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,7 +599,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,15 +623,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
