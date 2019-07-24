@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="Spring学习">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T09:53:31.704Z">
+<meta property="og:updated_time" content="2019-07-22T03:41:12.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring学习计划第一次">
 <meta name="twitter:description" content="Spring学习">
@@ -301,13 +301,146 @@ public void setAge(Long age) {
 <p>import club.javastar.xin.testspring.config.AuthorSettings;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.beans.factory.annotation.Value;<br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RestController;</p>
 <p>@RestController<br>@SpringBootApplication<br>public class TestspringApplication {<br>    @Autowired<br>    private AuthorSettings authorSettings;<br>    @RequestMapping(“/“)<br>    public String index()<br>    {<br>        return “author name is “+authorSettings.getName()+”and author age is “+authorSettings.getAge();<br>    }<br>    public static void main(String[] args) {<br>        SpringApplication.run(TestspringApplication.class, args);</p>
 <pre><code>}</code></pre><p>}</p>
-<pre><code>### 日志配置
-  Spring Boot 支持Java Util Logging、Log4J、Log4J2 和Logback作为日志框架。
-  默认使用Logback作为日志框架：
- * 配置日志级别：
-  logging.file=E:/mylog/log.log
- * 配置日志文件，格式为logging.level.包名=级别：
-  logging.level.org.springframework.web=DEBUG</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">### 日志配置</span><br><span class="line">  Spring Boot 支持Java Util Logging、Log4J、Log4J2 和Logback作为日志框架。</span><br><span class="line">  默认使用Logback作为日志框架：</span><br><span class="line"> * 配置日志级别：</span><br><span class="line">  logging.file=E:/mylog/log.log</span><br><span class="line"> * 配置日志文件，格式为logging.level.包名=级别：</span><br><span class="line">  logging.level.org.springframework.web=DEBUG</span><br><span class="line"></span><br><span class="line">### Profile配置</span><br><span class="line">    Profile是Spring用来针对不同的环境对不同的配置提供支持的，全局Profile配置使用application-&#123;profile&#125;.properties(如application-prod.properties)</span><br><span class="line">    通过在application.properties中设置spring.profiles.active=prod来指定活动的Profile。</span><br><span class="line">    </span><br><span class="line">### Spring Boot运行原理</span><br><span class="line"></span><br><span class="line">@SpringBootApplication注解的核心功能是由@EnableAutoConfiguration注解提供的</span><br><span class="line">@EnableAutoConfiguration</span><br></pre></td></tr></table></figure>
+
+<p>@Target(ElementType.TYPE)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Inherited<br>@Import({EnableAutoConfigurationImportSelector.class,AutoConfigurationPackages.Registrar.class})<br>public @interface EnableAutoConfiguration<br>{
+   Class&lt;?&gt; [] exclude() default{};<br>   String [] excludeName() default{};<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">关键功能：__@Import__</span><br><span class="line">EnableAutoConfigurationImportSelector使用SpringFactoriesLoader.loadFactoryNames方法来扫描具有META-INF/spring.factories文件的jar包，而spring-boot-autoconfigure-x.x.jar里就有一个spring.factories文件，</span><br><span class="line">此文件中声明了有哪些自动配置。</span><br><span class="line"></span><br><span class="line">### 核心注解</span><br><span class="line">    org.springframework.boot:spring-boot-autoconfig包里</span><br><span class="line">     spring.factories中任意一个AutoConfiguration文件，一般都有如下的条件注解，</span><br></pre></td></tr></table></figure>
+
+<p>@ConditionalOnBean:当容器有指定的Bean的条件下<br>@ConditionalOnClass：当类路径下有指定的类的条件下<br>@ConditionalOnExpression：基于SpEL表达式作为判断条件<br>@ConditionalOnJava：基于JVM版本作为判断条件<br>@ConditionalOnJndi：在JNDI存在的条件下查找指定的位置<br>@ConditionalOnMissingBean：当容器里没有指定Bean的情况下<br>@ConditionalOnMissingClass：当类路径下没有指定的类的条件下<br>@ConditionalOnNotWebApplication：当前项目不是web项目的条件下<br>@ConditionalOnProperty：指定的属性是否有指定的值<br>@ConditionalOnResource：类路径是否有指定的值<br>@ConditionalOnSingleCandidate：当指定Bean在容器中只有一个，或者虽然有多个但是指定首选的Bean<br>@ConditionalOnWebApplication:当前项目时web项目的条件下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">上述注解都是组合了@Conditional元注解，只是使用了不同的条件(Condition)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@ConditionalOnWebApplication注解</span><br></pre></td></tr></table></figure>
+
+<p>//<br>// Source code recreated from a .class file by IntelliJ IDEA<br>// (powered by Fernflower decompiler)<br>//</p>
+<p>package org.springframework.boot.autoconfigure.condition;</p>
+<p>import java.lang.annotation.Documented;<br>import java.lang.annotation.ElementType;<br>import java.lang.annotation.Retention;<br>import java.lang.annotation.RetentionPolicy;<br>import java.lang.annotation.Target;<br>import org.springframework.context.annotation.Conditional;</p>
+<p>@Target({ElementType.TYPE, ElementType.METHOD})<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Conditional({OnWebApplicationCondition.class})<br>public @interface ConditionalOnWebApplication {<br>    ConditionalOnWebApplication.Type type() default ConditionalOnWebApplication.Type.ANY;</p>
+<pre><code>public static enum Type {
+    ANY,
+    SERVLET,
+    REACTIVE;
+
+    private Type() {
+    }
+}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分析源码,此注解使用的是OnWebApplicationCondition,查找这个条件如何构造</span><br></pre></td></tr></table></figure>
+
+<p>//<br>// Source code recreated from a .class file by IntelliJ IDEA<br>// (powered by Fernflower decompiler)<br>//</p>
+<p>package org.springframework.boot.autoconfigure.condition;</p>
+<p>import java.util.Map;<br>import org.springframework.boot.autoconfigure.AutoConfigurationMetadata;<br>import org.springframework.boot.autoconfigure.condition.ConditionMessage.Builder;<br>import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;<br>import org.springframework.boot.autoconfigure.condition.FilteringSpringBootCondition.ClassNameFilter;<br>import org.springframework.boot.web.reactive.context.ConfigurableReactiveWebEnvironment;<br>import org.springframework.boot.web.reactive.context.ReactiveWebApplicationContext;<br>import org.springframework.context.annotation.ConditionContext;<br>import org.springframework.core.annotation.Order;<br>import org.springframework.core.type.AnnotatedTypeMetadata;<br>import org.springframework.util.ClassUtils;<br>import org.springframework.util.ObjectUtils;<br>import org.springframework.web.context.ConfigurableWebEnvironment;<br>import org.springframework.web.context.WebApplicationContext;</p>
+<p>@Order(-2147483628)<br>class OnWebApplicationCondition extends FilteringSpringBootCondition {<br>    private static final String SERVLET_WEB_APPLICATION_CLASS = “org.springframework.web.context.support.GenericWebApplicationContext”;<br>    private static final String REACTIVE_WEB_APPLICATION_CLASS = “org.springframework.web.reactive.HandlerResult”;</p>
+<pre><code>OnWebApplicationCondition() {
+}
+
+protected ConditionOutcome[] getOutcomes(String[] autoConfigurationClasses, AutoConfigurationMetadata autoConfigurationMetadata) {
+    ConditionOutcome[] outcomes = new ConditionOutcome[autoConfigurationClasses.length];
+
+    for(int i = 0; i &lt; outcomes.length; ++i) {
+        String autoConfigurationClass = autoConfigurationClasses[i];
+        if (autoConfigurationClass != null) {
+            outcomes[i] = this.getOutcome(autoConfigurationMetadata.get(autoConfigurationClass, &quot;ConditionalOnWebApplication&quot;));
+        }
+    }
+
+    return outcomes;
+}
+
+private ConditionOutcome getOutcome(String type) {
+    if (type == null) {
+        return null;
+    } else {
+        Builder message = ConditionMessage.forCondition(ConditionalOnWebApplication.class, new Object[0]);
+        if (Type.SERVLET.name().equals(type) &amp;&amp; !ClassNameFilter.isPresent(&quot;org.springframework.web.context.support.GenericWebApplicationContext&quot;, this.getBeanClassLoader())) {
+            return ConditionOutcome.noMatch(message.didNotFind(&quot;servlet web application classes&quot;).atAll());
+        } else if (Type.REACTIVE.name().equals(type) &amp;&amp; !ClassNameFilter.isPresent(&quot;org.springframework.web.reactive.HandlerResult&quot;, this.getBeanClassLoader())) {
+            return ConditionOutcome.noMatch(message.didNotFind(&quot;reactive web application classes&quot;).atAll());
+        } else {
+            return !ClassNameFilter.isPresent(&quot;org.springframework.web.context.support.GenericWebApplicationContext&quot;, this.getBeanClassLoader()) &amp;&amp; !ClassUtils.isPresent(&quot;org.springframework.web.reactive.HandlerResult&quot;, this.getBeanClassLoader()) ? ConditionOutcome.noMatch(message.didNotFind(&quot;reactive or servlet web application classes&quot;).atAll()) : null;
+        }
+    }
+}
+
+public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {
+    boolean required = metadata.isAnnotated(ConditionalOnWebApplication.class.getName());
+    ConditionOutcome outcome = this.isWebApplication(context, metadata, required);
+    if (required &amp;&amp; !outcome.isMatch()) {
+        return ConditionOutcome.noMatch(outcome.getConditionMessage());
+    } else {
+        return !required &amp;&amp; outcome.isMatch() ? ConditionOutcome.noMatch(outcome.getConditionMessage()) : ConditionOutcome.match(outcome.getConditionMessage());
+    }
+}
+
+private ConditionOutcome isWebApplication(ConditionContext context, AnnotatedTypeMetadata metadata, boolean required) {
+    switch(this.deduceType(metadata)) {
+    case SERVLET:
+        return this.isServletWebApplication(context);
+    case REACTIVE:
+        return this.isReactiveWebApplication(context);
+    default:
+        return this.isAnyWebApplication(context, required);
+    }
+}
+
+private ConditionOutcome isAnyWebApplication(ConditionContext context, boolean required) {
+    Builder message = ConditionMessage.forCondition(ConditionalOnWebApplication.class, new Object[]{required ? &quot;(required)&quot; : &quot;&quot;});
+    ConditionOutcome servletOutcome = this.isServletWebApplication(context);
+    if (servletOutcome.isMatch() &amp;&amp; required) {
+        return new ConditionOutcome(servletOutcome.isMatch(), message.because(servletOutcome.getMessage()));
+    } else {
+        ConditionOutcome reactiveOutcome = this.isReactiveWebApplication(context);
+        return reactiveOutcome.isMatch() &amp;&amp; required ? new ConditionOutcome(reactiveOutcome.isMatch(), message.because(reactiveOutcome.getMessage())) : new ConditionOutcome(servletOutcome.isMatch() || reactiveOutcome.isMatch(), message.because(servletOutcome.getMessage()).append(&quot;and&quot;).append(reactiveOutcome.getMessage()));
+    }
+}
+
+private ConditionOutcome isServletWebApplication(ConditionContext context) {
+    Builder message = ConditionMessage.forCondition(&quot;&quot;, new Object[0]);
+    if (!ClassNameFilter.isPresent(&quot;org.springframework.web.context.support.GenericWebApplicationContext&quot;, context.getClassLoader())) {
+        return ConditionOutcome.noMatch(message.didNotFind(&quot;servlet web application classes&quot;).atAll());
+    } else {
+        if (context.getBeanFactory() != null) {
+            String[] scopes = context.getBeanFactory().getRegisteredScopeNames();
+            if (ObjectUtils.containsElement(scopes, &quot;session&quot;)) {
+                return ConditionOutcome.match(message.foundExactly(&quot;&apos;session&apos; scope&quot;));
+            }
+        }
+
+        if (context.getEnvironment() instanceof ConfigurableWebEnvironment) {
+            return ConditionOutcome.match(message.foundExactly(&quot;ConfigurableWebEnvironment&quot;));
+        } else {
+            return context.getResourceLoader() instanceof WebApplicationContext ? ConditionOutcome.match(message.foundExactly(&quot;WebApplicationContext&quot;)) : ConditionOutcome.noMatch(message.because(&quot;not a servlet web application&quot;));
+        }
+    }
+}
+
+private ConditionOutcome isReactiveWebApplication(ConditionContext context) {
+    Builder message = ConditionMessage.forCondition(&quot;&quot;, new Object[0]);
+    if (!ClassNameFilter.isPresent(&quot;org.springframework.web.reactive.HandlerResult&quot;, context.getClassLoader())) {
+        return ConditionOutcome.noMatch(message.didNotFind(&quot;reactive web application classes&quot;).atAll());
+    } else if (context.getEnvironment() instanceof ConfigurableReactiveWebEnvironment) {
+        return ConditionOutcome.match(message.foundExactly(&quot;ConfigurableReactiveWebEnvironment&quot;));
+    } else {
+        return context.getResourceLoader() instanceof ReactiveWebApplicationContext ? ConditionOutcome.match(message.foundExactly(&quot;ReactiveWebApplicationContext&quot;)) : ConditionOutcome.noMatch(message.because(&quot;not a reactive web application&quot;));
+    }
+}
+
+private Type deduceType(AnnotatedTypeMetadata metadata) {
+    Map&lt;String, Object&gt; attributes = metadata.getAnnotationAttributes(ConditionalOnWebApplication.class.getName());
+    return attributes != null ? (Type)attributes.get(&quot;type&quot;) : Type.ANY;
+}</code></pre><p>}</p>
+<pre><code>从Spring5.x看出，相对于书中Spring4.x源代码进行了改进，增加了 
+isWebApplication 通过switch case语句分析转到下列函数分析，优化了程序
+isAnyWebApplication
+isServletWebApplication
+isReactiveWebApplication等。
+
+选择isServletWebApplication分析，
+1. 先判断servlet web application classes是否在类路径中
+2. 容器里是否有名为session的scope
+3. 当前容器的Environment是否为ConfigurableWebEnvironment
+4. 当前的ResourceLoader是否为WebApplicationContext(ResourceLoader是ApplicationContext的顶级接口之一)
+5. 构造ConditionOutcome类的对象，通过ConditionOutcome.isMatch方法返回布尔值来确定条件。
+
+
+</code></pre>
       
 
       
@@ -598,6 +731,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -606,11 +743,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,7 +759,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,7 +767,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,15 +787,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,15 +799,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaWeb</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,7 +823,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
             
             <div class="clearfix"></div>
