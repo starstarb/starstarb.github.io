@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="Vector详解">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-13T14:27:13.747Z">
+<meta property="og:updated_time" content="2019-07-28T02:50:44.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++Vector学习">
 <meta name="twitter:description" content="Vector详解">
@@ -403,7 +403,17 @@
              此时输出的值并不是一开始b数组初始化的值,而是一些无法预计的值.
 
             分析:根据1) 2)的结果,可以想到,在1)中,  往a向量中压入的是b的值,即a[0]=b,此时a[0]和b是存储在两个不同的地址中的.因此改变b的值不会影响
-            a[0];而在2)中,因为是把一个地址(指针)压入向量a,即a[0]=b,因此释放了b的地址也就释放了a[0]的地址,因此a[0]数组中存放的数值也就不得而知了. </code></pre>
+            a[0];而在2)中,因为是把一个地址(指针)压入向量a,即a[0]=b,因此释放了b的地址也就释放了a[0]的地址,因此a[0]数组中存放的数值也就不得而知了. </code></pre><h3 id="C-中的unique-unique-copy"><a href="#C-中的unique-unique-copy" class="headerlink" title="C++中的unique(),unique_copy()"></a>C++中的unique(),unique_copy()</h3><p>unique 与 unique_copy 属于C++的STL模板，头文件是 algorithm<br>作用：</p>
+<p>去除重复的 相邻的 重复的元素，即如果两个元素 相同 但是 不相邻，则不会去除</p>
+<p>unique 将重复的元素没有删除，而是放在了最后面，故原来是多少元素，去重后还是多少元素，保存了剔除的元素</p>
+<p>unique_copy 是将去重后的元素重新放到另外一个数组去，没有保存剔除的元素</p>
+<p>故通常用前，先将数组排序<br>用法：</p>
+<p>unique(begin, end)  ，begin 是开始位置，end 是结束的位置，返回一个地址，</p>
+<p>unique_copy(begin, end, tar_begin), begin是原数组的开始地址，end原数组的结束地址，tar_begin是要复制到的数组的即目标数组的开始地址，同样返回一个地址<br>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll k, p;</span><br><span class="line"> </span><br><span class="line">int main () &#123;</span><br><span class="line">    int a[] = &#123;1, 2, 2, 2, 3, 3, 4, 5, 5, 3&#125;;</span><br><span class="line">    int b[] = &#123;1, 2, 2, 2, 3, 3, 4, 5, 5, 3&#125;;</span><br><span class="line">    int len = unique(a, a+10) - a;</span><br><span class="line">    //len返回的是最后一个不重复数字的数组下标位置</span><br><span class="line">    printf(&quot;unique\nlen = %d\n&quot;, len);</span><br><span class="line">    for(int i = 0; i &lt; 10; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(i == len) puts(&quot;##&quot;);</span><br><span class="line">        printf(&quot;%d &quot;, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n下面是unique_copy\n&quot;);</span><br><span class="line">    int c[10];</span><br><span class="line">    int d = unique_copy(b, b+10, c) - c;</span><br><span class="line">    printf(&quot;len = %d\n&quot;, d);</span><br><span class="line">    for(int i = 0; i &lt; 10; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%d &quot;, c[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br></pre></td></tr></table></figure>
+
+<p>输出为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unique</span><br><span class="line">len = 5</span><br><span class="line">1 2 3 4 5 3 ##  // 最后输出的3是因为和他相邻的没有3</span><br><span class="line">4 5 5 3     // 说明没有删除，只是放在后面而已 </span><br><span class="line"></span><br><span class="line">下面是unique_copy</span><br><span class="line">len = 6</span><br><span class="line">1 2 3 4 5 3 2004323541 667813577 -2 2004226402   //说明删除了，因为后面是随机数嘛</span><br></pre></td></tr></table></figure>
       
 
       
@@ -561,7 +571,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-中的unique-unique-copy"><span class="toc-number">1.</span> <span class="toc-text">C++中的unique(),unique_copy()</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -690,11 +700,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,15 +716,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Qt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,7 +736,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,11 +760,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,7 +776,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -762,15 +784,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -786,7 +800,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
             
             <div class="clearfix"></div>
