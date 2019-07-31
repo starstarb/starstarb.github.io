@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="算法模板学习">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-29T04:36:45.407Z">
+<meta property="og:updated_time" content="2019-07-31T06:42:49.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ACM常用算法模板">
 <meta name="twitter:description" content="算法模板学习">
@@ -236,6 +236,8 @@
 </li>
 </ol>
 <h3 id="分解质因数"><a href="#分解质因数" class="headerlink" title="分解质因数"></a>分解质因数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; V[N]; </span><br><span class="line">void getDiv(int x, int idx) &#123; //得到的是所有种类 eg：12=》2，3</span><br><span class="line">	if (x == 1) &#123;</span><br><span class="line">		V[idx].push_back  (1);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	int len = (int)sqrt(x);</span><br><span class="line">	for (int i = 2; i &lt;= (int)len; i++)</span><br><span class="line">		if (x % i == 0)</span><br><span class="line">			V[idx].push_back  (i), V[idx].push_back  (x / i);</span><br><span class="line">	if (len * len == x)</span><br><span class="line">		V[idx].pop_back();</span><br><span class="line">	V[idx].push_back  (x);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void fun(long long x) &#123;//得到的是所有质因数 eg：12=》2，2，3</span><br><span class="line">	p.clear();</span><br><span class="line">	for (long long i = 2; i &lt;=sqrt(x); i++)&#123;</span><br><span class="line">		while (x%i == 0)&#123;</span><br><span class="line">			p.push_back(i);</span><br><span class="line">			x /= i;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;    </span><br><span class="line">       if (x != 1) p.push_back(x);   </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="吉姆拉尔森公式"><a href="#吉姆拉尔森公式" class="headerlink" title="吉姆拉尔森公式"></a>吉姆拉尔森公式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int CaculateWeekDay(int y,int m, int d)  </span><br><span class="line">&#123;  </span><br><span class="line">    if(m==1||m==2) &#123;//把一月和二月看为是上一年的十三月和十四月</span><br><span class="line">        m+=12;  </span><br><span class="line">        y--;  </span><br><span class="line">    &#125;  </span><br><span class="line">    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7;  </span><br><span class="line">    return iWeek;  </span><br><span class="line">&#125;  //给定年月日O（1）算周数</span><br></pre></td></tr></table></figure>
       
 
       
@@ -393,7 +395,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#文本输入输出"><span class="toc-number">1.</span> <span class="toc-text">文本输入输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-number"></span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GCD、LCM"><span class="toc-number"></span> <span class="toc-text">GCD、LCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串-lt-gt-整型"><span class="toc-number"></span> <span class="toc-text">字符串 &lt;-&gt; 整型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getchar-读入转str"><span class="toc-number"></span> <span class="toc-text">getchar()读入转str</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#char-转Int"><span class="toc-number"></span> <span class="toc-text">char[]转Int</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同余"><span class="toc-number"></span> <span class="toc-text">同余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求n-位数"><span class="toc-number"></span> <span class="toc-text">求n!位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容斥原理"><span class="toc-number"></span> <span class="toc-text">容斥原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Log与自然对数e"><span class="toc-number"></span> <span class="toc-text">Log与自然对数e</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速幂"><span class="toc-number"></span> <span class="toc-text">快速幂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求1到n的数的异或和O（1）"><span class="toc-number"></span> <span class="toc-text">求1到n的数的异或和O（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卡特兰数"><span class="toc-number"></span> <span class="toc-text">卡特兰数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错排公式"><span class="toc-number"></span> <span class="toc-text">错排公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#素数"><span class="toc-number"></span> <span class="toc-text">素数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分解质因数"><span class="toc-number"></span> <span class="toc-text">分解质因数</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#文本输入输出"><span class="toc-number">1.</span> <span class="toc-text">文本输入输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-number"></span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GCD、LCM"><span class="toc-number"></span> <span class="toc-text">GCD、LCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串-lt-gt-整型"><span class="toc-number"></span> <span class="toc-text">字符串 &lt;-&gt; 整型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getchar-读入转str"><span class="toc-number"></span> <span class="toc-text">getchar()读入转str</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#char-转Int"><span class="toc-number"></span> <span class="toc-text">char[]转Int</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同余"><span class="toc-number"></span> <span class="toc-text">同余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求n-位数"><span class="toc-number"></span> <span class="toc-text">求n!位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容斥原理"><span class="toc-number"></span> <span class="toc-text">容斥原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Log与自然对数e"><span class="toc-number"></span> <span class="toc-text">Log与自然对数e</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速幂"><span class="toc-number"></span> <span class="toc-text">快速幂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求1到n的数的异或和O（1）"><span class="toc-number"></span> <span class="toc-text">求1到n的数的异或和O（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卡特兰数"><span class="toc-number"></span> <span class="toc-text">卡特兰数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错排公式"><span class="toc-number"></span> <span class="toc-text">错排公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#素数"><span class="toc-number"></span> <span class="toc-text">素数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分解质因数"><span class="toc-number"></span> <span class="toc-text">分解质因数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#吉姆拉尔森公式"><span class="toc-number"></span> <span class="toc-text">吉姆拉尔森公式</span></a>
                     </div>
                 </span>
             </div>
@@ -522,11 +524,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,11 +540,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,15 +560,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,7 +580,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,7 +588,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,15 +604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,11 +616,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">

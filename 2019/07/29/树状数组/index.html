@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>树状数组 | 星星</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
-<meta name="keywords" content="Qt、Spring Cloud、Go、C++">
+  <meta name="description" content="树状数组">
+<meta name="keywords" content="树状数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树状数组">
 <meta property="og:url" content="http://yoursite.com/2019/07/29/树状数组/index.html">
 <meta property="og:site_name" content="星星">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="树状数组">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-29T06:11:44.993Z">
+<meta property="og:updated_time" content="2019-07-31T07:54:48.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树状数组">
-<meta name="twitter:description" content="个人技术博客">
+<meta name="twitter:description" content="树状数组">
   
     <link rel="alternative" href="/atom.xml" title="星星" type="application/atom+xml">
   
@@ -180,7 +180,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>树状数组</p>
+<a id="more"></a>
+<h3 id="区域和检索-–数组可修改"><a href="#区域和检索-–数组可修改" class="headerlink" title="区域和检索 –数组可修改"></a>区域和检索 –数组可修改</h3><p>给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。</p>
+<p>update(i, val) 函数可以通过将下标为 i 的数值更新为 val，从而对数列进行修改。</p>
+<p>示例:</p>
+<p>Given nums = [1, 3, 5]</p>
+<p>sumRange(0, 2) -&gt; 9<br>update(1, 2)<br>sumRange(0, 2) -&gt; 8</p>
+<p>说明:</p>
+<pre><code>数组仅可以在 update 函数下进行修改。
+你可以假设 update 函数与 sumRange 函数的调用次数是均匀分布的。</code></pre><p>链接：<a href="https://leetcode-cn.com/problems/range-sum-query-mutable" target="_blank" rel="noopener">https://leetcode-cn.com/problems/range-sum-query-mutable</a><br>算法思路：<br>方法一：<br>区域和检索的一个简单的解决方案 - RSQ(i, j) 是将数组从索引 i 迭代到 j 并对每个元素求和。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private int[] nums;</span><br><span class="line">public int sumRange(int i, int j) &#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for (int l = i; l &lt;= j; l++) &#123;</span><br><span class="line">        sum += data[l];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int update(int i, int val) &#123;</span><br><span class="line">    nums[i] = val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复杂度分析:</p>
+<pre><code>时间复杂度：O(n)。区域和检索 O(1) 的更新查询 对于区域和检索，我们从数组中访问每个元素的时间是固定的，在最坏的情况下，我们访问 n 元素。因此，时间复杂度为 O(n)O。更新查询的时间复杂度为 O(1))。
+空间复杂度：O(1)</code></pre><p>方法二：sqrt 分解</p>
+<p>其思想是将数组分割成块，块的长度为 sqrt（n）<br>​。然后我们计算每个块的和，并将其存储在辅助存储器 b 中。<br>要查询 RSQ(i, j)，我们将添加位于内部的所有块和部分在范围[i…j] 重叠的块的总和。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">private int[] b;</span><br><span class="line">private int len;</span><br><span class="line">private int[] nums;</span><br><span class="line">public NumArray(int [] nums)</span><br><span class="line">&#123;</span><br><span class="line">	this.nums=nums;</span><br><span class="line">	double l=Math.sqrt(nums.length);</span><br><span class="line">	len=(int) Math.ceil(nums.length/l);</span><br><span class="line">	b=new int[len];</span><br><span class="line">	for(int i=0;i&lt;nums.length;i++)</span><br><span class="line">	b[i/len]+=nums[i];</span><br><span class="line">&#125;</span><br><span class="line">public int sumRange(int i,int j)&#123;</span><br><span class="line">	int sum=0;</span><br><span class="line">	int startBlock=i/len;</span><br><span class="line">	int endBlock=j/len;</span><br><span class="line">	if(startBlock==endBlock)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int k=i;k&lt;=j;k++)</span><br><span class="line">		sum+=nums[k];</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		for(int k=i;k&lt;=(startBlock+1)*len-1;k++)</span><br><span class="line">		sum+=nums[k];</span><br><span class="line">		for(int k=startBlock+1;k&lt;=endBlock-1;k++)</span><br><span class="line">		sum+=b[k];</span><br><span class="line">		for(int k=endBlock*len;k&lt;=j;k++)</span><br><span class="line">		sum+=nums[k];</span><br><span class="line">	&#125;</span><br><span class="line">	return sum;</span><br><span class="line">&#125;</span><br><span class="line">public void update(int i,int val)</span><br><span class="line">&#123;</span><br><span class="line">	int b_l=i/len;</span><br><span class="line">	b[b_l] = b[b_l] - nums[i] + val;</span><br><span class="line">    nums[i] = val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -214,7 +232,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">树状数组</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法刷题//" class="article-tag-list-link color5">算法刷题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -316,7 +356,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#区域和检索-–数组可修改"><span class="toc-number">1.</span> <span class="toc-text">区域和检索 –数组可修改</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -445,11 +485,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,11 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,15 +521,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,7 +541,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,7 +549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,15 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +577,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">

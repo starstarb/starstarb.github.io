@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java设计模式学习 | 星星</title>
+  <title>Tag: 字典树 | 星星</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java设计模式汇总学习，转载于阿里云">
-<meta name="keywords" content="设计模式">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java设计模式学习">
-<meta property="og:url" content="http://yoursite.com/2019/07/17/设计模式学习/index.html">
+  <meta name="description" content="个人技术博客">
+<meta name="keywords" content="Qt、Spring Cloud、Go、C++">
+<meta property="og:type" content="website">
+<meta property="og:title" content="星星">
+<meta property="og:url" content="http://yoursite.com/tags/字典树/index.html">
 <meta property="og:site_name" content="星星">
-<meta property="og:description" content="java设计模式汇总学习，转载于阿里云">
+<meta property="og:description" content="个人技术博客">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-17T09:08:39.251Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java设计模式学习">
-<meta name="twitter:description" content="java设计模式汇总学习，转载于阿里云">
+<meta name="twitter:title" content="星星">
+<meta name="twitter:description" content="个人技术博客">
   
     <link rel="alternative" href="/atom.xml" title="星星" type="application/atom+xml">
   
@@ -160,277 +159,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-设计模式学习" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java设计模式学习
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/07/29/字典树/" class="archive-article-date">
+  	<time datetime="2019-07-29T06:12:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/07/29/字典树/">字典树</a>
     </h1>
   
 
-        
-        <a href="/2019/07/17/设计模式学习/" class="archive-article-date">
-  	<time datetime="2019-07-17T08:46:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java设计模式汇总学习，转载于阿里云</p>
-<a id="more"></a>
-<h3 id="Java设计模式-一-—-单例模式"><a href="#Java设计模式-一-—-单例模式" class="headerlink" title="Java设计模式(一)—-单例模式"></a>Java设计模式(一)—-单例模式</h3><h5 id="一、特点："><a href="#一、特点：" class="headerlink" title="一、特点："></a>一、特点：</h5><p>1、单例类只能有一个实例。<br>2、单例类必须自己创建自己的唯一实例。<br>3、单例类必须给所有其他对象提供这一实例。<br>单例模式确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</p>
-<h5 id="二．分类"><a href="#二．分类" class="headerlink" title="二．分类"></a>二．分类</h5><p>(一)、懒汉式单例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例类.在第一次调用的时候实例化自己   </span><br><span class="line">public class Singleton &#123;</span><br><span class="line">    // 构造方法私有化</span><br><span class="line">    private Singleton() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    private static Singleton single = null;</span><br><span class="line">    // 静态工厂方法</span><br><span class="line">    public static Singleton getInstance() &#123;</span><br><span class="line">        if (single == null) &#123;</span><br><span class="line">            single = new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return single;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Singleton通过将构造方法限定为private避免了类在外部被实例化，在同一个虚拟机范围内，Singleton的唯一实例只能通过getInstance()方法访问。<br>（事实上，通过Java反射机制是能够实例化构造方法为private的类的，那基本上会使所有的Java单例实现失效。此问题在此处不做讨论，姑且掩耳盗铃地认为反射机制不存在。）<br>但 是以上懒汉式单例的实现没有考虑线程安全问题，它是线程不安全的，并发环境下很可能出现多个Singleton实例，要实现线程安全，有以下三种方式，都 是对getInstance这个方法改造，保证了懒汉式单例的线程安全，如果你第一次接触单例模式，对线程安全不是很了解，可以先跳过下面这三小条，去看 饿汉式单例，等看完后面再回头考虑线程安全的问题：</p>
-<p>1、在getInstance方法上加同步</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static synchronized  Singleton getInstance() &#123;</span><br><span class="line">        if (single == null) &#123;</span><br><span class="line">            single = new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return single;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>(二)、双重检查锁定<br>  可以使用“双重检查加锁”的方式来实现，就可以既实现线程安全，又能够使性能不受很大的影响。<br>  那么什么是“双重检查加锁”机制呢？<br>  所谓“双重检查加锁”机制，指的是：<br>  并不是每次进入getInstance方法都需要同步，而是先不同步，进入方法后，先检查实例是否存在，如果不存在才进行下面的同步块，这是第一重检查，进入同步块过后，再次检查实例是否存在，如果不存在，就在同步的情况下创建一个实例，这是第二重检查。这样 一来，就只需要同步一次了，从而减少了多次在同步情况下进行判断所浪费的时间。<br>“双重检查加锁”机制的实现会使用关键字 <strong>volatile</strong> ，它的意思是：被volatile修饰的变量的值，将不会被本地线程缓存，所有对该变量的读写都是直接操作共享内存，从而确保多个线程能正确的处理该变量。<br>注意：在java1.4及以前版本中，很多JVM对于volatile关键字的实现的问题，会导致“双重检查加锁”的失败，因此“双重检查加锁”机制只只能用在java5及以上的版本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private volatile static Singleton instance = null;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        //先检查实例是否存在，如果不存在才进入下面的同步块</span><br><span class="line">        if(instance == null)&#123;</span><br><span class="line">            //同步块，线程安全的创建实例</span><br><span class="line">            synchronized (Singleton.class) &#123;</span><br><span class="line">                //再次检查实例是否存在，如果不存在才真正的创建实例</span><br><span class="line">                if(instance == null)&#123;</span><br><span class="line">                    instance = new Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种实现方式既可以实现线程安全地创建实例，而又不会对性能造成太大的影响。它只是第一次创建实例的时候同步，以后就不需要同步了，从而加快了运行速度。<br>(摘自网络)提示：由于volatile关键字可能会屏蔽掉虚拟机中一些必要的代码优化，所以运行效率并不是很高。因此一般建议，没有特别的需要，不要使用。也就是说，虽然可以使用“双重检查加锁”机制来实现线程安全的单例，但并不建议大量采用，可以根据情况来选用。</p>
-<p>(三)、静态(类级)内部类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line"></span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    /**</span><br><span class="line">     *    类级的内部类，也就是静态的成员式内部类，该内部类的实例与外部类的实例</span><br><span class="line">     *    没有绑定关系，而且只有被调用到时才会装载，从而实现了延迟加载。</span><br><span class="line">     */</span><br><span class="line">    private static class SingletonHolder&#123;</span><br><span class="line">        /**</span><br><span class="line">         * 静态初始化器，由JVM来保证线程安全</span><br><span class="line">         */</span><br><span class="line">        private static Singleton instance = new Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return SingletonHolder.instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>   这种比上面1、2都好一些，既实现了线程安全，又避免了同步带来的性能影响。　当getInstance方法第一次被调用的时候，它第一次读取 SingletonHolder.instance，导致SingletonHolder类得到初始化；而这个类在装载并被初始化的时候，会初始化它的静 态域，从而创建Singleton的实例，由于是静态的域，因此只会在虚拟机装载类的时候初始化一次，并由虚拟机来保证它的线程安全性。<br>   这个模式的优势在于，getInstance方法并没有被同步，并且只是执行一个域的访问，因此延迟初始化并没有增加任何访问成本。</p>
-<p>(四)、饿汉式单例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//饿汉式单例类.在类初始化时，已经自行实例化   </span><br><span class="line">public class EagerSingleton &#123;</span><br><span class="line">        private static EagerSingleton instance = new EagerSingleton();</span><br><span class="line">        /**</span><br><span class="line">         * 构造方法私有化</span><br><span class="line">         */</span><br><span class="line">        private EagerSingleton()&#123;&#125;</span><br><span class="line">        /**</span><br><span class="line">         * 静态工厂方法</span><br><span class="line">         */</span><br><span class="line">        public static EagerSingleton getInstance()&#123;</span><br><span class="line">            return instance;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>饿汉式在类创建的同时就已经创建好一个静态的对象供系统使用，以后不再改变，所以天生是线程安全的。</p>
-<p>(五)、单例和枚举<br>用枚举来实现单例非常简单，只需要编写一个包含单个元素的枚举类型即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public enum Singleton &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 定义一个枚举的元素，它就代表了Singleton的一个实例。</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">    uniqueInstance;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 单例可以有自己的操作</span><br><span class="line">     */</span><br><span class="line">    public void singletonOperation()&#123;</span><br><span class="line">        //功能处理</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>　相关测试代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public enum SingletonEnum &#123;</span><br><span class="line">    INSTANCE01, INSTANCE02;// 定义枚举的两个类型</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">            SingletonEnum instance01=SingletonEnum.INSTANCE01;</span><br><span class="line">            instance01.setName(&quot;tanggao&quot;);</span><br><span class="line">            System.out.println(instance01.getName());</span><br><span class="line"></span><br><span class="line">            SingletonEnum instance02=SingletonEnum.INSTANCE01;</span><br><span class="line">            System.out.println(instance02.getName());</span><br><span class="line"></span><br><span class="line">            SingletonEnum instance03=SingletonEnum.INSTANCE02;</span><br><span class="line">            instance03.setName(&quot;zsy&quot;);</span><br><span class="line">            System.out.println(instance03.getName());</span><br><span class="line"></span><br><span class="line">            SingletonEnum instance04=SingletonEnum.INSTANCE02;</span><br><span class="line">            instance04.setName(&quot;zsy1&quot;);</span><br><span class="line">            System.out.println(instance04.getName());</span><br><span class="line">            System.out.println(instance03.hashCode()+&quot;\t&quot;+instance04.hashCode());</span><br><span class="line">            System.out.println(instance03==instance04);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果: </span><br><span class="line">tanggao </span><br><span class="line">tanggao </span><br><span class="line">zsy </span><br><span class="line">zsy1 </span><br><span class="line">3346521 3346521 </span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-
-<p>使用枚举来实现单实例控制会更加简洁，而且无偿地提供了序列化机制，并由JVM从根本上提供保障，绝对防止多次实例化，是更简洁、高效、安全的实现单例的方式。</p>
-<h5 id="三、饿汉式和懒汉式区别"><a href="#三、饿汉式和懒汉式区别" class="headerlink" title="三、饿汉式和懒汉式区别"></a>三、饿汉式和懒汉式区别</h5><p>   从名字上来说，饿汉和懒汉，<br>     饿汉就是类一旦加载，就把单例初始化完成，保证getInstance的时候，单例是已经存在的了，<br>     而懒汉比较懒，只有当调用getInstance的时候，才回去初始化这个单例。<br>  另外从以下两点再区分以下这两种方式：</p>
-<p>1、线程安全：<br>饿汉式天生就是线程安全的，可以直接用于多线程而不会出现问题，<br>懒汉式本身是非线程安全的，为了实现线程安全有几种写法，分别是上面的1、2、3，这三种实现在资源加载和性能方面有些区别。</p>
-<p>2、资源加载和性能：<br>饿汉式在类创建的同时就实例化一个静态对象出来，不管之后会不会使用这个单例，都会占据一定的内存，但是相应的，在第一次调用时速度也会更快，因为其资源已经初始化完成.</p>
-<p>而懒汉式顾名思义，会延迟加载，在第一次使用该单例的时候才会实例化对象出来，第一次调用时要做初始化，如果要做的工作比较多，性能上会有些延迟，之后就和饿汉式一样了。 </p>
-<p>至于1、2、3这三种实现又有些区别，<br>第1种，在方法调用上加了同步，虽然线程安全了，但是每次都要同步，会影响性能，毕竟99%的情况下是不需要同步的，<br>第2种，在getInstance中做了两次null检查，确保了只有第一次调用单例的时候才会做同步，这样也是线程安全的，同时避免了每次都同步的性能损耗<br>第3种，保证初始化instance时只有一个线程，所以也是线程安全的，同时没有性能损耗，一般倾向于使用这一种。</p>
-<p>3、什么是线程安全？<br>如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。<br>或者说：一个类或者程序所提供的接口对于线程来说是原子操作，或者多个线程之间的切换 <strong>不会导致该接口的执行结果存在二义性</strong>,也就是说我们不用考虑同步的问题，那就是线程安全的.</p>
-<h3 id="Java设计模式（二）—-建造者模式"><a href="#Java设计模式（二）—-建造者模式" class="headerlink" title="Java设计模式（二）—-建造者模式"></a>Java设计模式（二）—-建造者模式</h3><h5 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念　"></a>一、概念　</h5><p>建造模式是对象的创建模式。建造模式可以将一个产品的内部表象（internal representation）与产品的生产过程分割开来，从而可以使一个建造过程生成具有不同的内部表象的产品对象。</p>
-<p>1、产品的内部表象<br>一个产品常有不同的组成成分作为产品的零件，这些零件有可能是对象，也有可能不是对象，它们通常又叫做产品的内部表象（internal representation）。不同的产品可以有不同的内部表象，也就是不同的零件。使用建造模式可以使客户端不需要知道所生成的产品有哪些零件，每个 产品的对应零件彼此有何不同，是怎么建造出来的，以及怎么组成产品。 </p>
-<p>2、对象性质的建造</p>
-<p>　　有些情况下，一个对象的一些性质必须按照某个顺序赋值才有意义。在某个性质没有赋值之前，另一个性质则无法赋值。这些情况使得性质本身的建造涉 及到复杂的商业逻辑。这时候，此对象相当于一个有待建造的产品，而对象的这些性质相当于产品的零件，建造产品的过程是建造零件的过程。由于建造零件的过程 很复杂，因此，这些零件的建造过程往往被“外部化”到另一个称做建造者的对象里，建造者对象返还给客户端的是一个全部零件都建造完毕的产品对象。 </p>
-<p>顾名思义，builder的意思是建造者或者建筑工人。例如：楼房是千差万别的，楼房的外形，层数，内部房间的数量，房间的装饰都不一样。但是对于 建造者来 说，抽象出来的建筑流程是确定的。因为建筑一座楼房，都可以归纳为几个步骤(也就是生产过程：对象性质的建造)：1打桩(内部具体细节构建:内部表象, 下2-4同为内部具体细节构建)、2建地基、3搭框架、4内部建设。同理，建造者设计模式也是基于这样 的概念而生的，这个设计模式用来解决什么样的情况呢：即流程不变，但每个流程实现的具体细节是会变化的。这样的情况，可以考虑使用建造者。就像盖房子，4 个流程都必须有，但每个流程各自的实现细节，各个房子各有不同。建造者模式的好处就是保证了流程不会变化，即流程不会增加也不会遗漏，也不会产生流程次序 的错误。这是非常重要的，看新闻，一些楼歪歪的事件，很多都是建设楼盘的时候，流程出现了问题导致的。（看来这些人并不知道建造者模式啊）。而建造者模 式，保证了流程的确定性，而流程内部的实现细节，是可继承扩展的。从根源上解决了流程不规范的问题。</p>
-<h5 id="二、建造模式的结构"><a href="#二、建造模式的结构" class="headerlink" title="二、建造模式的结构"></a>二、建造模式的结构</h5><pre><code>在这个示意性的系统里，最终产品Product只有两个零件，即part1和part2。相应的建造方法也有两个：buildPart1()和buildPart2()、同时可以看出本模式涉及到四个角色，它们分别是：</code></pre><p>　　抽象建造者（Builder）角色：给 出一个抽象接口，以规范产品对象的各个组成成分的建造。一般而言，此接口独立于应用程序的商业逻辑。模式中直接创建产品对象的是具体建造者 (ConcreteBuilder)角色。具体建造者类必须实现这个接口所要求的两种方法：一种是建造方法(buildPart1和 buildPart2)，另一种是返还结构方法(retrieveResult)。一般来说，产品所包含的零件数目与建造方法的数目相符。换言之，有多少 零件，就有多少相应的建造方法。 </p>
-<p>　　导演者（Director）角色：担任这个角色的类调用具体建造者角色以创建产品对象。应当指出的是，导演者角色并没有产品类的具体知识，真正拥有产品类的具体知识的是具体建造者角色。 </p>
-<p>产品（Product）角色：产品便是建造中的复杂对象。一般来说，一个系统中会有多于一个的产品类，而且这些产品类并不一定有共同的接口，而完全可以是不相关联的。 </p>
-<p>　　一般来说，每有一个产品类，就有一个相应的具体建造者类。这些产品应当有一样数目的零件，而每有一个零件就相应地在所有的建造者角色里有一个建造方法。 </p>
-<p>源代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 产品角色</span><br><span class="line"> * 　产品类Product</span><br><span class="line"> * @author Administrator</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class Product &#123;</span><br><span class="line">    //定义一些产品的部件</span><br><span class="line">    private String part1;</span><br><span class="line">    private String part2;</span><br><span class="line"></span><br><span class="line">    public String getPart1() &#123;</span><br><span class="line">        return part1;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setPart1(String part1) &#123;</span><br><span class="line">        this.part1 = part1;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getPart2() &#123;</span><br><span class="line">        return part2;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setPart2(String part2) &#123;</span><br><span class="line">        this.part2 = part2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 抽象建造者角色</span><br><span class="line"> *      抽象建造者类Builder</span><br><span class="line"> * @author Administrator</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public interface Builder &#123;</span><br><span class="line">    //产品零件一建造方法</span><br><span class="line">    public void buildPart1();</span><br><span class="line">    //产品零件二建造方法</span><br><span class="line">    public void buildPart2();</span><br><span class="line">    //返回产品的方法</span><br><span class="line">    public Product retrieveResult();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 具体建造者角色</span><br><span class="line"> *      具体建造者类ConcreteBuilder</span><br><span class="line"> * @author Administrator</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class ConcreteBuilder implements Builder &#123;</span><br><span class="line">    private Product product = new Product();</span><br><span class="line">    @Override</span><br><span class="line">    public void buildPart1() &#123;</span><br><span class="line">        //构建产品的第一个零件</span><br><span class="line">        product.setPart1(&quot;编号：007&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void buildPart2() &#123;</span><br><span class="line">        //构建产品的第二个零件</span><br><span class="line">        product.setPart2(&quot;名称：暗黑者&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Product retrieveResult() &#123;</span><br><span class="line">        //返回产品</span><br><span class="line">        return product;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 导演者角色</span><br><span class="line"> *      导演者类Director</span><br><span class="line"> * @author Administrator</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class Director &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 持有当前需要使用的建造器对象</span><br><span class="line">     */</span><br><span class="line">    private Builder builder;</span><br><span class="line">    /**</span><br><span class="line">     * 构造方法，传入建造器对象</span><br><span class="line">     * @param builder 建造器对象</span><br><span class="line">     */</span><br><span class="line">    public Director(Builder builder)&#123;</span><br><span class="line">        this.builder = builder;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 产品构造方法，负责调用各个零件建造方法,比如产品的生产顺序等</span><br><span class="line">     */</span><br><span class="line">    public void construct()&#123;</span><br><span class="line">        builder.buildPart1();</span><br><span class="line">        builder.buildPart2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//客户端</span><br><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Builder builder = new ConcreteBuilder();</span><br><span class="line">        Director director = new Director(builder);</span><br><span class="line">        director.construct();</span><br><span class="line">        Product product = builder.retrieveResult();</span><br><span class="line">        System.out.println(product.getPart1());</span><br><span class="line">        System.out.println(product.getPart2());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>客户端负责创建导演者和具体建造者对象。然后，客户端把具体建造者对象交给导演者，导演者操作具体建造者，开始创建产品。当产品完成后，建造者把产品返还给客户端。<br>把创建具体建造者对象的任务交给客户端而不是导演者对象，是为了将导演者对象与具体建造者对象的耦合变成动态的，从而使导演者对象可以操纵数个具体建造者对象中的任何一个。</p>
-<h5 id="三、建造模式分成两个很重要的部分"><a href="#三、建造模式分成两个很重要的部分" class="headerlink" title="三、建造模式分成两个很重要的部分"></a>三、建造模式分成两个很重要的部分</h5><ol>
-<li>一个部分是Builder接口，这里是定义了如何构建各个部件，也就是知道每个部件功能如何实现 </li>
-<li>另外一个部分是Director，Director是知道如何组合来构建产品，也就是说Director负责整体的构建算法，而且通常是分步骤地来执行,也就是说如何组装这些部件。</li>
-</ol>
-<p>不管如何变化，建造模式都存在这么两个部分，一个部分是部件构造。另一个部分是整体构建的算法。<br>再直白点说，建造模式的重心在于分离构建算法和具体的构造实现，从而使得构建算法可以重用。具体的构造实现可以很方便地扩展和切换，从而可以灵活地组合来构造出不同的产品对象。</p>
-<h5 id="四、使用场景"><a href="#四、使用场景" class="headerlink" title="四、使用场景"></a>四、使用场景</h5><p>　　假设有一个电子杂志系统，定期地向用户的电子邮件信箱发送电子杂志。用户可以通过网页订阅电子杂志，也可以通过网页结束订阅。当客户开始订阅 时，系统发送一个电子邮件表示欢迎，当客户结束订阅时，系统发送一个电子邮件表示欢送。本例子就是这个系统负责发送“欢迎”和“欢送”邮件的模块。<br>在本例中，产品类就是发给某个客户的“欢迎”和“欢送”邮件，如下图所示。<br>这里写图片描述</p>
-<p>虽然在这个例子里面各个产品类均有一个共同的接口，但这仅仅是本例 子特有的，并不代表建造模式的特点。建造模式可以应用到具有完全不同接口的产品类上。大多数情况下是不知道最终构建出来的产品是什么样的，所以在标准的建 造模式里面，一般是不需要对产品定义抽象接口的，因为最终构造的产品千差万别，给这些产品定义公共接口几乎是没有意义的。<br>下图所示就是这个系统的类图。<br>这里写图片描述</p>
-<p>这个系统含有客户端（Client）、导演者（Director）、抽象建造者（Builder）、具体建造者（WelcomeBuilder和GoodbyeBuilder）、产品（WelcomeMessage和GoodbyeMessage）等角色。<br>源代码<br>抽象类AutoMessage源代码，send()操作仅仅是示意性的，并没有给出任何发送电子邮件的代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AutoMessage &#123;</span><br><span class="line">    //收件人地址</span><br><span class="line"> private String to;</span><br><span class="line">    //发件人地址</span><br><span class="line"> private String from;</span><br><span class="line">    //标题</span><br><span class="line"> private String subject;</span><br><span class="line">    //内容</span><br><span class="line"> private String body;</span><br><span class="line">    //发送日期</span><br><span class="line"> private Date sendDate;</span><br><span class="line">    public void send()&#123;</span><br><span class="line">        System.out.println(&quot;收件人地址：&quot; + to);</span><br><span class="line">        System.out.println(&quot;发件人地址：&quot; + from);</span><br><span class="line">        System.out.println(&quot;标题：&quot; + subject);</span><br><span class="line">        System.out.println(&quot;内容：&quot; + body);</span><br><span class="line">        System.out.println(&quot;发送日期：&quot; + sendDate);</span><br><span class="line">    &#125;</span><br><span class="line">    public String getTo() &#123;</span><br><span class="line">        return to;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setTo(String to) &#123;</span><br><span class="line">        this.to = to;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getFrom() &#123;</span><br><span class="line">        return from;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setFrom(String from) &#123;</span><br><span class="line">        this.from = from;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getSubject() &#123;</span><br><span class="line">        return subject;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setSubject(String subject) &#123;</span><br><span class="line">        this.subject = subject;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getBody() &#123;</span><br><span class="line">        return body;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setBody(String body) &#123;</span><br><span class="line">        this.body = body;</span><br><span class="line">    &#125;</span><br><span class="line">    public Date getSendDate() &#123;</span><br><span class="line">        return sendDate;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setSendDate(Date sendDate) &#123;</span><br><span class="line">        this.sendDate = sendDate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">具体产品类WelcomeMessage</span><br><span class="line"></span><br><span class="line">public class WelcomeMessage extends AutoMessage &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 构造子</span><br><span class="line">     */</span><br><span class="line">    public WelcomeMessage()&#123;</span><br><span class="line">        System.out.println(&quot;发送欢迎信息&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">具体产品类GoodbyeMessage</span><br><span class="line"></span><br><span class="line">public class GoodbyeMessage extends AutoMessage&#123;</span><br><span class="line">    /**</span><br><span class="line">     * 构造子</span><br><span class="line">     */</span><br><span class="line">    public GoodbyeMessage()&#123;</span><br><span class="line">        System.out.println(&quot;发送欢送信息&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">抽象建造者类</span><br><span class="line"></span><br><span class="line">public abstract class Builder &#123;</span><br><span class="line">    protected AutoMessage msg;</span><br><span class="line">    //标题零件的建造方法</span><br><span class="line"> public abstract void buildSubject();</span><br><span class="line">    //内容零件的建造方法</span><br><span class="line"> public abstract void buildBody();</span><br><span class="line">    //收件人零件的建造方法</span><br><span class="line"> public void buildTo(String to)&#123;</span><br><span class="line">        msg.setTo(to);</span><br><span class="line">    &#125;</span><br><span class="line">    //发件人零件的建造方法</span><br><span class="line"> public void buildFrom(String from)&#123;</span><br><span class="line">        msg.setFrom(from);</span><br><span class="line">    &#125;</span><br><span class="line">    //发送时间零件的建造方法</span><br><span class="line"> public void buildSendDate()&#123;</span><br><span class="line">        msg.setSendDate(new Date());</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 邮件产品完成后，用此方法发送邮件</span><br><span class="line">     * 此方法相当于产品返还方法</span><br><span class="line">     */</span><br><span class="line">    public void sendMessage()&#123;</span><br><span class="line">        msg.send();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">具体建造者WelcomeBuilder</span><br><span class="line"></span><br><span class="line">public class WelcomeBuilder extends Builder &#123;</span><br><span class="line">    public WelcomeBuilder()&#123;</span><br><span class="line">        msg = new WelcomeMessage();</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void buildBody() &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line"> 　　　　msg.setBody(&quot;欢迎内容&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void buildSubject() &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line"> 　　　　msg.setSubject(&quot;欢迎标题&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">具体建造者GoodbyeBuilder</span><br><span class="line"></span><br><span class="line">public class GoodbyeBuilder extends Builder &#123;</span><br><span class="line"></span><br><span class="line">    public GoodbyeBuilder()&#123;</span><br><span class="line">        msg = new GoodbyeMessage();</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void buildBody() &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line"> 　　　　msg.setBody(&quot;欢送内容&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void buildSubject() &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line"> 　　　　msg.setSubject(&quot;欢送标题&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">　　导演者Director，这个类提供一个construct()方法，此方法调用建造者的建造方法，包括buildTo()、 buildFrom()、buildSubject()、buildBody()、buildSendDate()等，从而一部分一部分地建造出产品对 象，既AutoMessage对象。</span><br><span class="line"></span><br><span class="line">public class Director &#123;</span><br><span class="line">    Builder builder;</span><br><span class="line">    /**</span><br><span class="line">     * 构造子</span><br><span class="line">     */</span><br><span class="line">    public Director(Builder builder)&#123;</span><br><span class="line">        this.builder = builder;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 产品构造方法，负责调用各零件的建造方法</span><br><span class="line">     */</span><br><span class="line">    public void construct(String toAddress , String fromAddress)&#123;</span><br><span class="line">        this.builder.buildTo(toAddress);</span><br><span class="line">        this.builder.buildFrom(fromAddress);</span><br><span class="line">        this.builder.buildSubject();</span><br><span class="line">        this.builder.buildBody();</span><br><span class="line">        this.builder.buildSendDate();</span><br><span class="line">        this.builder.sendMessage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">客户端Client</span><br><span class="line"></span><br><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line"> 　　　　Builder builder = new WelcomeBuilder();</span><br><span class="line">        Director director = new Director(builder);</span><br><span class="line">        director.construct(&quot;toAddress@45126184@qq.com&quot;, &quot;fromAddress@110.com&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="五、使用建造模式构建复杂对象"><a href="#五、使用建造模式构建复杂对象" class="headerlink" title="五、使用建造模式构建复杂对象"></a>五、使用建造模式构建复杂对象</h5><p>　　考虑这样一个实际应用，要创建一个保险合同的对象，里面很多属性的值都有约束，要求创建出来的对象是满足这些约束规则的。约束规则比如：保险合 同通常情况下可以和个人签订，也可以和某个公司签订，但是一份保险合同不能同时与个人和公司签订。这个对象里有很多类似这样的约束，采用建造模式来构建复 杂的对象，通常会对建造模式进行一定的简化，因为目标明确，就是创建某个复杂对象，因此做适当简化会使程序更简洁。大致简化如下：<br>●　　由于是用Builder模式来创建某个对象，因此就没有必要再定义一个Builder接口，直接提供一个具体的建造者类就可以了。<br>●　　对于创建一个复杂的对象，可能会有很多种不同的选择和步骤，干脆去掉“导演者”，把导演者的功能和Client的功能合并起来，也就是说,Client这个时候就相当于导演者，它来指导构建器类去构建需要的复杂对象。<br>保险合同类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 保险合同对象</span><br><span class="line"> */</span><br><span class="line">public class InsuranceContract &#123;</span><br><span class="line">    // 保险合同编号</span><br><span class="line">    private String contractId;</span><br><span class="line">    /**</span><br><span class="line">     * 被保险人员的名称，同一份保险合同，要么跟人员签订，要么跟公司签订 也就是说，“被保险人员”和“被保险公司”这两个属性，不可能同时有值</span><br><span class="line">     */</span><br><span class="line">    private String personName;</span><br><span class="line">    // 被保险公司的名称</span><br><span class="line">    private String companyName;</span><br><span class="line">    // 保险开始生效日期</span><br><span class="line">    private long beginDate;</span><br><span class="line">    // 保险失效日期，一定会大于保险开始生效日期</span><br><span class="line">    private long endDate;</span><br><span class="line">    // 其他数据</span><br><span class="line">    private String otherData;</span><br><span class="line"></span><br><span class="line">    // 私有构造方法</span><br><span class="line">    private InsuranceContract(ConcreteBuilder builder) &#123;</span><br><span class="line">        this.contractId = builder.contractId;</span><br><span class="line">        this.personName = builder.personName;</span><br><span class="line">        this.companyName = builder.companyName;</span><br><span class="line">        this.beginDate = builder.beginDate;</span><br><span class="line">        this.endDate = builder.endDate;</span><br><span class="line">        this.otherData = builder.otherData;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 保险合同的一些操作</span><br><span class="line">     */</span><br><span class="line">    public void someOperation() &#123;</span><br><span class="line">        System.out.println(&quot;当前正在操作的保险合同编号为【&quot; + this.contractId + &quot;】&quot;);</span><br><span class="line">        if(personName!=null)&#123;</span><br><span class="line">            System.out.println(&quot;被保险人名称:&quot;+personName);</span><br><span class="line">        &#125;</span><br><span class="line">        if(companyName!=null)&#123;</span><br><span class="line">            System.out.println(&quot;被保险公司名称:&quot;+companyName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //具体构建者角色</span><br><span class="line">    public static class ConcreteBuilder &#123;</span><br><span class="line">        private String contractId;</span><br><span class="line">        private String personName;</span><br><span class="line">        private String companyName;</span><br><span class="line">        private long beginDate;</span><br><span class="line">        private long endDate;</span><br><span class="line">        private String otherData;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 构造方法，传入必须要有的参数</span><br><span class="line">         * </span><br><span class="line">         * @param contractId</span><br><span class="line">         *            保险合同编号</span><br><span class="line">         * @param beginDate</span><br><span class="line">         *            保险合同开始生效日期</span><br><span class="line">         * @param endDate</span><br><span class="line">         *            保险合同失效日期</span><br><span class="line">         */</span><br><span class="line">        public ConcreteBuilder(String contractId, long beginDate, long endDate) &#123;</span><br><span class="line">            this.contractId = contractId;</span><br><span class="line">            this.beginDate = beginDate;</span><br><span class="line">            this.endDate = endDate;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 建造方法 建造被保险人员的名称</span><br><span class="line">        public ConcreteBuilder setPersonName(String personName) &#123;</span><br><span class="line">            this.personName = personName;</span><br><span class="line">            return this;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 建造方法  建造被保险公司的名称</span><br><span class="line">        public ConcreteBuilder setCompanyName(String companyName) &#123;</span><br><span class="line">            this.companyName = companyName;</span><br><span class="line">            return this;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 建造方法  建造其他数据</span><br><span class="line">        public ConcreteBuilder setOtherData(String otherData) &#123;</span><br><span class="line">            this.otherData = otherData;</span><br><span class="line">            return this;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 构建真正的对象并返回</span><br><span class="line">         * </span><br><span class="line">         * @return 构建的保险合同对象</span><br><span class="line">         */</span><br><span class="line">        public InsuranceContract build() &#123;</span><br><span class="line">            if (contractId == null || contractId.trim().length() == 0) &#123;</span><br><span class="line">                throw new IllegalArgumentException(&quot;合同编号不能为空&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            boolean signPerson = (personName != null &amp;&amp; personName.trim().length() &gt; 0);</span><br><span class="line">            boolean signCompany = (companyName != null &amp;&amp; companyName.trim().length() &gt; 0);</span><br><span class="line">            if (signPerson &amp;&amp; signCompany) &#123;</span><br><span class="line">                throw new IllegalArgumentException(&quot;一份保险合同不能同时与个人和公司签订&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            if (signPerson == false &amp;&amp; signCompany == false) &#123;</span><br><span class="line">                throw new IllegalArgumentException(&quot;一份保险合同不能没有签订对象&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            if (beginDate &lt;= 0) &#123;</span><br><span class="line">                throw new IllegalArgumentException(&quot;一份保险合同必须有开始生效的日期&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            if (endDate &lt;= 0) &#123;</span><br><span class="line">                throw new IllegalArgumentException(&quot;一份保险合同必须有失效的日期&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            if (endDate &lt; beginDate) &#123;</span><br><span class="line">                throw new IllegalArgumentException(&quot;一份保险合同的失效日期必须大于生效日期&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            return new InsuranceContract(this);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">客户端</span><br><span class="line"></span><br><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 创建构建器对象</span><br><span class="line">        InsuranceContract.ConcreteBuilder builder = new InsuranceContract.ConcreteBuilder(&quot;9527&quot;, 123L, 456L);</span><br><span class="line">        // 设置需要的数据，然后返回保险合同对象</span><br><span class="line">        InsuranceContract contract = builder.setPersonName(&quot;小明&quot;).setOtherData(&quot;test&quot;).build();</span><br><span class="line">        // 操作保险合同对象的方法</span><br><span class="line">        contract.someOperation();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>　　在本例中将具体建造者合并到了产品对象中，并将产品对象的构造函数私有化，防止客户端不使用构建器来构建产品对象，而是直接去使用new来构建产品对象所导致的问题。另外，这个构建器的功能就是为了创建被构建的对象，完全可以不用单独一个类。 </p>
-<p>在什么情况下使用建造模式(看一看就行)<br>创建一些复杂的对象时，这些对象的内部组成构件间的建造顺序是稳定的，但是对象的内部组成构件面临着复杂的变化.</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/zhifubao.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字典树</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
+        			<a href="/categories/算法刷题//" class="article-tag-list-link color5">算法刷题</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/17/设计模式学习/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/07/17/JVM学习/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JVM学习
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/14/第五次日记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">第五次日记</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java设计模式-一-—-单例模式"><span class="toc-number">1.</span> <span class="toc-text">Java设计模式(一)—-单例模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一、特点："><span class="toc-number">1.0.1.</span> <span class="toc-text">一、特点：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二．分类"><span class="toc-number">1.0.2.</span> <span class="toc-text">二．分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三、饿汉式和懒汉式区别"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、饿汉式和懒汉式区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java设计模式（二）—-建造者模式"><span class="toc-number">2.</span> <span class="toc-text">Java设计模式（二）—-建造者模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一、概念"><span class="toc-number">2.0.1.</span> <span class="toc-text">一、概念　</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二、建造模式的结构"><span class="toc-number">2.0.2.</span> <span class="toc-text">二、建造模式的结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三、建造模式分成两个很重要的部分"><span class="toc-number">2.0.3.</span> <span class="toc-text">三、建造模式分成两个很重要的部分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#四、使用场景"><span class="toc-number">2.0.4.</span> <span class="toc-text">四、使用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#五、使用建造模式构建复杂对象"><span class="toc-number">2.0.5.</span> <span class="toc-text">五、使用建造模式构建复杂对象</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-  <div id="SOHUCS" sid="设计模式学习" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "cyujSOCvn",
-        conf: "b1ee5049f3872c118f58db9972152f19"
-    });
-</script>
-</script>
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -459,9 +252,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

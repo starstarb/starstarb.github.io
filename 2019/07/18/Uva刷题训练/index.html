@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="刷题训练">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T10:32:49.182Z">
+<meta property="og:updated_time" content="2019-07-31T07:52:32.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Uva、LeetCode刷题训练">
 <meta name="twitter:description" content="刷题训练">
@@ -312,10 +312,14 @@
 <p>class Solution {<br>    public int maxDepth(TreeNode root) {<br>        if(root==null)<br>        {<br>            return 0;<br>        }else<br>        {<br>            int left_height=maxDepth(root.left);<br>            int right_height=maxDepth(root.right);<br>            return Math.max(left_height,right_height)+1;<br>        }<br>    }<br>}</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2. 迭代</span><br><span class="line">  使用DFS策略访问每个结点，同时在每次访问时更新最大深度。</span><br><span class="line">  从包含根节点且相应深度为1的栈开始，然后迭代，将当前节点弹出栈并推入子节点，每一步都会更新深度。</span><br></pre></td></tr></table></figure>
 
-<p>import javafx.util.Pair;<br>import java.lang.Math;<br>class Solution{<br>    public int maxDepth(TreeNode root)<br>    {<br>        Queue&lt;Pair&lt;TreeNode,Integer&gt;&gt; stack=new LinkedList&lt;&gt;();<br>        if(root !=null)<br>        {<br>            stack.add(new Pair(root,1));<br>        }<br>        int depth=0;<br>        while(!stack.isEmpty())<br>        {<br>            Pair&lt;TreeNode,Integer&gt; current=stack.poll();<br>            root =current.getKey();<br>            int current_depth=current.getValue();<br>            if(root!=null)<br>            {<br>                depth=Math.max(depth,current_depth);<br>                stack.add(new Pair(root.left,current_depth+1));<br>                stack.add(new Pair(root.right,current_depth+1));<br>            }<br>        }<br>        return depth;<br>    }<br>}
-```
-时间复杂度：O(N)<br>空间复杂度：O(N)</p>
+<p>import javafx.util.Pair;<br>import java.lang.Math;<br>class Solution{<br>    public int maxDepth(TreeNode root)<br>    {<br>        Queue&lt;Pair&lt;TreeNode,Integer&gt;&gt; stack=new LinkedList&lt;&gt;();<br>        if(root !=null)<br>        {<br>            stack.add(new Pair(root,1));<br>        }<br>        int depth=0;<br>        while(!stack.isEmpty())<br>        {<br>            Pair&lt;TreeNode,Integer&gt; current=stack.poll();<br>            root =current.getKey();<br>            int current_depth=current.getValue();<br>            if(root!=null)<br>            {<br>                depth=Math.max(depth,current_depth);<br>                stack.add(new Pair(root.left,current_depth+1));<br>                stack.add(new Pair(root.right,current_depth+1));<br>            }<br>        }<br>        return depth;<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(N) </span><br><span class="line">空间复杂度：O(N)</span><br><span class="line"></span><br><span class="line">### 今夕何夕hdu6112</span><br><span class="line">Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)</span><br><span class="line">Total Submission(s): 1819    Accepted Submission(s): 653</span><br><span class="line">Problem Description</span><br><span class="line">今天是2017年8月6日，农历闰六月十五。</span><br><span class="line"></span><br><span class="line">小度独自凭栏，望着一轮圆月，发出了“今夕何夕，见此良人”的寂寞感慨。</span><br><span class="line"></span><br><span class="line">为了排遣郁结，它决定思考一个数学问题：接下来最近的哪一年里的同一个日子，和今天的星期数一样？比如今天是8月6日，星期日。下一个也是星期日的8月6日发生在2023年。</span><br><span class="line"></span><br><span class="line">小贴士：在公历中，能被4整除但不能被100整除，或能被400整除的年份即为闰年。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行为T，表示输入数据组数。</span><br><span class="line"></span><br><span class="line">每组数据包含一个日期，格式为YYYY-MM-DD。</span><br><span class="line"></span><br><span class="line">1 ≤ T ≤ 10000</span><br><span class="line"></span><br><span class="line">YYYY ≥ 2017</span><br><span class="line"></span><br><span class="line">日期一定是个合法的日期</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">对每组数据输出答案年份，题目保证答案不会超过四位数。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"></span><br><span class="line">3 2017-08-06 2017-08-07 2018-01-01</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"></span><br><span class="line">2023 2023 2024</span><br></pre></td></tr></table></figure>
 
+<p>#include<cstdio></cstdio></p>
+<p>#include<iostream></iostream></p>
+<p>#include<cmath><br>using namespace std;<br>int month[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};<br>int day,mon,year;<br>int nday,nyear,nmon;<br>int cnt;<br>int main()<br>{
+    int t;<br>    scanf(“%d”,&amp;t);<br>    while(t–)<br>    {<br>        scanf(“%d-%d-%d”,&amp;year,&amp;mon,&amp;day);<br>           int cnt=0;<br>            nday=day;nyear=year;nmon=mon;<br>            while(1)<br>            {<br>                if(nday==day&amp;&amp;nmon==mon&amp;&amp;nyear&gt;year&amp;&amp;cnt%7==0) break;<br>                if(nyear%4==0&amp;&amp;nyear%100!=0||nyear%400==0)<br>                {<br>                    month[2]=29;<br>                }<br>                else<br>                {<br>                    month[2]=28;<br>                }<br>                nday++;<br>                cnt++;<br>                if(nday&gt;month[nmon])<br>                {<br>                    nday%=month[nmon];<br>                    nmon+=1;<br>                    if(nmon&gt;12)<br>                    {<br>                        nyear+=1;<br>                        nmon%=12;<br>                    }<br>                }<br>            }<br>            printf(“%d\n”,nyear);<br>        }<br>} </cmath></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#define LL long long</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int y,m,d;</span><br><span class="line"> </span><br><span class="line">bool pd(int x)</span><br><span class="line">&#123;</span><br><span class="line">    if((x%4==0&amp;&amp;x%100!=0)||x%400==0) return true;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int cal(int y,int m,int d)</span><br><span class="line">&#123;</span><br><span class="line">    if(m&lt;3)</span><br><span class="line">    &#123;</span><br><span class="line">        m+=12;</span><br><span class="line">        --y;</span><br><span class="line">    &#125;</span><br><span class="line">    int W=(d+1+2*m+3*(m+1)/5+y+(y&gt;&gt;2)-y/100+y/400)%7;</span><br><span class="line">    return W==0?7:W;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">bool judge(int x)</span><br><span class="line">&#123;</span><br><span class="line">    if(pd(y)&amp;&amp;!pd(x)&amp;&amp;(m==2&amp;&amp;d==29))</span><br><span class="line">    &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d-%d-%d&quot;,&amp;y,&amp;m,&amp;d);</span><br><span class="line">        int pos=cal(y,m,d);</span><br><span class="line">        int kk;</span><br><span class="line">        for(int i=y+1;;++i)</span><br><span class="line">        &#123;</span><br><span class="line">            kk=cal(i,m,d);</span><br><span class="line">            if(judge(i)) continue;</span><br><span class="line">            if(kk==pos)</span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;%d\n&quot;,i);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -602,11 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,11 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -638,15 +642,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,7 +662,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,7 +670,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,15 +686,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,11 +698,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
