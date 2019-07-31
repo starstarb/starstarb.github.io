@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="系统架构设计构建基础学习">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T13:06:18.967Z">
+<meta property="og:updated_time" content="2019-07-30T08:35:27.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维">
 <meta name="twitter:description" content="系统架构设计构建基础学习">
@@ -182,6 +182,33 @@
       
         <p>系统架构设计构建基础学习</p>
 <a id="more"></a>
+<h3 id="常用术语"><a href="#常用术语" class="headerlink" title="常用术语"></a>常用术语</h3><p> PV(Page View)：访问量，用户每刷新一次就会被计算一次。<br> UV(Unique Visitor)：独立访问，访问网站的一台电脑客户端为一个访客。<br> QPS(Query Per Second)：每秒查询率。是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准。<br> CDN(Content Delivery Network):内容分发网络。目的：通过在现有的Internet中增加一层新的网络架构，将网站内容发布到最接近用户的网络“边缘”，使用户可以就近取得所需要的内容，提高用户访问网站的响应速度。</p>
+<h3 id="系统基础优化"><a href="#系统基础优化" class="headerlink" title="系统基础优化"></a>系统基础优化</h3><p>  本次练习主要采用VM虚拟机，选择Centos7.0操作系统进行最小化安装，学习运维相关知识。<br>  ping不通，用百度CSDN方法均不行，放弃了。</p>
+<h3 id="VMware学习："><a href="#VMware学习：" class="headerlink" title="VMware学习："></a>VMware学习：</h3><p>   在安装完虚拟机后，默认安装了如下图的两块虚拟网卡——VMnet1和VMnet8，其中VMnet1是host网卡，用于host方式连接网络；VMnet8是NAT网卡，用于NAT方式连接网络的，并且它们的IP地址是随机生成的。<br><strong>桥接模式(Bridge)</strong></p>
+<p>  此模式下，VM centOS 在网络中作为一台独立主机存在，它可以访问网络中的任何一台设备，地位等同宿主机器(如下图，使用VMnet0虚拟网卡，不支持DHCP。</p>
+<p>  由于VM作为一台独立主机存在，因此具备自己的TCP/IP地址和子网掩码等，你可以手动配置(必须与宿主机器处于同一个网段)，它可以实现通过局域网的网关/路由器直接访问互联网。</p>
+<p>  使用桥接模式的虚拟系统和宿主机器的关系，就像连接在同一个Hub上的两台电脑。想让它们相互通讯，你就需要为虚拟系统配置IP地址和子网掩码，否则就无法通信。</p>
+<p>  如果你想利用VMWare在局域网内新建一个虚拟服务器，为局域网用户提供网络服务，就应该选择桥接模式。<br><strong>NAT模式</strong></p>
+<p>  使用VMnet8虚拟网卡，支持DHCP。</p>
+<p>  NAT(Network Address Translation, 网络地址转换)，就是让VM centOS 借助NAT功能，通过宿主机器所在的网络来访问Internet。换言之，使用NAT模式可以实现在虚拟系统里访问互联网。</p>
+<p>  NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器提供的(往往不和宿主机在同一个网段)，无法进行手工修改，因此虚拟系统也就无法和本局域网中的其他真实主机进行通讯。</p>
+<p>  采用NAT模式最大的优势是虚拟系统接入互联网非常简单，你不需要进行任何其他的配置，只需要宿主机器能访问互联网即可。如果你想利用VMWare安装一个新的虚拟系统，在虚拟系统中不用进行任何手工配置就能直接访问互联网，建议你采用NAT模式。<br><strong>仅主机(host-only)</strong></p>
+<p>  使用VMnet1虚拟网卡，支持DHCP，无法访问互联网。<br>  在某些特殊的网络调试环境中，要求将真实环境和虚拟环境隔离开，这时你就可采用host-only模式。在host-only模式中，所有的虚拟系统是可以相互通信的，但虚拟系统和真实的网络是被隔离开的。</p>
+<p>  在host-only模式下，虚拟系统和宿主机器系统是可以相互通信的，相当于这两台机器通过双绞线互连；虚拟系统的TCP/IP配置信息(如IP地址、网关地址、DNS服务器等)，都是由VMnet1(host-only)虚拟网络的DHCP服务器来动态分配的。</p>
+<p><strong>loopback(本地环回)</strong></p>
+<p>  本地环回接口，在网络设备（一般是路由器）上是一种特殊的接口，它不是物理接口，而是逻辑接口（也称虚拟接口），在终端通常被固定设置为127.0.0.1(当然你可以自己更改)。</p>
+<p>  通常，我们检查网络时，首先检查此端口，若此端口不通，则表示我们TCP/IP的协议栈有问题，需要重新安装/更新。<br><strong>网关 &amp; DNS</strong></p>
+<p>  网关(GateWay),相当于一个门(或者关口)，是一个网络通向另一个网络的IP地址；通常由距离我们终端最近的路由器充当这个角色。</p>
+<p>  DNS(Domain Name System,域名服务器)， 简单点的解释就是：你准备访问<a href="http://www.baidu.com，当你输入该网址后enter，该请求将会发送到DNS，将其转换为IP地址，然后才进行网络通信；若没有DNS，你必须记住你想访问网址的IP地址，这一般人做不到。" target="_blank" rel="noopener">www.baidu.com，当你输入该网址后enter，该请求将会发送到DNS，将其转换为IP地址，然后才进行网络通信；若没有DNS，你必须记住你想访问网址的IP地址，这一般人做不到。</a></p>
+<h3 id="Centos7配置网卡连接内网、外网"><a href="#Centos7配置网卡连接内网、外网" class="headerlink" title="Centos7配置网卡连接内网、外网"></a>Centos7配置网卡连接内网、外网</h3><h3 id="CentOS7-配置163-yum源"><a href="#CentOS7-配置163-yum源" class="headerlink" title="CentOS7 配置163 yum源"></a>CentOS7 配置163 yum源</h3><ol>
+<li><p>下载repo文件<br>wget <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></p>
+</li>
+<li><p>备份并替换系统的repo文件<br>cp CentOS7-Base-163.repo /etc/yum.repos.d/<br>cd /etc/yum.repos.d/<br>mv CentOS-Base.repo CentOS-Base.repo.bak<br>mv CentOS7-Base-163.repo CentOS-Base.repo</p>
+</li>
+<li><p>执行yum源更新命令<br>yum clean all<br>yum makecache<br>yum update</p>
+</li>
+</ol>
+<p>配置完毕。</p>
 
       
 
@@ -340,7 +367,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用术语"><span class="toc-number">1.</span> <span class="toc-text">常用术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统基础优化"><span class="toc-number">2.</span> <span class="toc-text">系统基础优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VMware学习："><span class="toc-number">3.</span> <span class="toc-text">VMware学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos7配置网卡连接内网、外网"><span class="toc-number">4.</span> <span class="toc-text">Centos7配置网卡连接内网、外网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS7-配置163-yum源"><span class="toc-number">5.</span> <span class="toc-text">CentOS7 配置163 yum源</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -469,15 +496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,11 +512,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,11 +536,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,6 +553,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +572,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,6 +617,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="算法模板学习">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T11:50:55.035Z">
+<meta property="og:updated_time" content="2019-07-29T04:36:45.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ACM常用算法模板">
 <meta name="twitter:description" content="算法模板学习">
@@ -216,7 +216,26 @@
 <p>利用快速幂方法可以迅速求出一个数的任意次方。再结合a* b%m=(a%m)* (b%m)%m，只是要相乘后再取模，就可以先取模再相乘，然后再取模的规律。我们不考虑a最终会用来做什么，反正a就是用来相乘然后取模的，所以可以直接将a进行取模，然后再进行相乘。<br>同理，对于if判断中的操作也是如此：因为要相乘再取模，所以就先取模再相乘。</p>
 <h3 id="求1到n的数的异或和O（1）"><a href="#求1到n的数的异或和O（1）" class="headerlink" title="求1到n的数的异或和O（1）"></a>求1到n的数的异或和O（1）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">unsigned xor_n(unsigned n)&#123;</span><br><span class="line">	unsigned t = n &amp; 3;</span><br><span class="line">	if (t &amp; 1) return t / 2u ^ 1;   //照着打就行，u默认为unsigned int</span><br><span class="line">	return t / 2u ^ n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h3><p>给定一个凸n边形，问将其划分成三角形的方法数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1,1,2,5,14,42,132….</span><br><span class="line"></span><br><span class="line">h(n)=h(n-1)*(4*n-2)/(n+1)</span><br><span class="line">h(n)=C(2n,n)/(n+1)</span><br><span class="line">h(0)=1</span><br></pre></td></tr></table></figure>
 
+<h3 id="错排公式"><a href="#错排公式" class="headerlink" title="错排公式"></a>错排公式</h3><p>给定n种颜色篮子和n种颜色球，求全放错情况数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D(n)=(n-1)*(D(n-2)+D(n-1))</span><br><span class="line">D(1)=0,D(2)=1</span><br></pre></td></tr></table></figure>
+
+<h3 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h3><p>（N以内有大概num=N/ln（x）个素数，N越大越准）</p>
+<ol>
+<li><p>简单素数打表：O(n* sqrt(n))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void prim()&#123;</span><br><span class="line">	int num = 0;</span><br><span class="line">	for (int i = 2; i &lt; maxn; i++)&#123;</span><br><span class="line">		int k = 1;</span><br><span class="line">		for (int j = 2; j &lt;= (int)sqrt(i);j++)</span><br><span class="line">			if (i%j == 0) &#123; k = 0; break; &#125;</span><br><span class="line">		if (k) pri[num++] = i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>素数筛法：O(nlogn)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; pri;</span><br><span class="line">void prim()&#123;</span><br><span class="line">	vis[0] = vis[1] = true;</span><br><span class="line">	for (int i = 2; i &lt; maxn; i++)</span><br><span class="line">		if (!vis[i])&#123;</span><br><span class="line">			pri.push_back(i);</span><br><span class="line">			for (int j = i + i; j &lt; maxn; j += i)</span><br><span class="line">				vis[j] = true;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>高效素数打表:O(n)<br>(线性筛法–欧拉    )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void prim()&#123;</span><br><span class="line">	memset(vis, 0, sizeof(vis));</span><br><span class="line">	int num = 0;</span><br><span class="line">	for (int i = 2; i &lt;= M; ++i)&#123;</span><br><span class="line">		if (!vis[i])  pri[num++] = i;   </span><br><span class="line">		for (int j = 1; ((j &lt;= num) &amp;&amp; (i * pri[j] &lt;= M)); ++j)&#123;</span><br><span class="line">			vis[i * pri[j]] = 1;</span><br><span class="line">			if (i % pri[j] == 0) break;   </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;//1不是素数，最小素数为2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="分解质因数"><a href="#分解质因数" class="headerlink" title="分解质因数"></a>分解质因数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; V[N]; </span><br><span class="line">void getDiv(int x, int idx) &#123; //得到的是所有种类 eg：12=》2，3</span><br><span class="line">	if (x == 1) &#123;</span><br><span class="line">		V[idx].push_back  (1);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	int len = (int)sqrt(x);</span><br><span class="line">	for (int i = 2; i &lt;= (int)len; i++)</span><br><span class="line">		if (x % i == 0)</span><br><span class="line">			V[idx].push_back  (i), V[idx].push_back  (x / i);</span><br><span class="line">	if (len * len == x)</span><br><span class="line">		V[idx].pop_back();</span><br><span class="line">	V[idx].push_back  (x);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void fun(long long x) &#123;//得到的是所有质因数 eg：12=》2，2，3</span><br><span class="line">	p.clear();</span><br><span class="line">	for (long long i = 2; i &lt;=sqrt(x); i++)&#123;</span><br><span class="line">		while (x%i == 0)&#123;</span><br><span class="line">			p.push_back(i);</span><br><span class="line">			x /= i;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;    </span><br><span class="line">       if (x != 1) p.push_back(x);   </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -336,6 +355,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/07/29/多线程笔试题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          多线程笔试题
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/07/28/Spring系列学习计划（-三/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Spring系列学习计划（(三)</div>
@@ -365,7 +393,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#文本输入输出"><span class="toc-number">1.</span> <span class="toc-text">文本输入输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-number"></span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GCD、LCM"><span class="toc-number"></span> <span class="toc-text">GCD、LCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串-lt-gt-整型"><span class="toc-number"></span> <span class="toc-text">字符串 &lt;-&gt; 整型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getchar-读入转str"><span class="toc-number"></span> <span class="toc-text">getchar()读入转str</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#char-转Int"><span class="toc-number"></span> <span class="toc-text">char[]转Int</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同余"><span class="toc-number"></span> <span class="toc-text">同余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求n-位数"><span class="toc-number"></span> <span class="toc-text">求n!位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容斥原理"><span class="toc-number"></span> <span class="toc-text">容斥原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Log与自然对数e"><span class="toc-number"></span> <span class="toc-text">Log与自然对数e</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速幂"><span class="toc-number"></span> <span class="toc-text">快速幂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求1到n的数的异或和O（1）"><span class="toc-number"></span> <span class="toc-text">求1到n的数的异或和O（1）</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#文本输入输出"><span class="toc-number">1.</span> <span class="toc-text">文本输入输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组去重"><span class="toc-number"></span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GCD、LCM"><span class="toc-number"></span> <span class="toc-text">GCD、LCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串-lt-gt-整型"><span class="toc-number"></span> <span class="toc-text">字符串 &lt;-&gt; 整型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getchar-读入转str"><span class="toc-number"></span> <span class="toc-text">getchar()读入转str</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#char-转Int"><span class="toc-number"></span> <span class="toc-text">char[]转Int</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同余"><span class="toc-number"></span> <span class="toc-text">同余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求n-位数"><span class="toc-number"></span> <span class="toc-text">求n!位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容斥原理"><span class="toc-number"></span> <span class="toc-text">容斥原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Log与自然对数e"><span class="toc-number"></span> <span class="toc-text">Log与自然对数e</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速幂"><span class="toc-number"></span> <span class="toc-text">快速幂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求1到n的数的异或和O（1）"><span class="toc-number"></span> <span class="toc-text">求1到n的数的异或和O（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卡特兰数"><span class="toc-number"></span> <span class="toc-text">卡特兰数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错排公式"><span class="toc-number"></span> <span class="toc-text">错排公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#素数"><span class="toc-number"></span> <span class="toc-text">素数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分解质因数"><span class="toc-number"></span> <span class="toc-text">分解质因数</span></a>
                     </div>
                 </span>
             </div>
@@ -494,15 +522,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,11 +538,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,11 +562,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,6 +579,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,11 +598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,6 +643,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
