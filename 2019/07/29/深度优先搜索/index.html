@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>深度优先搜索 | 星星</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
-<meta name="keywords" content="Qt、Spring Cloud、Go、C++">
+  <meta name="description" content="DFS">
+<meta name="keywords" content="DFS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度优先搜索">
 <meta property="og:url" content="http://yoursite.com/2019/07/29/深度优先搜索/index.html">
 <meta property="og:site_name" content="星星">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="DFS">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-29T06:12:02.169Z">
+<meta property="og:updated_time" content="2019-08-02T03:36:12.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度优先搜索">
-<meta name="twitter:description" content="个人技术博客">
+<meta name="twitter:description" content="DFS">
   
     <link rel="alternative" href="/atom.xml" title="星星" type="application/atom+xml">
   
@@ -180,7 +180,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>DFS</p>
+<a id="more"></a>
+<h3 id="验证二叉搜索树"><a href="#验证二叉搜索树" class="headerlink" title="验证二叉搜索树"></a>验证二叉搜索树</h3><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。</p>
+<p>假设一个二叉搜索树具有如下特征：</p>
+<pre><code>节点的左子树只包含小于当前节点的数。
+节点的右子树只包含大于当前节点的数。
+所有左子树和右子树自身必须也是二叉搜索树。</code></pre><p>示例 1:</p>
+<p>输入:<br>    2<br>   / <br>  1   3<br>输出: true</p>
+<p>示例 2:</p>
+<p>输入:<br>    5<br>   / <br>  1   4<br>     / <br>    3   6<br>输出: false<br>解释: 输入为: [5,1,4,null,null,3,6]。<br>     根节点的值为 5 ，但是其右子节点值为 4 。<br>链接：<a href="https://leetcode-cn.com/problems/validate-binary-search-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/validate-binary-search-tree</a><br>算法思路：</p>
+<ol>
+<li><p>递归<br>首先将结点的值与上界和下界比较，然后对左右子树递归进行该过程。<br>时间复杂度：O(N)每个结点访问了一次<br>空间复杂度：O(N)整棵树<br>参考代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line"> //1.递归</span><br><span class="line">class Solution &#123;</span><br><span class="line">  public boolean help(TreeNode node, Integer lower, Integer upper) &#123;</span><br><span class="line">    if (node == null) return true;</span><br><span class="line"></span><br><span class="line">    int val = node.val;</span><br><span class="line">    if (lower != null &amp;&amp; val &lt;= lower) return false;</span><br><span class="line">    if (upper != null &amp;&amp; val &gt;= upper) return false;</span><br><span class="line"></span><br><span class="line">    if (! help(node.right, val, upper)) return false;</span><br><span class="line">    if (! help(node.left, lower, val)) return false;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public boolean isValidBST(TreeNode root) &#123;</span><br><span class="line">    return help(root, null, null);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>迭代<br>通过使用栈，DFS比BFS快。<br>时间复杂度：O(N)每个结点访问了一次<br>空间复杂度：O(N)整棵树<br>参考代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    LinkedList&lt;TreeNode&gt; stack=new LinkedList();</span><br><span class="line">    LinkedList&lt;Integer&gt; uppers=new LinkedList();</span><br><span class="line">    LinkedList&lt;Integer&gt; lowers=new LinkedList();</span><br><span class="line">    public void update(TreeNode root,Integer lower,Integer upper)&#123;</span><br><span class="line">    	stack.add(root);</span><br><span class="line">    	lowers.add(lower);</span><br><span class="line">    	uppers.add(upper);</span><br><span class="line">    &#125;</span><br><span class="line">    public boolean isValidBST(TreeNode root) &#123;</span><br><span class="line">        Integer lower=null,upper=null,val;</span><br><span class="line">        update(root,lower,upper);</span><br><span class="line">        while(!stack.isEmpty())&#123;</span><br><span class="line">        	root=stack.poll();</span><br><span class="line">        	lower=lowers.poll();</span><br><span class="line">        	upper=uppers.poll();</span><br><span class="line">        	if(root==null)continue;</span><br><span class="line">        	val=root.val;</span><br><span class="line">        	if(lower!=null&amp;&amp; val&lt;=lower) return false;</span><br><span class="line">        	if(upper!=null&amp;&amp;val&gt;=upper)return false;</span><br><span class="line">        	update(root.right,val,upper);</span><br><span class="line">        	update(root.left,lower,val);</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="207课程表"><a href="#207课程表" class="headerlink" title="207课程表"></a>207课程表</h3><p>现在你总共有 n 门课需要选，记为 0 到 n-1。</p>
+<p>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们: [0,1]</p>
+<p>给定课程总量以及它们的先决条件，判断是否可能完成所有课程的学习？</p>
+<p>示例 1:</p>
+<p>输入: 2, [[1,0]]<br>输出: true<br>解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。</p>
+<p>示例 2:</p>
+<p>输入: 2, [[1,0],[0,1]]<br>输出: false<br>解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。</p>
+<p>说明:</p>
+<pre><code>输入的先决条件是由边缘列表表示的图形，而不是邻接矩阵。详情请参见图的表示法。
+你可以假定输入的先决条件中没有重复的边。</code></pre><p>提示:</p>
+<pre><code>这个问题相当于查找一个循环是否存在于有向图中。如果存在循环，则不存在拓扑排序，因此不可能选取所有课程进行学习。
+通过 DFS 进行拓扑排序 - 一个关于Coursera的精彩视频教程（21分钟），介绍拓扑排序的基本概念。
+
+拓扑排序也可以通过 BFS 完成。</code></pre><p>链接：<a href="https://leetcode-cn.com/problems/course-schedule" target="_blank" rel="noopener">https://leetcode-cn.com/problems/course-schedule</a><br>算法思路：</p>
+<ol>
+<li>拓扑排序<br>拓扑排序实际上应用的是贪心算法。贪心算法简而言之：每一步最优，全局就最优。</li>
+</ol>
+<p>具体到拓扑排序，每一次都从图中删除没有前驱的顶点，这里并不需要真正的做删除操作，我们可以设置一个入度数组，每一轮都输出入度为 0 的结点，并移除它、修改它指向的结点的入度（−1即可），依次得到的结点序列就是拓扑排序的结点序列。如果图中还有结点没有被移除，则说明“不能完成所有课程的学习”。</p>
+<p>拓扑排序保证了每个活动（在这题中是“课程”）的所有前驱活动都排在该活动的前面，并且可以完成所有活动。拓扑排序的结果不唯一。拓扑排序还可以用于检测一个有向图是否有环。相关的概念还有 AOV 网，这里就不展开了。</p>
+<p>算法流程：</p>
+<p>1、在开始排序前，扫描对应的存储空间（使用邻接表），将入度为 0 的结点放入队列。</p>
+<p>2、只要队列非空，就从队首取出入度为 0的结点，将这个结点输出到结果集中，并且将这个结点的所有邻接结点（它指向的结点）的入度减 1，在减 1 以后，如果这个被减 1 的结点的入度为 0，就继续入队。</p>
+<p>3、当队列为空的时候，检查结果集中的顶点个数是否和课程数相等即可。</p>
+<p>思考这里为什么要使用队列？</p>
+<p>在代码具体实现的时候，除了保存入度为 0 的队列，我们还需要两个辅助的数据结构：<br>1、邻接表：通过结点的索引，我们能够得到这个结点的后继结点；</p>
+<p>2、入度数组：通过结点的索引，我们能够得到指向这个结点的结点个数。</p>
+<p>这个两个数据结构在遍历题目给出的邻边以后就可以很方便地得到。</p>
+<p>时间复杂度：O(E+V)。这里 E表示邻边的条数，V 表示结点的个数。初始化入度为 0的集合需要遍历整张图，具体做法是检查每个结点和每条边，因此复杂度为 O(E+V)，然后对该集合进行操作，又需要遍历整张图中的每个结点和每条边，复杂度也为 O(E+V)；</p>
+<p>空间复杂度：O(V)：入度数组、邻接表的长度都是结点的个数 V，即使使用队列，队列最长的时候也不会超过 V，因此空间复杂度是 O(V)。</p>
+<p>如果不使用队列，要想得到当前入度为 0 的结点，就得遍历一遍入度数组。使用队列即用空间换时间。</p>
+<p>Java:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean canFinish(int numCourses, int[][] prerequisites) &#123;</span><br><span class="line">        if(numCourses&lt;=0) return false;</span><br><span class="line">        int plen=prerequisites.length;</span><br><span class="line">        if(plen==0) return true;</span><br><span class="line">        int[] inDegree=new int[numCourses];</span><br><span class="line">        for(int[] p:prerequisites)&#123;</span><br><span class="line">        	inDegree[p[0]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        LinkedList&lt;Integer&gt; queue=new LinkedList();</span><br><span class="line">        // 首先加入入度为 0 的结点</span><br><span class="line">        for(int i=0;i&lt;numCourses;i++)&#123;</span><br><span class="line">        	if(inDegree[i]==0) queue.addLast(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 拓扑排序的结果</span><br><span class="line">        List&lt;Integer&gt; res=new ArrayList();</span><br><span class="line">        while(!queue.isEmpty())&#123;</span><br><span class="line">        	Integer num=queue.removeFirst();</span><br><span class="line">        	res.add(num);</span><br><span class="line">// 把邻边全部遍历一下</span><br><span class="line">        	for(int[] p: prerequisites)&#123;</span><br><span class="line">        		if(p[1]==num)&#123;</span><br><span class="line">        			inDegree[p[0]]--;</span><br><span class="line">        			if(inDegree[p[0]]==0)&#123;</span><br><span class="line">        				queue.addLast(p[0]);</span><br><span class="line">        			&#125;</span><br><span class="line">        		&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">           // System.out.println(&quot;拓扑排序结果：&quot;);</span><br><span class="line">        // System.out.println(res);</span><br><span class="line">        return res.size()==numCourses;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>DFS<br>深度优先遍历</li>
+</ol>
+<p>这里要使用逆邻接表。其实就是检测这个有向图中有没有环，只要存在环，这些课程就不能按要求学完。</p>
+<p>具体方法是：</p>
+<p>第 1 步：构建逆邻接表；</p>
+<p>第 2 步：递归处理每一个还没有被访问的结点，具体做法很简单：对于一个结点来说，先输出指向它的所有顶点，再输出自己。</p>
+<p>第 3 步：如果这个顶点还没有被遍历过，就递归遍历它，把所有指向它的结点都输出了，再输出自己。注意：当访问一个结点的时候，应当先递归访问它的前驱结点，直至前驱结点没有前驱结点为止。<br>复杂度分析：</p>
+<pre><code>时间复杂度：O(E+V)
+空间复杂度：O(V)</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"> public boolean canFinish(int numCourses, int[][] prerequisites) &#123;</span><br><span class="line">        if (numCourses &lt;= 0) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        int plen = prerequisites.length;</span><br><span class="line">        if (plen == 0) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        int[] marked = new int[numCourses];</span><br><span class="line"></span><br><span class="line">        // 初始化有向图 begin</span><br><span class="line">        HashSet&lt;Integer&gt;[] graph = new HashSet[numCourses];</span><br><span class="line">        for (int i = 0; i &lt; numCourses; i++) &#123;</span><br><span class="line">            graph[i] = new HashSet&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        // 初始化有向图 end</span><br><span class="line">        // 有向图的 key 是前驱结点，value 是后继结点的集合</span><br><span class="line">        for (int[] p : prerequisites) &#123;</span><br><span class="line">            graph[p[1]].add(p[0]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; numCourses; i++) &#123;</span><br><span class="line">            if (dfs(i, graph, marked)) &#123;</span><br><span class="line">                // 注意方法的语义，如果图中存在环，表示课程任务不能完成，应该返回 false</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 在遍历的过程中，一直 dfs 都没有遇到已经重复访问的结点，就表示有向图中没有环</span><br><span class="line">        // 所有课程任务可以完成，应该返回 true</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 注意这个 dfs 方法的语义</span><br><span class="line">     * @param i      当前访问的课程结点</span><br><span class="line">     * @param graph</span><br><span class="line">     * @param marked 如果 == 1 表示正在访问中，如果 == 2 表示已经访问完了</span><br><span class="line">     * @return true 表示图中存在环，false 表示访问过了，不用再访问了</span><br><span class="line">     */</span><br><span class="line">    private boolean dfs(int i,</span><br><span class="line">                        HashSet&lt;Integer&gt;[] graph,</span><br><span class="line">                        int[] marked) &#123;</span><br><span class="line">        // 如果访问过了，就不用再访问了</span><br><span class="line">        if (marked[i] == 1) &#123;</span><br><span class="line">            // 从正在访问中，到正在访问中，表示遇到了环</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (marked[i] == 2) &#123;</span><br><span class="line">            // 表示在访问的过程中没有遇到环，这个节点访问过了</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        // 走到这里，是因为初始化呢，此时 marked[i] == 0</span><br><span class="line">        // 表示正在访问中</span><br><span class="line">        marked[i] = 1;</span><br><span class="line">        // 后继结点的集合</span><br><span class="line">        HashSet&lt;Integer&gt; successorNodes = graph[i];</span><br><span class="line"></span><br><span class="line">        for (Integer successor : successorNodes) &#123;</span><br><span class="line">            if (dfs(successor, graph, marked)) &#123;</span><br><span class="line">                // 层层递归返回 true ，表示图中存在环</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // i 的所有后继结点都访问完了，都没有存在环，则这个结点就可以被标记为已经访问结束</span><br><span class="line">        // 状态设置为 2</span><br><span class="line">        marked[i] = 2;</span><br><span class="line">        // false 表示图中不存在环</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -214,7 +277,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DFS//" class="article-tag-list-link color4">DFS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -316,7 +401,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证二叉搜索树"><span class="toc-number">1.</span> <span class="toc-text">验证二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#207课程表"><span class="toc-number">2.</span> <span class="toc-text">207课程表</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -465,11 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,19 +574,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,11 +586,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">佛学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +618,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,6 +639,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,10 +658,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
@@ -569,15 +666,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
