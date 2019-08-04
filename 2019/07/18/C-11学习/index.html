@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="C++11基础(算法竞赛入门)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T07:15:06.592Z">
+<meta property="og:updated_time" content="2019-08-04T05:45:50.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++11学习">
 <meta name="twitter:description" content="C++11基础(算法竞赛入门)">
@@ -193,7 +193,57 @@
 
 <h3 id="容器的for循环遍历"><a href="#容器的for循环遍历" class="headerlink" title="容器的for循环遍历"></a>容器的for循环遍历</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//以前遍历一个STL中的集合</span><br><span class="line">vector&lt;int&gt; vec;</span><br><span class="line">for(vector&lt;int&gt;::iterator it=vec.being(); it!=vec.end();it++)</span><br><span class="line">&#123;</span><br><span class="line">	*it+=2;</span><br><span class="line">	cout&lt;&lt;*it&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//C++11特性</span><br><span class="line">vector&lt;int&gt; vec;</span><br><span class="line">for(const auto&amp; p:vec)</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//或者修改容器中的数据：</span><br><span class="line">for(auto&amp;p:vec) p+=2;</span><br><span class="line"></span><br><span class="line">//所有的标准容器，例如：map,string,deque,list等，都可以这样遍历</span><br><span class="line">int arr[]=&#123;1,2,3,4,5&#125;;</span><br><span class="line">for(int&amp; x:arr) x+=2;</span><br></pre></td></tr></table></figure>
 
-<h3 id="匿名函数-Lambda"><a href="#匿名函数-Lambda" class="headerlink" title="匿名函数(Lambda)"></a>匿名函数(Lambda)</h3>
+<h3 id="匿名函数-Lambda"><a href="#匿名函数-Lambda" class="headerlink" title="匿名函数(Lambda)"></a>匿名函数(Lambda)</h3><h3 id="C-枚举类型详解"><a href="#C-枚举类型详解" class="headerlink" title="C++枚举类型详解"></a>C++枚举类型详解</h3><p>枚举类型的定义：枚举类型(enumeration)是 C++ 中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。</p>
+<p>定义格式：枚举类型的定义格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum &lt;类型名&gt; &#123;&lt;枚举常量表&gt;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="格式说明："><a href="#格式说明：" class="headerlink" title="格式说明："></a>格式说明：</h5><pre><code>关键字enum——指明其后的标识符是一个枚举类型的名字。
+枚举常量表——由枚举常量构成。&quot;枚举常量&quot;或称&quot;枚举成员&quot;，是以标识符形式表示的整型量，表示枚举类型的取值。枚举常量表列出枚举类型的所有取值，各枚举常量之间以&quot;，&quot;间隔，且必须各不相同。取值类型与条件表达式相同。 </code></pre><p>应用举例：</p>
+<p>enum color_set1 {RED, BLUE, WHITE, BLACK}; // 定义枚举类型color_set1<br>enum week {Sun, Mon, Tue, Wed, Thu, Fri, Sat}; // 定义枚举类型week</p>
+<h5 id="重要提示："><a href="#重要提示：" class="headerlink" title="重要提示："></a>重要提示：</h5><p>枚举常量代表该枚举类型的变量可能取的值，编译系统为每个枚举常量指定一个整数值，默认状态下，这个整数就是所列举元素的序号，序号从0开始。 可以在定义枚举类型时为部分或全部枚举常量指定整数值，在指定值之前的枚举常量仍按默认方式取值，而指定值之后的枚举常量按依次加1的原则取值。 各枚举常量的值可以重复。例如：</p>
+<p>enum fruit_set {apple, orange, banana=1, peach, grape}<br>//枚举常量apple=0,orange=1, banana=1,peach=2,grape=3。</p>
+<p>enum week {Sun=7, Mon=1, Tue, Wed, Thu, Fri, Sat};<br>//枚举常量Sun,Mon,Tue,Wed,Thu,Fri,Sat的值分别为7、1、2、3、4、5、6。</p>
+<p>枚举常量只能以 <strong>标识符形式</strong> 表示，而 <strong>不能是整型、字符型</strong> 等文字常量。例如，以下定义非法：</p>
+<p>enum letter_set {‘a’,’d’,’F’,’s’,’T’}; //枚举常量不能是字符常量<br>enum year_set{2000,2001,2002,2003,2004,2005}; //枚举常量不能是整型常量</p>
+<p>可改为以下形式则定义合法：</p>
+<p>enum letter_set {a, d, F, s, T};<br>enum year_set{y2000, y2001, y2002, y2003, y2004, y2005};</p>
+<h5 id="枚举变量的使用"><a href="#枚举变量的使用" class="headerlink" title="枚举变量的使用"></a>枚举变量的使用</h5><p>定义枚举类型的主要目的是：增加程序的可读性。枚举类型最常见也最有意义的用处之一就是用来描述状态量，这点将在第9章 输入输出流类看到。</p>
+<p>定义格式：定义枚举类型之后，就可以定义该枚举类型的变量，如：</p>
+<p>color_set1 color1, color2;</p>
+<p>亦可类型与变量同时定义（甚至类型名可省），格式如下：</p>
+<p>enum {Sun,Mon,Tue,Wed,Thu,Fri,Sat} weekday1, weekday2;</p>
+<h5 id="相关操作"><a href="#相关操作" class="headerlink" title="相关操作"></a>相关操作</h5><ol>
+<li><p>枚举变量的值只能取枚举常量表中所列的值，就是整型数的一个子集。</p>
+</li>
+<li><p>枚举变量占用内存的大小与整型数相同。</p>
+</li>
+<li><p>枚举变量只能参与赋值和关系运算以及输出操作，参与运算时用其本身的整数值。例如，设有定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum color_set1 &#123;RED, BLUE, WHITE, BLACK&#125; color1, color2;</span><br><span class="line">enum color_set2 &#123; GREEN, RED, YELLOW, WHITE&#125; color3, color4;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>则允许的赋值操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">color3=RED;           //将枚举常量值赋给枚举变量</span><br><span class="line">color4=color3;        //相同类型的枚举变量赋值，color4的值为RED</span><br><span class="line">int  i=color3;        //将枚举变量赋给整型变量，i的值为1</span><br><span class="line">int  j=GREEN;         //将枚举常量赋给整型变量，j的值为0</span><br></pre></td></tr></table></figure>
+
+<p>允许的关系运算有：==、&lt;、&gt;、&lt;=、&gt;=、!=等，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//比较同类型枚举变量color3，color4是否相等</span><br><span class="line">if (color3==color4) cout&lt;&lt;&quot;相等&quot;；</span><br><span class="line">//输出的是变量color3与WHITE的比较结果，结果为1</span><br><span class="line">cout&lt;&lt; color3&lt;WHITE;</span><br></pre></td></tr></table></figure>
+
+<p>枚举变量可以直接输出，输出的是变量的整数值。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout&lt;&lt; color3;         //输出的是color3的整数值，即RED的整数值1</span><br></pre></td></tr></table></figure>
+
+<p>实例</p>
+<p>口袋中有红、黄、蓝、白、黑五种颜色的球若干个，每次从口袋中取三个不同颜色的球，统计并输出所有的取法。</p>
+<p>分析：由于球只能是五种颜色之一，故可用枚举类型表示球的颜色。设取出的球为i、j、k，根据题意，i、j、k分别可以有五种取值，且i≠j≠k。可以用穷举法，逐个检验每一种可能的组合，从中找出符合要求的组合并输出。<br>实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;iomanip&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">    enum color_set &#123;red,yellow,blue,white,black&#125;; //声明枚举类型color</span><br><span class="line">    color_set color; </span><br><span class="line">    int i,j,k,counter=0,loop; //counter是累计不同颜色的组合数</span><br><span class="line">    for(i=red;i&lt;=black;i++) &#123;</span><br><span class="line">        for(j=red;j&lt;=black;j++) &#123;</span><br><span class="line">            if(i!=j)&#123;                        //前两个球颜色不同</span><br><span class="line">                for(k=red;k&lt;=black;k++)</span><br><span class="line">                if(k!=i&amp;&amp;k!=j)&#123;        //第三个球不同于前两个，满足要求</span><br><span class="line">                    counter++;</span><br><span class="line">                    if((counter)%22==0)&#123; //每屏显示22行</span><br><span class="line">                        cout&lt;&lt;&quot;请按回车键继续&quot;;</span><br><span class="line">                        cin.get();</span><br><span class="line">                    &#125;</span><br><span class="line">                    cout&lt;&lt;setw(15)&lt;&lt;counter;</span><br><span class="line">                    /*下面输出每种取法，一行为一种取法的三个颜色*/</span><br><span class="line">                    for(loop=1;loop&lt;=3;loop++)&#123;</span><br><span class="line">                        switch(loop)&#123;</span><br><span class="line">                            case 1: color=(color_set) i; break;    //第一个是i</span><br><span class="line">                            case 2: color=(color_set) j; break;    //第二个是j</span><br><span class="line">                            case 3: color=(color_set) k; break;    //第三个是k</span><br><span class="line">                        &#125;</span><br><span class="line">                        switch(color)&#123;</span><br><span class="line">                            case red:   cout&lt;&lt;setw(15)&lt;&lt;&quot;red&quot;;   break;</span><br><span class="line">                            case yellow:cout&lt;&lt;setw(15)&lt;&lt;&quot;yellow&quot;;break;</span><br><span class="line">                            case blue:  cout&lt;&lt;setw(15)&lt;&lt;&quot;blue&quot;;  break;</span><br><span class="line">                            case white:    cout&lt;&lt;setw(15)&lt;&lt;&quot;white&quot;; break;</span><br><span class="line">                            case black: cout&lt;&lt;setw(15)&lt;&lt;&quot;black&quot;; break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    cout&lt;&lt;endl;            //输出一种取法后换行</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;共有：&quot;&lt;&lt;counter&lt;&lt;&quot;种取法&quot;&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重要提示</strong></p>
+<ul>
+<li>枚举变量可以直接输出，但不能直接输入。如：cin &gt;&gt; color3;   //非法</li>
+<li>不能直接将常量赋给枚举变量。如：  color1=1; //非法</li>
+<li>不同类型的枚举变量之间不能相互赋值。如： color1=color3;  //非法</li>
+<li>枚举变量的输入输出一般都采用switch语句将其转换为字符或字符串；枚举类型数据的其他处理也往往应用switch语句，以保证程序的合法性和可读性。 </li>
+</ul>
+
       
 
       
@@ -351,7 +401,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环宏定义"><span class="toc-number">1.</span> <span class="toc-text">循环宏定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整数输入"><span class="toc-number">2.</span> <span class="toc-text">整数输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型推导-auto"><span class="toc-number">3.</span> <span class="toc-text">类型推导(auto)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存池"><span class="toc-number">4.</span> <span class="toc-text">内存池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空指针值-nullptr"><span class="toc-number">5.</span> <span class="toc-text">空指针值(nullptr)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器的for循环遍历"><span class="toc-number">6.</span> <span class="toc-text">容器的for循环遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#匿名函数-Lambda"><span class="toc-number">7.</span> <span class="toc-text">匿名函数(Lambda)</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环宏定义"><span class="toc-number">1.</span> <span class="toc-text">循环宏定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整数输入"><span class="toc-number">2.</span> <span class="toc-text">整数输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型推导-auto"><span class="toc-number">3.</span> <span class="toc-text">类型推导(auto)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存池"><span class="toc-number">4.</span> <span class="toc-text">内存池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空指针值-nullptr"><span class="toc-number">5.</span> <span class="toc-text">空指针值(nullptr)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器的for循环遍历"><span class="toc-number">6.</span> <span class="toc-text">容器的for循环遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#匿名函数-Lambda"><span class="toc-number">7.</span> <span class="toc-text">匿名函数(Lambda)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-枚举类型详解"><span class="toc-number">8.</span> <span class="toc-text">C++枚举类型详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#格式说明："><span class="toc-number">8.0.1.</span> <span class="toc-text">格式说明：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#重要提示："><span class="toc-number">8.0.2.</span> <span class="toc-text">重要提示：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#枚举变量的使用"><span class="toc-number">8.0.3.</span> <span class="toc-text">枚举变量的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#相关操作"><span class="toc-number">8.0.4.</span> <span class="toc-text">相关操作</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -480,14 +530,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -504,15 +546,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,11 +558,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,11 +570,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,10 +587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,11 +606,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,6 +623,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,11 +646,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,6 +659,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">刷题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">

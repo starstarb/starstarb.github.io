@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="DFS">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-02T03:36:12.167Z">
+<meta property="og:updated_time" content="2019-08-04T05:03:15.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度优先搜索">
 <meta name="twitter:description" content="DFS">
@@ -243,7 +243,46 @@
 <pre><code>时间复杂度：O(E+V)
 空间复杂度：O(V)</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"> public boolean canFinish(int numCourses, int[][] prerequisites) &#123;</span><br><span class="line">        if (numCourses &lt;= 0) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        int plen = prerequisites.length;</span><br><span class="line">        if (plen == 0) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        int[] marked = new int[numCourses];</span><br><span class="line"></span><br><span class="line">        // 初始化有向图 begin</span><br><span class="line">        HashSet&lt;Integer&gt;[] graph = new HashSet[numCourses];</span><br><span class="line">        for (int i = 0; i &lt; numCourses; i++) &#123;</span><br><span class="line">            graph[i] = new HashSet&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        // 初始化有向图 end</span><br><span class="line">        // 有向图的 key 是前驱结点，value 是后继结点的集合</span><br><span class="line">        for (int[] p : prerequisites) &#123;</span><br><span class="line">            graph[p[1]].add(p[0]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; numCourses; i++) &#123;</span><br><span class="line">            if (dfs(i, graph, marked)) &#123;</span><br><span class="line">                // 注意方法的语义，如果图中存在环，表示课程任务不能完成，应该返回 false</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 在遍历的过程中，一直 dfs 都没有遇到已经重复访问的结点，就表示有向图中没有环</span><br><span class="line">        // 所有课程任务可以完成，应该返回 true</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 注意这个 dfs 方法的语义</span><br><span class="line">     * @param i      当前访问的课程结点</span><br><span class="line">     * @param graph</span><br><span class="line">     * @param marked 如果 == 1 表示正在访问中，如果 == 2 表示已经访问完了</span><br><span class="line">     * @return true 表示图中存在环，false 表示访问过了，不用再访问了</span><br><span class="line">     */</span><br><span class="line">    private boolean dfs(int i,</span><br><span class="line">                        HashSet&lt;Integer&gt;[] graph,</span><br><span class="line">                        int[] marked) &#123;</span><br><span class="line">        // 如果访问过了，就不用再访问了</span><br><span class="line">        if (marked[i] == 1) &#123;</span><br><span class="line">            // 从正在访问中，到正在访问中，表示遇到了环</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (marked[i] == 2) &#123;</span><br><span class="line">            // 表示在访问的过程中没有遇到环，这个节点访问过了</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        // 走到这里，是因为初始化呢，此时 marked[i] == 0</span><br><span class="line">        // 表示正在访问中</span><br><span class="line">        marked[i] = 1;</span><br><span class="line">        // 后继结点的集合</span><br><span class="line">        HashSet&lt;Integer&gt; successorNodes = graph[i];</span><br><span class="line"></span><br><span class="line">        for (Integer successor : successorNodes) &#123;</span><br><span class="line">            if (dfs(successor, graph, marked)) &#123;</span><br><span class="line">                // 层层递归返回 true ，表示图中存在环</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // i 的所有后继结点都访问完了，都没有存在环，则这个结点就可以被标记为已经访问结束</span><br><span class="line">        // 状态设置为 2</span><br><span class="line">        marked[i] = 2;</span><br><span class="line">        // false 表示图中不存在环</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="恢复二叉搜索树"><a href="#恢复二叉搜索树" class="headerlink" title="恢复二叉搜索树"></a>恢复二叉搜索树</h3><p> 二叉搜索树中的两个节点被错误地交换。</p>
+<p>请在不改变其结构的情况下，恢复这棵树。</p>
+<p>示例 1:</p>
+<p>输入: [1,3,null,null,2]</p>
+<p>   1<br>  /<br> 3<br>  <br>   2</p>
+<p>输出: [3,1,null,null,2]</p>
+<p>   3<br>  /<br> 1<br>  <br>   2</p>
+<p>示例 2:</p>
+<p>输入: [3,1,4,null,null,2]</p>
+<p>  3<br> / <br>1   4<br>   /<br>  2</p>
+<p>输出: [2,1,4,null,null,3]</p>
+<p>  2<br> / <br>1   4<br>   /<br>  3</p>
+<p>进阶:</p>
+<pre><code>使用 O(n) 空间复杂度的解法很容易实现。
+你能想出一个只使用常数空间的解决方案吗？</code></pre><p>链接：<a href="https://leetcode-cn.com/problems/recover-binary-search-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/recover-binary-search-tree</a><br>算法思路：<br>因为只有两个节点错误，所以只要找出这两个节点然后交换值即可。<br>中序遍历,使用三个指针指示节点，cur为当前节点，wrong1为第一个错误节点，wrong2为找出的第二个错误节点。</p>
+<ol>
+<li><p>迭代<br>Java实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public void recoverTree(TreeNode root) &#123;</span><br><span class="line">        if(root==null) return;</span><br><span class="line">        Deque&lt;TreeNode&gt; stack=new LinkedList&lt;&gt;();</span><br><span class="line">        TreeNode wrong1=null;</span><br><span class="line">        TreeNode wrong2=null;</span><br><span class="line">        TreeNode pre=new TreeNode(Integer.MIN_VALUE);</span><br><span class="line">        TreeNode cur=root;</span><br><span class="line">        while(cur!=null||!stack.isEmpty())&#123;</span><br><span class="line">            while(cur!=null)&#123;</span><br><span class="line">                stack.push(cur);</span><br><span class="line">                cur=cur.left;</span><br><span class="line">            &#125;</span><br><span class="line">            cur=stack.pop();</span><br><span class="line">            if(wrong1==null&amp;&amp;pre.val&gt;cur.val) wrong1=pre;</span><br><span class="line">            if(wrong1!=null&amp;&amp;pre.val&gt;cur.val) wrong2=cur;</span><br><span class="line">            pre=cur;</span><br><span class="line">            cur=cur.right;</span><br><span class="line">        &#125;</span><br><span class="line">        int tmp=wrong1.val;</span><br><span class="line">        wrong1.val=wrong2.val;</span><br><span class="line">        wrong2.val=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>递归 11ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">	    TreeNode wrong1=null;</span><br><span class="line">        TreeNode wrong2=null;</span><br><span class="line">        TreeNode pre=new TreeNode(Integer.MIN_VALUE);</span><br><span class="line">    public void recoverTree(TreeNode root) &#123;</span><br><span class="line">         order(root);</span><br><span class="line">         int tmp=wrong1.val;</span><br><span class="line">         wrong1.val=wrong2.val;</span><br><span class="line">         wrong2.val=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    private void order(TreeNode root)&#123;</span><br><span class="line">         if(root==null) return;</span><br><span class="line">         order(root.left);</span><br><span class="line">         if(wrong1==null&amp;&amp;pre.val&gt;root.val) wrong1=pre;</span><br><span class="line">         if(wrong1!=null&amp;&amp;pre.val&gt;root.val)</span><br><span class="line">         wrong2=root;</span><br><span class="line"></span><br><span class="line">         pre=root;</span><br><span class="line">         order(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<h3 id="相同的树"><a href="#相同的树" class="headerlink" title="相同的树"></a>相同的树</h3><p>给定两个二叉树，编写一个函数来检验它们是否相同。</p>
+<p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
+<p>示例 1:</p>
+<p>输入:       1         1<br>          / \       / <br>         2   3     2   3</p>
+<pre><code>[1,2,3],   [1,2,3]</code></pre><p>输出: true</p>
+<p>示例 2:</p>
+<p>输入:      1          1<br>          /           <br>         2             2</p>
+<pre><code>[1,2],     [1,null,2]</code></pre><p>输出: false</p>
+<p>示例 3:</p>
+<p>输入:       1         1<br>          / \       / <br>         2   1     1   2</p>
+<pre><code>[1,2,1],   [1,1,2]</code></pre><p>输出: false<br>链接：<a href="https://leetcode-cn.com/problems/same-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/same-tree</a></p>
+<p>算法思路：</p>
+<ol>
+<li>递归，首先判断p和q 是不是空，然后判断它们的值是否相等。<br>若以上判断通过，则递归对子节点做同样操作。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isSameTree(TreeNode p, TreeNode q) &#123;</span><br><span class="line">        if(p==null&amp;&amp;q==null) return true;</span><br><span class="line">        if(q==null||p==null) return false;</span><br><span class="line">        if(p.val!=q.val) return false;</span><br><span class="line">        return isSameTree(p.right,q.right)&amp;&amp;isSameTree(p.left,q.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -401,7 +440,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证二叉搜索树"><span class="toc-number">1.</span> <span class="toc-text">验证二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#207课程表"><span class="toc-number">2.</span> <span class="toc-text">207课程表</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证二叉搜索树"><span class="toc-number">1.</span> <span class="toc-text">验证二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#207课程表"><span class="toc-number">2.</span> <span class="toc-text">207课程表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#恢复二叉搜索树"><span class="toc-number">3.</span> <span class="toc-text">恢复二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相同的树"><span class="toc-number">4.</span> <span class="toc-text">相同的树</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -530,14 +569,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -554,15 +585,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,11 +597,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +609,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,10 +626,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,11 +645,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,6 +662,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,11 +685,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,6 +698,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">刷题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">

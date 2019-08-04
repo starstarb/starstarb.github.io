@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="Mysql">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-20T07:34:21.671Z">
+<meta property="og:updated_time" content="2019-08-04T10:42:11.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql基础学习">
 <meta name="twitter:description" content="Mysql">
@@ -200,7 +200,82 @@
 <li>一条sql语句也是一个事务</li>
 </ol>
 <h4 id="InnoDB存储引擎"><a href="#InnoDB存储引擎" class="headerlink" title="InnoDB存储引擎"></a>InnoDB存储引擎</h4><p>官方定义：<br>InnoDB: A transaction-safe (ACID compliant) storage engine for MySQL that has commit, rollback, and crash-recovery capabilities to protect user data. InnoDB row-level locking (without escalation<br>to coarser granularity locks) and Oracle-style consistent nonlocking reads increase multi-user concurrency and performance. InnoDB stores user data in clustered indexes to reduce I/O for common queries based on primary keys. To maintain data integrity, InnoDB also supports FOREIGN KEY referential-integrity constraints. InnoDB is the default storage engine in MySQL 5.6.<br>注：支持事务，回滚、崩溃恢复、行级锁、非锁定读、聚簇索引、外键</p>
-<h4 id="通过MVCC，实现nonlocking-reads-快照读"><a href="#通过MVCC，实现nonlocking-reads-快照读" class="headerlink" title="通过MVCC，实现nonlocking reads(快照读)"></a>通过MVCC，实现nonlocking reads(快照读)</h4>
+<h4 id="通过MVCC，实现nonlocking-reads-快照读"><a href="#通过MVCC，实现nonlocking-reads-快照读" class="headerlink" title="通过MVCC，实现nonlocking reads(快照读)"></a>通过MVCC，实现nonlocking reads(快照读)</h4><h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>  悲观锁，正如其名，它指的是对数据被外界（包括本系统当前的其他事务，以及来自外部系统的事务处理）修改持保守态度，因此，在整个数据处理过程中，将数据处于锁定状态。悲观锁的实现，往往依靠数据库提供的锁机制（也只有数据库层提供的锁机制才能真正保证数据访问的排他性，否则，即使在本系统中实现了加锁机制，也无法保证外部系统不会修改数据）。<br>使用场景举例：以MySQL InnoDB为例</p>
+<p>商品goods表中有一个字段status，status为1代表商品未被下单，status为2代表商品已经被下单，那么我们对某个商品下单时必须确保该商品status为1。假设商品的id为1。</p>
+<ol>
+<li>如果不采用锁，那么操作方法如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//1.查询出商品信息</span><br><span class="line"></span><br><span class="line">select status from t_goods where id=1;</span><br><span class="line"></span><br><span class="line">//2.根据商品信息生成订单</span><br><span class="line"></span><br><span class="line">insert into t_orders (id,goods_id) values (null,1);</span><br><span class="line"></span><br><span class="line">//3.修改商品status为2</span><br><span class="line"></span><br><span class="line">update t_goods set status=2;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>上面这种场景在高并发访问的情况下很可能会出现问题。</p>
+<p>前面已经提到，只有当goods status为1时才能对该商品下单，上面第一步操作中，查询出来的商品status为1。但是当我们执行第三步Update操作的时候，有可能出现其他人先一步对商品下单把goods status修改为2了，但是我们并不知道数据已经被修改了，这样就可能造成同一个商品被下单2次，使得数据不一致。所以说这种方式是不安全的。</p>
+<ol start="2">
+<li>使用悲观锁来实现：</li>
+</ol>
+<p>在上面的场景中，商品信息从查询出来到修改，中间有一个处理订单的过程，使用悲观锁的原理就是，当我们在查询出goods信息后就把当前的数据锁定，直到我们修改完毕后再解锁。那么在这个过程中，因为goods被锁定了，就不会出现有第三者来对其进行修改了。</p>
+<p>注：要使用悲观锁，我们必须关闭mysql数据库的自动提交属性，因为MySQL默认使用autocommit模式，也就是说，当你执行一个更新操作后，MySQL会立刻将结果进行提交。</p>
+<p>我们可以使用命令设置MySQL为非autocommit模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set autocommit=0;</span><br></pre></td></tr></table></figure>
+
+<p>设置完autocommit后，我们就可以执行我们的正常业务了。具体如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//0.开始事务</span><br><span class="line"></span><br><span class="line">begin;/begin work;/start transaction; (三者选一就可以)</span><br><span class="line"></span><br><span class="line">//1.查询出商品信息</span><br><span class="line"></span><br><span class="line">select status from t_goods where id=1 for update;</span><br><span class="line"></span><br><span class="line">//2.根据商品信息生成订单</span><br><span class="line"></span><br><span class="line">insert into t_orders (id,goods_id) values (null,1);</span><br><span class="line"></span><br><span class="line">//3.修改商品status为2</span><br><span class="line"></span><br><span class="line">update t_goods set status=2;</span><br><span class="line"></span><br><span class="line">//4.提交事务</span><br><span class="line"></span><br><span class="line">commit;/commit work;</span><br></pre></td></tr></table></figure>
+
+<p>注：上面的begin/commit为事务的开始和结束，因为在前一步我们关闭了mysql的autocommit，所以需要手动控制事务的提交，在这里就不细表了。</p>
+<p>上面的第一步我们执行了一次查询操作：select status from t_goods where id=1 for update;</p>
+<p>与普通查询不一样的是，我们使用了select…for update的方式，这样就通过数据库实现了悲观锁。此时在t_goods表中，id为1的 那条数据就被我们锁定了，其它的事务必须等本次事务提交之后才能执行。这样我们可以保证当前的数据不会被其它事务修改。</p>
+<p>注：需要注意的是，在事务中，只有SELECT … FOR UPDATE 或LOCK IN SHARE MODE 同一笔数据时会等待其它事务结束后才执行，一般SELECT … 则不受此影响。拿上面的实例来说，当我执行select status from t_goods where id=1 for update;后。我在另外的事务中如果再次执行select status from t_goods where id=1 for update;则第二个事务会一直等待第一个事务的提交，此时第二个查询处于阻塞的状态，但是如果我是在第二个事务中执行select status from t_goods where id=1;则能正常查询出数据，不会受第一个事务的影响。</p>
+<blockquote>
+<p>补充：MySQL select…for update的Row Lock与Table Lock</p>
+</blockquote>
+<p>上面我们提到，使用select…for update会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认Row-Level Lock，所以只有「明确」地指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，否则MySQL 将会执行Table Lock (将整个数据表单给锁住)。<br>举例说明：</p>
+<p>数据库表t_goods，包括id,status,name三个字段，id为主键，数据库中记录如下;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from t_goods;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 1 | 1 | 道具 |</span><br><span class="line">| 2 | 1 | 装备 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">2 rows in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">注：为了测试数据库锁，我使用两个console来模拟不同的事务操作，分别用console1、console2来表示。</span><br><span class="line"></span><br><span class="line">    例1: (明确指定主键，并且有此数据，row lock)</span><br><span class="line"></span><br><span class="line">console1：查询出结果，但是把该条数据锁定了</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id=1 for update;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 1 | 1 | 道具 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">1 row in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">console2：查询被阻塞</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id=1 for update;</span><br><span class="line"></span><br><span class="line">console2：如果console1长时间未提交，则会报错</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id=1 for update;</span><br><span class="line">ERROR 1205 : Lock wait timeout exceeded; try restarting transaction</span><br><span class="line"></span><br><span class="line">    例2: (明确指定主键，若查无此数据，无lock)</span><br><span class="line"></span><br><span class="line">console1：查询结果为空</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id=3 for update;</span><br><span class="line">Empty set</span><br><span class="line"></span><br><span class="line">console2：查询结果为空，查询无阻塞，说明console1没有对数据执行锁定</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id=3 for update;</span><br><span class="line">Empty set</span><br><span class="line"></span><br><span class="line">    例3: (无主键，table lock)</span><br><span class="line"></span><br><span class="line">console1：查询name=道具 的数据，查询正常</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where name=’道具’ for update;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 1 | 1 | 道具 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">1 row in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">console2：查询name=装备 的数据，查询阻塞，说明console1把表给锁住了</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where name=’装备’ for update;</span><br><span class="line"></span><br><span class="line">console2：若console1长时间未提交，则查询返回为空</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where name=’装备’ for update;</span><br><span class="line">Query OK, -1 rows affected</span><br><span class="line"></span><br><span class="line">    例4: (主键不明确，table lock)</span><br><span class="line"></span><br><span class="line">console1：查询正常</span><br><span class="line"></span><br><span class="line">mysql&gt; begin;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id&gt;0 for update;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 1 | 1 | 道具 |</span><br><span class="line">| 2 | 1 | 装备 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">2 rows in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">console2：查询被阻塞，说明console1把表给锁住了</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id&gt;1 for update;</span><br><span class="line"></span><br><span class="line">    例5: (主键不明确，table lock)</span><br><span class="line"></span><br><span class="line">console1：</span><br><span class="line"></span><br><span class="line">mysql&gt; begin;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id&lt;&gt;1 for update;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 2 | 1 | 装备 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">1 row in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">console2：查询被阻塞，说明console1把表给锁住了</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id&lt;&gt;2 for update;</span><br><span class="line"></span><br><span class="line">console1：提交事务</span><br><span class="line"></span><br><span class="line">mysql&gt; commit;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line"></span><br><span class="line">console2：console1事务提交后，console2查询结果正常</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where id&lt;&gt;2 for update;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 1 | 1 | 道具 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">1 row in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">以上就是关于数据库主键对MySQL锁级别的影响实例，需要注意的是，除了主键外，使用索引也会影响数据库的锁定级别</span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line"></span><br><span class="line">我们修改t_goods表，给status字段创建一个索引</span><br><span class="line"></span><br><span class="line">修改id为2的数据的status为2，此时表中数据为：</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 1 | 1 | 道具 |</span><br><span class="line">| 2 | 2 | 装备 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">2 rows in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">    例6: (明确指定索引，并且有此数据，row lock)</span><br><span class="line"></span><br><span class="line">console1：</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where status=1 for update;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 1 | 1 | 道具 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">1 row in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">console2：查询status=1的数据时阻塞，超时后返回为空，说明数据被console1锁定了</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where status=1 for update;</span><br><span class="line">Query OK, -1 rows affected</span><br><span class="line"></span><br><span class="line">console2：查询status=2的数据，能正常查询，说明console1只锁住了行，未锁表</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where status=2 for update;</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| id | status | name |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">| 2 | 2 | 装备 |</span><br><span class="line">+—-+——–+——+</span><br><span class="line">1 row in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">    例7: (明确指定索引，若查无此数据，无lock)</span><br><span class="line"></span><br><span class="line">console1：查询status=3的数据，返回空数据</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where status=3 for update;</span><br><span class="line">Empty set</span><br><span class="line"></span><br><span class="line">console2：查询status=3的数据，返回空数据</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from t_goods where status=3 for update;</span><br><span class="line">Empty set</span><br></pre></td></tr></table></figure>
+
+<p>谈到了MySQL悲观锁，但是悲观锁并不是适用于任何场景，它也有它存在的一些不足，因为悲观锁大多数情况下依靠数据库的锁机制实现，以保证操作最大程度的独占性。如果加锁的时间过长，其他用户长时间无法访问，影响了程序的并发访问性，同时这样对数据库性能开销影响也很大，特别是对长事务而言，这样的开销往往无法承受。所以与悲观锁相对的，我们有了乐观锁，具体参见下面介绍：</p>
+<h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>乐观锁（ Optimistic Locking ） 相对悲观锁而言，乐观锁假设认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。<br>  那么我们如何实现乐观锁呢，一般来说有以下2种方式：</p>
+<ol>
+<li>使用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式。何谓数据版本？即为数据增加一个版本标识，一般是通过为数据库表增加一个数字类型的 “version” 字段来实现。当读取数据时，将version字段的值一同读出，数据每更新一次，对此version值加一。当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次取出来的version值进行比对，如果数据库表当前版本号与第一次取出来的version值相等，则予以更新，否则认为是过期数据。用下面的一张图来说明：</li>
+</ol>
+<p>如上图所示，如果更新操作顺序执行，则数据的版本（version）依次递增，不会产生冲突。但是如果发生有不同的业务操作对同一版本的数据进行修改，那么，先提交的操作（图中B）会把数据version更新为2，当A在B之后提交更新时发现数据的version已经被修改了，那么A的更新操作会失败。</p>
+<ol start="2">
+<li>乐观锁定的第二种实现方式和第一种差不多，同样是在需要乐观锁控制的table中增加一个字段，名称无所谓，字段类型使用时间戳（timestamp）, 和上面的version类似，也是在更新提交的时候检查当前数据库中数据的时间戳和自己更新前取到的时间戳进行对比，如果一致则OK，否则就是版本冲突。<br>使用举例：以MySQL InnoDB为例</li>
+</ol>
+<p>还是拿之前的实例来举：商品goods表中有一个字段status，status为1代表商品未被下单，status为2代表商品已经被下单，那么我们对某个商品下单时必须确保该商品status为1。假设商品的id为1。</p>
+<p>下单操作包括3步骤：</p>
+<ol>
+<li><p>查询出商品信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select (status,status,version) from t_goods where id=#&#123;id&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据商品信息生成订单</p>
+</li>
+<li><p>修改商品status为2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">update t_goods</span><br><span class="line"></span><br><span class="line">set status=2,version=version+1</span><br><span class="line"></span><br><span class="line">where id=#&#123;id&#125; and version=#&#123;version&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>那么为了使用乐观锁，我们首先修改t_goods表，增加一个version字段，数据默认version值为1。</p>
+<p>t_goods表初始数据如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from t_goods;</span><br><span class="line">+—-+——–+——+———+</span><br><span class="line">| id | status | name | version |</span><br><span class="line">+—-+——–+——+———+</span><br><span class="line">| 1 | 1 | 道具 | 1 |</span><br><span class="line">| 2 | 2 | 装备 | 2 |</span><br><span class="line">+—-+——–+——+———+</span><br><span class="line">2 rows in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对于乐观锁的实现，我使用MyBatis来进行实践，具体如下：</p>
+<p>Goods实体类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * ClassName: Goods &lt;br/&gt;</span><br><span class="line"> * Function: 商品实体. &lt;br/&gt;</span><br><span class="line"> */</span><br><span class="line">public class Goods implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * serialVersionUID:序列化ID.</span><br><span class="line">     */</span><br><span class="line">    private static final long serialVersionUID = 6803791908148880587L;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * id:主键id.</span><br><span class="line">     */</span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * status:商品状态：1未下单、2已下单.</span><br><span class="line">     */</span><br><span class="line">    private int status;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * name:商品名称.</span><br><span class="line">     */</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * version:商品数据版本号.</span><br><span class="line">     */</span><br><span class="line">    private int version;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return &quot;good id:&quot;+id+&quot;,goods status:&quot;+status+&quot;,goods name:&quot;+name+&quot;,goods version:&quot;+version;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //setter and getter</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GoodsDao</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * updateGoodsUseCAS:使用CAS(Compare and set)更新商品信息. &lt;br/&gt;</span><br><span class="line"> *</span><br><span class="line"> * @author chenzhou1025@126.com</span><br><span class="line"> * @param goods 商品对象</span><br><span class="line"> * @return 影响的行数</span><br><span class="line"> */</span><br><span class="line">int updateGoodsUseCAS(Goods goods);</span><br><span class="line"></span><br><span class="line">mapper.xml</span><br><span class="line"></span><br><span class="line">&lt;update id=&quot;updateGoodsUseCAS&quot; parameterType=&quot;Goods&quot;&gt;</span><br><span class="line">    &lt;![CDATA[</span><br><span class="line">        update t_goods</span><br><span class="line">        set status=#&#123;status&#125;,name=#&#123;name&#125;,version=version+1</span><br><span class="line">        where id=#&#123;id&#125; and version=#&#123;version&#125;</span><br><span class="line">    ]]&gt;</span><br><span class="line">&lt;/update&gt;</span><br></pre></td></tr></table></figure>
+
+<p>GoodsDaoTest测试类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void goodsDaoTest()&#123;</span><br><span class="line">    int goodsId = 1;</span><br><span class="line">    //根据相同的id查询出商品信息，赋给2个对象</span><br><span class="line">    Goods goods1 = this.goodsDao.getGoodsById(goodsId);</span><br><span class="line">    Goods goods2 = this.goodsDao.getGoodsById(goodsId);</span><br><span class="line"></span><br><span class="line">    //打印当前商品信息</span><br><span class="line">    System.out.println(goods1);</span><br><span class="line">    System.out.println(goods2);</span><br><span class="line"></span><br><span class="line">    //更新商品信息1</span><br><span class="line">    goods1.setStatus(2);//修改status为2</span><br><span class="line">    int updateResult1 = this.goodsDao.updateGoodsUseCAS(goods1);</span><br><span class="line">    System.out.println(&quot;修改商品信息1&quot;+(updateResult1==1?&quot;成功&quot;:&quot;失败&quot;));</span><br><span class="line"></span><br><span class="line">    //更新商品信息2</span><br><span class="line">    goods1.setStatus(2);//修改status为2</span><br><span class="line">    int updateResult2 = this.goodsDao.updateGoodsUseCAS(goods1);</span><br><span class="line">    System.out.println(&quot;修改商品信息2&quot;+(updateResult2==1?&quot;成功&quot;:&quot;失败&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">good id:1,goods status:1,goods name:道具,goods version:1</span><br><span class="line">good id:1,goods status:1,goods name:道具,goods version:1</span><br><span class="line">修改商品信息1成功</span><br><span class="line">修改商品信息2失败</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>在GoodsDaoTest测试方法中，我们同时查出同一个版本的数据，赋给不同的goods对象，然后先修改good1对象然后执行更新操作，执行成功。然后我们修改goods2，执行更新操作时提示操作失败。此时t_goods表中数据如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from t_goods;</span><br><span class="line">+—-+——–+——+———+</span><br><span class="line">| id | status | name | version |</span><br><span class="line">+—-+——–+——+———+</span><br><span class="line">| 1 | 2 | 道具 | 2 |</span><br><span class="line">| 2 | 2 | 装备 | 2 |</span><br><span class="line">+—-+——–+——+———+</span><br><span class="line">2 rows in set</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">我们可以看到 id为1的数据version已经在第一次更新时修改为2了。所以我们更新good2时update where条件已经不匹配了，所以更新不会成功，具体sql如下：</span><br><span class="line"></span><br><span class="line">update t_goods</span><br><span class="line">set status=2,version=version+1</span><br><span class="line">where id=#&#123;id&#125; and version=#&#123;version&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就实现了乐观锁</p>
+
       
 
       
@@ -358,7 +433,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql的逻辑架构"><span class="toc-number">1.</span> <span class="toc-text">Mysql的逻辑架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#锁"><span class="toc-number">1.0.1.</span> <span class="toc-text">锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transaction-事务"><span class="toc-number">1.0.2.</span> <span class="toc-text">transaction(事务)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB存储引擎"><span class="toc-number">1.0.3.</span> <span class="toc-text">InnoDB存储引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过MVCC，实现nonlocking-reads-快照读"><span class="toc-number">1.0.4.</span> <span class="toc-text">通过MVCC，实现nonlocking reads(快照读)</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql的逻辑架构"><span class="toc-number">1.</span> <span class="toc-text">Mysql的逻辑架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#锁"><span class="toc-number">1.0.1.</span> <span class="toc-text">锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transaction-事务"><span class="toc-number">1.0.2.</span> <span class="toc-text">transaction(事务)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB存储引擎"><span class="toc-number">1.0.3.</span> <span class="toc-text">InnoDB存储引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过MVCC，实现nonlocking-reads-快照读"><span class="toc-number">1.0.4.</span> <span class="toc-text">通过MVCC，实现nonlocking reads(快照读)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#悲观锁"><span class="toc-number">1.1.</span> <span class="toc-text">悲观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁"><span class="toc-number">1.2.</span> <span class="toc-text">乐观锁</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -487,14 +562,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -511,15 +578,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,11 +590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,11 +602,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,10 +619,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,11 +638,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,6 +655,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,11 +678,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,6 +691,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">刷题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">
