@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://javastar.club">
   <title>阿里面试题 | 星星</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="面试题汇总">
 <meta name="keywords" content="面试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里面试题">
-<meta property="og:url" content="http://yoursite.com/2019/07/20/阿里面试题/index.html">
+<meta property="og:url" content="http://javastar.club/2019/07/20/阿里面试题/index.html">
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="面试题汇总">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.2cto.com/uploadfile/Collfiles/20150416/2015041610033731.png">
-<meta property="og:image" content="http://yoursite.com/.com//zk_sync.png">
-<meta property="og:image" content="http://yoursite.com/.com//zk_zab_basic_paxos.png">
-<meta property="og:image" content="http://yoursite.com/.com//zk_zab_fast_paxos.png">
-<meta property="og:image" content="http://yoursite.com/.com//zk_distributed_locker1.png">
-<meta property="og:image" content="http://yoursite.com/.com//zk_distributed_locker2.png">
+<meta property="og:image" content="http://javastar.club/.club//zk_sync.png">
+<meta property="og:image" content="http://javastar.club/.club//zk_zab_basic_paxos.png">
+<meta property="og:image" content="http://javastar.club/.club//zk_zab_fast_paxos.png">
+<meta property="og:image" content="http://javastar.club/.club//zk_distributed_locker1.png">
+<meta property="og:image" content="http://javastar.club/.club//zk_distributed_locker2.png">
 <meta property="og:updated_time" content="2019-07-20T13:47:22.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里面试题">
@@ -585,7 +585,7 @@
 <li><p>Follower收到uptodate消息后，又可以重新接受client的请求进行服务了。</p>
 </li>
 </ol>
-<img src="/.com//zk_sync.png">
+<img src="/.club//zk_sync.png">
 
 
 <p>数据同步的4种方式：</p>
@@ -611,10 +611,10 @@
 </ul>
 <h4 id="题目：zookeeper是如何选举Leader的"><a href="#题目：zookeeper是如何选举Leader的" class="headerlink" title="题目：zookeeper是如何选举Leader的?"></a><strong>题目</strong>：zookeeper是如何选举Leader的?</h4><h4 id="参考答案：-53"><a href="#参考答案：-53" class="headerlink" title="参考答案："></a><strong>参考答案</strong>：</h4><p>当leader崩溃或者leader失去大多数的follower，这时zk进入恢复模式，恢复模式需要重新选举出一个新的leader，让所有的Server都恢复到一个正确的状态。Zk的选举算法有两种：一种是基于basic paxos实现的，另外一种是基于fast paxos算法实现的。系统默认的选举算法为fast paxos。</p>
 <p>1、Zookeeper选主流程(basic paxos)<br>（1）选举线程由当前Server发起选举的线程担任，其主要功能是对投票结果进行统计，并选出推荐的Server；<br>（2）选举线程首先向所有Server发起一次询问(包括自己)；<br>（3）选举线程收到回复后，验证是否是自己发起的询问(验证zxid是否一致)，然后获取对方的id(myid)，并存储到当前询问对象列表中，最后获取对方提议的leader相关信息(id,zxid)，并将这些信息存储到当次选举的投票记录表中；<br>（4）收到所有Server回复以后，就计算出zxid最大的那个Server，并将这个Server相关信息设置成下一次要投票的Server；<br>（5）线程将当前zxid最大的Server设置为当前Server要推荐的Leader，如果此时获胜的Server获得n/2 + 1的Server票数，设置当前推荐的leader为获胜的Server，将根据获胜的Server相关信息设置自己的状态，否则，继续这个过程，直到leader被选举出来。 通过流程分析我们可以得出：要使Leader获得多数Server的支持，则Server总数必须是奇数2n+1，且存活的Server的数目不得少于n+1. 每个Server启动后都会重复以上流程。在恢复模式下，如果是刚从崩溃状态恢复的或者刚启动的server还会从磁盘快照中恢复数据和会话信息，zk会记录事务日志并定期进行快照，方便在恢复时进行状态恢复。</p>
-<img src="/.com//zk_zab_basic_paxos.png">
+<img src="/.club//zk_zab_basic_paxos.png">
 
 <p>2、Zookeeper选主流程(fast paxos)<br>fast paxos流程是在选举过程中，某Server首先向所有Server提议自己要成为leader，当其它Server收到提议以后，解决epoch和 zxid的冲突，并接受对方的提议，然后向对方发送接受提议完成的消息，重复这个流程，最后一定能选举出Leader。</p>
-<img src="/.com//zk_zab_fast_paxos.png">
+<img src="/.club//zk_zab_fast_paxos.png">
 
 <h4 id="题目：zk集群下server工作状态"><a href="#题目：zk集群下server工作状态" class="headerlink" title="题目：zk集群下server工作状态"></a><strong>题目</strong>：zk集群下server工作状态</h4><h4 id="参考答案：-54"><a href="#参考答案：-54" class="headerlink" title="参考答案："></a><strong>参考答案</strong>：</h4><p>每个Server在工作过程中有四种状态： </p>
 <p>LOOKING：当前Server不知道leader是谁，正在搜寻</p>
@@ -630,10 +630,10 @@
 <h4 id="题目：zk队列管理"><a href="#题目：zk队列管理" class="headerlink" title="题目：zk队列管理"></a><strong>题目</strong>：zk队列管理</h4><h4 id="参考答案：-58"><a href="#参考答案：-58" class="headerlink" title="参考答案："></a><strong>参考答案</strong>：</h4><p>两种类型的队列：<br>1、同步队列，当一个队列的成员都聚齐时，这个队列才可用，否则一直等待所有成员到达。<br>2、队列按照 FIFO 方式进行入队和出队操作。<br>第一类，在约定目录下创建临时目录节点，监听节点数目是否是我们要求的数目。<br>第二类，和分布式锁服务中的控制时序场景基本原理一致，入列有编号，出列按编号。在特定的目录下创建PERSISTENT_SEQUENTIAL节点，创建成功时Watcher通知等待的队列，队列删除序列号最小的节点用以消费。此场景下Zookeeper的znode用于消息存储，znode存储的数据就是消息队列中的消息内容，SEQUENTIAL序列号就是消息的编号，按序取出即可。由于创建的节点是持久化的，所以不必担心队列消息的丢失问题。</p>
 <h4 id="题目：zookeeper分布式锁"><a href="#题目：zookeeper分布式锁" class="headerlink" title="题目：zookeeper分布式锁"></a><strong>题目</strong>：zookeeper分布式锁</h4><h4 id="参考答案：-59"><a href="#参考答案：-59" class="headerlink" title="参考答案："></a><strong>参考答案</strong>：</h4><p>有了zookeeper的一致性文件系统，锁的问题变得容易。锁服务可以分为两类，一个是保持独占，另一个是控制时序。<br>对于第一类，我们将zookeeper上的一个znode看作是一把锁，通过createznode的方式来实现。所有客户端都去创建 /distribute_lock 节点，最终成功创建的那个客户端也即拥有了这把锁。用完删除掉自己创建的distribute_lock 节点就释放出锁。<br>对于第二类， /distribute_lock 已经预先存在，所有客户端在它下面创建临时顺序编号目录节点，和选master一样，编号最小的获得锁，用完删除，依次方便。</p>
 <p><strong>获取分布式锁的流程</strong></p>
-<img src="/.com//zk_distributed_locker1.png">
+<img src="/.club//zk_distributed_locker1.png">
 
 <p>在获取分布式锁的时候在locker节点下创建临时顺序节点，释放锁的时候删除该临时节点。客户端调用createNode方法在locker下创建临时顺序节点，<br>然后调用getChildren(“locker”)来获取locker下面的所有子节点，注意此时不用设置任何Watcher。客户端获取到所有的子节点path之后，如果发现自己创建的节点在所有创建的子节点序号最小，那么就认为该客户端获取到了锁。如果发现自己创建的节点并非locker所有子节点中最小的，说明自己还没有获取到锁，此时客户端需要找到比自己小的那个节点，然后对其调用exist()方法，同时对其注册事件监听器。之后，让这个被关注的节点删除，则客户端的Watcher会收到相应通知，此时再次判断自己创建的节点是否是locker子节点中序号最小的，如果是则获取到了锁，如果不是则重复以上步骤继续获取到比自己小的一个节点并注册监听。当前这个过程中还需要许多的逻辑判断。</p>
-<img src="/.com//zk_distributed_locker2.png">
+<img src="/.club//zk_distributed_locker2.png">
 
 <p>代码的实现主要是基于互斥锁，获取分布式锁的重点逻辑在于BaseDistributedLock，实现了基于Zookeeper实现分布式锁的细节。</p>
 <h4 id="题目：zookeeper集群管理"><a href="#题目：zookeeper集群管理" class="headerlink" title="题目：zookeeper集群管理"></a><strong>题目</strong>：zookeeper集群管理</h4><h4 id="参考答案：-60"><a href="#参考答案：-60" class="headerlink" title="参考答案："></a><strong>参考答案</strong>：</h4><p>所谓集群管理无在乎两点：是否有机器退出和加入、选举master。<br>对于第一点，所有机器约定在父目录下创建临时目录节点，然后监听父目录节点的子节点变化消息。一旦有机器挂掉，该机器与 zookeeper的连接断开，其所创建的临时目录节点被删除，所有其他机器都收到通知：某个兄弟目录被删除，于是，所有人都知道：它上船了。<br>新机器加入也是类似，所有机器收到通知：新兄弟目录加入，highcount又有了，对于第二点，我们稍微改变一下，所有机器创建临时顺序编号目录节点，每次选取编号最小的机器作为master就好。</p>
@@ -685,7 +685,7 @@
     
     <br>
     <strong>本文链接：</strong>
-    http://yoursite.com/2019/07/20/阿里面试题/
+    http://javastar.club/2019/07/20/阿里面试题/
     <br>
     <strong>版权声明：</strong>
     本作品采用
@@ -808,7 +808,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/20/阿里面试题/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://javastar.club/2019/07/20/阿里面试题/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -977,11 +977,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -989,7 +989,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,79 +997,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">佛学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GA</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1081,27 +1013,75 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+                <a href="javascript:void(0)" class="js-tag color3">佛学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,11 +1089,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1125,23 +1129,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
