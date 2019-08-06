@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="星星">
 <meta property="og:description" content="DFS">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T05:03:15.360Z">
+<meta property="og:image" content="https://github.com/starstarb/clouding/blob/master/leetcode/113_sample.png">
+<meta property="og:updated_time" content="2019-08-06T07:49:15.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度优先搜索">
 <meta name="twitter:description" content="DFS">
+<meta name="twitter:image" content="https://github.com/starstarb/clouding/blob/master/leetcode/113_sample.png">
   
     <link rel="alternative" href="/atom.xml" title="星星" type="application/atom+xml">
   
@@ -271,6 +273,65 @@
 <li>递归，首先判断p和q 是不是空，然后判断它们的值是否相等。<br>若以上判断通过，则递归对子节点做同样操作。</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isSameTree(TreeNode p, TreeNode q) &#123;</span><br><span class="line">        if(p==null&amp;&amp;q==null) return true;</span><br><span class="line">        if(q==null||p==null) return false;</span><br><span class="line">        if(p.val!=q.val) return false;</span><br><span class="line">        return isSameTree(p.right,q.right)&amp;&amp;isSameTree(p.left,q.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="133-克隆图"><a href="#133-克隆图" class="headerlink" title="133.克隆图"></a>133.克隆图</h3><p>给定无向连通图中一个节点的引用，返回该图的深拷贝（克隆）。图中的每个节点都包含它的值 val（Int） 和其邻居的列表（list[Node]）。</p>
+<p>示例：</p>
+<p><img src="https://github.com/starstarb/clouding/blob/master/leetcode/113_sample.png" alt="error"><br>输入：<br>{“$id”:”1”,”neighbors”:[{“$id”:”2”,”neighbors”:[{“$ref”:”1”},{“$id”:”3”,”neighbors”:[{“$ref”:”2”},{“$id”:”4”,”neighbors”:[{“$ref”:”3”},{“$ref”:”1”}],”val”:4}],”val”:3}],”val”:2},{“$ref”:”4”}],”val”:1}</p>
+<p>解释：<br>节点 1 的值是 1，它有两个邻居：节点 2 和 4 。<br>节点 2 的值是 2，它有两个邻居：节点 1 和 3 。<br>节点 3 的值是 3，它有两个邻居：节点 2 和 4 。<br>节点 4 的值是 4，它有两个邻居：节点 1 和 3 。</p>
+<p>提示：</p>
+<pre><code>节点数介于 1 到 100 之间。
+无向图是一个简单图，这意味着图中没有重复的边，也没有自环。
+由于图是无向的，如果节点 p 是节点 q 的邻居，那么节点 q 也必须是节点 p 的邻居。
+必须将给定节点的拷贝作为对克隆图的引用返回。</code></pre><p>链接：<a href="https://leetcode-cn.com/problems/clone-graph" target="_blank" rel="noopener">https://leetcode-cn.com/problems/clone-graph</a></p>
+<p>算法思路：<br>遍历整个图，记录已经访问的点，用一个字典记录</p>
+<ol>
+<li>DFS</li>
+</ol>
+<ol start="2">
+<li>BFS</li>
+</ol>
+<p>参考代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">// Definition for a Node.</span><br><span class="line">class Node &#123;</span><br><span class="line">    public int val;</span><br><span class="line">    public List&lt;Node&gt; neighbors;</span><br><span class="line"></span><br><span class="line">    public Node() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    public Node(int _val,List&lt;Node&gt; _neighbors) &#123;</span><br><span class="line">        val = _val;</span><br><span class="line">        neighbors = _neighbors;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">*/</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public Node cloneGraph(Node node) &#123;</span><br><span class="line">        Map&lt;Node,Node&gt; lookup=new HashMap&lt;&gt;();</span><br><span class="line">        return dfs(node,lookup);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Node dfs(Node node,Map&lt;Node,Node&gt; lookup)&#123;</span><br><span class="line">      if(node==null)return null;</span><br><span class="line">      if(lookup.containsKey(node)) return lookup.get(node);</span><br><span class="line">      Node clone=new Node(node.val,new ArrayList&lt;&gt;());</span><br><span class="line">      lookup.put(node,clone);</span><br><span class="line">      for(Node n: node.neighbors) clone.neighbors.add(dfs(n,lookup));</span><br><span class="line">      return clone;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public Node cloneGraph(Node node) &#123;</span><br><span class="line">        if (node == null) return null;</span><br><span class="line">        Map&lt;Node, Node&gt; lookup = new HashMap&lt;&gt;();</span><br><span class="line">        Node clone = new Node(node.val, new ArrayList&lt;&gt;());</span><br><span class="line">        lookup.put(node, clone);</span><br><span class="line">        Deque&lt;Node&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(node);</span><br><span class="line">        while (!queue.isEmpty()) &#123;</span><br><span class="line">            Node tmp = queue.poll();</span><br><span class="line">            for (Node n : tmp.neighbors) &#123;</span><br><span class="line">                if (!lookup.containsKey(n)) &#123;</span><br><span class="line">                    lookup.put(n, new Node(n.val, new ArrayList&lt;&gt;()));</span><br><span class="line">                    queue.offer(n);</span><br><span class="line">                &#125;</span><br><span class="line">                lookup.get(tmp).neighbors.add(lookup.get(n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return clone;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="104-二叉树的最大深度"><a href="#104-二叉树的最大深度" class="headerlink" title="104. 二叉树的最大深度"></a>104. 二叉树的最大深度</h3><p>给定一个二叉树，找出其最大深度。</p>
+<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p>说明: 叶子节点是指没有子节点的节点。</p>
+<p>示例：<br>给定二叉树 [3,9,20,null,null,15,7]，</p>
+<pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7</p>
+<p>返回它的最大深度 3<br>链接：<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-depth-of-binary-tree</a></p>
+<ol>
+<li>递归：<br>时间复杂度: O(N)<br>空间复杂度: O(N) 最好情况：完全平衡树：O(log(N))<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public int maxDepth(TreeNode root) &#123;</span><br><span class="line">        if(root==null) &#123;</span><br><span class="line">          return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">          int left_height=maxDepth(root.left);</span><br><span class="line">          int right_height=maxDepth(root.right);</span><br><span class="line">          return java.lang.Math.max(left_height,right_height)+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>DFS: 通过栈，将递归转化为迭代。 使用DFS访问每个节点，同时在每次访问时更新最大深度。<br>从包含根节点且相应深度为1的栈开始，将当前节点弹出栈并推入子节点，每一步都会更新深度。<br>时间、空间复杂度：O(N)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">import javafx.util.Pair;</span><br><span class="line">import java.lang.Math;</span><br><span class="line">class Solution&#123;</span><br><span class="line">  public int maxDepth(TreeNode root)&#123;</span><br><span class="line">    Queue&lt;Pair&lt;TreeNode,Integer&gt;&gt; stack=new LinkedList&lt;&gt;();</span><br><span class="line">    if(root!=null)&#123;</span><br><span class="line">      stack.add(new Pair(root,1));</span><br><span class="line">    &#125;</span><br><span class="line">    int depth=0;</span><br><span class="line">    while(!stack.isEmpty())&#123;</span><br><span class="line">      Pair&lt;TreeNode,Integer&gt; current=stack.poll();</span><br><span class="line">      root=current.getKey();</span><br><span class="line">      int current_depth=current.getValue();</span><br><span class="line">      if(root!=null)&#123;</span><br><span class="line">        depth=Math.max(depth,current_depth);</span><br><span class="line">        stack.add(new Pair(root.left,current_depth+1));</span><br><span class="line">        stack.add(new Pair(root.right,current_depth+1));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return depth;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里提一点，为什么在这里DFS比递归慢很多，因为测试的数据量太少，如果数据量大，选择DFS不会爆栈同时会比递归执行时间少很多，因此，以后在项目中要根据实际情况选择合适的算法。</p>
+<h3 id="祖玛游戏"><a href="#祖玛游戏" class="headerlink" title="祖玛游戏"></a>祖玛游戏</h3><p>回忆一下祖玛游戏。现在桌上有一串球，颜色有红色(R)，黄色(Y)，蓝色(B)，绿色(G)，还有白色(W)。 现在你手里也有几个球。</p>
+<p>每一次，你可以从手里的球选一个，然后把这个球插入到一串球中的某个位置上（包括最左端，最右端）。接着，如果有出现三个或者三个以上颜色相同的球相连的话，就把它们移除掉。重复这一步骤直到桌上所有的球都被移除。</p>
+<p>找到插入并可以移除掉桌上所有球所需的最少的球数。如果不能移除桌上所有的球，输出 -1 。</p>
+<p>示例:<br>输入: “WRRBBW”, “RB”<br>输出: -1<br>解释: WRRBBW -&gt; WRR[R]BBW -&gt; WBBW -&gt; WBB[B]W -&gt; WW （翻译者标注：手上球已经用完，桌上还剩两个球无法消除，返回-1）</p>
+<p>输入: “WWRRBBWW”, “WRBRW”<br>输出: 2<br>解释: WWRRBBWW -&gt; WWRR[R]BBWW -&gt; WWBBWW -&gt; WWBB[B]WW -&gt; WWWW -&gt; empty</p>
+<p>输入:”G”, “GGGGG”<br>输出: 2<br>解释: G -&gt; G[G] -&gt; GG[G] -&gt; empty </p>
+<p>输入: “RBYYBBRRB”, “YRBGB”<br>输出: 3<br>解释: RBYYBBRRB -&gt; RBYY[Y]BBRRB -&gt; RBBBRRB -&gt; RRRB -&gt; B -&gt; B[B] -&gt; BB[B] -&gt; empty </p>
+<p>标注:</p>
+<pre><code>你可以假设桌上一开始的球中，不会有三个及三个以上颜色相同且连着的球。
+桌上的球不会超过20个，输入的数据中代表这些球的字符串的名字是 &quot;board&quot; 。
+你手中的球不会超过5个，输入的数据中代表这些球的字符串的名字是 &quot;hand&quot;。
+输入的两个字符串均为非空字符串，且只包含字符 &apos;R&apos;,&apos;Y&apos;,&apos;B&apos;,&apos;G&apos;,&apos;W&apos;。</code></pre><p>链接：<a href="https://leetcode-cn.com/problems/zuma-game" target="_blank" rel="noopener">https://leetcode-cn.com/problems/zuma-game</a></p>
+<p>思路：<br>题目希望我们用最少的球来消掉桌上所有的球，如果不能完全消掉，返回-1。</p>
+<p>我们使用哈希表来统计手中每种球的个数。</p>
+<p>然后我们遍历桌上的球，我们找连续相同球的个数，在没有可以消除的情况下，连续的个数只能是1个或2个，然后我们用3减去连续个数，就是我们需要补充的球数以使其可以被消除，那么我们在哈希表表中看我们手中的该类型的球够不够，如果够就表示可以消除，我们在哈希表中减去需要使用掉的球数，然后将消掉的球移除。</p>
+<p>然后对新的字符串调用递归，如果可以成功消除，会返回一个结果，该结果加上之前需要的球数用来更新结果res，注意调用完递归要恢复哈希表的状态(backtrack)。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int MAXCOUNT = 6;</span><br><span class="line">    // the max balls you need will not exceed 6 since &quot;The number of balls in your hand won&apos;t exceed 5&quot;</span><br><span class="line">    public int findMinStep(String board, String hand) &#123;</span><br><span class="line">        int[] handCount = new int[26];</span><br><span class="line">        for (int i = 0; i &lt; hand.length(); i++) &#123;</span><br><span class="line">            handCount[hand.charAt(i) - &apos;A&apos;]++;</span><br><span class="line">        &#125;</span><br><span class="line">        int result = backtrack(board + &quot;#&quot;, handCount);</span><br><span class="line">        // append a &quot;#&quot; to avoid special process while j==board.length, make the code shorter.</span><br><span class="line">        return result == MAXCOUNT ? -1 : result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int backtrack(String s, int[] h) &#123;</span><br><span class="line">        s = removeConsecutive(s);</span><br><span class="line">        if (s.equals(&quot;#&quot;)) return 0;</span><br><span class="line">        int rs = MAXCOUNT, need = 0;</span><br><span class="line">        int i = 0;</span><br><span class="line">        for (int j = 0 ; j &lt; s.length(); ++j) &#123;</span><br><span class="line">            if (s.charAt(j) == s.charAt(i)) continue;</span><br><span class="line">            need = 3 - (j - i);</span><br><span class="line">            //balls need to remove current consecutive balls.</span><br><span class="line">            if (h[s.charAt(i) - &apos;A&apos;] &gt;= need) &#123;</span><br><span class="line">                h[s.charAt(i) - &apos;A&apos;] -= need;</span><br><span class="line">                rs = Math.min(rs, need + backtrack(s.substring(0, i) + s.substring(j), h));</span><br><span class="line">                h[s.charAt(i) - &apos;A&apos;] += need;</span><br><span class="line">            &#125;</span><br><span class="line">            i = j;</span><br><span class="line">        &#125;</span><br><span class="line">        return rs;</span><br><span class="line">    &#125;</span><br><span class="line">    //remove consecutive balls longer than 3</span><br><span class="line">    private String removeConsecutive(String board) &#123;</span><br><span class="line">        int i = 0;</span><br><span class="line">        for (int j = 0; j &lt; board.length(); ++j) &#123;</span><br><span class="line">            if (board.charAt(j) == board.charAt(i)) continue;</span><br><span class="line">            if (j - i &gt;= 3) return removeConsecutive(board.substring(0, i) + board.substring(j));</span><br><span class="line">            else i = j;</span><br><span class="line">        &#125;</span><br><span class="line">        return board;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>算法</strong><br>(dfs)</p>
+<p>我们先将手中的球用哈希表来存储一下，然后看桌上的球能否在哈希表里的球添加后消除，然后消除后递归处理剩下的。中间记录需要的球数，用来更新需要球数的最小值。如果最小值超出了手中球的个数，则无法消除。</p>
+<p>时间复杂度分析：桌上的球不会超过20个，手中的球不会超过5个，所以时间复杂度为O(m+n).<br>C++ 代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string del(string board)&#123;</span><br><span class="line">        for(int i=0;i&lt;board.size();)&#123;</span><br><span class="line">            int j=i;</span><br><span class="line">            while(j&lt;board.size()&amp;&amp;board[i]==board[j])j++;</span><br><span class="line">            if(j-i&gt;=3)</span><br><span class="line">                return del(board.substr(0,i)+board.substr(j));</span><br><span class="line">            else i=j;</span><br><span class="line">        &#125;</span><br><span class="line">        return board;</span><br><span class="line">    &#125;</span><br><span class="line">    int dfs(string board, unordered_map&lt;char,int&gt;&amp;hash)&#123;</span><br><span class="line">        board=del(board);</span><br><span class="line">        if(board.size()==0)return 0;</span><br><span class="line">        int rs=6,need=0;</span><br><span class="line">        for(int i=0;i&lt;board.size();)&#123;</span><br><span class="line">            int j=i;</span><br><span class="line">            while(j&lt;board.size()&amp;&amp;board[i]==board[j])j++;</span><br><span class="line">            need=3-(j-i);</span><br><span class="line">            if(hash[board[i]]&gt;=need)&#123;</span><br><span class="line">                hash[board[i]]-=need;</span><br><span class="line">                rs=min(rs,need+dfs(board.substr(0,i)+board.substr(j),hash));</span><br><span class="line">                hash[board[i]]+=need;</span><br><span class="line">            &#125;</span><br><span class="line">            i=j;</span><br><span class="line">        &#125;</span><br><span class="line">        return rs;</span><br><span class="line">    &#125;</span><br><span class="line">    int findMinStep(string board, string hand) &#123;</span><br><span class="line">        unordered_map&lt;char,int&gt;hash;</span><br><span class="line">        for(auto x:hand)hash[x]++;</span><br><span class="line">        int res=dfs(board,hash);</span><br><span class="line">        return res==6?-1:res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
 
 
@@ -461,7 +522,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证二叉搜索树"><span class="toc-number">1.</span> <span class="toc-text">验证二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#207课程表"><span class="toc-number">2.</span> <span class="toc-text">207课程表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#恢复二叉搜索树"><span class="toc-number">3.</span> <span class="toc-text">恢复二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相同的树"><span class="toc-number">4.</span> <span class="toc-text">相同的树</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证二叉搜索树"><span class="toc-number">1.</span> <span class="toc-text">验证二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#207课程表"><span class="toc-number">2.</span> <span class="toc-text">207课程表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#恢复二叉搜索树"><span class="toc-number">3.</span> <span class="toc-text">恢复二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相同的树"><span class="toc-number">4.</span> <span class="toc-text">相同的树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#133-克隆图"><span class="toc-number">5.</span> <span class="toc-text">133.克隆图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#104-二叉树的最大深度"><span class="toc-number">6.</span> <span class="toc-text">104. 二叉树的最大深度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#祖玛游戏"><span class="toc-number">7.</span> <span class="toc-text">祖玛游戏</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -590,15 +651,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,11 +663,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,11 +675,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,7 +687,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,6 +696,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,11 +719,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,10 +759,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
              
@@ -722,11 +779,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">树</a>
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
