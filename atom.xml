@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://javastar.club/"/>
-  <updated>2019-08-07T10:28:33.474Z</updated>
+  <updated>2019-08-08T03:41:29.963Z</updated>
   <id>http://javastar.club/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>debug技巧总结</title>
+    <link href="http://javastar.club/archives/fe81e267.html"/>
+    <id>http://javastar.club/archives/fe81e267.html</id>
+    <published>2019-08-08T03:41:29.000Z</published>
+    <updated>2019-08-08T03:41:29.963Z</updated>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>英语阅读</title>
+    <link href="http://javastar.club/archives/c20ae70.html"/>
+    <id>http://javastar.club/archives/c20ae70.html</id>
+    <published>2019-08-08T01:58:16.000Z</published>
+    <updated>2019-08-08T03:04:18.031Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>Every atom in your body came from a star that exploded.And, the atoms in your left hand probably came from a different star than your right hand.It really is the most poetic thing I know about physics.You are all stardust.--Lawrence M. Krauss</code></pre><a id="more"></a><ol>  <li>    <p>If I should meet thee<br>After long years,<br>How should I greet      thee?<br>With silence and tears.<br>–Byron</p>  </li>  <li>    <p>Time doth transfix the flourish set on youth<br>And delves the parallels      in beauty’s brow,<br>Feeds one the rarities of nature’s truth,<br>And      nothing stands but for his scythe to mow<br>–Shakespeare’ sonnets</p>  </li>  <li>    <p>Do not fall in love with people like me,<br>I will take you to      museums,and parks, and monuments.</p>    <p>And kiss you in every beautiful place,<br>so that you can never go back      to them</p>    <p>Without tasting me like blood in your mouth.<br>I will destroy you in the      most beautiful way possible.</p>    <p>And when I leave you will finally understand,<br>Why storms are named      after people.<br>–Caitlyn Siehl</p>  </li>  <li>    <p>I will return, find you, love you ,marry you and live<br>without shame.    </p>  </li>  <li>    <p>We are all in the gutter, but some of us are looking<br>at the      stars.<br>– Wilde</p>  </li>  <li>    <p>Sometimes ever, sometimes never.</p>  </li>  <li>    <p>If I could, surely would.</p>  </li>  <li>    <p>May there be enough clouds in you life to make a<br>beautiful sunset.</p>  </li>  <li>    <p>No pains, no gains.</p>  </li>  <li>    <p>Life is like a box of chocolates,you never know what<br>what you are      going to get.</p>  </li>  <li>    <p>You must always have faith in who you are.</p>  </li>  <li>    <p>The longest day has an end.<br>– Howell</p>  </li>  <li>    <p>Do not cry because it is over,smile because it<br>happened.</p>  </li>  <li>    <p>To be,or not to be - that is the question.<br>–hamlet</p>  </li>  <li>    <p>When you feel like hope is gone, look inside you and<br>search your soul,      you will find a hero lies in you mind. Dreams are hard to follow,but don’t      let anyone steal your dream.</p>  </li>  <li>    <p>And forever has no end.</p>  </li>  <li>    <p>Love is a game that two can play and both win.</p>  </li>  <li>    <p>Life has taught us that love does not consist in<br>gazing at each other      but in looking outward together in the same direction.</p>  </li>  <li>    <p>Love alone could waken love!</p>  </li>  <li>    <p>Some of us get dipped in flat, some in satin, some in<br>gloss.<br>But      every once in a while you find someone who’s iridescent, and when you do,      nothing will ever compare.</p>  </li></ol><h3 id="Reading-Comprehension"><a href="#Reading-Comprehension" class="headerlink" title="Reading Comprehension"></a>Reading  Comprehension</h3><p> France,which prides itself as the global innovator of fashion, has decided  its fashion industry has lost an absolute right to define physical beauty for  women.<br> Its lawmakers gave preliminary approval last week to a<br> law that  would make it a crime to employ ultra-thin models on runways.</p><p> The parliament also agreed to ban websites that “incite excessive thinness”  by promoting extreme dieting.</p><p> Such measures have a couple of uplifting motives. They suggest beauty should  not be defined by looks that end<br> up impinging on health. That’s a start.  And the ban on ultra-thin models seems to go beyond protecting models from  starving themselves to death–as some have done.<br> It tells the fashion  industry that it must take responsibility for the signal it sends women,  especially teenage girls, about the social tape-measure they must use to  determine their individual worth.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;Every atom in your body came from a star that exploded.
+
+And, the atoms in your left hand probably came from a different star than your right hand.
+
+It really is the most poetic thing I know about physics.
+
+You are all stardust.
+--Lawrence M. Krauss&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="http://javastar.club/categories/English/"/>
+    
+    
+      <category term="English" scheme="http://javastar.club/tags/English/"/>
+    
+  </entry>
   
   <entry>
     <title>数学基础复习:概率论</title>
@@ -397,50 +448,6 @@
     <link href="http://javastar.club/archives/e08dbd6c.html"/>
     <id>http://javastar.club/archives/e08dbd6c.html</id>
     <published>2019-07-28T02:21:48.000Z</published>
-    <updated>2019-08-07T07:14:52.689Z</updated>
-    
-    <content type="html"><![CDATA[<p>Spring系列博客学习</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Spring系列博客学习&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Spring" scheme="http://javastar.club/categories/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://javastar.club/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot集成Thymeleaf</title>
-    <link href="http://javastar.club/archives/5b29aca8.html"/>
-    <id>http://javastar.club/archives/5b29aca8.html</id>
-    <published>2019-07-28T02:21:34.000Z</published>
-    <updated>2019-08-07T07:14:52.689Z</updated>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMVC</title>
-    <link href="http://javastar.club/archives/ae0f95e0.html"/>
-    <id>http://javastar.club/archives/ae0f95e0.html</id>
-    <published>2019-07-28T02:20:03.000Z</published>
     <updated>2019-08-07T07:14:52.689Z</updated>
     
     <content type="html"><![CDATA[<p>Spring系列博客学习</p><a id="more"></a>]]></content>

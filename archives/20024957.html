@@ -19,7 +19,7 @@
   <meta property="og:site_name" content="星星">
   <meta property="og:description" content="图">
   <meta property="og:locale" content="default">
-  <meta property="og:updated_time" content="2019-08-07T07:14:52.689Z">
+  <meta property="og:updated_time" content="2019-08-08T03:46:10.787Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="图论算法归类">
   <meta name="twitter:description" content="图">
@@ -198,7 +198,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-keyboard-o"></i>
                         <span class="post-meta-item-text"> 字数统计: </span>
-                        <span class="post-count">337字</span>
+                        <span class="post-count">1.9k字</span>
                       </span>
                     </span>
 
@@ -207,7 +207,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-hourglass-half"></i>
                         <span class="post-meta-item-text"> 阅读时长: </span>
-                        <span class="post-count">1分</span>
+                        <span class="post-count">7分</span>
                       </span>
                     </span>
                   </div>
@@ -228,20 +228,61 @@
                                                                                                     title="网络流"></a>网络流
                   </h3>
                   <p>EK算法、dinic算法</p>
+                  <h3 id="拓扑排序树"><a href="#拓扑排序树" class="headerlink"
+                                                                                                    title="拓扑排序树"></a>拓扑排序树
+                  </h3>
+                  <p>定义：</p>
+                  <pre><code>拓扑排序：图中的点以线性方式进行排序。即若图中有一条边是u-&gt;v,则最后的排序结果中u总在v前面。类似于先序图的概念，必须先到达u点才能到达v点，则u&gt;v。</code></pre>
+                  <p>适用条件：</p>
+                  <pre><code>并不是所有图都可以进行拓扑排序。这里有个重要的概念是离散数学中的偏序关系。
+
+偏序的大意就是，如果图中的两个点有确定的大小关系，例如一条边上的两个点，或没有直接的联系，即两个点不相通，则就是偏序关系。不能存在互相矛盾的关系，比如环路，例如a-&gt;b,b-&gt;a，这种就不满足偏序关系。所以，只要一个图中不存在环路，不管图中的点连通与否，都满足偏序关系。而拓扑排序的条件就是这个图是有向无环图（DAG），有向是为了确定两个点的先后顺序，若无向，则关系都乱了。</code></pre>
+                  <p>唯一性：</p>
+                  <pre><code>图中顶点的拓扑关系并不像数字的大小关系那样简单，这里还有个重要的概念的离散数学中的全序关系。
+
+全序关系在图中的大意就是，每个点都与其他所有点有着确定的先后顺序，那么这个图就满足全序关系。
+
+这里用数组与图做对比来解释，任意两个不相等的数字之间有着确定的大小关系，所以数组就满足全序关系，这样排序后的结果就是惟一的。但是通常我们评价排序算法时，要考虑一个因素是稳定性，即相同数字的排序结果是否和出现的顺序一致。因为两个相同的数字的大小关系无法确定，不满足全序关系，那么他们在排序结果中的位置也就无法确定。
+
+回到图中，如果DAG中的每个点都与其他所有点有确定的先后顺序，那么这个DAG的拓扑排序结果是惟一的，但是如果存在两个点不直接相连，即无法确定他们的拓扑关系，那么它们在拓扑结果中的位置就无法确定，拓扑结果就不唯一了。</code></pre>
+                  <p>基本思想：</p>
+                  <pre><code>拓扑排序有两种做法，一种是bfs的思路，一种是dfs的思路。本文介绍bfs方法，bfs是以入度为切入点，一个点的入度越小，则排在它前面的点就越少。基本思想是动态维护一个入度为0的顶点的队列。然后取一个点出发，依次将图中与该点相连</code></pre>
+                  <p>
+                    的边去掉，如果在过程中又出现了新的入度为0的顶点，则加入队列中，直到队列为空。如果此时图中没有边了，则<br>不存在环路，从而得到排序结果，这也说明bfs方法可以检测一个图是不是有向无环图。<br>数据结构：
+                  </p>
+                  <pre><code>算法中涉及到的数据结构有以下几种：
+
+1、图的邻接矩阵，用来表示图。
+
+2、保存排序结果的集合，一般用vector。
+
+3、入度数组，用来保存每个点的入度。
+
+4、队列，用来保存当前入度为0并且没有遍历到的点。</code></pre>
+                  <p>算法过程：</p>
+                  <pre><code>1、建图
+
+2、遍历图中的所有点，统计每个点的入度，存到入度数组中
+
+3、将入度为0的点入队
+
+4、对当前队列中的点进行遍历，取出点并将它存到结果集中。再从该点出发，去掉图中以该点为起点的边，并且将边的终点的入度-1。同时判断终点的入度是否减为0，若为0，则入队。
+
+5、重复4，直到队列为空。</code></pre>
                   <h3 id="最小高度树"><a href="#最小高度树" class="headerlink"
                                                                                                     title="最小高度树"></a>最小高度树
                   </h3>
                   <p>
                     对于一个具有树特征的无向图，我们可选择任何一个节点作为根。图因此可以成为树，在所有可能的树中，具有最小高度的树被称为最小高度树。给出这样的一个图，写出一个函数找到所有的最小高度树并返回他们的根节点。
                   </p>
-                  <p>格式</p>
+                  <p><strong>格式</strong></p>
                   <p>该图包含 n 个节点，标记为 0 到 n - 1。给定数字 n 和一个无向边 edges
                     列表（每一个边都是一对标签）。</p>
                   <p>你可以假设没有重复的边会出现在 edges 中。由于所有的边都是无向边， [0, 1]和 [1, 0]
                     是相同的，因此不会同时出现在
                     edges 里。
                   </p>
-                  <p>示例 1:</p>
+                  <p><strong>示例 1:</strong></p>
                   <p>输入: n = 4, edges = [[1, 0], [1, 2], [1, 3]]</p>
                   <pre><code>  0
   |
@@ -249,7 +290,7 @@
  / \
 2   3 </code></pre>
                   <p>输出: [1]</p>
-                  <p>示例 2:</p>
+                  <p><strong>示例 2:</strong></p>
                   <p>输入: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
                   </p>
                   <pre><code>0  1  2
@@ -263,9 +304,24 @@
                   <p>说明:</p>
                   <pre><code> 根据树的定义，树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。
 树的高度是指根节点和叶子节点之间最长向下路径上边的数量。</code></pre>
-                  <p>链接：<a href="https://leetcode-cn.com/problems/minimum-height-trees" rel="external nofollow noopener noreferrer"
-                                                                                                    target="_blank">https://leetcode-cn.com/problems/minimum-height-trees</a>
+                  <p><a href="https://leetcode-cn.com/problems/minimum-height-trees" rel="external nofollow noopener noreferrer"
+                                                                                                    target="_blank">点击链接</a>
                   </p>
+                  <p>每次总是删除“入度”个数最少的结点，因为树是无向无环图，删除了它们以后，与之相连的结点的入度也相应地减少
+                    1，直到最后剩下 1 个结点或者 2
+                    个结点。<br>使用了“邻接表”表示图，使用了“入度数组”，还使用了队列保存了下一轮要“剔除”的结点编号。</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.HashSet;</span><br><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Set;</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public List&lt;Integer&gt; findMinHeightTrees(int n, int[][] edges) &#123;</span><br><span class="line">        List&lt;Integer&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">        // 特判</span><br><span class="line">        if (n &lt;= 2) &#123;</span><br><span class="line">            for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">                res.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">            return res;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 入度数组，每一次要把入度为 1 的结点剔除</span><br><span class="line">        int[] inDegrees = new int[n];</span><br><span class="line"></span><br><span class="line">        // 默认为 False，如果剔除，设置为 True</span><br><span class="line">        boolean[] result = new boolean[n];</span><br><span class="line"></span><br><span class="line">        // 因为是无向图，所以邻接表拿出一条边，两个结点都要存一下</span><br><span class="line">        // 注意：右边就不要写具体的实现类了，等到实例化的时候再写具体的实现类</span><br><span class="line">        Set&lt;Integer&gt;[] adjs = new Set[n];</span><br><span class="line">        // 初始化</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            adjs[i] = new HashSet&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int[] edge : edges) &#123;</span><br><span class="line">            int start = edge[0];</span><br><span class="line">            int end = edge[1];</span><br><span class="line">            adjs[start].add(end);</span><br><span class="line">            adjs[end].add(start);</span><br><span class="line">            inDegrees[start] += 1;</span><br><span class="line">            inDegrees[end] += 1;</span><br><span class="line">        &#125;</span><br><span class="line">        LinkedList&lt;Integer&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        // 入度为 1 的结点入队</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (inDegrees[i] == 1) &#123;</span><br><span class="line">                queue.addLast(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 注意边界条件 n == 2 和 n == 1 是如何分析出来的</span><br><span class="line">        while (n &gt; 2) &#123;</span><br><span class="line">            int size = queue.size();</span><br><span class="line">            System.out.println(queue);</span><br><span class="line">            // 一次减去这么多</span><br><span class="line">            n -= size;</span><br><span class="line">            for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">                int top = queue.removeFirst();</span><br><span class="line">                result[top] = true;</span><br><span class="line">                inDegrees[top] -= 1;</span><br><span class="line">                // 把它和它的邻接结点的入度全部减 1</span><br><span class="line">                Set&lt;Integer&gt; successors = adjs[top];</span><br><span class="line">                for (Integer successor : successors) &#123;</span><br><span class="line">                    inDegrees[successor] -= 1;</span><br><span class="line">                    if (inDegrees[successor] == 1) &#123;</span><br><span class="line">                        queue.addLast(successor);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        n = result.length;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (!result[i]) &#123;</span><br><span class="line">                res.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[][] edges = new int[][]&#123;&#123;1, 0&#125;, &#123;1, 2&#125;, &#123;1, 3&#125;&#125;;</span><br><span class="line">        int n = 4;</span><br><span class="line">        Solution solution = new Solution();</span><br><span class="line">        List&lt;Integer&gt; res = solution.findMinHeightTrees(n, edges);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
                   <div class="declare">
                     <strong>本文作者：</strong>
@@ -466,8 +522,12 @@
                                                                                                               class="toc-number">1.</span>
                               <span class="toc-text">网络流</span></a></li>
                           <li class="toc-item toc-level-3"><a class="toc-link"
-                                                                                                            href="#最小高度树"><span
+                                                                                                            href="#拓扑排序树"><span
                                                                                                               class="toc-number">2.</span>
+                              <span class="toc-text">拓扑排序树</span></a></li>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#最小高度树"><span
+                                                                                                              class="toc-number">3.</span>
                               <span class="toc-text">最小高度树</span></a></li>
                         </ol>
                       </div>
@@ -7226,12 +7286,12 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)"
-                                                                                                class="js-tag color1">Python统计分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)"
+                                                                                                class="js-tag color1">Python统计分析</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7259,10 +7319,6 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">佛学</a>
               </li>
 
@@ -7271,11 +7327,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7287,11 +7343,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SA</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7299,11 +7351,23 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SA</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GA</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7315,11 +7379,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7363,11 +7427,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
 
               <li class="article-tag-list-item">
