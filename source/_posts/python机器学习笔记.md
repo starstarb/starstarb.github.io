@@ -43,7 +43,7 @@ date: 2019-08-08 15:08:46
 5，将生成的多颗决策树组成随机森林。对于分类问题，按照多棵树分类器投票决定最终分类结果；对于回归问题，由多颗树预测值的均值决定最终预测结果
 
 注意：OOB（out-of-bag ）：每棵决策树的生成都需要自助采样，这时就有1/3的数据未被选中，这部分数据就称为袋外数据。
-![](https://raw.githubusercontent.com/starstarb/master/python/随机森林.png)
+![](https://github.com/starstarb/clouding/raw/master/python/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97.png)
 
 #### 四，随机森林优缺点总结
 
@@ -77,21 +77,21 @@ date: 2019-08-08 15:08:46
 　　我们将变量重要性评分（variable importance measures）用VIM来表示，将Gini指数用GI来表示，假设m个特征X1，X2，X3，......Xc，现在要计算出每个特征Xj的Gini指数评分VIMj（Gini）,亦即第j个特征在RF所有决策树中节点分裂不纯度的平均改变量。
 
 　　Gini指数的计算公式为：
-![](https://raw.githubusercontent.com/starstarb/master/python/Gini.png)
+![](https://github.com/starstarb/clouding/raw/master/python/Gini.png)
 其中，K表示有K个类别。Pmk表示节点m中类列k所占的比例。
 
 　　直观的说，就是随便从节点m中随机抽取两个样本，其类别标记不一致的概率。
 
 　　特征Xj在节点m的重要性，即节点m分支前后的Gini指数变化量为：
-![](https://raw.githubusercontent.com/starstarb/master/python/VIM.png)
+![](https://github.com/starstarb/clouding/raw/master/python/VIM.png)
 其中，GIl和GIr分别表示分枝后两个新节点的Gini指数。
 
 　　如果，特征Xj在决策树i中出现的节点在集合M中，那么Xj在第i颗树的重要性为：
-![](https://raw.githubusercontent.com/starstarb/master/python/VIMIT.png)
+![](https://github.com/starstarb/clouding/raw/master/python/VIMIT.png)
 假设RF中共有n颗树，那么
-![](https://raw.githubusercontent.com/starstarb/master/python/VIMij.png)
+![](https://github.com/starstarb/clouding/raw/master/python/VIMij.png)
 　最后，把所有求得的重要性评分做一个归一化处理即可。
-![](https://raw.githubusercontent.com/starstarb/master/python/VIMsum.png)
+![](https://github.com/starstarb/clouding/raw/master/python/VIMsum.png)
 ##### 5.1 特征选择
 
 **5.1.1 特征选择的步骤**
