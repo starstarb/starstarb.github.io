@@ -8,21 +8,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://javastar.club">
-  <title>Archives: 2019 | 星星</title>
+  <title>协同过滤算法 | 星星</title>
   <meta name="viewport"
                                                                                   content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
-  <meta name="keywords" content="Java、Python、算法">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="星星">
-  <meta property="og:url"
-                                                                                  content="http://javastar.club/archives/2019/page/8/index.html">
+  <meta name="description" content="协同过滤算法:参考">
+  <meta name="keywords" content="python">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="协同过滤算法">
+  <meta property="og:url" content="http://javastar.club/archives/a10feb4a.html">
   <meta property="og:site_name" content="星星">
-  <meta property="og:description" content="个人技术博客">
+  <meta property="og:description" content="协同过滤算法:参考">
   <meta property="og:locale" content="default">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/python/20171227113119804.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/python/xitongguolv1.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/python/CF1.png">
+  <meta property="og:updated_time" content="2019-08-10T08:22:31.965Z">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="星星">
-  <meta name="twitter:description" content="个人技术博客">
+  <meta name="twitter:title" content="协同过滤算法">
+  <meta name="twitter:description" content="协同过滤算法:参考">
+  <meta name="twitter:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/python/20171227113119804.png">
 
   <link rel="alternative" href="/atom.xml" title="星星"
                                                                                   type="application/atom+xml">
@@ -174,507 +182,387 @@
                                                                                             class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <section class="archives-wrap">
-              <div class="archive-year-wrap">
-                <a href="/archives/2019" class="archive-year">2019</a>
+            <article id="post-协同过滤算法" class="article article-type-post " itemscope
+                                                                                            itemprop="blogPost">
+              <div class="article-inner">
+
+                <header class="article-header">
+                  <h1 class="article-title" itemprop="name">
+                    协同过滤算法
+                  </h1>
+
+                  <a href="/archives/a10feb4a.html"
+                                                                                                  class="archive-article-date">
+                    <time datetime="2019-08-10T08:09:37.000Z"
+                                                                                                    itemprop="datePublished"><i
+                                                                                                      class="icon-calendar icon"></i>2019-08-10</time>
+                  </a>
+
+                  <!-- 需要添加的位置 -->
+                  <!-- 开始添加字数统计-->
+
+                  <div style="margin-top:10px;">
+                    <span class="post-time">
+                      <span class="post-meta-item-icon">
+                        <i class="fa fa-keyboard-o"></i>
+                        <span class="post-meta-item-text"> 字数统计: </span>
+                        <span class="post-count">2.4k字</span>
+                      </span>
+                    </span>
+
+                    <span class="post-time">
+                      &nbsp; | &nbsp;
+                      <span class="post-meta-item-icon">
+                        <i class="fa fa-hourglass-half"></i>
+                        <span class="post-meta-item-text"> 阅读时长: </span>
+                        <span class="post-count">10分</span>
+                      </span>
+                    </span>
+                  </div>
+
+                  <!-- 添加完成 -->
+
+                  <span class="archive-article-date">
+                    阅读量 <span id="busuanzi_value_page_pv"></span>
+                  </span>
+
+                </header>
+
+                <div class="article-entry" itemprop="articleBody">
+
+                  <p>协同过滤算法:<a href="https://blog.csdn.net/DanyHgc/article/details/78910379" rel="external nofollow noopener noreferrer"
+                                                                                                    target="_blank">参考</a>
+                  </p>
+                  <a id="more"></a>
+                  <h3 id="什么是协同过滤"><a href="#什么是协同过滤" class="headerlink"
+                                                                                                    title="什么是协同过滤"></a>什么是协同过滤
+                  </h3>
+                  <p>协同过滤是利用集体智慧的一个典型方法。要理解什么是协同过滤 (Collaborative Filtering, 简称
+                    CF)，首先想一个简单的问题，如果你现在想看个电影，但你不知道具体看哪部，你会怎么做？大部分的人会问问周围的朋友，看看最近有什么好看的电影推荐，而我们一般更倾向于从口味比较类似的朋友那里得到推荐。<br>这就是协同过滤的核心思想。<br>换句话说，就是借鉴和你相关人群的观点来进行推荐，很好理解。
+                  </p>
+                  <h3 id="协同过滤的实现"><a href="#协同过滤的实现" class="headerlink"
+                                                                                                    title="协同过滤的实现"></a>协同过滤的实现
+                  </h3>
+                  <p>要实现协同过滤的推荐算法，要进行以下三个步骤：</p>
+                  <ol>
+                    <li>收集数据</li>
+                    <li>找到相似用户和物品</li>
+                    <li>进行推荐</li>
+                  </ol>
+                  <p><strong>1 收集数据</strong></p>
+                  <p>
+                    这里的数据指的都是用户的历史行为数据，比如用户的购买历史，关注，收藏行为，或者发表了某些评论，给某个物品打了多少分等等，这些都可以用来作为数据供推荐算法使用，服务于推荐算法。需要特别指出的在于，不同的数据准确性不同，粒度也不同，在使用时需要考虑到噪音所带来的影响。
+                  </p>
+                  <p><strong>2 找到相似用户和物品</strong></p>
+                  <p>这一步也很简单，其实就是计算用户间以及物品间的相似度。以下是几种计算相似度的方法：<br><img src="https://github.com/starstarb/clouding/raw/master/python/20171227113119804.png"
+                                                                                                    alt>
+                  </p>
+                  <p><strong>3 进行推荐</strong></p>
+                  <p>在知道了如何计算相似度后，就可以进行推荐了。</p>
+                  <p>在协同过滤中，有两种主流方法：</p>
+                  <ol>
+                    <li>基于用户的协同过滤</li>
+                    <li>基于物品的协同过滤<br>具体怎么来阐述他们的原理呢，看个图大家就明白了</li>
+                  </ol>
+                  <p>基于用户的 CF
+                    的基本思想相当简单，基于用户对物品的偏好找到相邻邻居用户，然后将邻居用户喜欢的推荐给当前用户。计算上，就是将一个用户对所有物品的偏好作为一个向量来计算用户之间的相似度，找到
+                    K
+                    邻居后，根据邻居的相似度权重以及他们对物品的偏好，预测当前用户没有偏好的未涉及物品，计算得到一个排序的物品列表作为推荐。
+                    下图给出了一个例子，对于用户
+                    A，根据用户的历史偏好，这里只计算得到一个邻居 - 用户 C，然后将用户 C 喜欢的物品 D 推荐给用户
+                    A。<br><img src="https://github.com/starstarb/clouding/raw/master/python/xitongguolv1.png"
+                                                                                                    alt>
+                  </p>
+                  <p> 基于物品的 CF 的原理和基于用户的 CF
+                    类似，只是在计算邻居时采用物品本身，而不是从用户的角度，即基于用户对物品的偏好找到相似的物品，然后根据用户的历史偏好，推荐相似的物品给他。从计算的角度看，就是将所有用户对某个物品的偏好作为一个向量来计算物品之间的相似度，得到物品的相似物品后，根据用户历史的偏好预测当前用户还没有表示偏好的物品，计算得到一个排序的物品列表作为推荐。下图给出了一个例子，对于物品
+                    A，根据所有用户的历史偏好，喜欢物品 A 的用户都喜欢物品 C，得出物品 A 和物品 C 比较相似，而用户 C 喜欢物品
+                    A，那么可以推断出用户
+                    C
+                    可能也喜欢物品 C。<br><img src="https://github.com/starstarb/clouding/raw/master/python/CF1.png"
+                                                                                                    alt>
+                  </p>
+                  <h3 id="算法存在的问题"><a href="#算法存在的问题" class="headerlink"
+                                                                                                    title="算法存在的问题"></a>算法存在的问题
+                  </h3>
+                  <p>这个算法实现起来也比较简单，但是在实际应用中有时候也会有问题的。</p>
+                  <p>
+                    比如一些非常流行的商品可能很多人都喜欢，这种商品推荐给你就没什么意义了，所以计算的时候需要对这种商品加一个权重或者把这种商品完全去掉也行。
+                  </p>
+                  <p>再有，对于一些通用的东西，比如买书的时候的工具书，如现代汉语词典，新华字典神马的，通用性太强了，推荐也没什么必要了。
+                  </p>
+                  <h3 id="适用场景"><a href="#适用场景" class="headerlink"
+                                                                                                    title="适用场景"></a>适用场景
+                  </h3>
+                  <p>
+                    　　在非社交网络的网站中，内容内在的联系是很重要的推荐原则，它比基于相似用户的推荐原则更加有效。比如在购书网站上，当你看一本书的时候，推荐引擎会给你推荐相关的书籍，这个推荐的重要性远远超过了网站首页对该用户的综合推荐。可以看到，在这种情况下，Item
+                    CF 的推荐成为了引导用户浏览的重要手段。同时 Item CF
+                    便于为推荐做出解释，在一个非社交网络的网站中，给某个用户推荐一本书，同时给出的解释是某某和你有相似兴趣的人也看了这本书，这很难让用户信服，因为用户可能根本不认识那个人；但如果解释说是因为这本书和你以前看的某本书相似，用户可能就觉得合理而采纳了此推荐。
+                  </p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">python2.7</span><br><span class="line"># -*- coding=utf-8 -*-</span><br><span class="line"></span><br><span class="line">import math</span><br><span class="line">import sys</span><br><span class="line">from texttable import Texttable</span><br><span class="line"></span><br><span class="line">#   使用 |A&amp;B|/sqrt(|A || B |)计算余弦距离</span><br><span class="line"></span><br><span class="line">def calcCosDistSpe(user1,user2):</span><br><span class="line">    avg_x=0.0</span><br><span class="line">    avg_y=0.0</span><br><span class="line">    for key in user1:</span><br><span class="line">        avg_x+=key[1]</span><br><span class="line">    avg_x=avg_x/len(user1)</span><br><span class="line"></span><br><span class="line">    for key in user2:</span><br><span class="line">        avg_y+=key[1]</span><br><span class="line">    avg_y=avg_y/len(user2)</span><br><span class="line"></span><br><span class="line">    u1_u2=0.0</span><br><span class="line">    for key1 in user1:</span><br><span class="line">        for key2 in user2:</span><br><span class="line">            if key1[1] &gt; avg_x and key2[1]&gt;avg_y and key1[0]==key2[0]:</span><br><span class="line">                u1_u2+=1</span><br><span class="line">    u1u2=len(user1)*len(user2)*1.0</span><br><span class="line">    sx_sy=u1_u2/math.sqrt(u1u2)</span><br><span class="line">    return sx_sy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   计算余弦距离</span><br><span class="line"></span><br><span class="line">def calcCosDist(user1,user2):</span><br><span class="line">    sum_x=0.0</span><br><span class="line">    sum_y=0.0</span><br><span class="line">    sum_xy=0.0</span><br><span class="line">    for key1 in user1:</span><br><span class="line">        for key2 in user2:</span><br><span class="line">            if key1[0]==key2[0] :</span><br><span class="line">                sum_xy+=key1[1]*key2[1]</span><br><span class="line">                sum_y+=key2[1]*key2[1]</span><br><span class="line">                sum_x+=key1[1]*key1[1]</span><br><span class="line"></span><br><span class="line">    if sum_xy == 0.0 :</span><br><span class="line">        return 0</span><br><span class="line">    sx_sy=math.sqrt(sum_x*sum_y) </span><br><span class="line">    return sum_xy/sx_sy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   相似余弦距离</span><br><span class="line"></span><br><span class="line">def calcSimlaryCosDist(user1,user2):</span><br><span class="line">    sum_x=0.0</span><br><span class="line">    sum_y=0.0</span><br><span class="line">    sum_xy=0.0</span><br><span class="line">    avg_x=0.0</span><br><span class="line">    avg_y=0.0</span><br><span class="line">    for key in user1:</span><br><span class="line">        avg_x+=key[1]</span><br><span class="line">    avg_x=avg_x/len(user1)</span><br><span class="line"></span><br><span class="line">    for key in user2:</span><br><span class="line">        avg_y+=key[1]</span><br><span class="line">    avg_y=avg_y/len(user2)</span><br><span class="line"></span><br><span class="line">    for key1 in user1:</span><br><span class="line">        for key2 in user2:</span><br><span class="line">            if key1[0]==key2[0] :</span><br><span class="line">                sum_xy+=(key1[1]-avg_x)*(key2[1]-avg_y)</span><br><span class="line">                sum_y+=(key2[1]-avg_y)*(key2[1]-avg_y)</span><br><span class="line">        sum_x+=(key1[1]-avg_x)*(key1[1]-avg_x)</span><br><span class="line"></span><br><span class="line">    if sum_xy == 0.0 :</span><br><span class="line">        return 0</span><br><span class="line">    sx_sy=math.sqrt(sum_x*sum_y) </span><br><span class="line">    return sum_xy/sx_sy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   读取文件</span><br><span class="line"></span><br><span class="line">def readFile(file_name):</span><br><span class="line">    contents_lines=[]</span><br><span class="line">    f=open(file_name,&quot;r&quot;)</span><br><span class="line">    contents_lines=f.readlines()</span><br><span class="line">    f.close()</span><br><span class="line">    return contents_lines</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   解压rating信息，格式：用户id\t硬盘id\t用户rating\t时间</span><br><span class="line">#   输入：数据集合</span><br><span class="line">#   输出:已经解压的排名信息</span><br><span class="line">#</span><br><span class="line">def getRatingInformation(ratings):</span><br><span class="line">    rates=[]</span><br><span class="line">    for line in ratings:</span><br><span class="line">        rate=line.split(&quot;\t&quot;)</span><br><span class="line">        rates.append([int(rate[0]),int(rate[1]),int(rate[2])])</span><br><span class="line">    return rates</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   生成用户评分的数据结构</span><br><span class="line">#   </span><br><span class="line">#   输入:所以数据 [[2,1,5],[2,4,2]...]</span><br><span class="line">#   输出:1.用户打分字典 2.电影字典</span><br><span class="line">#   使用字典，key是用户id，value是用户对电影的评价，</span><br><span class="line">#   rate_dic[2]=[(1,5),(4,2)].... 表示用户2对电影1的评分是5，对电影4的评分是2</span><br><span class="line"></span><br><span class="line">def createUserRankDic(rates):</span><br><span class="line">    user_rate_dic=&#123;&#125;</span><br><span class="line">    item_to_user=&#123;&#125;</span><br><span class="line">    for i in rates:</span><br><span class="line">        user_rank=(i[1],i[2])</span><br><span class="line">        if i[0] in user_rate_dic:</span><br><span class="line">            user_rate_dic[i[0]].append(user_rank)</span><br><span class="line">        else:</span><br><span class="line">            user_rate_dic[i[0]]=[user_rank]</span><br><span class="line"></span><br><span class="line">        if i[1] in item_to_user:</span><br><span class="line">            item_to_user[i[1]].append(i[0])</span><br><span class="line">        else:</span><br><span class="line">            item_to_user[i[1]]=[i[0]]</span><br><span class="line"></span><br><span class="line">    return user_rate_dic,item_to_user</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   计算与指定用户最相近的邻居</span><br><span class="line">#   输入:指定用户ID，所以用户数据，所以物品数据</span><br><span class="line">#   输出:与指定用户最相邻的邻居列表</span><br><span class="line">#</span><br><span class="line">def calcNearestNeighbor(userid,users_dic,item_dic):</span><br><span class="line">    neighbors=[]</span><br><span class="line">    #neighbors.append(userid)</span><br><span class="line">    for item in users_dic[userid]:</span><br><span class="line">        for neighbor in item_dic[item[0]]:</span><br><span class="line">            if neighbor != userid and neighbor not in neighbors: </span><br><span class="line">                neighbors.append(neighbor)</span><br><span class="line"></span><br><span class="line">    neighbors_dist=[]</span><br><span class="line">    for neighbor in neighbors:</span><br><span class="line">        dist=calcSimlaryCosDist(users_dic[userid],users_dic[neighbor])  #calcSimlaryCosDist  calcCosDist calcCosDistSpe</span><br><span class="line">        neighbors_dist.append([dist,neighbor])</span><br><span class="line">    neighbors_dist.sort(reverse=True)</span><br><span class="line">    #print neighbors_dist</span><br><span class="line">    return  neighbors_dist</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   使用UserFC进行推荐</span><br><span class="line">#   输入：文件名,用户ID,邻居数量</span><br><span class="line">#   输出：推荐的电影ID,输入用户的电影列表,电影对应用户的反序表，邻居列表</span><br><span class="line">#</span><br><span class="line">def recommendByUserFC(file_name,userid,k=5):</span><br><span class="line"></span><br><span class="line">    #读取文件数据</span><br><span class="line">    test_contents=readFile(file_name)</span><br><span class="line"></span><br><span class="line">    #文件数据格式化成二维数组 List[[用户id,电影id,电影评分]...] </span><br><span class="line">    test_rates=getRatingInformation(test_contents)</span><br><span class="line"></span><br><span class="line">    #格式化成字典数据 </span><br><span class="line">    #    1.用户字典：dic[用户id]=[(电影id,电影评分)...]</span><br><span class="line">    #    2.电影字典：dic[电影id]=[用户id1,用户id2...]</span><br><span class="line">    test_dic,test_item_to_user=createUserRankDic(test_rates)</span><br><span class="line"></span><br><span class="line">    #寻找邻居</span><br><span class="line">    neighbors=calcNearestNeighbor(userid,test_dic,test_item_to_user)[:k]</span><br><span class="line"></span><br><span class="line">    recommend_dic=&#123;&#125;</span><br><span class="line">    for neighbor in neighbors:</span><br><span class="line">        neighbor_user_id=neighbor[1]</span><br><span class="line">        movies=test_dic[neighbor_user_id]</span><br><span class="line">        for movie in movies:</span><br><span class="line">            #print movie</span><br><span class="line">            if movie[0] not in recommend_dic:</span><br><span class="line">                recommend_dic[movie[0]]=neighbor[0]</span><br><span class="line">            else:</span><br><span class="line">                recommend_dic[movie[0]]+=neighbor[0]</span><br><span class="line">    #print len(recommend_dic)</span><br><span class="line"></span><br><span class="line">    #建立推荐列表</span><br><span class="line">    recommend_list=[]</span><br><span class="line">    for key in recommend_dic:</span><br><span class="line">        #print key</span><br><span class="line">        recommend_list.append([recommend_dic[key],key])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    recommend_list.sort(reverse=True)</span><br><span class="line">    #print recommend_list</span><br><span class="line">    user_movies = [ i[0] for i in test_dic[userid]]</span><br><span class="line"></span><br><span class="line">    return [i[1] for i in recommend_list],user_movies,test_item_to_user,neighbors</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#   获取电影的列表</span><br><span class="line"></span><br><span class="line">def getMoviesList(file_name):</span><br><span class="line">    #print sys.getdefaultencoding()</span><br><span class="line">    movies_contents=readFile(file_name)</span><br><span class="line">    movies_info=&#123;&#125;</span><br><span class="line">    for movie in movies_contents:</span><br><span class="line">        movie_info=movie.split(&quot;|&quot;)</span><br><span class="line">        movies_info[int(movie_info[0])]=movie_info[1:]</span><br><span class="line">    return movies_info</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#主程序</span><br><span class="line">#输入 ： 测试数据集合</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    reload(sys)</span><br><span class="line">    sys.setdefaultencoding(&apos;utf-8&apos;)</span><br><span class="line">    movies=getMoviesList(&quot;/Users/wuyinghao/Downloads/ml-100k/u.item&quot;)</span><br><span class="line">    recommend_list,user_movie,items_movie,neighbors=recommendByUserFC(&quot;/Users/wuyinghao/Downloads/ml-100k/u.data&quot;,179,80)</span><br><span class="line">    neighbors_id=[ i[1] for i in neighbors]</span><br><span class="line">    table = Texttable()</span><br><span class="line">    table.set_deco(Texttable.HEADER)</span><br><span class="line">    table.set_cols_dtype([&apos;t&apos;,  # text </span><br><span class="line">                          &apos;t&apos;,  # float (decimal)</span><br><span class="line">                          &apos;t&apos;]) # automatic</span><br><span class="line">    table.set_cols_align([&quot;l&quot;, &quot;l&quot;, &quot;l&quot;])</span><br><span class="line">    rows=[]</span><br><span class="line">    rows.append([u&quot;movie name&quot;,u&quot;release&quot;, u&quot;from userid&quot;])</span><br><span class="line">    for movie_id in recommend_list[:20]:</span><br><span class="line">        from_user=[]</span><br><span class="line">        for user_id in items_movie[movie_id]:</span><br><span class="line">            if user_id in neighbors_id:</span><br><span class="line">                from_user.append(user_id)</span><br><span class="line">        rows.append([movies[movie_id][0],movies[movie_id][1],&quot;&quot;])</span><br><span class="line">    table.add_rows(rows)</span><br><span class="line">    print table.draw()</span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">结果</span><br><span class="line">movie name                release     </span><br><span class="line">=======================================================</span><br><span class="line">Contact (1997)                11-Jul-1997               </span><br><span class="line">Scream (1996)                 20-Dec-1996               </span><br><span class="line">Liar Liar (1997)              21-Mar-1997               </span><br><span class="line">Saint, The (1997)             14-Mar-1997               </span><br><span class="line">English Patient, The (1996)   15-Nov-1996               </span><br><span class="line">Titanic (1997)                01-Jan-1997               </span><br><span class="line">Air Force One (1997)          01-Jan-1997               </span><br><span class="line">Star Wars (1977)              01-Jan-1977               </span><br><span class="line">Conspiracy Theory (1997)      08-Aug-1997               </span><br><span class="line">Toy Story (1995)              01-Jan-1995               </span><br><span class="line">Fargo (1996)                  14-Feb-1997</span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                  <p>数据集： <a href="http://files.grouplens.org/datasets/movielens/" rel="external nofollow noopener noreferrer"
+                                                                                                    target="_blank">http://files.grouplens.org/datasets/movielens/</a>
+                  </p>
+                  <p>下载ml-100k.zip即可</p>
+
+                  <div class="declare">
+                    <strong>本文作者：</strong>
+
+                    小星星
+
+                    <br>
+                    <strong>本文链接：</strong>
+                    http://javastar.club/archives/a10feb4a.html
+                    <br>
+                    <strong>版权声明：</strong>
+                    本作品采用
+                    <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                                                                    target="_blank">知识共享署名-非商业性使用-相同方式共享
+                      4.0 国际许可协议</a>
+                    进行许可。转载请注明出处！
+
+                    <br>
+                    <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                                                                    target="_blank"><img
+                                                                                                      alt="知识共享许可协议"
+                                                                                                      style="border-width:0"
+                                                                                                      src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+
+                  </div>
+
+                  <div class="page-reward">
+                    <a href="javascript:;" class="page-reward-btn tooltip-top">
+                      <div class="tooltip tooltip-east">
+                        <span class="tooltip-item">
+                          赏
+                        </span>
+                        <span class="tooltip-content">
+                          <span class="tooltip-text">
+                            <span class="tooltip-inner">
+                              <p class="reward-p"><i
+                                                                                                                class="icon icon-quo-left"></i>请我喝一杯咖啡吧<i
+                                                                                                                class="icon icon-quo-right"></i>
+                              </p>
+                              <div class="reward-box">
+
+                                <div class="reward-box-item">
+                                  <img class="reward-img"
+                                                                                                                  src="/img/zhifubao.jpg">
+                                  <span class="reward-type">支付宝</span>
+                                </div>
+
+                                <div class="reward-box-item">
+                                  <img class="reward-img" src="/img/weixin.jpg">
+                                  <span class="reward-type">微信</span>
+                                </div>
+
+                              </div>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+                <div class="article-info article-info-index">
+
+                  <div class="article-tag tagcloud">
+                    <i class="icon-price-tags icon"></i>
+                    <ul class="article-tag-list">
+
+                      <li class="article-tag-list-item">
+                        <a href="javascript:void(0)"
+                                                                                                        class="js-tag article-tag-list-link color2">python</a>
+                      </li>
+
+                    </ul>
+                  </div>
+
+                  <div class="article-category tagcloud">
+                    <i class="icon-book icon"></i>
+                    <ul class="article-tag-list">
+
+                      <li class="article-tag-list-item">
+                        <a href="/categories/算法//"
+                                                                                                        class="article-tag-list-link color3">算法</a>
+                      </li>
+
+                    </ul>
+                  </div>
+
+                  <div class="share-btn share-icons tooltip-left">
+                    <div class="tooltip tooltip-east">
+                      <span class="tooltip-item">
+                        <a href="javascript:;" class="share-sns share-outer">
+                          <i class="icon icon-share"></i>
+                        </a>
+                      </span>
+                      <span class="tooltip-content">
+                        <div class="share-wrap">
+                          <div class="share-icons">
+                            <a class="weibo share-sns" href="javascript:;"
+                                                                                                            data-type="weibo">
+                              <i class="icon icon-weibo"></i>
+                            </a>
+                            <a class="weixin share-sns wxFab" href="javascript:;"
+                                                                                                            data-type="weixin">
+                              <i class="icon icon-weixin"></i>
+                            </a>
+                            <a class="qq share-sns" href="javascript:;"
+                                                                                                            data-type="qq">
+                              <i class="icon icon-qq"></i>
+                            </a>
+                            <a class="douban share-sns" href="javascript:;"
+                                                                                                            data-type="douban">
+                              <i class="icon icon-douban"></i>
+                            </a>
+                            <a class="qzone share-sns" href="javascript:;"
+                                                                                                            data-type="qzone">
+                              <i class="icon icon-qzone"></i>
+                            </a>
+                            <a class="facebook share-sns" href="javascript:;"
+                                                                                                            data-type="facebook">
+                              <i class="icon icon-facebook"></i>
+                            </a>
+                            <a class="twitter share-sns" href="javascript:;"
+                                                                                                            data-type="twitter">
+                              <i class="icon icon-twitter"></i>
+                            </a>
+                            <a class="google share-sns" href="javascript:;"
+                                                                                                            data-type="google">
+                              <i class="icon icon-google"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="page-modal wx-share js-wx-box">
+                    <a class="close js-modal-close" href="javascript:;"><i
+                                                                                                      class="icon icon-close"></i></a>
+                    <p>扫一扫，分享到微信</p>
+                    <div class="wx-qrcode">
+                      <img src="//pan.baidu.com/share/qrcode?url=http://javastar.club/archives/a10feb4a.html"
+                                                                                                      alt="微信分享二维码">
+                    </div>
+                  </div>
+
+                  <div class="mask js-mask"></div>
+
+                  <div class="clearfix"></div>
+                </div>
               </div>
-              <div class="archives">
+            </article>
 
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/dd33a848.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-07-07T06:25:00.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-07-07</time>
-                        </a>
+            <nav id="article-nav">
 
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/dd33a848.html">Spring学习计划第一次</a>
-                      </h1>
+              <a href="/archives/d63050d8.html" id="article-nav-older"
+                                                                                              class="article-nav-link-wrap">
+                <div class="article-nav-title">cmd快捷键</div>
+                <i class="icon-circle-right"></i>
+              </a>
 
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color2">Spring</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/Spring//"
-                                                                                                              class="article-tag-list-link color2">Spring</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/62e93227.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-07-07T06:23:43.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-07-07</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/62e93227.html">js学习计划第一天</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color3">js</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/前端//"
-                                                                                                              class="article-tag-list-link color3">前端</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/5bfcca0e.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-07-07T06:14:34.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-07-07</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/5bfcca0e.html">算法学习第一次</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color3">算法</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/算法笔记//"
-                                                                                                              class="article-tag-list-link color5">算法笔记</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/c9647612.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-07-06T14:27:55.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-07-06</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/c9647612.html">第三次日记</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color1">dairy</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/日记//"
-                                                                                                              class="article-tag-list-link color3">日记</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/40fb2c33.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-07-03T14:53:18.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-07-03</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/40fb2c33.html">MarkDown
-                          学习</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color4">MarkDown</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/MarkDown//"
-                                                                                                              class="article-tag-list-link color4">MarkDown</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/d57db542.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-06-30T14:26:57.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-06-30</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/d57db542.html">QT学习笔记</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color3">Qt</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/Qt学习//"
-                                                                                                              class="article-tag-list-link color5">Qt学习</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/3458e8f8.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-06-30T14:14:54.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-06-30</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/3458e8f8.html">日记</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color1">dairy</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/日记//"
-                                                                                                              class="article-tag-list-link color3">日记</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/3c096ec1.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-06-29T18:26:58.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-06-30</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/3c096ec1.html">hexo和github搭建个人博客</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color1">dairy</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/日记//"
-                                                                                                              class="article-tag-list-link color3">日记</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/c08a7331.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-06-29T14:12:56.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-06-29</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/c08a7331.html">QT初体验</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color3">Qt</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/Qt学习//"
-                                                                                                              class="article-tag-list-link color5">Qt学习</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-                <article class="archive-article archive-type-post">
-                  <div class="archive-article-inner">
-                    <header class="archive-article-header">
-                      <div class="article-meta">
-                        <a href="/archives/8c2959bc.html"
-                                                                                                        class="archive-article-date">
-                          <time datetime="2019-06-29T13:53:54.000Z"
-                                                                                                          itemprop="datePublished"><i
-                                                                                                            class="icon-calendar icon"></i>2019-06-29</time>
-                        </a>
-
-                      </div>
-                      <h1 itemprop="name">
-                        <a class="archive-article-title"
-                                                                                                        href="/archives/8c2959bc.html">Java开发</a>
-                      </h1>
-
-                      <div class="article-info info-on-right">
-                        <div class="article-tag tagcloud">
-                          <i class="icon-price-tags icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="javascript:void(0)"
-                                                                                                              class="js-tag article-tag-list-link color2">Java基础</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                        <div class="article-category tagcloud">
-                          <i class="icon-book icon"></i>
-                          <ul class="article-tag-list">
-
-                            <li class="article-tag-list-item">
-                              <a href="/categories/Java基础//"
-                                                                                                              class="article-tag-list-link color2">Java基础</a>
-                            </li>
-
-                          </ul>
-                        </div>
-
-                      </div>
-                      <div class="clearfix"></div>
-                    </header>
-                  </div>
-                </article>
-
-              </div>
-            </section>
-
-            <nav id="page-nav">
-              <a class="extend prev" rel="prev"
-                                                                                              href="/archives/2019/page/7/">&laquo;
-                Prev</a><a class="page-number" href="/archives/2019/">1</a><span
-                                                                                              class="space">&hellip;</span><a
-                                                                                              class="page-number"
-                                                                                              href="/archives/2019/page/6/">6</a><a
-                                                                                              class="page-number"
-                                                                                              href="/archives/2019/page/7/">7</a><span
-                                                                                              class="page-number current">8</span>
             </nav>
+
+            <aside class="wrap-side-operation">
+              <div class="mod-side-operation">
+
+                <div class="jump-container" id="js-jump-container"
+                                                                                                style="display:none;">
+                  <a href="javascript:void(0)"
+                                                                                                  class="mod-side-operation__jump-to-top">
+                    <i class="icon-font icon-back"></i>
+                  </a>
+                  <div id="js-jump-plan-container" class="jump-plan-container"
+                                                                                                  style="top: -11px;">
+                    <i class="icon-font icon-plane jump-plane"></i>
+                  </div>
+                </div>
+
+                <div class="toc-container tooltip-left">
+                  <i class="icon-font icon-category"></i>
+                  <div class="tooltip tooltip-east">
+                    <span class="tooltip-item">
+                    </span>
+                    <span class="tooltip-content">
+                      <div class="toc-article">
+                        <ol class="toc">
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#什么是协同过滤"><span
+                                                                                                              class="toc-number">1.</span>
+                              <span class="toc-text">什么是协同过滤
+                              </span></a></li>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#协同过滤的实现"><span
+                                                                                                              class="toc-number">2.</span>
+                              <span class="toc-text">协同过滤的实现
+                              </span></a></li>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#算法存在的问题"><span
+                                                                                                              class="toc-number">3.</span>
+                              <span class="toc-text">算法存在的问题
+                              </span></a></li>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#适用场景"><span
+                                                                                                              class="toc-number">4.</span>
+                              <span class="toc-text">适用场景</span></a></li>
+                        </ol>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </aside>
+
+            <div id="gitalk-container"></div>
+            <link rel="stylesheet"
+                                                                                            href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script
+                                                                                            src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js">
+            </script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js">
+            </script>
+
+            <script>
+              var gitalk = new Gitalk({
+                clientID: '367167232dbd609ac9d5',
+                clientSecret: '20b31b08c74d9e90fad40f940e6b938fdf8d6cd2',
+                repo: 'starstarb.github.io',
+                owner: 'starstarb',
+                admin: ['starstarb'],
+                id: md5(window.location.pathname),
+                distractionFreeMode: true
+              })
+              gitalk.render('gitalk-container')
+
+            </script>
 
           </div>
         </div>
@@ -752,8 +640,8 @@
       var yiliaConfig = {
         mathjax: false,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         open_in_new: false,
