@@ -5,6 +5,7 @@ abbrlink: b5d2c57b
 date: 2019-08-08 15:10:35
 ---
 hexo博客备份指南
+![](https://github.com/starstarb/clouding/raw/master/picture/4.jpg)
 <!--more-->
 ## 前言
 
