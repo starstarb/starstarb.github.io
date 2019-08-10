@@ -1,8 +1,9 @@
 ---
 title: hexo搭建博客记录
-date: 2019-08-10 09:27:16
 tags: hexo
 categories: hexo
+abbrlink: 5910dd1d
+date: 2019-08-10 09:27:16
 ---
 Hexo+yilia搭建属于自己的博客，新手完全教程
 ![](https://github.com/starstarb/clouding/raw/master/picture/6.jpg)

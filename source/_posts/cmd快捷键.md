@@ -1,8 +1,9 @@
 ---
 title: cmd快捷键
-date: 2019-08-10 10:58:29
 tags: cmd
 categories: cmd
+abbrlink: d63050d8
+date: 2019-08-10 10:58:29
 ---
 ![](https://github.com/starstarb/clouding/raw/master/picture/5.jpg)
 <!--more-->
