@@ -11,18 +11,50 @@
   <title>git学习手册 | 星星</title>
   <meta name="viewport"
                                                                                   content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要">
+  <meta name="description" content="记录git常用操作及基本原理">
   <meta name="keywords" content="Git">
   <meta property="og:type" content="article">
   <meta property="og:title" content="git学习手册">
   <meta property="og:url" content="http://javastar.club/archives/9136e18a.html">
   <meta property="og:site_name" content="星星">
-  <meta property="og:description" content="摘要">
+  <meta property="og:description" content="记录git常用操作及基本原理">
   <meta property="og:locale" content="default">
-  <meta property="og:updated_time" content="2019-08-08T03:40:45.050Z">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/9%5BR6MUG%60HK4GWX7C5YNM~3S.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/%7BPRMIJ%7B%7B94A0G(Y06%7D%5B@3(E.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/t017547ec5ae4321b5c.jpg">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/t01af2028942c47f552.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/t014945927507f151f0.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/t0121e26267d17bb702.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/t017c30a93b25c79581.jpg">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/t016b6fd3aca4e8a774.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/43@$H0K%7D7TGN%5DY5%5DZZFL1BG.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/t012a042a5c574ca67f.jpg">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/branch.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/view.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/log.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/20190816103129.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/20190816103033.png">
+  <meta property="og:updated_time" content="2019-08-16T02:31:57.389Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="git学习手册">
-  <meta name="twitter:description" content="摘要">
+  <meta name="twitter:description" content="记录git常用操作及基本原理">
+  <meta name="twitter:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/git/9%5BR6MUG%60HK4GWX7C5YNM~3S.png">
 
   <link rel="alternative" href="/atom.xml" title="星星"
                                                                                   type="application/atom+xml">
@@ -198,7 +230,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-keyboard-o"></i>
                         <span class="post-meta-item-text"> 字数统计: </span>
-                        <span class="post-count">2字</span>
+                        <span class="post-count">1.6k字</span>
                       </span>
                     </span>
 
@@ -207,7 +239,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-hourglass-half"></i>
                         <span class="post-meta-item-text"> 阅读时长: </span>
-                        <span class="post-count">1分</span>
+                        <span class="post-count">5分</span>
                       </span>
                     </span>
                   </div>
@@ -222,8 +254,288 @@
 
                 <div class="article-entry" itemprop="articleBody">
 
-                  <p>摘要</p>
+                  <p>记录git常用操作及基本原理</p>
                   <a id="more"></a>
+                  <h2 id="git-init"><a href="#git-init" class="headerlink"
+                                                                                                    title="git init"></a>git
+                    init</h2>
+                  <p><strong>创建一个gittest文件夹,使用git
+                      init命令初始化一个空的Git仓库</strong><br><img src="https://github.com/starstarb/clouding/raw/master/git/9%5BR6MUG%60HK4GWX7C5YNM~3S.png"
+                                                                                                    alt>
+                  </p>
+                  <h2 id="git-add-amp-amp-git-commit"><a href="#git-add-amp-amp-git-commit" class="headerlink"
+                                                                                                    title="git add&amp;&amp;git commit"></a>git
+                    add&amp;&amp;git commit</h2>
+                  <p><strong>创建一个test.txt文件，通过git add跟踪该文件，然后使用git
+                      commit提交更新到仓库</strong>
+                  </p>
+                  <p><img src="https://github.com/starstarb/clouding/raw/master/git/%7BPRMIJ%7B%7B94A0G(Y06%7D%5B@3(E.png"
+                                                                                                    alt>
+                  </p>
+                  <h2 id="查看状态-amp-amp-暂存区"><a href="#查看状态-amp-amp-暂存区" class="headerlink"
+                                                                                                    title="查看状态 &amp;&amp; 暂存区"></a>查看状态
+                    &amp;&amp; 暂存区</h2>
+                  <p>git
+                    status命令可以查看仓库状态，列出当前目录所有还没有被git管理追踪的文件和被git管理且被修改但还未提交更新的文件.。
+                  </p>
+                  <h3 id="文件状态"><a href="#文件状态" class="headerlink"
+                                                                                                    title="文件状态"></a>文件状态
+                  </h3>
+                  <p>仓库中的文件可能存在于这三种状态：</p>
+                  <ul>
+                    <li>
+                      <p>Untracked files → 文件未被跟踪；</p>
+                    </li>
+                    <li>
+                      <p>Changes to be committed → 文件已暂存，这是下次提交的内容；</p>
+                    </li>
+                    <li>
+                      <p>Changes not staged for commit →
+                        已跟踪文件的内容发生了变化，但还没有放到暂存区。</p>
+                    </li>
+                  </ul>
+                  <p>通过git add的文件会加入暂存区，之后git commit会将暂存区的所有文件提交更新。</p>
+                  <p><img src="https://github.com/starstarb/clouding/raw/master/git/t017547ec5ae4321b5c.jpg"
+                                                                                                    alt>
+                  </p>
+                  <h2 id="Git对象和目录"><a href="#Git对象和目录" class="headerlink"
+                                                                                                    title="Git对象和目录"></a>Git对象和目录
+                  </h2>
+                  <h3 id="Git对象"><a href="#Git对象" class="headerlink"
+                                                                                                    title="Git对象"></a>Git对象
+                  </h3>
+                  <p>在Git系统中有四中类型的对象，所有的Git操作都是基于这四种类型的对象。</p>
+                  <ul>
+                    <li>
+                      <p>“blob”，这种对象用来保存文件的内容。</p>
+                    </li>
+                    <li>
+                      <p>“tree”，可以理解成一个对象关系树，它管理一些”tree”和“blob”对象。</p>
+                    </li>
+                    <li>
+                      <p>
+                        “commit”，指向一个”tree”，它用来标记项目某一个特定时间点的状态。它包括以下关于时间点的元数据，如时间戳、最近一次提交的作者、指向上次提交、
+                      </p>
+                    </li>
+                    <li>
+                      <p>“tag”，给某个提交增添一个标记。</p>
+                    </li>
+                  </ul>
+                  <h3 id="SHA1哈希值"><a href="#SHA1哈希值" class="headerlink"
+                                                                                                    title="SHA1哈希值"></a>SHA1哈希值
+                  </h3>
+                  <p>
+                    在Git系统中，每个Git对象都通过哈希值来代表这个对象。哈希值是通过SHA1算法计算出来的，长度为40个字符（40-digit）。
+                  </p>
+                  <h3 id="Commit-对象"><a href="#Commit-对象" class="headerlink"
+                                                                                                    title="Commit 对象"></a>Commit
+                    对象</h3>
+                  <p>commit对象一般包含以下信息：</p>
+                  <ul>
+                    <li>
+                      <p>代表commit的哈希值</p>
+                    </li>
+                    <li>
+                      <p>指向tree对象的哈希值</p>
+                    </li>
+                    <li>
+                      <p>作者</p>
+                    </li>
+                    <li>
+                      <p>提交者</p>
+                    </li>
+                    <li>
+                      <p>注释<br><img src="https://github.com/starstarb/clouding/raw/master/git/t01af2028942c47f552.png"
+                                                                                                        alt>
+                      </p>
+                    </li>
+                  </ul>
+                  <h3 id="Tree-对象"><a href="#Tree-对象" class="headerlink"
+                                                                                                    title="Tree 对象"></a>Tree
+                    对象</h3>
+                  <p>Tree对象一般包含以下信息：</p>
+                  <ul>
+                    <li>
+                      <p>代表blog的哈希值</p>
+                    </li>
+                    <li>
+                      <p>指向tree对象的哈希值<br><img src="https://github.com/starstarb/clouding/raw/master/git/t014945927507f151f0.png"
+                                                                                                        alt>
+                      </p>
+                    </li>
+                  </ul>
+                  <h3 id="Blob-对象"><a href="#Blob-对象" class="headerlink"
+                                                                                                    title="Blob 对象"></a>Blob
+                    对象</h3>
+                  <p>Blob对象一般包含用来存储文件的内容。</p>
+                  <p><img src="https://github.com/starstarb/clouding/raw/master/git/t0121e26267d17bb702.png"
+                                                                                                    alt>
+                  </p>
+                  <h3 id="Tag-对象"><a href="#Tag-对象" class="headerlink"
+                                                                                                    title="Tag 对象"></a>Tag
+                    对象
+                  </h3>
+                  <p>标签对象一般包含以下信息：</p>
+                  <ul>
+                    <li>
+                      <p>一个对象名(SHA1签名)</p>
+                    </li>
+                    <li>
+                      <p>对象类型</p>
+                    </li>
+                  </ul>
+                  <h3 id="对象间的关系"><a href="#对象间的关系" class="headerlink"
+                                                                                                    title="对象间的关系"></a>对象间的关系
+                  </h3>
+                  <p>commit、tree、blob三个对象的简单关系如下：<br><img src="https://github.com/starstarb/clouding/raw/master/git/t017c30a93b25c79581.jpg"
+                                                                                                    alt>
+                  </p>
+                  <h3 id="若仓库的目录结构如下："><a href="#若仓库的目录结构如下：" class="headerlink"
+                                                                                                    title="若仓库的目录结构如下："></a>若仓库的目录结构如下：
+                  </h3>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">|-- README</span><br><span class="line"></span><br><span class="line">`-- lib</span><br><span class="line"></span><br><span class="line">   |-- inc</span><br><span class="line"></span><br><span class="line">   |   `-- tricks.rb</span><br><span class="line"></span><br><span class="line">   `-- mylib.rb</span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                  <p>git对象结构的关系图如下：<br><img src="https://github.com/starstarb/clouding/raw/master/git/t016b6fd3aca4e8a774.png"
+                                                                                                    alt>
+                  </p>
+                  <h2 id="git目录"><a href="#git目录" class="headerlink"
+                                                                                                    title=".git目录"></a>.git目录
+                  </h2>
+                  <p>在我们使用git
+                    init初始化git仓库的时候，会生成一个.git的隐藏目录，git会将所有的文件，目录，提交等转化为git对象，压缩存储在这个文件夹当中。
+                  </p>
+                  <ul>
+                    <li>
+                      <p>COMMIT_EDITMSG：保存最新的commit
+                        message，Git系统不会用到这个文件，只是给用户一个参考</p>
+                    </li>
+                    <li>
+                      <p>config：这个是GIt仓库的配置文件</p>
+                    </li>
+                    <li>
+                      <p>description：仓库的描述信息，主要给gitweb等git托管系统使用</p>
+                    </li>
+                    <li>
+                      <p>
+                        HEAD：这个文件包含了一个档期分支（branch）的引用，通过这个文件Git可以得到下一次commit的parent
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        hooks：这个目录存放一些shell脚本，可以设置特定的git命令后触发相应的脚本；在搭建gitweb系统或其他
+                      </p>
+                    </li>
+                  </ul>
+                  <p>git托管系统会经常用到hook script</p>
+                  <ul>
+                    <li>
+                      <p>index：这个文件就是我们前面提到的暂存区（stage），是一个二进制文件</p>
+                    </li>
+                    <li>
+                      <p>info：包含仓库的一些信息</p>
+                    </li>
+                    <li>
+                      <p>logs：保存所有更新的引用记录</p>
+                    </li>
+                    <li>
+                      <p>
+                        objects：所有的Git对象都会存放在这个目录中，对象的SHA1哈希值的前两位是文件夹名称，后38位作为对象文件名
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        refs：这个目录一般包括三个子文件夹，heads、remotes和tags，heads中的文件标识了项目中的各个分支指向的当前commit
+                      </p>
+                    </li>
+                    <li>
+                      <p>ORIG_HEAD：HEAD指针的前一个状态</p>
+                    </li>
+                  </ul>
+                  <h3 id="Git引用"><a href="#Git引用" class="headerlink"
+                                                                                                    title="Git引用"></a>Git引用
+                  </h3>
+                  <p>Git中的引用是一个非常重要的概念，对于理解分支（branch）、HEAD指针以及reflog非常有帮助。</p>
+                  <p>
+                    Git系统中的分支名、远程分支名、tag等都是指向某个commit的引用。比如master分支，origin/master远程分支，命名为V1.0.0.0的tag等都是引用，它们通过该保存某个commit的SHA1哈希值指向某个commit
+                  </p>
+                  <h3 id="HEAD"><a href="#HEAD" class="headerlink"
+                                                                                                    title="HEAD"></a>HEAD
+                  </h3>
+                  <p>
+                    HEAD也是一个引用，一般情况下间接指向你当前所在的分支的最新的commit上。HEAD跟Git中一般的引用不同，它并不包含某个commit的SHA1哈希值，而是包含当前所在的分支，所有HEAD直接执行当前所在的分支，然后间接指向当前所在分支的最新提交。
+                  </p>
+                  <p>查看当前分支，当前分支为master，并通过git
+                    log可以发现这个commit就是master分支上最新的提交。<br><img src="https://github.com/starstarb/clouding/raw/master/git/43@$H0K%7D7TGN%5DY5%5DZZFL1BG.png"
+                                                                                                    alt>
+                  </p>
+                  <p>
+                    所有的内容都是环环相扣的，我们通过HEAD找到一个当前分支，然后通过当前分支的引用找到最新的commit，然后通过commit可以找到整个对象关系模型：<br><img
+                                                                                                    src="https://github.com/starstarb/clouding/raw/master/git/t012a042a5c574ca67f.jpg"
+                                                                                                    alt>
+                  </p>
+                  <h3 id="引用和分支"><a href="#引用和分支" class="headerlink"
+                                                                                                    title="引用和分支"></a>引用和分支
+                  </h3>
+                  <ul>
+                    <li>
+                      <p>git branch test，创建名为test分支。</p>
+                    </li>
+                    <li>
+                      <p>git checkout test，切换到test分支。</p>
+                    </li>
+                  </ul>
+                  <p>除了master分支，创建了一个test的分支，切换到新分支，查看HEAD，HEAD的指向发生了变化。</p>
+                  <p>
+                    再次查看“.git/refs/heads/”目录，可以看到除了master文件之外，又多了一个test文件，查看该文件的内容也是一个哈希值。<br><img src="https://github.com/starstarb/clouding/raw/master/git/branch.png"
+                                                                                                    alt>
+                  </p>
+                  <ul>
+                    <li>git show-ref –heads，命令就可以查看所有的头<br><img src="https://github.com/starstarb/clouding/raw/master/git/view.png"
+                                                                                                      alt>
+                    </li>
+                  </ul>
+                  <h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志
+                  </h3>
+                  <p>进入.git/logs文件夹，可以看到这个文件夹也有一个HEAD文件和refs目录，这些就是记录仓库修改的地方。
+                  </p>
+                  <p>目录下记录了包括git commit，git checkout，git stash等命令的操作历史。</p>
+                  <p>git stash，保存当前工作进度，会把暂存区和工作区的改动保存起来。</p>
+                  <p>执行完这个命令后，在运行git status命令，就会发现当前是一个干净的工作区，没有任何改动。</p>
+                  <p>当然可以使用git stash pop来恢复之前的进度.</p>
+                  <p><img src="https://github.com/starstarb/clouding/raw/master/git/log.png"
+                                                                                                    alt>
+                  </p>
+                  <h3 id="索引index"><a href="#索引index" class="headerlink"
+                                                                                                    title="索引index"></a>索引index
+                  </h3>
+                  <p>index/stage，就是更新的暂存区，看看index文件。</p>
+                  <p>
+                    index（索引）是一个存放了已排序的路径的二进制文件，并且每个路径都对应一个SHA1哈希值。在Git系统中，可以通过git
+                    ls-files
+                    –stage来显示index文件的内容。</p>
+                  <p>创建新文件，添加到暂存区(SHA1哈希值已经改变)<br><img src="https://github.com/starstarb/clouding/raw/master/git/20190816103129.png"
+                                                                                                    alt>
+                  </p>
+                  <h3 id="对象的存储"><a href="#对象的存储" class="headerlink"
+                                                                                                    title="对象的存储"></a>对象的存储
+                  </h3>
+                  <p>
+                    所有的Git对象都会存放在.git/objects目录中，对象SHA1哈希值的前两位是文件夹名称，后38位作为对象文件名。
+                  </p>
+                  <p><img src="https://github.com/starstarb/clouding/raw/master/git/20190816103033.png"
+                                                                                                    alt>
+                  </p>
 
                   <div class="declare">
                     <strong>本文作者：</strong>
@@ -418,7 +730,110 @@
                     </span>
                     <span class="tooltip-content">
                       <div class="toc-article">
-                        目录，不存在的…
+                        <ol class="toc">
+                          <li class="toc-item toc-level-2"><a class="toc-link"
+                                                                                                            href="#git-init"><span
+                                                                                                              class="toc-number">1.</span>
+                              <span class="toc-text">git
+                                init</span></a></li>
+                          <li class="toc-item toc-level-2"><a class="toc-link"
+                                                                                                            href="#git-add-amp-amp-git-commit"><span
+                                                                                                              class="toc-number">2.</span>
+                              <span class="toc-text">git
+                                add&amp;&amp;git commit</span></a></li>
+                          <li class="toc-item toc-level-2"><a class="toc-link"
+                                                                                                            href="#查看状态-amp-amp-暂存区"><span
+                                                                                                              class="toc-number">3.</span>
+                              <span class="toc-text">查看状态
+                                &amp;&amp; 暂存区</span></a>
+                            <ol class="toc-child">
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#文件状态"><span
+                                                                                                                  class="toc-number">3.1.</span>
+                                  <span class="toc-text">文件状态</span></a></li>
+                            </ol>
+                          </li>
+                          <li class="toc-item toc-level-2"><a class="toc-link"
+                                                                                                            href="#Git对象和目录"><span
+                                                                                                              class="toc-number">4.</span>
+                              <span class="toc-text">Git对象和目录
+                              </span></a>
+                            <ol class="toc-child">
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#Git对象"><span
+                                                                                                                  class="toc-number">4.1.</span>
+                                  <span class="toc-text">Git对象</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#SHA1哈希值"><span
+                                                                                                                  class="toc-number">4.2.</span>
+                                  <span class="toc-text">SHA1哈希值
+                                  </span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#Commit-对象"><span
+                                                                                                                  class="toc-number">4.3.</span>
+                                  <span class="toc-text">Commit
+                                    对象</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#Tree-对象"><span
+                                                                                                                  class="toc-number">4.4.</span>
+                                  <span class="toc-text">Tree
+                                    对象</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#Blob-对象"><span
+                                                                                                                  class="toc-number">4.5.</span>
+                                  <span class="toc-text">Blob
+                                    对象</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#Tag-对象"><span
+                                                                                                                  class="toc-number">4.6.</span>
+                                  <span class="toc-text">Tag 对象
+                                  </span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#对象间的关系"><span
+                                                                                                                  class="toc-number">4.7.</span>
+                                  <span class="toc-text">对象间的关系
+                                  </span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#若仓库的目录结构如下："><span
+                                                                                                                  class="toc-number">4.8.</span>
+                                  <span class="toc-text">若仓库的目录结构如下：
+                                  </span></a></li>
+                            </ol>
+                          </li>
+                          <li class="toc-item toc-level-2"><a class="toc-link"
+                                                                                                            href="#git目录"><span
+                                                                                                              class="toc-number">5.</span>
+                              <span class="toc-text">.git目录
+                              </span></a>
+                            <ol class="toc-child">
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#Git引用"><span
+                                                                                                                  class="toc-number">5.1.</span>
+                                  <span class="toc-text">Git引用</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#HEAD"><span
+                                                                                                                  class="toc-number">5.2.</span>
+                                  <span class="toc-text">HEAD</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#引用和分支"><span
+                                                                                                                  class="toc-number">5.3.</span>
+                                  <span class="toc-text">引用和分支</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#日志"><span
+                                                                                                                  class="toc-number">5.4.</span>
+                                  <span class="toc-text">日志</span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#索引index"><span
+                                                                                                                  class="toc-number">5.5.</span>
+                                  <span class="toc-text">索引index
+                                  </span></a></li>
+                              <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                                href="#对象的存储"><span
+                                                                                                                  class="toc-number">5.6.</span>
+                                  <span class="toc-text">对象的存储</span></a></li>
+                            </ol>
+                          </li>
+                        </ol>
                       </div>
                     </span>
                   </div>
@@ -7167,6 +7582,10 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
 
@@ -7216,6 +7635,10 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
 
@@ -7236,15 +7659,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日语</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7252,7 +7671,15 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日语</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">队列</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SA</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7261,10 +7688,6 @@
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SA</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7284,11 +7707,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
 
               <li class="article-tag-list-item">

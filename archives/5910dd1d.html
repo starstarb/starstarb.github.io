@@ -21,7 +21,13 @@
   <meta property="og:locale" content="default">
   <meta property="og:image"
                                                                                   content="https://github.com/starstarb/clouding/raw/master/picture/6.jpg">
-  <meta property="og:updated_time" content="2019-08-10T03:01:44.312Z">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/data/yuming.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/data/cangku.png">
+  <meta property="og:image"
+                                                                                  content="https://github.com/starstarb/clouding/raw/master/data/repo.png">
+  <meta property="og:updated_time" content="2019-08-11T03:23:20.277Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="hexo搭建博客记录">
   <meta name="twitter:description" content="Hexo+yilia搭建属于自己的博客，新手完全教程">
@@ -211,7 +217,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-hourglass-half"></i>
                         <span class="post-meta-item-text"> 阅读时长: </span>
-                        <span class="post-count">10分</span>
+                        <span class="post-count">9分</span>
                       </span>
                     </span>
                   </div>
@@ -696,42 +702,89 @@
                   <h3 id="主页显示摘要"><a href="#主页显示摘要" class="headerlink"
                                                                                                     title="主页显示摘要"></a>主页显示摘要
                   </h3>
-                  <p>在 md 中，摘要内容的后面跟上 <figure class="highlight plain">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><span class="line">1</span><br></pre>
-                          </td>
-                          <td class="code">
-                            <pre><span class="line">用别名简化命令</span><br></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                  </p>
-                  <p>alias hd=’hexo clean; hexo generate; hexo deploy’<br>alias
-                    hs=’hexo
-                    server
-                    -g’</p>
+                  <p>在 md 中，摘要内容的后面跟上
+                    <!--more-->，</p>
+                  <p>否则主页会显示文章的全部内容</p>
+                  <p><strong>用别名简化命令</strong></p>
                   <figure class="highlight plain">
                     <table>
                       <tr>
                         <td class="gutter">
-                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre>
+                          <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
                         </td>
                         <td class="code">
-                          <pre><span class="line">本地预览用 hs</span><br><span class="line">发布时使用 hd</span><br><span class="line">### 域名选择</span><br><span class="line">例如：登录腾讯云，购买域名后，登录到控制台，域名解析列表，进入记录管理，点击添加记录。</span><br><span class="line"></span><br><span class="line">1. 主机记录选择两个，www和@</span><br><span class="line">2. 记录类型，CNAME</span><br><span class="line">3. 默认线路</span><br><span class="line">4. 记录值填个人的github域名。</span><br><span class="line">5. 其他操作默认</span><br><span class="line">如图所示:</span><br><span class="line">![](https://github.com/starstarb/clouding/raw/master/data/yuming.png)</span><br><span class="line"> 如果没有云主机或服务器，是域名不提供备案的，如果想要备案，可以选择购买一个小空间备案，对小空间进行域名跳转操作，指向github服务器即可。</span><br><span class="line">或者找个认识的朋友(有主机空间的)，帮你备案后，做个转发即可。</span><br><span class="line"></span><br><span class="line">### 主题采用yilia</span><br><span class="line">访问官方文档即可：[点击](https://github.com/litten/hexo-theme-yilia)</span><br><span class="line"></span><br><span class="line">### 使用github图床管理博客图片</span><br><span class="line">1. 登录github账号。</span><br><span class="line">2. 创建仓库例如: picture</span><br><span class="line">![](https://github.com/starstarb/clouding/raw/master/data/cangku.png)</span><br><span class="line">3. github搜索Picgo，参看官方文档</span><br><span class="line">4. 在github,打开settings,找到Personal access tokens ,点击进去，勾选![](https://github.com/starstarb/clouding/raw/master/data/repo.png)</span><br><span class="line">5. 点击Generate token.</span><br><span class="line">6. 这里会产生一段加密字符串，只会产生一次，记录下来。</span><br><span class="line">7. 在Picgo中选择github图床。</span><br><span class="line">8. 仓库名是yourgithubname/picture</span><br><span class="line">9. 分支名默认master</span><br><span class="line">10. token写刚才产生的那段加密字符串。</span><br><span class="line">11. 存储路径可以自定义为python/</span><br><span class="line"></span><br><span class="line">&gt; 写一个字符串加一个斜杠，会自动在github中创建相应路径</span><br><span class="line"></span><br><span class="line">12. 自定义域名为</span><br></pre>
+                          <pre><span class="line">alias hd=&apos;hexo clean; hexo generate; hexo deploy&apos;</span><br><span class="line">alias hs=&apos;hexo server -g&apos;</span><br></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
 
-                  <p><a href="https://github.com/yourgithubName/picture/raw/master" rel="external nofollow noopener noreferrer"
-                                                                                                    target="_blank">https://github.com/yourgithubName/picture/raw/master</a>
+                  <p><strong>本地预览用 hs</strong><br><strong>发布时使用 hd</strong></p>
+                  <h3 id="域名选择"><a href="#域名选择" class="headerlink"
+                                                                                                    title="域名选择"></a>域名选择
+                  </h3>
+                  <p>例如：登录腾讯云，购买域名后，登录到控制台，域名解析列表，进入记录管理，点击添加记录。</p>
+                  <ol>
+                    <li>主机记录选择两个，www和@</li>
+                    <li>记录类型，CNAME</li>
+                    <li>默认线路</li>
+                    <li>记录值填个人的github域名。</li>
+                    <li>其他操作默认<br>如图所示:<br><img src="https://github.com/starstarb/clouding/raw/master/data/yuming.png"
+                                                                                                      alt><br>如果没有云主机或服务器，是域名不提供备案的，如果想要备案，可以选择购买一个小空间备案，对小空间进行域名跳转操作，指向github服务器即可。<br>或者找个认识的朋友(有主机空间的)，帮你备案后，做个转发即可。
+                    </li>
+                  </ol>
+                  <h3 id="主题采用yilia"><a href="#主题采用yilia" class="headerlink"
+                                                                                                    title="主题采用yilia"></a>主题采用yilia
+                  </h3>
+                  <p>访问官方文档即可：<a href="https://github.com/litten/hexo-theme-yilia" rel="external nofollow noopener noreferrer"
+                                                                                                    target="_blank">点击</a>
                   </p>
-                  <pre><code>13. 其他操作直接看Picgo官方文档即可，完成。
-
-&gt; 另外，如果PicGO用不了复制链接，直接进入图片所在路径，将路径中blog更改为raw即可。</code></pre>
+                  <h3 id="使用github图床管理博客图片"><a href="#使用github图床管理博客图片" class="headerlink"
+                                                                                                    title="使用github图床管理博客图片"></a>使用github图床管理博客图片
+                  </h3>
+                  <ol>
+                    <li>登录github账号。</li>
+                    <li>创建仓库例如: picture<br><img src="https://github.com/starstarb/clouding/raw/master/data/cangku.png"
+                                                                                                      alt>
+                    </li>
+                    <li>github搜索Picgo，参看官方文档</li>
+                    <li>在github,打开settings,找到Personal access tokens ,点击进去，勾选<img src="https://github.com/starstarb/clouding/raw/master/data/repo.png"
+                                                                                                      alt>
+                    </li>
+                    <li>点击Generate token.</li>
+                    <li>这里会产生一段加密字符串，只会产生一次，记录下来。</li>
+                    <li>在Picgo中选择github图床。</li>
+                    <li>仓库名是yourgithubname/picture</li>
+                    <li>分支名默认master</li>
+                    <li>token写刚才产生的那段加密字符串。</li>
+                    <li>存储路径可以自定义为python/</li>
+                  </ol>
+                  <blockquote>
+                    <p>写一个字符串加一个斜杠，会自动在github中创建相应路径</p>
+                  </blockquote>
+                  <ol start="12">
+                    <li>
+                      <p>自定义域名为</p>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">https://github.com/yourgithubName/picture/raw/master</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </li>
+                    <li>
+                      <p>其他操作直接看Picgo官方文档即可，完成。</p>
+                    </li>
+                  </ol>
+                  <blockquote>
+                    <p>另外，如果PicGO用不了复制链接，直接进入图片所在路径，将路径中blog更改为raw即可。</p>
+                  </blockquote>
 
                   <div class="declare">
                     <strong>本文作者：</strong>
@@ -997,6 +1050,20 @@
                                                                                                             href="#主页显示摘要"><span
                                                                                                               class="toc-number">7.</span>
                               <span class="toc-text">主页显示摘要
+                              </span></a></li>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#域名选择"><span
+                                                                                                              class="toc-number">8.</span>
+                              <span class="toc-text">域名选择</span></a></li>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#主题采用yilia"><span
+                                                                                                              class="toc-number">9.</span>
+                              <span class="toc-text">主题采用yilia
+                              </span></a></li>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#使用github图床管理博客图片"><span
+                                                                                                              class="toc-number">10.</span>
+                              <span class="toc-text">使用github图床管理博客图片
                               </span></a></li>
                         </ol>
                       </div>
@@ -7747,6 +7814,10 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
 
@@ -7796,6 +7867,10 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
 
@@ -7816,15 +7891,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日语</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7832,7 +7903,15 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日语</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">队列</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SA</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7841,10 +7920,6 @@
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SA</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7864,11 +7939,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
+                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
+                <a href="javascript:void(0)" class="js-tag color1">C++11</a>
               </li>
 
               <li class="article-tag-list-item">
