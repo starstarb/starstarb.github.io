@@ -6,6 +6,7 @@ abbrlink: '42862e9'
 date: 2019-07-22 12:42:52
 ---
 DP算法题训练
+![](https://github.com/starstarb/clouding/raw/master/head/Cg-4k1oWK_6ITsuEAGLaXmEP7foAAN_pwOKzB4AYtp2207.jpg)
 <!--more-->
 ### 最长回文子串
 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。

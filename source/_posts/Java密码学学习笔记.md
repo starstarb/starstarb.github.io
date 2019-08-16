@@ -6,6 +6,7 @@ abbrlink: 13cff302
 date: 2019-07-31 11:28:44
 ---
 Java加密与解密读书笔记
+![](https://github.com/starstarb/clouding/raw/master/head/43844adaaa84367dde540814c14a614f.jpg)
 <!--more-->
 ### 密码学常用术语
 明文(Plaintext):指待加密信息，明文可以是文本文件、图片文件、二进制数据等。

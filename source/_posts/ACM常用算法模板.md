@@ -6,6 +6,7 @@ abbrlink: a95aaa1f
 date: 2019-07-28 10:33:21
 ---
 算法模板学习
+![](https://github.com/starstarb/clouding/raw/master/head/fb4cd4a65d7e467b45eba431e63eb5f9.jpg)
 <!--more-->
 
 #### 文本输入输出

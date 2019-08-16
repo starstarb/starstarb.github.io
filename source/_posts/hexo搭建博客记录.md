@@ -214,14 +214,19 @@ post_asset_folder: true
 ![](../img/post-asset.png)
 ```
 ### 主页显示摘要
-在 md 中，摘要内容的后面跟上 ```<!--more-->```，否则主页会显示文章的全部内容
-用别名简化命令
+在 md 中，摘要内容的后面跟上 <!--more-->，
+
+否则主页会显示文章的全部内容
+
+**用别名简化命令**
+
 ```
 alias hd='hexo clean; hexo generate; hexo deploy'
 alias hs='hexo server -g'
 ```
-本地预览用 hs
-发布时使用 hd
+**本地预览用 hs**
+**发布时使用 hd**
+
 ### 域名选择
 例如：登录腾讯云，购买域名后，登录到控制台，域名解析列表，进入记录管理，点击添加记录。
 

@@ -6,6 +6,7 @@ abbrlink: a80115f8
 date: 2019-08-08 15:08:46
 ---
 随机森林算法，参考：https://www.cnblogs.com/wj-1314/p/9628303.html
+![](https://github.com/starstarb/clouding/raw/master/head/e7f428d6ca1cf376e564c5a45b13e431.jpg)
 <!--more-->
 ### 随机森林算法的理论知识
 　　随机森林是一种有监督学习算法，是以决策树为基学习器的集成学习算法。随机森林非常简单，易于实现，计算开销也很小，但是它在分类和回归上表现出非常惊人的性能，因此，随机森林被誉为“代表集成学习技术水平的方法”。

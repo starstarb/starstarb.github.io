@@ -6,6 +6,7 @@ abbrlink: 3012948c
 date: 2019-08-08 15:09:03
 ---
 推荐系统学习:LensKit
+![](https://github.com/starstarb/clouding/raw/master/head/Cg-4kloMPCqIOZCiAB9OsJYTfikAAN8YQPO0S4AH07I023.jpg)
 <!--more-->
 ### 介绍
 

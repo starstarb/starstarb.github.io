@@ -6,6 +6,7 @@ abbrlink: 460b5ed
 date: 2019-08-08 15:09:19
 ---
 sklearn/surprise
+![](https://github.com/starstarb/clouding/raw/master/head/f2deaa2d8bcb907b31c759089e262f09.jpg)
 <!--more-->
 网上有很多关于sklearn的学习教程，大部分都是简单的讲清楚某一方面，其实最好的教程就是官方文档。
 

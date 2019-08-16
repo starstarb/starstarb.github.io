@@ -6,6 +6,7 @@ abbrlink: e35b35f9
 date: 2019-07-18 09:10:43
 ---
 Python统计分析基础代码练习及总结
+![](https://github.com/starstarb/clouding/raw/master/head/Cg-4k1oDG4KIGCdgACYDwGi8noIAAN44APLck0AJgPY537.jpg)
 <!--more-->
 ### 一、打开jupyter notebook，方便记录python代码
 cmd->pip install ipython->pip install notebook(pip install jupyter)->ipython notebook(jupyter notebook)
