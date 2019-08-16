@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>星星</title>
+  <title>star</title>
   
-  <subtitle>We are all stardust</subtitle>
+  <subtitle>此生逍遥天休问，古来万事东流水</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://javastar.club/"/>
-  <updated>2019-08-16T03:09:24.588Z</updated>
+  <updated>2019-08-16T03:15:00.736Z</updated>
   <id>http://javastar.club/</id>
   
   <author>
-    <name>小星星</name>
+    <name>stardust</name>
     
   </author>
   
@@ -21,7 +21,7 @@
     <link href="http://javastar.club/archives/217f25fc.html"/>
     <id>http://javastar.club/archives/217f25fc.html</id>
     <published>2019-08-15T07:52:20.000Z</published>
-    <updated>2019-08-16T03:09:24.588Z</updated>
+    <updated>2019-08-16T03:15:00.736Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://github.com/starstarb/clouding/raw/master/head/32c4b09dab727ad296e2f940d1c0db06.jpg" alt></p><a id="more"></a><h3 id="EBP、ESP寄存器"><a href="#EBP、ESP寄存器" class="headerlink" title="EBP、ESP寄存器"></a>EBP、ESP寄存器</h3><ol>  <li>ESP: 栈指针寄存器(extended stack pointer),其内存放着一个指针，该指针永远指向系统栈最上面一个栈帧的栈顶。</li>  <li>EBP:基址指针寄存器(extended base pointer),其内存放着一个指针，该指针永远指向系统栈最上面一个栈帧的底部。</li></ol><p>Intel系统中，栈是向下生长的,(栈越扩大，其值越小，堆恰好相反)</p><p><img src="https://github.com/starstarb/clouding/raw/master/security/%E6%A0%88%E5%B8%A7.png" alt><br>EBP是当前函数的存取指针，即存储或者读取数时的指针基地址；</p><p>  ESP就是当前函数的栈顶指针。每一次发生函数的调用（主函数调用子函数）时，在被调用函数初始时，都会把当前函数（主函数）的EBP压栈，以便从子函数返回到主函数时可以获取EBP。</p>]]></content>
     
