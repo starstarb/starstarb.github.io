@@ -1,11 +1,12 @@
 ---
 title: VSCode快捷键
-date: 2019-08-18 16:10:52
 tags: VSCode
 categories: VSCode
+abbrlink: 1cfdae89
+date: 2019-08-18 16:10:52
 ---
+test
 <!--more-->
-
 Ctrl+Shift+P, F1 	显示命令面板
 Ctrl+P 	快速打开（文件）
 Ctrl+Shift+N 	新窗口/实例
