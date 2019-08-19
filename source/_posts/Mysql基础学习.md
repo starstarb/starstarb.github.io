@@ -477,3 +477,4 @@ set status=2,version=version+1
 where id=#{id} and version=#{version};
 ```
 这样我们就实现了乐观锁
+
