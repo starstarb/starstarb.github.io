@@ -11,21 +11,18 @@
   <title>前端学习笔记 | star</title>
   <meta name="viewport"
                                                                                   content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description"
-                                                                                  content="常用浏览器内核          webkit内核(V8引擎)           Gecko           Presto           Trident     谷歌浏览器的控制台：(Fn+f12)          Elements: 查看结构样式，可以修改这些内容           Console: 查看输出结果和报错信息，是JS调试的利器           Sources:">
+  <meta name="description" content="test">
   <meta name="keywords" content="前端">
   <meta property="og:type" content="article">
   <meta property="og:title" content="前端学习笔记">
   <meta property="og:url" content="http://javastar.club/archives/91ce7628.html">
   <meta property="og:site_name" content="star">
-  <meta property="og:description"
-                                                                                  content="常用浏览器内核          webkit内核(V8引擎)           Gecko           Presto           Trident     谷歌浏览器的控制台：(Fn+f12)          Elements: 查看结构样式，可以修改这些内容           Console: 查看输出结果和报错信息，是JS调试的利器           Sources:">
+  <meta property="og:description" content="test">
   <meta property="og:locale" content="default">
-  <meta property="og:updated_time" content="2019-08-19T03:15:15.027Z">
+  <meta property="og:updated_time" content="2019-08-19T03:22:48.578Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="前端学习笔记">
-  <meta name="twitter:description"
-                                                                                  content="常用浏览器内核          webkit内核(V8引擎)           Gecko           Presto           Trident     谷歌浏览器的控制台：(Fn+f12)          Elements: 查看结构样式，可以修改这些内容           Console: 查看输出结果和报错信息，是JS调试的利器           Sources:">
+  <meta name="twitter:description" content="test">
 
   <link rel="alternative" href="/atom.xml" title="star"
                                                                                   type="application/atom+xml">
@@ -207,7 +204,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-keyboard-o"></i>
                         <span class="post-meta-item-text"> 字数统计: </span>
-                        <span class="post-count">838字</span>
+                        <span class="post-count">911字</span>
                       </span>
                     </span>
 
@@ -231,6 +228,7 @@
 
                 <div class="article-entry" itemprop="articleBody">
 
+                  <p>test</p>
                   <a id="more"></a>
                   <h3 id="常用浏览器内核"><a href="#常用浏览器内核" class="headerlink"
                                                                                                     title="常用浏览器内核"></a>常用浏览器内核
@@ -418,10 +416,10 @@
                     <table>
                       <tr>
                         <td class="gutter">
-                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre>
+                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre>
                         </td>
                         <td class="code">
-                          <pre><span class="line">//把字符串转换为数字，只要字符串包含任意一个非有效数字字符(第一个点除外)，结果都是NaN</span><br><span class="line">console.log(Number(&apos;12.5&apos;));//=&gt;12.5</span><br><span class="line">console.log(Number(&apos;12.5px&apos;));//NaN</span><br><span class="line">console.log(Number(&apos;&apos;));//0</span><br><span class="line"></span><br><span class="line">//bool translate number</span><br><span class="line">console.log(Number(true));//=&gt;1</span><br><span class="line">console.log(Number(false));//=&gt;0</span><br><span class="line">console.log(isNaN(false));//=&gt;false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">console.log(Number(undefined));//=&gt;NaN</span><br><span class="line">console.log(Number(null));//=&gt;0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log(Number(&#123;name:&apos;10&apos;&#125;));//NaN</span><br><span class="line">console.log(Number(&#123;&#125;));//NaN</span><br><span class="line">console.log(Number([]));// -&gt; 0</span><br><span class="line">console.log(Number([12]));// -&gt; 12</span><br><span class="line">console.log(Number([12,23]));// -&gt; NaN</span><br></pre>
+                          <pre><span class="line">//把字符串转换为数字，只要字符串包含任意一个非有效数字字符(第一个点除外)，结果都是NaN</span><br><span class="line">console.log(Number(&apos;12.5&apos;));//=&gt;12.5</span><br><span class="line">console.log(Number(&apos;12.5px&apos;));//NaN</span><br><span class="line">console.log(Number(&apos;&apos;));//0</span><br><span class="line"></span><br><span class="line">//bool translate number</span><br><span class="line">console.log(Number(true));//=&gt;1</span><br><span class="line">console.log(Number(false));//=&gt;0</span><br><span class="line">console.log(isNaN(false));//=&gt;false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">console.log(Number(undefined));//=&gt;NaN</span><br><span class="line">console.log(Number(null));//=&gt;0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//把引用数据类型转换为数字，是先把他基于toString方法转换为字符串，然后再转换为数字</span><br><span class="line">console.log(Number(&#123;name:&apos;10&apos;&#125;));//NaN</span><br><span class="line">console.log(Number(&#123;&#125;));//NaN</span><br><span class="line"></span><br><span class="line">//&#123;&#125;/&#123;&apos;x&apos;:&apos;x&apos;&#125;.toString()=&gt;&quot;[object Object]&quot;=&gt;NaN</span><br><span class="line"></span><br><span class="line">//[].toString()=&gt;&apos;&apos;</span><br><span class="line">console.log(Number([]));// -&gt; 0</span><br><span class="line"></span><br><span class="line">//[].toString()=&gt;&apos;12&apos;</span><br><span class="line">console.log(Number([12]));// -&gt; 12</span><br><span class="line"></span><br><span class="line">//[].toString()=&gt;&apos;12,23&apos;</span><br><span class="line">console.log(Number([12,23]));// -&gt; NaN</span><br></pre>
                         </td>
                       </tr>
                     </table>
