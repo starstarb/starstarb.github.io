@@ -9,21 +9,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://javastar.club">
   <title>树题型归类 | star</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport"
+                                                                                  content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="树相关题型学习，学nginx源码遇到了红黑树，因此决定重新学习红黑树相关知识。">
   <meta name="keywords" content="树">
   <meta property="og:type" content="article">
   <meta property="og:title" content="树题型归类">
   <meta property="og:url" content="http://javastar.club/archives/a4c0ddde.html">
   <meta property="og:site_name" content="star">
-  <meta property="og:description" content="树相关题型学习，学nginx源码遇到了红黑树，因此决定重新学习红黑树相关知识。">
+  <meta property="og:description"
+                                                                                  content="树相关题型学习，学nginx源码遇到了红黑树，因此决定重新学习红黑树相关知识。">
   <meta property="og:locale" content="default">
   <meta property="og:updated_time" content="2019-08-07T07:14:52.720Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="树题型归类">
-  <meta name="twitter:description" content="树相关题型学习，学nginx源码遇到了红黑树，因此决定重新学习红黑树相关知识。">
+  <meta name="twitter:description"
+                                                                                  content="树相关题型学习，学nginx源码遇到了红黑树，因此决定重新学习红黑树相关知识。">
 
-  <link rel="alternative" href="/atom.xml" title="star" type="application/atom+xml">
+  <link rel="alternative" href="/atom.xml" title="star"
+                                                                                  type="application/atom+xml">
 
   <link rel="icon" href="/img/head1.jpg">
 
@@ -31,7 +35,7 @@
 
   <style type="text/css">
     #container.show {
-      background: linear-gradient(200deg, #a0cfe4, #e8c37e);
+      background: linear-gradient(200deg, #ccc, #000);
     }
 
   </style>
@@ -44,7 +48,7 @@
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      <div class="overlay" style="background: #4d4d4d"></div>
+      <div class="overlay" style="background: rebeccapurple"></div>
       <div class="intrude-less">
         <header id="header" class="inner">
           <a href class="profilepic">
@@ -69,21 +73,32 @@
           </nav>
           <nav class="header-smart-menu">
 
-            <a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+            <a q-on="click: openSlider(e, 'innerArchive')"
+                                                                                            href="javascript:void(0)">所有文章</a>
 
-            <a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友情链</a>
+            <a q-on="click: openSlider(e, 'friends')"
+                                                                                            href="javascript:void(0)">友情链</a>
 
-            <a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+            <a q-on="click: openSlider(e, 'aboutme')"
+                                                                                            href="javascript:void(0)">关于我</a>
 
           </nav>
           <nav class="header-nav">
             <div class="social">
 
-              <a class="github" target="_blank" href="https://github.com/starstarb/starstarb.github.io" title="github" rel="external nofollow noopener noreferrer"><i class="icon-github"></i></a>
+              <a class="github" target="_blank" href="https://github.com/starstarb/starstarb.github.io"
+                                                                                              title="github"
+                                                                                              rel="external nofollow noopener noreferrer"><i
+                                                                                                class="icon-github"></i></a>
 
-              <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/tu-zi-zuo-zai-ting-zi-shang" title="zhihu" rel="external nofollow noopener noreferrer"><i class="icon-zhihu"></i></a>
+              <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/tu-zi-zuo-zai-ting-zi-shang"
+                                                                                              title="zhihu"
+                                                                                              rel="external nofollow noopener noreferrer"><i
+                                                                                                class="icon-zhihu"></i></a>
 
-              <a class="bilibili" target="_blank" href="https://space.bilibili.com/222130784" title="bilibili" rel="external nofollow noopener noreferrer"><i class="icon-bilibili"></i></a>
+              <a class="bilibili" target="_blank" href="https://space.bilibili.com/222130784" title="bilibili"
+                                                                                              rel="external nofollow noopener noreferrer"><i
+                                                                                                class="icon-bilibili"></i></a>
 
             </div>
           </nav>
@@ -94,9 +109,10 @@
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       <nav id="mobile-nav">
-        <div class="overlay js-overlay" style="background: #4d4d4d"></div>
+        <div class="overlay js-overlay" style="background: rebeccapurple"></div>
         <div class="btnctn js-mobile-btnctn">
-          <div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i>
+          <div class="slider-trigger list" q-on="click: openSlider(e)"><i
+                                                                                            class="icon icon-sort"></i>
           </div>
         </div>
         <div class="intrude-less">
@@ -108,17 +124,27 @@
               <h1 class="header-author js-header-author">stardust</h1>
             </hgroup>
 
-            <p class="header-subtitle"><i class="icon icon-quo-left"></i>此生逍遥天休问，古来万事东流水<i class="icon icon-quo-right"></i>
+            <p class="header-subtitle"><i
+                                                                                              class="icon icon-quo-left"></i>此生逍遥天休问，古来万事东流水<i
+                                                                                              class="icon icon-quo-right"></i>
             </p>
 
             <nav class="header-nav">
               <div class="social">
 
-                <a class="github" target="_blank" href="https://github.com/starstarb/starstarb.github.io" title="github" rel="external nofollow noopener noreferrer"><i class="icon-github"></i></a>
+                <a class="github" target="_blank" href="https://github.com/starstarb/starstarb.github.io"
+                                                                                                title="github"
+                                                                                                rel="external nofollow noopener noreferrer"><i
+                                                                                                  class="icon-github"></i></a>
 
-                <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/tu-zi-zuo-zai-ting-zi-shang" title="zhihu" rel="external nofollow noopener noreferrer"><i class="icon-zhihu"></i></a>
+                <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/tu-zi-zuo-zai-ting-zi-shang"
+                                                                                                title="zhihu"
+                                                                                                rel="external nofollow noopener noreferrer"><i
+                                                                                                  class="icon-zhihu"></i></a>
 
-                <a class="bilibili" target="_blank" href="https://space.bilibili.com/222130784" title="bilibili" rel="external nofollow noopener noreferrer"><i class="icon-bilibili"></i></a>
+                <a class="bilibili" target="_blank" href="https://space.bilibili.com/222130784" title="bilibili"
+                                                                                                rel="external nofollow noopener noreferrer"><i
+                                                                                                  class="icon-bilibili"></i></a>
 
               </div>
             </nav>
@@ -128,10 +154,12 @@
 
                 <li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 
-                <li style="width: 33.333333333333336%"><a href="/archives/index.html">归档</a>
+                <li style="width: 33.333333333333336%"><a
+                                                                                                  href="/archives/index.html">归档</a>
                 </li>
 
-                <li style="width: 33.333333333333336%"><a href="/categories">分类</a>
+                <li style="width: 33.333333333333336%"><a
+                                                                                                  href="/categories">分类</a>
                 </li>
 
               </ul>
@@ -144,19 +172,30 @@
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
           <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+            <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content"
+                                                                                            id="myCanvas1"
+                                                                                            class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-树题型归类" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-树题型归类" class="article article-type-post " itemscope
+                                                                                            itemprop="blogPost">
               <div class="article-inner">
 
                 <header class="article-header">
-                  <h1 class="article-title" itemprop="name">
-                    树题型归类
-                  </h1>
 
-                  <a href="/archives/a4c0ddde.html" class="archive-article-date">
-                    <time datetime="2019-07-22T04:43:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
+                  <center>
+                    <p></p>
+                    <h1 class="article-title" itemprop="name">
+                      树题型归类
+                    </h1>
+                    <p></p>
+                  </center>
+
+                  <a href="/archives/a4c0ddde.html"
+                                                                                                  class="archive-article-date">
+                    <time datetime="2019-07-22T04:43:38.000Z"
+                                                                                                    itemprop="datePublished"><i
+                                                                                                      class="icon-calendar icon"></i>2019-07-22</time>
                   </a>
 
                   <!-- 需要添加的位置 -->
@@ -193,7 +232,8 @@
 
                   <p>树相关题型学习，学nginx源码遇到了红黑树，因此决定重新学习红黑树相关知识。</p>
                   <a id="more"></a>
-                  <h3 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST
+                  <h3 id="BST"><a href="#BST" class="headerlink"
+                                                                                                    title="BST"></a>BST
                   </h3>
                   <p>二叉查找树（Binary Search
                     Tree，简称BST）是一棵二叉树，它的左子节点的值比父节点的值要小，右节点的值要比父节点的值大。它的高度决定了它的查找效率。
@@ -201,7 +241,8 @@
                   <p>
                     在理想的情况下，二叉查找树增删查改的时间复杂度为O(logN)（其中N为节点数），最坏的情况下为O(N)。当它的高度为logN+1时，我们就说二叉查找树是平衡的。
                   </p>
-                  <h5 id="BST的查找操作"><a href="#BST的查找操作" class="headerlink" title="BST的查找操作"></a>BST的查找操作
+                  <h5 id="BST的查找操作"><a href="#BST的查找操作" class="headerlink"
+                                                                                                    title="BST的查找操作"></a>BST的查找操作
                   </h5>
                   <figure class="highlight plain">
                     <table>
@@ -221,7 +262,8 @@
 如果少于当前节点则继续查找当前节点的左节点；
 如果大于当前节点则继续查找当前节点的右节点。</code></pre>
                   <p>直到当前节点指针为空或者查找到对应的节点，程序查找结束。</p>
-                  <h5 id="BST的插入操作"><a href="#BST的插入操作" class="headerlink" title="BST的插入操作"></a>BST的插入操作
+                  <h5 id="BST的插入操作"><a href="#BST的插入操作" class="headerlink"
+                                                                                                    title="BST的插入操作"></a>BST的插入操作
                   </h5>
                   <figure class="highlight plain">
                     <table>
@@ -239,7 +281,8 @@
                   <p>
                     插入操作先通过循环查找到待插入的节点的父节点，和查找父节点的逻辑一样，都是比大小，小的往左，大的往右。找到父节点后，对比父节点，小的就插入到父节点的左节点，大就插入到父节点的右节点上。
                   </p>
-                  <h5 id="BST的删除操作"><a href="#BST的删除操作" class="headerlink" title="BST的删除操作"></a>BST的删除操作
+                  <h5 id="BST的删除操作"><a href="#BST的删除操作" class="headerlink"
+                                                                                                    title="BST的删除操作"></a>BST的删除操作
                   </h5>
                   <p> 删除操作的步骤如下：</p>
                   <ol>
@@ -249,17 +292,20 @@
                       如果待删除的节点不是叶子节点，则先找到待删除节点的中序遍历的后继节点，用该后继节点的值替换待删除的节点的值，然后删除后继节点。
                     </li>
                   </ol>
-                  <h5 id="BST存在的问题"><a href="#BST存在的问题" class="headerlink" title="BST存在的问题"></a>BST存在的问题
+                  <h5 id="BST存在的问题"><a href="#BST存在的问题" class="headerlink"
+                                                                                                    title="BST存在的问题"></a>BST存在的问题
                   </h5>
                   <p>
                     BST存在的主要问题是，数在插入的时候会导致树倾斜，不同的插入顺序会导致树的高度不一样，而树的高度直接的影响了树的查找效率。理想的高度是logN，最坏的情况是所有的节点都在一条斜线上，这样的树的高度为N。
                   </p>
-                  <h3 id="红黑树学习"><a href="#红黑树学习" class="headerlink" title="红黑树学习"></a>红黑树学习
+                  <h3 id="红黑树学习"><a href="#红黑树学习" class="headerlink"
+                                                                                                    title="红黑树学习"></a>红黑树学习
                   </h3>
                   <p>
                     红黑树：属于二叉搜索树，在每个结点上增加了一个存储位来表示结点的颜色，同时，确保没有一条路径会比其他路径长出两倍，因而是近似平衡的。
                   </p>
-                  <h3 id="红黑树定义："><a href="#红黑树定义：" class="headerlink" title="红黑树定义："></a>红黑树定义：
+                  <h3 id="红黑树定义："><a href="#红黑树定义：" class="headerlink"
+                                                                                                    title="红黑树定义："></a>红黑树定义：
                   </h3>
                   <ol>
                     <li>任何一个节点都有颜色，黑色或者红色</li>
@@ -275,7 +321,8 @@
                       </ol>
                     </li>
                   </ol>
-                  <h3 id="红黑树性质"><a href="#红黑树性质" class="headerlink" title="红黑树性质"></a>红黑树性质
+                  <h3 id="红黑树性质"><a href="#红黑树性质" class="headerlink"
+                                                                                                    title="红黑树性质"></a>红黑树性质
                   </h3>
                   <p>
                     红黑树是每个结点都带有颜色属性的二叉查找树，颜色为红色或黑色。在二叉查找树强制一般要求以外，对于任何有效的红黑树我们增加了如下的额外要求：
@@ -289,7 +336,8 @@
                       从任一结点到其每个叶子的所有简单路径都包含相同数目的黑色结点。为了便于处理红黑树中的边界情况，使用一个哨兵来代表所有的NIL结点，也就是说所有指向NIL的指针都指向哨兵T.nil。
                     </li>
                   </ol>
-                  <h4 id="红黑树数据结构"><a href="#红黑树数据结构" class="headerlink" title="红黑树数据结构"></a>红黑树数据结构
+                  <h4 id="红黑树数据结构"><a href="#红黑树数据结构" class="headerlink"
+                                                                                                    title="红黑树数据结构"></a>红黑树数据结构
                   </h4>
                   <figure class="highlight plain">
                     <table>
@@ -310,15 +358,18 @@
                   <p>
                     这样RBTree的查找时间复杂度始终保持在O(logN)从而接近于理想的BST。RBTree的删除和插入操作的时间复杂度也是O(logN)。RBTree的查找操作就是BST的查找操作。
                   </p>
-                  <h5 id="RBTree的旋转操作"><a href="#RBTree的旋转操作" class="headerlink" title="RBTree的旋转操作"></a>RBTree的旋转操作
+                  <h5 id="RBTree的旋转操作"><a href="#RBTree的旋转操作" class="headerlink"
+                                                                                                    title="RBTree的旋转操作"></a>RBTree的旋转操作
                   </h5>
                   <p>
                     旋转操作(Rotate)的目的是使节点颜色符合定义，让RBTree的高度达到平衡。<br>Rotate分为left-rotate（左旋）和right-rotate（右旋），区分左旋和右旋的方法是：待旋转的节点从左边上升到父节点就是右旋，待旋转的节点从右边上升到父节点就是左旋。
                   </p>
-                  <h5 id="RBTree的查找操作"><a href="#RBTree的查找操作" class="headerlink" title="RBTree的查找操作"></a>RBTree的查找操作
+                  <h5 id="RBTree的查找操作"><a href="#RBTree的查找操作" class="headerlink"
+                                                                                                    title="RBTree的查找操作"></a>RBTree的查找操作
                   </h5>
                   <p>RBTree的查找操作和BST的查找操作是一样的。请参考BST的查找操作代码。</p>
-                  <h5 id="RBTree的插入操作"><a href="#RBTree的插入操作" class="headerlink" title="RBTree的插入操作"></a>RBTree的插入操作
+                  <h5 id="RBTree的插入操作"><a href="#RBTree的插入操作" class="headerlink"
+                                                                                                    title="RBTree的插入操作"></a>RBTree的插入操作
                   </h5>
                   <p>
                     RBTree的插入与BST的插入方式是一致的，只不过是在插入过后，可能会导致树的不平衡，这时就需要对树进行旋转操作和颜色修复（在这里简称插入修复），使得它符合RBTree的定义。
@@ -332,7 +383,8 @@
                     <li>叔叔节点为空，且祖父节点、父节点和新节点处于一条斜线上。</li>
                     <li>叔叔节点为空，且祖父节点、父节点和新节点不处于一条斜线上。</li>
                   </ol>
-                  <h4 id="RBTree的删除操作"><a href="#RBTree的删除操作" class="headerlink" title="RBTree的删除操作"></a>RBTree的删除操作
+                  <h4 id="RBTree的删除操作"><a href="#RBTree的删除操作" class="headerlink"
+                                                                                                    title="RBTree的删除操作"></a>RBTree的删除操作
                   </h4>
                   <p>
                     删除操作首先需要做的也是BST的删除操作，删除操作会删除对应的节点，如果是叶子节点就直接删除，如果是非叶子节点，会用对应的中序遍历的后继节点来顶替要删除节点的位置。删除后就需要做删除修复操作，使的树符合红黑树的定义，符合定义的红黑树高度是平衡的。
@@ -390,7 +442,8 @@
                     (全部为红，右红左黑)这两种情况，可以先将前面的情况通过选择转换为后一种情况，在后一种情况下，因为兄弟节点为黑，兄弟节点的右节点为红，可以借调出两个节点出来做黑节点，这样就可以保证删除了黑节点，整棵树还是符合红黑树的定义的，因为黑色节点的个数没有改变。
                   </p>
                   <p>红黑树的删除操作是遇到删除的节点为红色，或者追溯调整到了root节点，这时删除的修复操作完毕。</p>
-                  <h4 id="RBTree的Java实现"><a href="#RBTree的Java实现" class="headerlink" title="RBTree的Java实现"></a>RBTree的Java实现
+                  <h4 id="RBTree的Java实现"><a href="#RBTree的Java实现" class="headerlink"
+                                                                                                    title="RBTree的Java实现"></a>RBTree的Java实现
                   </h4>
                   <figure class="highlight plain">
                     <table>
@@ -446,12 +499,17 @@
                     <br>
                     <strong>版权声明：</strong>
                     本作品采用
-                    <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享
+                    <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                                                                    target="_blank">知识共享署名-非商业性使用-相同方式共享
                       4.0 国际许可协议</a>
                     进行许可。转载请注明出处！
 
                     <br>
-                    <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+                    <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                                                                    target="_blank"><img
+                                                                                                      alt="知识共享许可协议"
+                                                                                                      style="border-width:0"
+                                                                                                      src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
 
                   </div>
 
@@ -464,12 +522,15 @@
                         <span class="tooltip-content">
                           <span class="tooltip-text">
                             <span class="tooltip-inner">
-                              <p class="reward-p"><i class="icon icon-quo-left"></i>请我喝一杯咖啡吧<i class="icon icon-quo-right"></i>
+                              <p class="reward-p"><i
+                                                                                                                class="icon icon-quo-left"></i>请我喝一杯咖啡吧<i
+                                                                                                                class="icon icon-quo-right"></i>
                               </p>
                               <div class="reward-box">
 
                                 <div class="reward-box-item">
-                                  <img class="reward-img" src="/img/zhifubao.jpg">
+                                  <img class="reward-img"
+                                                                                                                  src="/img/zhifubao.jpg">
                                   <span class="reward-type">支付宝</span>
                                 </div>
 
@@ -494,7 +555,8 @@
                     <ul class="article-tag-list">
 
                       <li class="article-tag-list-item">
-                        <a href="javascript:void(0)" class="js-tag article-tag-list-link color2">树</a>
+                        <a href="javascript:void(0)"
+                                                                                                        class="js-tag article-tag-list-link color2">树</a>
                       </li>
 
                     </ul>
@@ -505,7 +567,8 @@
                     <ul class="article-tag-list">
 
                       <li class="article-tag-list-item">
-                        <a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
+                        <a href="/categories/数据结构//"
+                                                                                                        class="article-tag-list-link color5">数据结构</a>
                       </li>
 
                     </ul>
@@ -521,28 +584,36 @@
                       <span class="tooltip-content">
                         <div class="share-wrap">
                           <div class="share-icons">
-                            <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+                            <a class="weibo share-sns" href="javascript:;"
+                                                                                                            data-type="weibo">
                               <i class="icon icon-weibo"></i>
                             </a>
-                            <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+                            <a class="weixin share-sns wxFab" href="javascript:;"
+                                                                                                            data-type="weixin">
                               <i class="icon icon-weixin"></i>
                             </a>
-                            <a class="qq share-sns" href="javascript:;" data-type="qq">
+                            <a class="qq share-sns" href="javascript:;"
+                                                                                                            data-type="qq">
                               <i class="icon icon-qq"></i>
                             </a>
-                            <a class="douban share-sns" href="javascript:;" data-type="douban">
+                            <a class="douban share-sns" href="javascript:;"
+                                                                                                            data-type="douban">
                               <i class="icon icon-douban"></i>
                             </a>
-                            <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+                            <a class="qzone share-sns" href="javascript:;"
+                                                                                                            data-type="qzone">
                               <i class="icon icon-qzone"></i>
                             </a>
-                            <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+                            <a class="facebook share-sns" href="javascript:;"
+                                                                                                            data-type="facebook">
                               <i class="icon icon-facebook"></i>
                             </a>
-                            <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+                            <a class="twitter share-sns" href="javascript:;"
+                                                                                                            data-type="twitter">
                               <i class="icon icon-twitter"></i>
                             </a>
-                            <a class="google share-sns" href="javascript:;" data-type="google">
+                            <a class="google share-sns" href="javascript:;"
+                                                                                                            data-type="google">
                               <i class="icon icon-google"></i>
                             </a>
                           </div>
@@ -552,10 +623,12 @@
                   </div>
 
                   <div class="page-modal wx-share js-wx-box">
-                    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+                    <a class="close js-modal-close" href="javascript:;"><i
+                                                                                                      class="icon icon-close"></i></a>
                     <p>扫一扫，分享到微信</p>
                     <div class="wx-qrcode">
-                      <img src="//pan.baidu.com/share/qrcode?url=http://javastar.club/archives/a4c0ddde.html" alt="微信分享二维码">
+                      <img src="//pan.baidu.com/share/qrcode?url=http://javastar.club/archives/a4c0ddde.html"
+                                                                                                      alt="微信分享二维码">
                     </div>
                   </div>
 
@@ -568,7 +641,8 @@
 
             <nav id="article-nav">
 
-              <a href="/archives/714e6d05.html" id="article-nav-newer" class="article-nav-link-wrap">
+              <a href="/archives/714e6d05.html" id="article-nav-newer"
+                                                                                              class="article-nav-link-wrap">
                 <i class="icon-circle-left"></i>
                 <div class="article-nav-title">
 
@@ -577,7 +651,8 @@
                 </div>
               </a>
 
-              <a href="/archives/78ab4875.html" id="article-nav-older" class="article-nav-link-wrap">
+              <a href="/archives/78ab4875.html" id="article-nav-older"
+                                                                                              class="article-nav-link-wrap">
                 <div class="article-nav-title">链表问题归类</div>
                 <i class="icon-circle-right"></i>
               </a>
@@ -587,11 +662,14 @@
             <aside class="wrap-side-operation">
               <div class="mod-side-operation">
 
-                <div class="jump-container" id="js-jump-container" style="display:none;">
-                  <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <div class="jump-container" id="js-jump-container"
+                                                                                                style="display:none;">
+                  <a href="javascript:void(0)"
+                                                                                                  class="mod-side-operation__jump-to-top">
                     <i class="icon-font icon-back"></i>
                   </a>
-                  <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                  <div id="js-jump-plan-container" class="jump-plan-container"
+                                                                                                  style="top: -11px;">
                     <i class="icon-font icon-plane jump-plane"></i>
                   </div>
                 </div>
@@ -604,59 +682,87 @@
                     <span class="tooltip-content">
                       <div class="toc-article">
                         <ol class="toc">
-                          <li class="toc-item toc-level-3"><a class="toc-link" href="#BST"><span class="toc-number">1.</span>
+                          <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                            href="#BST"><span
+                                                                                                              class="toc-number">1.</span>
                               <span class="toc-text">BST</span></a>
                             <ol class="toc-child">
-                              <li class="toc-item toc-level-5"><a class="toc-link" href="#BST的查找操作"><span class="toc-number">1.0.1.</span>
+                              <li class="toc-item toc-level-5"><a class="toc-link"
+                                                                                                                href="#BST的查找操作"><span
+                                                                                                                  class="toc-number">1.0.1.</span>
                                   <span class="toc-text">BST的查找操作
                                   </span></a></li>
-                              <li class="toc-item toc-level-5"><a class="toc-link" href="#BST的插入操作"><span class="toc-number">1.0.2.</span>
+                              <li class="toc-item toc-level-5"><a class="toc-link"
+                                                                                                                href="#BST的插入操作"><span
+                                                                                                                  class="toc-number">1.0.2.</span>
                                   <span class="toc-text">BST的插入操作
                                   </span></a></li>
-                              <li class="toc-item toc-level-5"><a class="toc-link" href="#BST的删除操作"><span class="toc-number">1.0.3.</span>
+                              <li class="toc-item toc-level-5"><a class="toc-link"
+                                                                                                                href="#BST的删除操作"><span
+                                                                                                                  class="toc-number">1.0.3.</span>
                                   <span class="toc-text">BST的删除操作
                                   </span></a></li>
-                              <li class="toc-item toc-level-5"><a class="toc-link" href="#BST存在的问题"><span class="toc-number">1.0.4.</span>
+                              <li class="toc-item toc-level-5"><a class="toc-link"
+                                                                                                                href="#BST存在的问题"><span
+                                                                                                                  class="toc-number">1.0.4.</span>
                                   <span class="toc-text">BST存在的问题
                                   </span></a></li>
                             </ol>
                           </li>
                         </ol>
-
-                        <li class="toc-item toc-level-3"><a class="toc-link" href="#红黑树学习"><span class="toc-number">2.</span>
+                        <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                          href="#红黑树学习"><span
+                                                                                                            class="toc-number">2.</span>
                             <span class="toc-text">红黑树学习</span></a></li>
-                        <li class="toc-item toc-level-3"><a class="toc-link" href="#红黑树定义："><span class="toc-number">3.</span>
+                        <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                          href="#红黑树定义："><span
+                                                                                                            class="toc-number">3.</span>
                             <span class="toc-text">红黑树定义：
                             </span></a></li>
-                        <li class="toc-item toc-level-3"><a class="toc-link" href="#红黑树性质"><span class="toc-number">4.</span>
+                        <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                          href="#红黑树性质"><span
+                                                                                                            class="toc-number">4.</span>
                             <span class="toc-text">红黑树性质</span></a>
                           <ol class="toc-child">
-                            <li class="toc-item toc-level-4"><a class="toc-link" href="#红黑树数据结构"><span class="toc-number">4.1.</span>
+                            <li class="toc-item toc-level-4"><a class="toc-link"
+                                                                                                              href="#红黑树数据结构"><span
+                                                                                                                class="toc-number">4.1.</span>
                                 <span class="toc-text">红黑树数据结构
                                 </span></a>
                               <ol class="toc-child">
-                                <li class="toc-item toc-level-5"><a class="toc-link" href="#RBTree的旋转操作"><span class="toc-number">4.1.1.</span>
+                                <li class="toc-item toc-level-5"><a class="toc-link"
+                                                                                                                  href="#RBTree的旋转操作"><span
+                                                                                                                    class="toc-number">4.1.1.</span>
                                     <span class="toc-text">RBTree的旋转操作
                                     </span></a></li>
-                                <li class="toc-item toc-level-5"><a class="toc-link" href="#RBTree的查找操作"><span class="toc-number">4.1.2.</span>
+                                <li class="toc-item toc-level-5"><a class="toc-link"
+                                                                                                                  href="#RBTree的查找操作"><span
+                                                                                                                    class="toc-number">4.1.2.</span>
                                     <span class="toc-text">RBTree的查找操作
                                     </span></a></li>
-                                <li class="toc-item toc-level-5"><a class="toc-link" href="#RBTree的插入操作"><span class="toc-number">4.1.3.</span>
+                                <li class="toc-item toc-level-5"><a class="toc-link"
+                                                                                                                  href="#RBTree的插入操作"><span
+                                                                                                                    class="toc-number">4.1.3.</span>
                                     <span class="toc-text">RBTree的插入操作
                                     </span></a></li>
                               </ol>
                             </li>
-                            <li class="toc-item toc-level-4"><a class="toc-link" href="#RBTree的删除操作"><span class="toc-number">4.2.</span>
+                            <li class="toc-item toc-level-4"><a class="toc-link"
+                                                                                                              href="#RBTree的删除操作"><span
+                                                                                                                class="toc-number">4.2.</span>
                                 <span class="toc-text">RBTree的删除操作
                                 </span></a></li>
-                            <li class="toc-item toc-level-4"><a class="toc-link" href="#RBTree的Java实现"><span class="toc-number">4.3.</span>
+                            <li class="toc-item toc-level-4"><a class="toc-link"
+                                                                                                              href="#RBTree的Java实现"><span
+                                                                                                                class="toc-number">4.3.</span>
                                 <span class="toc-text">RBTree的Java实现
                                 </span></a></li>
                           </ol>
                         </li>
-                        <li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">5.</span>
+                        <li class="toc-item toc-level-3"><a class="toc-link"
+                                                                                                          href="#总结"><span
+                                                                                                            class="toc-number">5.</span>
                             <span class="toc-text">总结</span></a></li>
-
                       </div>
                     </span>
                   </div>
@@ -666,8 +772,10 @@
             </aside>
 
             <div id="gitalk-container"></div>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-            <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js">
+            <link rel="stylesheet"
+                                                                                            href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script
+                                                                                            src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js">
             </script>
             <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js">
             </script>
@@ -736,7 +844,8 @@
             </div>
             <div class="footer-right">
 
-              <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+              <script async
+                                                                                              src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
               </script>
               <span id="busuanzi_container_site_pv">
                 本站总访问量：<span id="busuanzi_value_site_pv"></span>次
@@ -7358,19 +7467,23 @@
 
     </script>
 
-    <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+    <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse"
+                                                                                    q-on="click:stop(e)">
       <div class="tools-nav header-menu">
 
         <ul style="width: 70%">
 
-          <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')">
+          <li style="width: 33.333333333333336%"
+                                                                                          q-on="click: openSlider(e, 'innerArchive')">
             <a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a>
           </li>
 
-          <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')">
+          <li style="width: 33.333333333333336%"
+                                                                                          q-on="click: openSlider(e, 'friends')">
             <a href="javascript:void(0)" q-class="active:friends">友情链</a></li>
 
-          <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')">
+          <li style="width: 33.333333333333336%"
+                                                                                          q-on="click: openSlider(e, 'aboutme')">
             <a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
 
         </ul>
@@ -7379,14 +7492,17 @@
 
         <section class="tools-section tools-section-all" q-show="innerArchive">
           <div class="search-wrap">
-            <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+            <input class="search-ipt" q-model="search" type="text"
+                                                                                            placeholder="find something…">
             <i class="icon-search icon" q-show="search|isEmptyStr"></i>
-            <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+            <i class="icon-close icon" q-show="search|isNotEmptyStr"
+                                                                                            q-on="click:clearChose(e)"></i>
           </div>
           <div class="widget tagcloud search-tag">
             <p class="search-tag-wording">tag:</p>
             <label class="search-switch">
-              <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+              <input type="checkbox" q-on="click:toggleTag(e)"
+                                                                                              q-attr="checked:showTags">
             </label>
             <ul class="article-tag-list" q-show="showTags">
 
@@ -7395,11 +7511,16 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)"
+                                                                                                class="js-tag color1">Python统计分析</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7407,23 +7528,28 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python统计分析</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)"
+                                                                                                class="js-tag color1">springBoot</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wireshark</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7435,11 +7561,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">java并发</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7451,11 +7577,15 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7467,11 +7597,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7483,7 +7613,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">队列</a>
+                <a href="javascript:void(0)" class="js-tag color3">日语</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7491,7 +7621,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日语</a>
+                <a href="javascript:void(0)" class="js-tag color3">队列</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7499,11 +7629,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
+                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dairy</a>
+                <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7511,11 +7641,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">English</a>
+                <a href="javascript:void(0)" class="js-tag color3">GA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GA</a>
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7547,11 +7677,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
+                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7583,11 +7713,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">树</a>
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7623,8 +7753,9 @@
           </div>
           <ul class="search-ul">
             <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-              缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br>
-              npm i hexo-generator-json-content --save<br><br>
+              缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm
+              i
+              hexo-generator-json-content --save<br><br>
               3、在根目录_config.yml里添加配置：
               <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
@@ -7648,14 +7779,17 @@
 </pre>
             </p>
             <li class="search-li" q-repeat="items" q-show="isShow">
-              <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+              <a q-attr="href:path|urlformat" class="search-title"><i
+                                                                                                class="icon-quo-left icon"></i><span
+                                                                                                q-text="title"></span></a>
               <p class="search-time">
                 <i class="icon-calendar icon"></i>
                 <span q-text="date|dateformat"></span>
               </p>
               <p class="search-tag">
                 <i class="icon-price-tags icon"></i>
-                <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+                <span q-repeat="tags" q-on="click:choseTag(e, name)"
+                                                                                                q-text="name|tagformat"></span>
               </p>
             </li>
           </ul>
@@ -7666,7 +7800,9 @@
           <ul class="search-ul">
 
             <li class="search-li">
-              <a href="https://www.cnblogs.com/javabai/" target="_blank" class="search-title" rel="external nofollow noopener noreferrer"><i class="icon-quo-left icon"></i>博客园</a>
+              <a href="https://www.cnblogs.com/javabai/" target="_blank" class="search-title"
+                                                                                              rel="external nofollow noopener noreferrer"><i
+                                                                                                class="icon-quo-left icon"></i>博客园</a>
             </li>
 
           </ul>
@@ -7675,8 +7811,24 @@
 
         <section class="tools-section tools-section-me" q-show="aboutme">
 
-          <div class="aboutme-wrap" id="js-aboutme">
-            技术分享&lt;br&gt;&lt;br&gt;QQ:230326401</div>
+          <div class="aboutme-wrap">
+            <div style="display:;">
+              <script type="text/javascript"
+                                                                                              src="https://api.lwl12.com/hitokoto/v1?encode=js&charset=utf-8">
+              </script>
+              <p style="margin:0 20px 0 20px;">
+                <span id="lwlhitokoto">
+                  <script>
+                    lwlhitokoto();
+
+                  </script>
+                </span>
+              </p>
+              <p id="js-aboutme" style="margin:0 20px 0 20px;">
+                我思故我在&lt;br&gt;&lt;br&gt;QQ:230326401 &lt;br&gt;&lt;br&gt;
+                为了更美好的明天而战！</p>
+            </div>
+          </div>
 
         </section>
 
@@ -7712,13 +7864,17 @@
 
             <div class="pswp__counter"></div>
 
-            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <button class="pswp__button pswp__button--close"
+                                                                                            title="Close (Esc)"></button>
 
-            <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+            <button class="pswp__button pswp__button--share" style="display:none"
+                                                                                            title="Share"></button>
 
-            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--fs"
+                                                                                            title="Toggle fullscreen"></button>
 
-            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+            <button class="pswp__button pswp__button--zoom"
+                                                                                            title="Zoom in/out"></button>
 
             <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
             <!-- element will get class pswp__preloader--active when preloader is running -->
@@ -7731,14 +7887,17 @@
             </div>
           </div>
 
-          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div
+                                                                                          class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
             <div class="pswp__share-tooltip"></div>
           </div>
 
-          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+          <button class="pswp__button pswp__button--arrow--left"
+                                                                                          title="Previous (arrow left)">
           </button>
 
-          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+          <button class="pswp__button pswp__button--arrow--right"
+                                                                                          title="Next (arrow right)">
           </button>
 
           <div class="pswp__caption">
@@ -7753,5 +7912,3 @@
 
   </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-
-
