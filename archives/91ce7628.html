@@ -204,7 +204,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-keyboard-o"></i>
                         <span class="post-meta-item-text"> 字数统计: </span>
-                        <span class="post-count">1.8k字</span>
+                        <span class="post-count">2.1k字</span>
                       </span>
                     </span>
 
@@ -213,7 +213,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-hourglass-half"></i>
                         <span class="post-meta-item-text"> 阅读时长: </span>
-                        <span class="post-count">7分</span>
+                        <span class="post-count">9分</span>
                       </span>
                     </span>
                   </div>
@@ -554,6 +554,27 @@
                       </tr>
                     </table>
                   </figure>
+
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">function count(str)</span><br><span class="line">&#123;</span><br><span class="line">    if(isNaN(parseInt(str,10)))</span><br><span class="line">    &#123;</span><br><span class="line">        alert(&quot;该字符串完全由数字组成&quot;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        alert(&quot;该字符串不完全由字符组成&quot;);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;*/</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">   数组是特殊的对象</span><br><span class="line">   1. 我们中括号中设置的是属性值，它的属性名是默认生成的数字，从零开始递增，而且这个数字代表每一项的位置，我们把其称为“索引”=》从零开始，连续递增，代表每一项位置的数字属性名</span><br><span class="line">   2. 默认一个属性名length,存储数组的长度</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">let array=[12,&apos;test&apos;,true,41];</span><br><span class="line">console.log(array);</span><br><span class="line">console.log(array.length);</span><br><span class="line">console.log(array[&apos;length&apos;]);</span><br><span class="line">console.log(array[1]);</span><br><span class="line">console.log(array[array.length-1]);</span><br><span class="line">//向数组末尾增加内容</span><br><span class="line">array[array.length]=100;</span><br><span class="line">console.log(array);</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">//怎么判断是否是字符</span><br><span class="line">/*function t(str)&#123;</span><br><span class="line">    if (/[^\x00-\xff]/g.test(str))//[^\x00-\xff]即ASCII 编码不在0-255的字符</span><br><span class="line"> alert(&quot;含有汉字&quot;);          </span><br><span class="line">else alert(&quot;全是字符&quot;);   </span><br><span class="line">&#125;</span><br><span class="line">console.log(t(&quot;你好&quot;));</span><br><span class="line">console.log(t(&quot;adsfa&quot;));</span><br><span class="line">console.log(t(&quot;测试&quot;));*/</span><br><span class="line"></span><br><span class="line">let n=&#123;</span><br><span class="line">    name: &apos;珠峰&apos;</span><br><span class="line">&#125;;</span><br><span class="line">let m=n;</span><br><span class="line">m.name=&apos;培训&apos;;</span><br><span class="line">console.log(n.name);</span><br><span class="line">console.log(m.name);</span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                  <blockquote>
+                    <p>浏览器想要执行js代码：</p>
+                    <ol>
+                      <li>从电脑内存中分配存储一块内存，用来执行代码(栈内存=&gt;Stack)</li>
+                      <li>分配一个主线程，用来自上而下执行js代码</li>
+                    </ol>
+                  </blockquote>
 
                   <div class="declare">
                     <strong>本文作者：</strong>
@@ -7600,21 +7621,21 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)"
                                                                                                 class="js-tag color1">springBoot</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)"
                                                                                                 class="js-tag color1">Python统计分析</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7626,7 +7647,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7634,11 +7655,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7654,11 +7675,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7667,10 +7688,6 @@
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端面试题汇总</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7694,11 +7711,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+                <a href="javascript:void(0)" class="js-tag color3">日语</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日语</a>
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7751,6 +7768,10 @@
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7810,11 +7831,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
 
               <li class="article-tag-list-item">
