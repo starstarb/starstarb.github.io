@@ -11,22 +11,21 @@
   <title>Java密码学学习笔记 | star</title>
   <meta name="viewport"
                                                                                   content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java加密与解密读书笔记">
+  <meta name="description"
+                                                                                  content="Welcome to my blog, enter password to read.">
   <meta name="keywords" content="java">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Java密码学学习笔记">
   <meta property="og:url" content="http://javastar.club/archives/13cff302.html">
   <meta property="og:site_name" content="star">
-  <meta property="og:description" content="Java加密与解密读书笔记">
+  <meta property="og:description"
+                                                                                  content="Welcome to my blog, enter password to read.">
   <meta property="og:locale" content="default">
-  <meta property="og:image"
-                                                                                  content="https://github.com/starstarb/clouding/raw/master/head/43844adaaa84367dde540814c14a614f.jpg">
-  <meta property="og:updated_time" content="2019-08-16T03:13:26.341Z">
+  <meta property="og:updated_time" content="2019-08-23T03:19:45.300Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Java密码学学习笔记">
-  <meta name="twitter:description" content="Java加密与解密读书笔记">
-  <meta name="twitter:image"
-                                                                                  content="https://github.com/starstarb/clouding/raw/master/head/43844adaaa84367dde540814c14a614f.jpg">
+  <meta name="twitter:description"
+                                                                                  content="Welcome to my blog, enter password to read.">
 
   <link rel="alternative" href="/atom.xml" title="star"
                                                                                   type="application/atom+xml">
@@ -208,7 +207,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-keyboard-o"></i>
                         <span class="post-meta-item-text"> 字数统计: </span>
-                        <span class="post-count">162字</span>
+                        <span class="post-count">135字</span>
                       </span>
                     </span>
 
@@ -232,20 +231,27 @@
 
                 <div class="article-entry" itemprop="articleBody">
 
-                  <p>Java加密与解密读书笔记<br><img src="https://github.com/starstarb/clouding/raw/master/head/43844adaaa84367dde540814c14a614f.jpg"
-                                                                                                    alt>
-                  </p>
-                  <a id="more"></a>
-                  <h3 id="密码学常用术语"><a href="#密码学常用术语" class="headerlink"
-                                                                                                    title="密码学常用术语"></a>密码学常用术语
-                  </h3>
-                  <p>
-                    明文(Plaintext):指待加密信息，明文可以是文本文件、图片文件、二进制数据等。<br>密文(Ciphertext):指经过加密后的明文，密文通常以文本、二进制数据等形式存在。<br>发送者(Sender):指发送消息的人。<br>接受者(Receiver):指接收消息的人。<br>加密(Encryption):指将明文转换为密文的过程。<br>加密算法(Encryption
-                    Algorithm)<br>加密密钥(Encryption Key)<br>密码体制(Cipher
-                    System):由明文空间、密文空间、密钥空间、加密算法那及解密算法五部分组成。</p>
-                  <h3 id="密码学分类"><a href="#密码学分类" class="headerlink"
-                                                                                                    title="密码学分类"></a>密码学分类
-                  </h3>
+                  <div id="hbe-security">
+                    <div class="hbe-input-container">
+                      <input type="password" class="hbe-form-control" id="pass"
+                                                                                                      placeholder="Welcome to my blog, enter password to read.">
+                      <label for="pass">Welcome to my blog, enter password to
+                        read.</label>
+                      <div class="bottom-line"></div>
+                    </div>
+                  </div>
+                  <div id="decryptionError" style="display: none;">Incorrect
+                    Password!</div>
+                  <div id="noContentError" style="display: none;">No content to
+                    display!
+                  </div>
+                  <div id="encrypt-blog" style="display:none">
+                    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
+                  </div>
+                  <script src="/lib/crypto-js.js"></script>
+                  <script src="/lib/blog-encrypt.js"></script>
+                  <link href="/css/blog-encrypt.css" rel="stylesheet"
+                                                                                                  type="text/css">
 
                   <div class="declare">
                     <strong>本文作者：</strong>
@@ -440,17 +446,7 @@
                     </span>
                     <span class="tooltip-content">
                       <div class="toc-article">
-                        <ol class="toc">
-                          <li class="toc-item toc-level-3"><a class="toc-link"
-                                                                                                            href="#密码学常用术语"><span
-                                                                                                              class="toc-number">1.</span>
-                              <span class="toc-text">密码学常用术语
-                              </span></a></li>
-                          <li class="toc-item toc-level-3"><a class="toc-link"
-                                                                                                            href="#密码学分类"><span
-                                                                                                              class="toc-number">2.</span>
-                              <span class="toc-text">密码学分类</span></a></li>
-                        </ol>
+                        目录，不存在的…
                       </div>
                     </span>
                   </div>
@@ -7203,11 +7199,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7228,16 +7224,12 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)"
                                                                                                 class="js-tag color1">Python统计分析</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7245,15 +7237,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7265,11 +7257,19 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7281,7 +7281,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7289,15 +7289,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">面试题</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7305,7 +7297,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7313,11 +7305,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SA</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7333,11 +7329,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">English</a>
+                <a href="javascript:void(0)" class="js-tag color3">GA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GA</a>
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7357,11 +7353,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7373,19 +7369,19 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7405,15 +7401,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7429,11 +7425,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
 
               <li class="article-tag-list-item">

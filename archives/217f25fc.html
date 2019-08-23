@@ -11,21 +11,21 @@
   <title>二进制安全基础学习 | star</title>
   <meta name="viewport"
                                                                                   content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+                                                                                  content="Welcome to my blog, enter password to read.">
   <meta name="keywords" content="二进制">
   <meta property="og:type" content="article">
   <meta property="og:title" content="二进制安全基础学习">
   <meta property="og:url" content="http://javastar.club/archives/217f25fc.html">
   <meta property="og:site_name" content="star">
+  <meta property="og:description"
+                                                                                  content="Welcome to my blog, enter password to read.">
   <meta property="og:locale" content="default">
-  <meta property="og:image"
-                                                                                  content="https://github.com/starstarb/clouding/raw/master/head/32c4b09dab727ad296e2f940d1c0db06.jpg">
-  <meta property="og:image"
-                                                                                  content="https://github.com/starstarb/clouding/raw/master/security/%E6%A0%88%E5%B8%A7.png">
-  <meta property="og:updated_time" content="2019-08-16T03:15:00.736Z">
+  <meta property="og:updated_time" content="2019-08-23T03:19:05.812Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="二进制安全基础学习">
-  <meta name="twitter:image"
-                                                                                  content="https://github.com/starstarb/clouding/raw/master/head/32c4b09dab727ad296e2f940d1c0db06.jpg">
+  <meta name="twitter:description"
+                                                                                  content="Welcome to my blog, enter password to read.">
 
   <link rel="alternative" href="/atom.xml" title="star"
                                                                                   type="application/atom+xml">
@@ -207,7 +207,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-keyboard-o"></i>
                         <span class="post-meta-item-text"> 字数统计: </span>
-                        <span class="post-count">206字</span>
+                        <span class="post-count">144字</span>
                       </span>
                     </span>
 
@@ -231,28 +231,27 @@
 
                 <div class="article-entry" itemprop="articleBody">
 
-                  <p><img src="https://github.com/starstarb/clouding/raw/master/head/32c4b09dab727ad296e2f940d1c0db06.jpg"
-                                                                                                    alt>
-                  </p>
-                  <a id="more"></a>
-                  <h3 id="EBP、ESP寄存器"><a href="#EBP、ESP寄存器" class="headerlink"
-                                                                                                    title="EBP、ESP寄存器"></a>EBP、ESP寄存器
-                  </h3>
-                  <ol>
-                    <li>ESP: 栈指针寄存器(extended stack
-                      pointer),其内存放着一个指针，该指针永远指向系统栈最上面一个栈帧的栈顶。
-                    </li>
-                    <li>EBP:基址指针寄存器(extended base
-                      pointer),其内存放着一个指针，该指针永远指向系统栈最上面一个栈帧的底部。
-                    </li>
-                  </ol>
-                  <p>Intel系统中，栈是向下生长的,(栈越扩大，其值越小，堆恰好相反)</p>
-                  <p><img src="https://github.com/starstarb/clouding/raw/master/security/%E6%A0%88%E5%B8%A7.png"
-                                                                                                    alt><br>EBP是当前函数的存取指针，即存储或者读取数时的指针基地址；
-                  </p>
-                  <p>
-                    ESP就是当前函数的栈顶指针。每一次发生函数的调用（主函数调用子函数）时，在被调用函数初始时，都会把当前函数（主函数）的EBP压栈，以便从子函数返回到主函数时可以获取EBP。
-                  </p>
+                  <div id="hbe-security">
+                    <div class="hbe-input-container">
+                      <input type="password" class="hbe-form-control" id="pass"
+                                                                                                      placeholder="Welcome to my blog, enter password to read.">
+                      <label for="pass">Welcome to my blog, enter password to
+                        read.</label>
+                      <div class="bottom-line"></div>
+                    </div>
+                  </div>
+                  <div id="decryptionError" style="display: none;">Incorrect
+                    Password!</div>
+                  <div id="noContentError" style="display: none;">No content to
+                    display!
+                  </div>
+                  <div id="encrypt-blog" style="display:none">
+                    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
+                  </div>
+                  <script src="/lib/crypto-js.js"></script>
+                  <script src="/lib/blog-encrypt.js"></script>
+                  <link href="/css/blog-encrypt.css" rel="stylesheet"
+                                                                                                  type="text/css">
 
                   <div class="declare">
                     <strong>本文作者：</strong>
@@ -447,13 +446,7 @@
                     </span>
                     <span class="tooltip-content">
                       <div class="toc-article">
-                        <ol class="toc">
-                          <li class="toc-item toc-level-3"><a class="toc-link"
-                                                                                                            href="#EBP、ESP寄存器"><span
-                                                                                                              class="toc-number">1.</span>
-                              <span class="toc-text">EBP、ESP寄存器
-                              </span></a></li>
-                        </ol>
+                        目录，不存在的…
                       </div>
                     </span>
                   </div>
@@ -7206,11 +7199,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7231,16 +7224,12 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)"
                                                                                                 class="js-tag color1">Python统计分析</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7248,15 +7237,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7268,11 +7257,19 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7284,7 +7281,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7292,15 +7289,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">面试题</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7308,7 +7297,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7316,11 +7305,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SA</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7336,11 +7329,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">English</a>
+                <a href="javascript:void(0)" class="js-tag color3">GA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GA</a>
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7360,11 +7353,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7376,19 +7369,19 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7408,15 +7401,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7432,11 +7425,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
 
               <li class="article-tag-list-item">

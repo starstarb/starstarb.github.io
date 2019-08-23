@@ -11,19 +11,21 @@
   <title>日记 | star</title>
   <meta name="viewport"
                                                                                   content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+                                                                                  content="Welcome to my blog, enter password to read.">
   <meta name="keywords" content="dairy">
   <meta property="og:type" content="article">
   <meta property="og:title" content="日记">
   <meta property="og:url" content="http://javastar.club/archives/3458e8f8.html">
   <meta property="og:site_name" content="star">
+  <meta property="og:description"
+                                                                                  content="Welcome to my blog, enter password to read.">
   <meta property="og:locale" content="default">
-  <meta property="og:image"
-                                                                                  content="https://github.com/starstarb/clouding/raw/master/head/846dccea6eed965c6b0ae6a209228141.jpg">
-  <meta property="og:updated_time" content="2019-08-16T03:10:16.770Z">
+  <meta property="og:updated_time" content="2019-08-23T03:18:11.611Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="日记">
-  <meta name="twitter:image"
-                                                                                  content="https://github.com/starstarb/clouding/raw/master/head/846dccea6eed965c6b0ae6a209228141.jpg">
+  <meta name="twitter:description"
+                                                                                  content="Welcome to my blog, enter password to read.">
 
   <link rel="alternative" href="/atom.xml" title="star"
                                                                                   type="application/atom+xml">
@@ -205,7 +207,7 @@
                       <span class="post-meta-item-icon">
                         <i class="fa fa-keyboard-o"></i>
                         <span class="post-meta-item-text"> 字数统计: </span>
-                        <span class="post-count">108字</span>
+                        <span class="post-count">77字</span>
                       </span>
                     </span>
 
@@ -229,14 +231,27 @@
 
                 <div class="article-entry" itemprop="articleBody">
 
-                  <p><img src="https://github.com/starstarb/clouding/raw/master/head/846dccea6eed965c6b0ae6a209228141.jpg"
-                                                                                                    alt>
-                  </p>
-                  <a id="more"></a>
-                  <pre><code>搭建hexo和github博客的时候，遇到了很多坑，其中，我部署github到服务器时总是404，不知道为什么，找了很多博客都没有用，本来半个小时就搞好了，结果折腾到晚上、</code></pre>
-                  <p>
-                    才发现自己github的账号被flagged，被标记无法被公共访问。后来重建了个github账号，很快部署成功，后期预计加一些评论等功能。
-                  </p>
+                  <div id="hbe-security">
+                    <div class="hbe-input-container">
+                      <input type="password" class="hbe-form-control" id="pass"
+                                                                                                      placeholder="Welcome to my blog, enter password to read.">
+                      <label for="pass">Welcome to my blog, enter password to
+                        read.</label>
+                      <div class="bottom-line"></div>
+                    </div>
+                  </div>
+                  <div id="decryptionError" style="display: none;">Incorrect
+                    Password!</div>
+                  <div id="noContentError" style="display: none;">No content to
+                    display!
+                  </div>
+                  <div id="encrypt-blog" style="display:none">
+                    U2FsdGVkX19gpAaaOhDNk/5f8+FzPVdgYkPTUvGHWMhGxiw495V84A/v0S3YnE+r1UPl4RBX+73OBX8eXaLa1Rimp5zsa13wxgasnyY8u5EFLPxaWWTedFW1RGUZF+o55wG/GmX8O2vDwHBCTWJju0deRFpJHGqKjLdge4Ht0QPm/hYu4mu75boMcudgRvGxywZcFmBklO6cy8E6OSZQK0KbwyEd/Ea72DzqC/IIAZjWvtjxS+CBGRmY3F8JkXgrhHmF3PeB0wMQSiV0F0cGAsImUK8qzbesIV3/8RYfoHr2BAEqKNwH29o2HTQzg1mfVo4OZd01khJvivoNTc/WBUYWeOs9JrdR73xKV/aLC66LqPSP6IVrjwtv3ypSsKe6RZRuEnF0bu0kecqpWlmE7V9KKzxDfC1ilmKUaI+noa8j/zzBUgOhAHWq0W1ddgomqbueZ2sSXVuYXtb4dSP6MfajxQtAa+IfTNKv9Z9L9yBYwnkcERqFaamAByR8P9YPtW2G+Wp2KtsNZ2dVrlKVb3ZOLM76z2f3Bx3/egWYWkr5RZb0UkGUTYwQxfziRNMj/98CVrO6QUE07MTGZrM92vPl/e9rY2KxGny0zQsT96M5eR1gJmxRFJMcb+mrDda78YTcHxP/4TnP8qm74GMBXYp9SZitm/Vao+4AW92Jh/yFHHcbdkXzDGVxags9ioUq6EeA3DWnNYStGWfcT37s72kaAF7I8qIZmiiu7D9PgvbxmuOvRTa5sDOaqv4oePUDL9IdChPZMA4zje7GpZPR3r/ebS5iw0yra8XxANpIE8NZNGIfriyZP8nvYNiXfndy3WG/Bb80Q2t5bfx1/s07/j9YUZEXAqRCgQ9FL9dhvJxTYqgiuW+PtsM3HKcNOEGl0U+LMmB8R6lLVz+VzqqVGArSLd+K5t7uzqT/Z0hnTo+G/0ilWszAhkB9e6ABj8HAY3BbogjT7BvIDEncrKtRL2psLuFmxd4bO4aHDicc2+/6y+a3Xfl3Wv8LPFnBWeCID1NlZOV7NvzNqZWPf9oTgofpxGry5aerF5+hzcDWI1wPRu8AbMKR7n9eDLRe7ZtDm9eBvqrtd9IH7H3aCU5qej0hx9dgDV5aLCxJQ5UMrjnS+VdCP2dHOZQ5Bs2HigmNPlJmDjSlYSurs/qsMGzk3UgtklIDzprPivXpZHMAbSwi5gKLAaseqedtCDIXZuV6nD/86kMyDiNKnv+ODj6kLpjgzELEOT7AcXDdX7YjLT536TYhkbdfsYrm6kGKZx+05kC5XXWeSlr8+buG2cNouXtX0QoQ364Xiztkl05d1/X85V0FGwxQ8M46OY+XfOJTWkfHQpKyWvJR10EKi8ZJNi76fmifXvxPyS5e62OZ6kKoSMRYjEOkYpHCgXpuJhoyz9RVYg3HktSd6Ec2q65UYpZBJggC2AQQ0+skunxsiw7wPgt76hN/31ZRO8paNtSwn6z6FSw0vKQoC+qaS6YO9kHuoIRX/AbKK4MdxPmj9XzntY1JAC8+2gUfwhULM46YI5zeQvajljpPDrTpKPgMOjYEBl9EG9CFk8vhqEBTYzns2PNN6MdbJrO+2HVWc79rrGSovpovRhcaTvmEGMgAaVo6kXQrFrech3NGwf+0NvwpM0+88FLtiAn699jEjFc+y5ogUp84HE/fZP67sTJYxJgovn9THqZixGk4HPltCoSz+hU/v3EYZAqns5wzspOad3L1gg9IS9AkIh+aXGmgmIHpIBV2+ghaEiJol68IJKDS3sxR2z38HyEUmysq4FF9
+                  </div>
+                  <script src="/lib/crypto-js.js"></script>
+                  <script src="/lib/blog-encrypt.js"></script>
+                  <link href="/css/blog-encrypt.css" rel="stylesheet"
+                                                                                                  type="text/css">
 
                   <div class="declare">
                     <strong>本文作者：</strong>
@@ -7184,11 +7199,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7209,16 +7224,12 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)"
                                                                                                 class="js-tag color1">Python统计分析</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7226,15 +7237,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7246,11 +7257,19 @@
               </li>
 
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+              </li>
+
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7262,7 +7281,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7270,15 +7289,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">面试题</a>
-              </li>
-
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7286,7 +7297,7 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7294,11 +7305,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SA</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7314,11 +7329,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">English</a>
+                <a href="javascript:void(0)" class="js-tag color3">GA</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GA</a>
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7338,11 +7353,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7354,19 +7369,19 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程笔试</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">算法模板</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7386,15 +7401,15 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
 
               <li class="article-tag-list-item">
@@ -7410,11 +7425,11 @@
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
 
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
 
               <li class="article-tag-list-item">
