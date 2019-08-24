@@ -4,6 +4,9 @@ categories: 前端
 tags: js
 abbrlink: '62e93227'
 date: 2019-07-07 14:23:43
+password: 753159
+message: Welcome to my blog, enter password to read.  
+abstract: Welcome to my blog, enter password to read.  
 ---
 JS代码学习基础
 <!--more-->

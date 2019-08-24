@@ -5,7 +5,7 @@ categories: 源代码
 abbrlink: b6ab39d1
 date: 2019-08-02 11:46:06
 ---
-源代码阅读：基于JDK12.0，若有不对，请指正。
+源代码阅读：基于JDK12.0。
 <!--more-->
 # ArrayList源码阅读
 __ArrayList简介__

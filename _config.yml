@@ -4,17 +4,19 @@
 
 # Site
 title: star
-subtitle: 此生逍遥天休问，古来万事东流水                
+subtitle: 前端小白|java萌新|Geek精神               
 description: 个人技术博客
 keywords: java、python、js
 author: stardust
-timezone: 
+timezone: Asia/Shanghai
+language: zh-Hans
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://javastar.club
 root: /
-
+encrypt:
+  enable: true
 
 
 # Directory
@@ -47,16 +49,29 @@ highlight:
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
+#index_generator:
+#  path: ''
+# per_page: 10
+# order_by: -date
 index_generator:
   path: ''
   per_page: 10
-  order_by: -date
-  
+  order_by:
+    top: -1
+    date: -1  
 # Category & Tag
 default_category: uncategorized
 category_map:
 tag_map:
 
+
+symbols_count_time:
+   #文章内是否显示
+    symbols: true
+    time: true
+   # 网页底部是否显示
+    total_symbols: true
+    total_time: true
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -85,7 +100,7 @@ nofollow:
 ## Themes: https://hexo.io/themes/
 #RSS订阅
 plugins: hexo-generater-feed
-theme: yilia
+theme: next
 # 是否开启字数统计
 #不需要使用，直接设置值为false，或注释掉
 word_count: True
@@ -134,3 +149,15 @@ jsonContent:
     categories: false
 
     tags: true
+
+live2d:
+    enable: true   #开启宠物
+    scriptFrom: local
+    model:
+      use: live2d-widget-model-koharu
+    display:
+      position: right   #指定宠物显示的位置
+      width: 70    #指定宠物显示的宽度
+      height: 120   #指定宠物显示的高度
+    mobile:
+      show: true  #是否在手机上显示

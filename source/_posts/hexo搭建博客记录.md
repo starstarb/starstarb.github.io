@@ -4,9 +4,11 @@ tags: hexo
 categories: hexo
 abbrlink: 5910dd1d
 date: 2019-08-10 09:27:16
+password: 753159
+message: Welcome to my blog, enter password to read.  
+abstract: Welcome to my blog, enter password to read.  
 ---
-Hexo+yilia搭建属于自己的博客，新手完全教程
-![](https://github.com/starstarb/clouding/raw/master/picture/6.jpg)
+Hexo+yilia搭建属于自己的博客，新手教程
 <!--more-->
 ##使用 Hexo 来搭建自己的个人静态博客:
 1. Markdown 写博客

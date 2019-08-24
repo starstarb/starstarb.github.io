@@ -4,6 +4,9 @@ tags: VSCode
 categories: VSCode
 abbrlink: 1cfdae89
 date: 2019-08-18 16:10:52
+password: 753159
+message: Welcome to my blog, enter password to read.  
+abstract: Welcome to my blog, enter password to read.  
 ---
 test
 <!--more-->

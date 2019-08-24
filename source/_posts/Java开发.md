@@ -3,9 +3,13 @@ title: Java开发
 categories: Java基础
 tags: Java基础
 abbrlink: 8c2959bc
-date: 2019-06-29 21:53:54
+date: 2019-08-21 21:53:54
+password: 753159
+message: Welcome to my blog, enter password to read.  
+abstract: Welcome to my blog, enter password to read.  
 ---
-摘要
+写代码时遇到的问题记录
+
 <!--more-->
 ### Java注解基本原理
      SpringBoot基于注解开发的，方便快捷，同时代码较为简洁。

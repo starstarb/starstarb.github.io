@@ -4,6 +4,9 @@ tags: MyBatis
 categories: MyBatis
 abbrlink: a8587907
 date: 2019-07-13 16:47:21
+password: 753159
+message: Welcome to my blog, enter password to read.  
+abstract: Welcome to my blog, enter password to read.  
 ---
 MyBatis是一个支持普通SQL查询，存储过程和高级映射的优秀持久层框架。
 <!--more-->

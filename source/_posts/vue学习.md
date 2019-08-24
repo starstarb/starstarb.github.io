@@ -4,6 +4,9 @@ categories: vue
 tags: vue
 abbrlink: b38a0bed
 date: 2019-07-13 16:49:12
+password: 753159
+message: Welcome to my blog, enter password to read.  
+abstract: Welcome to my blog, enter password to read.  
 ---
 vue
 <!--more-->
