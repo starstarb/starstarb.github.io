@@ -7,7 +7,6 @@ date: 2019-07-29 14:34:52
 password: 753159
 message: Welcome to my blog, enter password to read.  
 abstract: Welcome to my blog, enter password to read.  
-top: 6
 ---
 test
 ---

@@ -100,7 +100,7 @@ nofollow:
 ## Themes: https://hexo.io/themes/
 #RSS订阅
 plugins: hexo-generater-feed
-theme: next
+theme: yilia
 # 是否开启字数统计
 #不需要使用，直接设置值为false，或注释掉
 word_count: True
