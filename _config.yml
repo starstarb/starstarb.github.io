@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: star
-subtitle: 前端小白|java萌新|Geek精神               
+title: staring
+subtitle: 从来如此，便对么？               
 description: 个人技术博客
-keywords: java、python、js
-author: stardust
+keywords: JavaScript
+author: staring
 timezone: Asia/Shanghai
 language: zh-Hans
 
@@ -24,7 +24,7 @@ source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
-category_dir: categories
+#category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render: CNAME
