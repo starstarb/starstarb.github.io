@@ -9,7 +9,7 @@ description: 个人技术博客
 keywords: JavaScript
 author: staring
 timezone: Asia/Shanghai
-language: zh-Hans
+language: zh-CN
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -100,7 +100,7 @@ nofollow:
 ## Themes: https://hexo.io/themes/
 #RSS订阅
 plugins: hexo-generater-feed
-theme: yilia
+theme: next
 # 是否开启字数统计
 #不需要使用，直接设置值为false，或注释掉
 word_count: True
