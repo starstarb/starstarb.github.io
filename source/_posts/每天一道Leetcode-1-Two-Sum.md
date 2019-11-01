@@ -6,7 +6,7 @@ categories: leetcode
 abbrlink: d6d87edd
 date: 2019-09-22 11:10:27
 ---
-Two Sum
+**Two Sum**
 <!--more-->
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
