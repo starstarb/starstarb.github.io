@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+                                                                                  content="width=device-width, initial-scale=1, maximum-scale=2">
+  <meta name="theme-color" content="#222">
+  <meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180"
+                                                                                  href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32"
+                                                                                  href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16"
+                                                                                  href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="staring"
+                                                                                  type="application/atom+xml">
+
+  <link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+  <link rel="stylesheet"
+                                                                                  href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet"
+                                                                                  href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+  <script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Mist',
+      version: '7.4.0',
+      exturl: false,
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "onmobile": false
+      },
+      copycode: {
+        "enable": true,
+        "show_result": true,
+        "style": null
+      },
+      back2top: {
+        "enable": true,
+        "sidebar": false,
+        "scrollpercent": false
+      },
+      bookmark: {
+        "enable": false,
+        "color": "#222",
+        "save": "auto"
+      },
+      fancybox: false,
+      mediumzoom: false,
+      lazyload: false,
+      pangu: false,
+      algolia: {
+        appID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      },
+      localsearch: {
+        "enable": true,
+        "trigger": "auto",
+        "top_n_per_article": 1,
+        "unescape": false,
+        "preload": false
+      },
+      path: '',
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
+      translation: {
+        copy_button: '复制',
+        copy_success: '复制成功',
+        copy_failure: '复制失败'
+      },
+      sidebarPadding: 40
+    };
+
+  </script>
+
+  <meta name="description" content="SSH协议">
+  <meta name="keywords" content="ssh">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SSH学习">
+  <meta property="og:url" content="http://javastar.club/archives/ea9fff8c.html">
+  <meta property="og:site_name" content="staring">
+  <meta property="og:description" content="SSH协议">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:updated_time" content="2019-11-01T02:36:15.000Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SSH学习">
+  <meta name="twitter:description" content="SSH协议">
+  <link rel="canonical" href="http://javastar.club/archives/ea9fff8c">
+
+  <script id="page-configurations">
+    // https://hexo.io/docs/variables.html
+    CONFIG.page = {
+      sidebar: "",
+      isHome: false,
+      isPost: true,
+      isPage: false,
+      isArchive: false
+    };
+
+  </script>
+
+  <title>SSH学习 | staring</title>
+
+  <noscript>
+    <style>
+      .use-motion .brand,
+      .use-motion .menu-item,
+      .sidebar-inner,
+      .use-motion .post-block,
+      .use-motion .pagination,
+      .use-motion .comments,
+      .use-motion .post-header,
+      .use-motion .post-body,
+      .use-motion .collection-header {
+        opacity: initial;
+      }
+
+      .use-motion .logo,
+      .use-motion .site-title,
+      .use-motion .site-subtitle {
+        opacity: initial;
+        top: initial;
+      }
+
+      .use-motion .logo-line-before i {
+        left: initial;
+      }
+
+      .use-motion .logo-line-after i {
+        right: initial;
+      }
+
+    </style>
+  </noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope
+                                                                                    itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+        <div class="site-brand-container">
+          <div class="site-meta">
+
+            <div>
+              <a href="/" class="brand" rel="start">
+                <span class="logo-line-before"><i></i></span>
+                <span class="site-title">staring</span>
+                <span class="logo-line-after"><i></i></span>
+              </a>
+            </div>
+            <p class="site-subtitle">从来如此，便对么？</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button aria-label="切换导航栏">
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+            </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+          <ul id="menu" class="menu">
+
+            <li class="menu-item menu-item-home">
+
+              <a href="/" rel="section"><i
+                                                                                                class="menu-item-icon fa fa-fw fa-home"></i>
+                <br>首页</a>
+
+            </li>
+
+            <li class="menu-item menu-item-archives">
+
+              <a href="/archives/" rel="section"><i
+                                                                                                class="menu-item-icon fa fa-fw fa-archive"></i>
+                <br>归档</a>
+
+            </li>
+            <li class="menu-item menu-item-search">
+              <a href="javascript:;" class="popup-trigger">
+
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+            </li>
+
+          </ul>
+
+        </nav>
+        <div class="site-search">
+          <div class="popup search-popup">
+            <div class="search-header">
+              <span class="search-icon">
+                <i class="fa fa-search"></i>
+              </span>
+              <div class="search-input-container">
+                <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..."
+                                                                                                spellcheck="false"
+                                                                                                type="text"
+                                                                                                id="search-input">
+              </div>
+              <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+              </span>
+            </div>
+            <div id="search-result"></div>
+
+          </div>
+          <div class="search-pop-overlay"></div>
+
+        </div>
+      </div>
+    </header>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span>0%</span>
+    </div>
+
+    <a href="https://github.com/starstarb" class="github-corner" title="Follow me on GitHub"
+                                                                                    aria-label="Follow me on GitHub"
+                                                                                    rel="external nofollow noopener noreferrer"
+                                                                                    target="_blank"><svg
+                                                                                      width="80"
+                                                                                      height="80"
+                                                                                      viewbox="0 0 250 250"
+                                                                                      aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+                                                                                        fill="currentColor"
+                                                                                        style="transform-origin: 130px 106px;"
+                                                                                        class="octo-arm" />
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                                                                                        fill="currentColor"
+                                                                                        class="octo-body" />
+      </svg></a>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+
+            <div id="posts" class="posts-expand">
+              <article itemscope itemtype="http://schema.org/Article">
+
+                <div class="post-block post">
+                  <link itemprop="mainEntityOfPage"
+                                                                                                  href="http://javastar.club/archives/ea9fff8c.html">
+
+                  <span hidden itemprop="author" itemscope
+                                                                                                  itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="staring">
+                    <meta itemprop="description" content="个人技术博客">
+                    <meta itemprop="image" content="/img/head.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope
+                                                                                                  itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="staring">
+                  </span>
+                  <header class="post-header">
+                    <h1 class="post-title" itemprop="name headline">SSH学习<a href="https://github.com/starstarb/starstarb.github.io_posts/SSH学习.md"
+                                                                                                      class="post-edit-link"
+                                                                                                      title="编辑"
+                                                                                                      rel="external nofollow noopener noreferrer"
+                                                                                                      target="_blank"><i
+                                                                                                        class="fa fa-pencil"></i></a>
+
+                    </h1>
+
+                    <div class="post-meta">
+                      <span class="post-meta-item">
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+                        <span class="post-meta-item-text">发表于</span>
+
+                        <time title="创建时间：2019-10-06 09:50:41" itemprop="dateCreated datePublished"
+                                                                                                        datetime="2019-10-06T09:50:41+08:00">2019-10-06</time>
+                      </span>
+
+                      <span class="post-meta-item">
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+                        <span class="post-meta-item-text">更新于</span>
+                        <time title="修改时间：2019-11-01 10:36:15" itemprop="dateModified"
+                                                                                                        datetime="2019-11-01T10:36:15+08:00">2019-11-01</time>
+                      </span>
+
+                      <span class="post-meta-item">
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+                        <span class="post-meta-item-text">分类于</span>
+
+                        <span itemprop="about" itemscope
+                                                                                                        itemtype="http://schema.org/Thing"><a
+                                                                                                          href="/categories/ssh/"
+                                                                                                          itemprop="url"
+                                                                                                          rel="index"><span
+                                                                                                            itemprop="name">ssh</span></a></span>
+
+                      </span>
+
+                      <span class="post-meta-item" title="热度" id="busuanzi_container_page_pv"
+                                                                                                      style="display: none;">
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+                        <span class="post-meta-item-text">热度：</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                      </span>
+                      <span class="post-meta-item">
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-comment-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">Valine：</span>
+
+                        <a title="valine" href="/archives/ea9fff8c.html#comments"
+                                                                                                        itemprop="discussionUrl"><span
+                                                                                                          class="post-comments-count valine-comment-count"
+                                                                                                          data-xid="/archives/ea9fff8c.html"
+                                                                                                          itemprop="commentCount"></span></a>
+                      </span>
+
+                      <br>
+                      <span class="post-meta-item" title="本文字数">
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-file-word-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">本文字数：</span>
+
+                        <span>4.2k</span>
+                      </span>
+
+                      <span class="post-meta-item" title="阅读时长">
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-clock-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读时长 &asymp;</span>
+
+                        <span>4 分钟</span>
+                      </span>
+
+                    </div>
+                  </header>
+
+                  <div class="post-body" itemprop="articleBody">
+
+                    <p>SSH协议</p>
+                    <a id="more"></a>
+                    <h4 id="SSH服务"><a href="#SSH服务" class="headerlink"
+                                                                                                      title="SSH服务"></a>SSH服务
+                    </h4>
+                    <p>SSH（22端口）是Secure Shell Protocol的简写，由IETF网络工作小组（Network
+                      Working
+                      Group）制定；在进行数据传输之前，SSH先对联机数据包通过加密技术进行加密处理，加密后在进行数据传输。确保了传递的数据安全。
+                    </p>
+                    <p>
+                      SSH是专为远程登录会话和其他网络服务提供的安全性协议。利用SSH协议可以有效的防止远程管理过程中的信息泄露问题，在当前的生产环境运维工作中，绝大多数企业普通采用SSH协议服务来代替传统的不安全的远程联机服务软件，如telnet（23端口，非加密的）等。
+                    </p>
+                    <p>telnet（23端口）实现远程控制管理，但是不对数据进行加密</p>
+                    <p>在默认状态下，SSH服务主要提供两个服务功能：</p>
+                    <p>（1）一个是提供类似telnet远程联机服务器的服务，即上面提到的SSH服务；</p>
+                    <p>
+                      （2）另一个是类似FTP服务的sftp-server，借助SSH协议来传输数据的，提供更安全的SFTP服务（vsftp.proftp）
+                    </p>
+                    <p> <strong>特别提醒：</strong></p>
+                    <p> SSH客户端（ssh命令）还包含一个很有用的远程安全拷贝命令scp，也是通过ssh协议工作的。</p>
+                    <p>
+                      SSH(远程连接工具)连接原理：ssh服务是一个守护进程(demon)，系统后台监听客户端的连接，ssh服务端的进程名为sshd,负责实时监听客户端的请求(IP
+                      22端口)，包括公共秘钥等交换等信息。</p>
+                    <p>ssh服务端由2部分组成： openssh(提供ssh服务) openssl(提供加密的程序)</p>
+                    <p> ssh的客户端可以用 XSHELL，Securecrt, Mobaxterm等工具进行连接</p>
+                    <h4 id="SSH的工作机制"><a href="#SSH的工作机制" class="headerlink"
+                                                                                                      title="SSH的工作机制"></a>SSH的工作机制
+                    </h4>
+                    <p>
+                      服务器启动的时候自己产生一个密钥(768bit公钥)，本地的ssh客户端发送连接请求到ssh服务器，服务器检查连接点客户端发送的数据和IP地址，确认合法后发送密钥(768bits)给客户端，此时客户端将本地私钥(256bit)和服务器的公钥(768bit)结合成密钥对key(1024bit),发回给服务器端，建立连接通过key-pair数据传输。
+                    </p>
+                    <h4 id="SSH的加密技术"><a href="#SSH的加密技术" class="headerlink"
+                                                                                                      title="SSH的加密技术"></a>SSH的加密技术
+                    </h4>
+                    <p>
+                      加密技术：传输过程，数据加密。<br>1.SSH1没有对客户端的秘钥进行校验，很容易被植入恶意代码<br>2.SSH2增加了一个确认联机正确性的Diffe_Hellman机制，每次数据的传输，Server都会检查数据来源的正确性，避免黑客入侵。<br>
+                      SSH2支持RSA和DSA密钥<br> DSA:digital signature Algorithm
+                      数字签名<br>
+                      RSA:既可以数字签名又可以加密
+                    </p>
+                    <h4 id="SSH知识小结"><a href="#SSH知识小结" class="headerlink"
+                                                                                                      title="SSH知识小结"></a>SSH知识小结
+                    </h4>
+                    <p> 1.SSH是安全的加密协议，用于远程连接Linux服务器<br>
+                      2.SSH的默认端口是22，安全协议版本是SSH2<br>
+                      3.SSH服务器端主要包含2个服务功能SSH连接和SFTP服务器<br>
+                      4.SSH客户端包含ssh连接命令和远程拷贝scp命令等 </p>
+                    <h4 id="SSH防止登录入侵"><a href="#SSH防止登录入侵" class="headerlink"
+                                                                                                      title="SSH防止登录入侵"></a>SSH防止登录入侵
+                    </h4>
+                    <pre><code>1、用密钥登录，不用密码登陆
+
+2、牤牛阵法：解决SSH安全问题
+
+   a.防火墙封闭SSH,指定源IP限制(局域网、信任公网)
+
+   b.开启SSH只监听本地内网IP（ListenAddress 172.16.1.61）。
+
+3、尽量不给服务器外网IP
+
+4、最小化（软件安装-授权）
+
+5、给系统的重要文件或命令做一个指纹
+
+6、给他锁上 chattr +i   +a</code></pre>
+                    <h4 id="SSH的功能"><a href="#SSH的功能" class="headerlink"
+                                                                                                      title="SSH的功能"></a>SSH的功能
+                    </h4>
+                    <ol>
+                      <li>
+                        <p>登录<br> ssh -p22 <a href="mailto:omd@192.168.25.137" rel="external nofollow noopener noreferrer"
+                                                                                                          target="_blank">omd@192.168.25.137</a>
+                        </p>
+                      </li>
+                      <li>
+                        <p>直接执行命令 –&gt;最好全路径<br> ssh <a href="mailto:root@192.168.25.137" rel="external nofollow noopener noreferrer"
+                                                                                                          target="_blank">root@192.168.25.137</a>
+                          ls -ltr /backup/data </p>
+                        <pre><code>==&gt;ssh root@192.168.25.137 /bin/ls -ltr /backup/data               </code></pre>
+                      </li>
+                      <li>
+                        <p>查看已知主机<br> cat /root/.ssh/known_hosts</p>
+                      </li>
+                      <li>
+                        <p>ssh远程执行sudo命令<br> ssh -t <a href="mailto:omd@192.168.25.137" rel="external nofollow noopener noreferrer"
+                                                                                                          target="_blank">omd@192.168.25.137</a>
+                          sudo rsync hosts /etc/</p>
+                      </li>
+                      <li>
+                        <p>scp </p>
+                        <pre><code>1. 功能   --&gt;远程文件的安全(加密)拷贝                   
+    scp -P22 -r -p /home/omd/h.txt omd@192.168.25.137:/home/omd/               
+2. scp知识小结                   
+    scp是加密远程拷贝，cp为本地拷贝                   
+    可以推送过去，也可以拉过来                   
+    每次都是全量拷贝(效率不高，适合第一次)，增量拷贝用rsync</code></pre>
+                      </li>
+                      <li>
+                        <p>ssh自带的sftp功能 </p>
+                        <pre><code> 1. Window和Linux的传输工具                   
+      wincp   filezip                   
+   sftp  --&gt;基于ssh的安全加密传输                   
+   samba   
+ 2. sftp客户端连接                   
+    sftp -oPort=22 root@192.168.25.137                   
+    put /etc/hosts /tmp                   
+    get /etc/hosts /home/omd   
+3. sftp小结：                   
+    1.linux下使用命令： sftp -oPort=22 root@x.x.x.x                   
+    2.put加客户端本地路径上传                  
+    3.get下载服务器端内容到本地                   
+    4.远程连接默认连接用户的家目录</code></pre>
+                        <h5 id="后台SSH服务"><a href="#后台SSH服务" class="headerlink"
+                                                                                                          title="后台SSH服务"></a>后台SSH服务
+                        </h5>
+                        <h6 id="查询openssl软件"><a href="#查询openssl软件" class="headerlink"
+                                                                                                          title="查询openssl软件"></a>查询openssl软件
+                        </h6>
+                        <p>rpm -qa openssh openssl</p>
+                        <h6 id="查询sshd进程"><a href="#查询sshd进程" class="headerlink"
+                                                                                                          title="查询sshd进程"></a>查询sshd进程
+                        </h6>
+                        <p>ps -ef | grep ssh<br> –&gt; /usr/sbin/sshd</p>
+                        <h6 id="查看ssh端口"><a href="#查看ssh端口" class="headerlink"
+                                                                                                          title="查看ssh端口"></a>查看ssh端口
+                        </h6>
+                        <p>netstat -lntup | grep ssh<br>ss | grep ssh
+                          (效果同上，同下，好用)<br>netstat -a |
+                          grep ssh(记住这个)<br>netstat -lnt | grep 22 ==&gt;
+                          查看22端口有没有开/ssh服务有没有开启<br>技巧： netstat -lnt | grep ssh |
+                          wc -l
+                          –&gt;只要大于2个就是ssh服务就是好的</p>
+                        <h6 id="查看ssh的秘钥目录"><a href="#查看ssh的秘钥目录" class="headerlink"
+                                                                                                          title="查看ssh的秘钥目录"></a>查看ssh的秘钥目录
+                        </h6>
+                        <p>ll /root/.ssh/known_hosts # 当前用户家目录的.ssh目录下</p>
+                        <h6 id="ssh的配置文件"><a href="#ssh的配置文件" class="headerlink"
+                                                                                                          title="ssh的配置文件"></a>ssh的配置文件
+                        </h6>
+                        <p>cat /etc/ssh/sshd_config </p>
+                        <h6 id="ssh服务的关闭"><a href="#ssh服务的关闭" class="headerlink"
+                                                                                                          title="ssh服务的关闭"></a>ssh服务的关闭
+                        </h6>
+                        <p>service sshd stop</p>
+                        <h6 id="ssh服务的开启："><a href="#ssh服务的开启：" class="headerlink"
+                                                                                                          title="ssh服务的开启："></a>ssh服务的开启：
+                        </h6>
+                        <p>service sshd start</p>
+                        <h6 id="ssh服务的重启"><a href="#ssh服务的重启" class="headerlink"
+                                                                                                          title="ssh服务的重启"></a>ssh服务的重启
+                        </h6>
+                        <p>service sshd reload [停止进程后重启] ==&gt; 推荐<br>service
+                          sshd restart
+                          [干掉进程后重启]
+                          ==&gt; 不推荐</p>
+                        <h6 id="ssh远程登录"><a href="#ssh远程登录" class="headerlink"
+                                                                                                          title="ssh远程登录"></a>ssh远程登录
+                        </h6>
+                        <p>ssh 192.168.1.100 # 默认利用当前宿主用户的用户名登录<br>ssh <a href="mailto:omd@192.168.1.100" rel="external nofollow noopener noreferrer"
+                                                                                                          target="_blank">omd@192.168.1.100</a>
+                          # 利用远程机的用户登录<br>ssh <a href="mailto:omd@192.168.1.100" rel="external nofollow noopener noreferrer"
+                                                                                                          target="_blank">omd@192.168.1.100</a>
+                          -o stricthostkeychecking=no # 首次登陆免输yes登录<br>ssh <a href="mailto:omd@192.168.1.100"
+                                                                                                          rel="external nofollow noopener noreferrer"
+                                                                                                          target="_blank">omd@192.168.1.100</a>
+                          “ls /home/omd” # 当前服务器A远程登录服务器B后执行某个命令<br>ssh <a href="mailto:omd@192.168.1.100" rel="external nofollow noopener noreferrer"
+                                                                                                          target="_blank">omd@192.168.1.100</a>
+                          -t “sh /home/omd/ftl.sh” # 当前服务器A远程登录服务器B后执行某个脚本</p>
+                      </li>
+                    </ol>
+                    <h6 id="修改ssh服务的启动文件sshd的几个点"><a href="#修改ssh服务的启动文件sshd的几个点" class="headerlink"
+                                                                                                      title="修改ssh服务的启动文件sshd的几个点"></a>修改ssh服务的启动文件sshd的几个点
+                    </h6>
+                    <ul>
+                      <li>
+                        <p>1-1 修改 /etc/ssh/sshd_config&lt;\br&gt; </p>
+                        <figure class="highlight plain">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">GSSAPIAuthentication yes    解决一台服务器管理多个ssh服务</span><br><span class="line">UseDNS no  加快响应速度因为在内网环境下</span><br><span class="line">PermitRootLogin no  不运行root用户直接登录</span><br><span class="line">Port 11544 更改访问端口号</span><br><span class="line">ListenAddress  192.168.25.130  只监听内网的IP</span><br><span class="line">Match User anoncvs     当前环境允许登录的用户</span><br><span class="line">PermitRootLogin no      是否允许root用户登录，一般不允许开</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>1-2 重启服务</p>
+                        <figure class="highlight plain">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">service sshd restart       写入命令进内存</span><br><span class="line">service sshd reload(优先)  reload是一个平滑的访问，不影响用户使用</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>1-3 查看连接端口</p>
+                        <figure class="highlight plain">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">netstat -an | grep EST</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+
+                      </li>
+                    </ul>
+                    <p>参考：<a href="https://www.cnblogs.com/ftl1012/p/ssh.html" rel="external nofollow noopener noreferrer"
+                                                                                                      target="_blank">https://www.cnblogs.com/ftl1012/p/ssh.html</a>
+                    </p>
+
+                  </div>
+
+                  <div id="reward-container">
+                    <div></div>
+                    <button id="reward-button" disable="enable"
+                                                                                                    onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+                      打赏
+                    </button>
+                    <div id="qr" style="display: none;">
+
+                      <div style="display: inline-block">
+                        <img src="/img/weixin.jpg" alt="staring 微信支付">
+                        <p>微信支付</p>
+                      </div>
+
+                      <div style="display: inline-block">
+                        <img src="/img/zhifubao.jpg" alt="staring 支付宝">
+                        <p>支付宝</p>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div>
+                    <ul class="post-copyright">
+                      <li class="post-copyright-author">
+                        <strong>本文作者： </strong>staring</li>
+                      <li class="post-copyright-link">
+                        <strong>本文链接：</strong>
+                        <a href="http://javastar.club/archives/ea9fff8c.html"
+                                                                                                        title="SSH学习">http://javastar.club/archives/ea9fff8c.html</a>
+                      </li>
+                      <li class="post-copyright-license">
+                        <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN"
+                                                                                                        rel="external nofollow noopener noreferrer"
+                                                                                                        target="_blank"><i
+                                                                                                          class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a>
+                        许可协议。转载请注明出处！</li>
+                    </ul>
+                  </div>
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/ssh/" rel="tag"># ssh</a>
+
+                    </div>
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/archives/d844ef38.html" rel="next"
+                                                                                                        title="每天一道LeetCode: 13. Roman to Integer">
+                          <i class="fa fa-chevron-left"></i> 每天一道LeetCode: 13.
+                          Roman to
+                          Integer
+                        </a>
+
+                      </div>
+
+                      <span class="post-nav-divider"></span>
+
+                      <div class="post-nav-prev post-nav-item">
+
+                        <a href="/archives/595c79ad.html" rel="prev"
+                                                                                                        title="每天一道LeetCode：14. Longest Common Prefix">
+                          每天一道LeetCode：14. Longest Common Prefix <i
+                                                                                                          class="fa fa-chevron-right"></i>
+                        </a>
+
+                      </div>
+                    </div>
+
+                  </footer>
+
+                </div>
+
+              </article>
+
+            </div>
+
+          </div>
+
+          <div class="comments" id="comments"></div>
+
+        </div>
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <div class="sidebar-inner">
+
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview">
+                站点概览
+              </li>
+            </ul>
+
+            <!--noindex-->
+            <div class="post-toc-wrap sidebar-panel">
+              <div class="post-toc motion-element">
+                <ol class="nav">
+                  <li class="nav-item nav-level-4"><a class="nav-link"
+                                                                                                    href="#SSH服务"><span
+                                                                                                      class="nav-number">1.</span>
+                      <span class="nav-text">SSH服务</span></a></li>
+                  <li class="nav-item nav-level-4"><a class="nav-link"
+                                                                                                    href="#SSH的工作机制"><span
+                                                                                                      class="nav-number">2.</span>
+                      <span class="nav-text">SSH的工作机制
+                      </span></a></li>
+                  <li class="nav-item nav-level-4"><a class="nav-link"
+                                                                                                    href="#SSH的加密技术"><span
+                                                                                                      class="nav-number">3.</span>
+                      <span class="nav-text">SSH的加密技术
+                      </span></a></li>
+                  <li class="nav-item nav-level-4"><a class="nav-link"
+                                                                                                    href="#SSH知识小结"><span
+                                                                                                      class="nav-number">4.</span>
+                      <span class="nav-text">SSH知识小结
+                      </span></a></li>
+                  <li class="nav-item nav-level-4"><a class="nav-link"
+                                                                                                    href="#SSH防止登录入侵"><span
+                                                                                                      class="nav-number">5.</span>
+                      <span class="nav-text">SSH防止登录入侵
+                      </span></a></li>
+                  <li class="nav-item nav-level-4"><a class="nav-link"
+                                                                                                    href="#SSH的功能"><span
+                                                                                                      class="nav-number">6.</span>
+                      <span class="nav-text">SSH的功能
+                      </span></a>
+                    <ol class="nav-child">
+                      <li class="nav-item nav-level-5"><a class="nav-link"
+                                                                                                        href="#后台SSH服务"><span
+                                                                                                          class="nav-number">6.1.</span>
+                          <span class="nav-text">后台SSH服务
+                          </span></a>
+                        <ol class="nav-child">
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#查询openssl软件"><span
+                                                                                                              class="nav-number">6.1.1.</span>
+                              <span class="nav-text">查询openssl软件
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#查询sshd进程"><span
+                                                                                                              class="nav-number">6.1.2.</span>
+                              <span class="nav-text">查询sshd进程
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#查看ssh端口"><span
+                                                                                                              class="nav-number">6.1.3.</span>
+                              <span class="nav-text">查看ssh端口
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#查看ssh的秘钥目录"><span
+                                                                                                              class="nav-number">6.1.4.</span>
+                              <span class="nav-text">查看ssh的秘钥目录
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#ssh的配置文件"><span
+                                                                                                              class="nav-number">6.1.5.</span>
+                              <span class="nav-text">ssh的配置文件
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#ssh服务的关闭"><span
+                                                                                                              class="nav-number">6.1.6.</span>
+                              <span class="nav-text">ssh服务的关闭
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#ssh服务的开启："><span
+                                                                                                              class="nav-number">6.1.7.</span>
+                              <span class="nav-text">ssh服务的开启：
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#ssh服务的重启"><span
+                                                                                                              class="nav-number">6.1.8.</span>
+                              <span class="nav-text">ssh服务的重启
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#ssh远程登录"><span
+                                                                                                              class="nav-number">6.1.9.</span>
+                              <span class="nav-text">ssh远程登录
+                              </span></a></li>
+                          <li class="nav-item nav-level-6"><a class="nav-link"
+                                                                                                            href="#修改ssh服务的启动文件sshd的几个点"><span
+                                                                                                              class="nav-number">6.1.10.</span>
+                              <span class="nav-text">修改ssh服务的启动文件sshd的几个点
+                              </span></a></li>
+                        </ol>
+                      </li>
+                    </ol>
+                  </li>
+                </ol>
+              </div>
+
+            </div>
+            <!--/noindex-->
+
+            <div class="site-overview-wrap sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope
+                                                                                              itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/img/head.jpg"
+                                                                                                alt="staring">
+                <p class="site-author-name" itemprop="name">staring</p>
+                <div class="site-description" itemprop="description">个人技术博客
+                </div>
+              </div>
+              <nav class="site-state motion-element">
+                <div class="site-state-item site-state-posts">
+
+                  <a href="/archives/">
+
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+
+                <div class="site-state-item site-state-categories">
+
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+
+                </div>
+
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
+
+              </nav>
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+                  <i class="fa fa-rss"></i>RSS
+                </a>
+              </div>
+              <div class="cc-license motion-element" itemprop="license">
+
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity"
+                                                                                                rel="external nofollow noopener noreferrer"
+                                                                                                target="_blank"><img
+                                                                                                  src="/images/cc-by-nc-sa.svg"
+                                                                                                  alt="Creative Commons"></a>
+              </div>
+
+            </div>
+
+          </div>
+        </aside>
+        <div id="sidebar-dimmer"></div>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+          <span class="with-love" id="animate">
+            <i class="fa fa-heart"></i>
+          </span>
+          <span class="author" itemprop="copyrightHolder">staring</span>
+          <span class="post-meta-divider">|</span>
+          <span class="post-meta-item-icon">
+            <i class="fa fa-area-chart"></i>
+          </span>
+          <span title="站点总字数">106k</span>
+          <span class="post-meta-divider">|</span>
+          <span class="post-meta-item-icon">
+            <i class="fa fa-coffee"></i>
+          </span>
+          <span title="站点阅读时长">1:36</span>
+        </div>
+
+        <div class="busuanzi-count">
+          <script async
+                                                                                          src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+          </script>
+
+          <script async
+                                                                                          src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+          </script>
+
+          <span class="site-uv">
+            我的第 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+            位朋友，
+          </span>
+
+          <span class="site-pv">
+            历经 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+            次回眸才与你相遇
+          </span>
+
+        </div>
+
+      </div>
+    </footer>
+  </div>
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="/js/utils.js?v=7.4.0"></script>
+  <script src="/js/motion.js?v=7.4.0"></script>
+  <script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+  <script src="/js/next-boot.js?v=7.4.0"></script>
+  <script>
+    var pjax = new Pjax({
+      selectors: [
+        'head title',
+        '#page-configurations',
+        '.content-wrap',
+        '.post-toc-wrap',
+        '#pjax'
+      ],
+      switches: {
+        '.post-toc-wrap': Pjax.switches.innerHTML
+      },
+      analytics: false,
+      cacheBust: false,
+      scrollTo: !CONFIG.bookmark.enable
+    });
+    window.addEventListener('pjax:success', () => {
+      document.querySelectorAll(
+        'script[pjax], script#page-configurations, #pjax script').forEach(
+        element => {
+          var id = element.id || '';
+          var src = element.src || '';
+          var code = element.text || element.textContent || element
+            .innerHTML || '';
+          var parent = element.parentNode;
+          parent.removeChild(element);
+          var script = document.createElement('script');
+          if (id !== '') {
+            script.id = element.id;
+          }
+          if (src !== '') {
+            script.src = src;
+            // Force synchronous loading of peripheral JS.
+            script.async = false;
+          }
+          if (code !== '') {
+            script.appendChild(document.createTextNode(code));
+          }
+          parent.appendChild(script);
+        });
+      NexT.boot.refresh();
+      // Define Motion Sequence & Bootstrap Motion.
+      if (CONFIG.motion.enable) {
+        NexT.motion.integrator
+          .init()
+          .add(NexT.motion.middleWares.postList)
+          .bootstrap();
+      }
+      NexT.utils.updateSidebarPosition();
+    });
+
+  </script>
+
+  <script>
+    (function() {
+      window.addEventListener('DOMContentLoaded', () => {
+        let script = document.createElement('script');
+        script.src = '/lib/three/three.min.js';
+        document.body.appendChild(script);
+      });
+      let styles = ['', 'true', ''];
+      window.addEventListener('load', () => {
+        styles.forEach(item => {
+          if (item !== '') {
+            let script = document.createElement('script');
+            script.src = item;
+            document.body.appendChild(script);
+          }
+        });
+      });
+    })();
+
+  </script>
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+  <script pjax>
+    if (document.querySelectorAll('div.pdf').length) {
+      NexT.utils.getScript(
+        '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+        () => {
+          document.querySelectorAll('div.pdf').forEach(element => {
+            PDFObject.embed(element.getAttribute('target'), element, {
+              pdfOpenParams: {
+                navpanes: 0,
+                toolbar: 0,
+                statusbar: 0,
+                pagemode: 'thumbs',
+                view: 'FitH'
+              },
+              PDFJS_URL: '/lib/pdf/web/viewer.html',
+              height: element.getAttribute('height') || '500px'
+            });
+          });
+        }, window.PDFObject);
+    }
+
+  </script>
+
+  <div id="pjax">
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js">
+    </script>
+    <script
+                                                                                    src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js">
+    </script>
+    <script>
+      function timer() {
+        var ages = moment.preciseDiff(moment(), moment(20190619, "YYYYMMDD"));
+        //去除时分秒信息
+        ages = ages.replace(/\s?\d{0,2}\s+hours?/, "");
+        ages = ages.replace(/\s?\d{0,2}\s+minutes?/, "");
+        ages = ages.replace(/\s?\d{0,2}\s+seconds?/, "");
+        //将年月日转换为中文
+        ages = ages.replace(/years?/, "年");
+        ages = ages.replace(/months?/, "月");
+        ages = ages.replace(/days?/, "天");
+        ages = ages.replace(/\d+/g, '<span style="color:#1094e8">$&</span>');
+        span.innerHTML = `我已在此等候你 ${ages}`;
+      }
+      var span = document.createElement("span");
+      //插入到agesicon之后
+      var agesicon = document.querySelector(".footer-ages-icon");
+      document.querySelector(".copyright").insertBefore(span, agesicon
+        .nextSibling);
+      timer();
+
+    </script>
+    <script>
+      NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+        var GUEST = ['nick', 'mail', 'link'];
+        var guest = 'nick,mail,link';
+        guest = guest.split(',').filter(item => {
+          return GUEST.includes(item);
+        });
+        new Valine({
+          el: '#comments',
+          verify: false,
+          notify: false,
+          appId: 'SC04XqdJGidywEU8kpDnXmu6-MdYXbMMI',
+          appKey: 'WWH572JLnQB3A4r74XKMGOok',
+          placeholder: '来评论下呗',
+          avatar: 'mm',
+          meta: guest,
+          pageSize: '10' || 10,
+          visitor: false,
+          lang: '' || 'zh-cn',
+          path: location.pathname
+        });
+      }, window.Valine);
+
+    </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":70,"height":120},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
