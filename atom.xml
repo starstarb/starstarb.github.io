@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>staring</title>
+  
+  <subtitle>从来如此，便对么？</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://javastar.club/"/>
+  <updated>2019-11-01T03:26:09.308Z</updated>
+  <id>http://javastar.club/</id>
+  
+  <author>
+    <name>staring</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客备份</title>
+    <link href="http://javastar.club/archives/71e7dca9.html"/>
+    <id>http://javastar.club/archives/71e7dca9.html</id>
+    <published>2019-11-01T03:26:09.000Z</published>
+    <updated>2019-11-01T03:26:09.308Z</updated>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：德才论</title>
+    <link href="http://javastar.club/archives/d793998.html"/>
+    <id>http://javastar.club/archives/d793998.html</id>
+    <published>2019-10-29T15:35:10.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>德才论</p><a id="more"></a><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct student&#123;</span><br><span class="line">    int id;</span><br><span class="line">    int de,cai,sum;</span><br><span class="line">    int rank;</span><br><span class="line">&#125;s[100010];</span><br><span class="line"> </span><br><span class="line">bool cmp(student a,student b)&#123;</span><br><span class="line">    if(a.rank!=b.rank) return a.rank&lt;b.rank;</span><br><span class="line">    else if(a.sum!=b.sum) return a.sum&gt;b.sum;</span><br><span class="line">    else if(a.de!=b.de) return a.de&gt;b.de;</span><br><span class="line">    else return a.id&lt;b.id;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int n,l,h,num;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;,&amp;n,&amp;l,&amp;h);//考生总数 最低分  优先录取线 </span><br><span class="line">    num=n;//及格人数 </span><br><span class="line">    for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;s[i].id,&amp;s[i].de,&amp;s[i].cai);</span><br><span class="line">        s[i].sum=s[i].de+s[i].cai;</span><br><span class="line">        if(s[i].de&lt;l ||s[i].cai&lt;l)&#123;//不及格设为第五类 </span><br><span class="line">            num--;//及格人数减一 </span><br><span class="line">            s[i].rank=5;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            if(s[i].de&gt;=h &amp;&amp; s[i].cai&gt;=h) s[i].rank=1;</span><br><span class="line">            else if(s[i].de&gt;=h &amp;&amp; s[i].cai&lt;h) s[i].rank=2;</span><br><span class="line">            else if(s[i].de&gt;=s[i].cai) s[i].rank=3;</span><br><span class="line">            else s[i].rank=4;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(s,s+n,cmp);</span><br><span class="line">    printf(&quot;%d\n&quot;,num);</span><br><span class="line">    for(int i=0;i&lt;num;i++)</span><br><span class="line">        printf(&quot;%d %d %d\n&quot;,s[i].id,s[i].de,s[i].cai);</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;德才论&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：完美数列(3)</title>
+    <link href="http://javastar.club/archives/d6f2dda0.html"/>
+    <id>http://javastar.club/archives/d6f2dda0.html</id>
+    <published>2019-10-29T15:33:54.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>完美数列</p><a id="more"></a><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXN=100010;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">ios::sync_with_stdio(false);</span><br><span class="line">    int n,p,a[MAXN];</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;p;</span><br><span class="line">    for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">    cin&gt;&gt;a[i];</span><br><span class="line">&#125;</span><br><span class="line">sort(a,a+n);//从小到大排序 </span><br><span class="line">int i=0,j=0,flag=1;//双指针   </span><br><span class="line">while(i&lt;n&amp;&amp;j&lt;n)&#123;</span><br><span class="line">while(j&lt;n&amp;&amp;a[j]&lt;=(long long)a[i]*p)&#123;</span><br><span class="line">flag=max(flag,j-i+1);</span><br><span class="line">j++;//j右移 </span><br><span class="line">&#125;</span><br><span class="line">i++;//保证i和j的距离最大 </span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;flag&lt;&lt;endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;完美数列&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：完美数列(2)</title>
+    <link href="http://javastar.club/archives/cfe9ece1.html"/>
+    <id>http://javastar.club/archives/cfe9ece1.html</id>
+    <published>2019-10-29T15:33:07.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>完美数列</p><a id="more"></a><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXN=100010;</span><br><span class="line">int a[MAXN];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">ios::sync_with_stdio(false);</span><br><span class="line">int p,n;</span><br><span class="line">cin&gt;&gt;n&gt;&gt;p;</span><br><span class="line">for(int i=0;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">cin&gt;&gt;a[i];</span><br><span class="line">&#125;</span><br><span class="line">sort(a,a+n);</span><br><span class="line">int ans=1;</span><br><span class="line">for(int i=0;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">int j=upper_bound(a+i+1,a+n,(long long)a[i]*p)-a;</span><br><span class="line">ans=max(ans,j-i);</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;完美数列&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：完美数列(1)</title>
+    <link href="http://javastar.club/archives/e4c4bf22.html"/>
+    <id>http://javastar.club/archives/e4c4bf22.html</id>
+    <published>2019-10-29T15:32:59.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>完美数列</p><a id="more"></a><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXN=100010;</span><br><span class="line">int a[MAXN],n;</span><br><span class="line">int binarySearch(int i,long long x)&#123;</span><br><span class="line">if(a[n-1]&lt;=x) return n;</span><br><span class="line">int l=i+1,r=n-1,mid;</span><br><span class="line">while(l&lt;r)</span><br><span class="line">&#123;</span><br><span class="line">mid=(l+r)/2;</span><br><span class="line">if(a[mid]&lt;=x) l=mid+1;</span><br><span class="line">else r=mid;</span><br><span class="line">&#125;</span><br><span class="line">return l;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">ios::sync_with_stdio(false);</span><br><span class="line">int p;</span><br><span class="line">cin&gt;&gt;n&gt;&gt;p;</span><br><span class="line">for(int i=0;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">cin&gt;&gt;a[i];</span><br><span class="line">&#125;</span><br><span class="line">sort(a,a+n);</span><br><span class="line">int ans=1;</span><br><span class="line">for(int i=0;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">int j=binarySearch(i,a[i]*p);//在a[i+1]~a[n-1]中查找第一个超过a[i]*p的数，返回位置给j </span><br><span class="line">ans=max(ans,j-i);</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;完美数列&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：一元多项式求导</title>
+    <link href="http://javastar.club/archives/e969fde1.html"/>
+    <id>http://javastar.club/archives/e969fde1.html</id>
+    <published>2019-10-28T06:39:57.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一元多项式求导</p><a id="more"></a><p>链接：<a href="https://www.nowcoder.com/questionTerminal/2dae0a77c03e40c595881bc5d6074dfc" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/2dae0a77c03e40c595881bc5d6074dfc</a></p><p>设计函数求一元多项式的导数。（注：xn（n为整数）的一阶导数为n*xn-1。）</p><p>输入描述:</p><p>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过1000的整数）。数字间以空格分隔。</p><p>输出描述:</p><p>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是0，但是表示为“0 0”。</p><p>示例1<br>输入</p><p>3 4 -5 2 6 1 -2 0</p><p>输出</p><p>12 3 -10 1 6 0</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std; </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int n,e,flag=0;</span><br><span class="line">ios::sync_with_stdio(false);</span><br><span class="line">while(cin&gt;&gt;n&gt;&gt;e)&#123;</span><br><span class="line">if(n*e)&#123;</span><br><span class="line">if(flag) cout&lt;&lt;&quot; &quot;;</span><br><span class="line">else flag=1;</span><br><span class="line">            cout&lt;&lt;n*e&lt;&lt;&quot; &quot;&lt;&lt;e-1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">if(!flag)&#123;</span><br><span class="line">cout&lt;&lt;&quot;0 0&quot;;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一元多项式求导&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：数组元素循环右移问题</title>
+    <link href="http://javastar.club/archives/170ff197.html"/>
+    <id>http://javastar.club/archives/170ff197.html</id>
+    <published>2019-10-28T06:39:45.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>数组元素循环右移问题</p><a id="more"></a><p>链接：<a href="https://www.nowcoder.com/questionTerminal/bbfc7fb56a07415ab2b94402379f7e56" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/bbfc7fb56a07415ab2b94402379f7e56</a><br>来源：牛客网</p><p>一个数组A中存有N（N&amp;gt0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&gt;=0）个位置，即将A中的数据由（A0 A1  ……AN-1 ）变换为（AN-M …… AN-1 A0 A1 ……AN-M-1  ）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p><p>输入描述:</p><p>每个输入包含一个测试用例，第1行输入N ( 1&lt;=N&lt;=100)、M（M&gt;=0）；第2行输入N个整数，之间用空格分隔。</p><p>输出描述:</p><p>在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</p><p>示例1<br>输入</p><p>6 2<br><br>1 2 3 4 5 6</p><p>输出</p><p>5 6 1 2 3 4</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int s[200];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int n,m;</span><br><span class="line">ios::sync_with_stdio(false);</span><br><span class="line">cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">int count=0;//已输出的个数 </span><br><span class="line">m=m%n;//让m&lt;n，让移位更简单 </span><br><span class="line">for(int i=0;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">cin&gt;&gt;s[i];</span><br><span class="line">&#125;</span><br><span class="line">for(int j=n-m;j&lt;n;j++)&#123;//n-m到n-1号 </span><br><span class="line">cout&lt;&lt;s[j];</span><br><span class="line">count++;</span><br><span class="line">if(count&lt;n) cout&lt;&lt;&quot; &quot;;//如果已经输出数的个数小于n，则输出空格 </span><br><span class="line">&#125;</span><br><span class="line">for(int k=0;k&lt;n-m;k++)&#123;//0 -&gt; n-m-1 </span><br><span class="line">cout&lt;&lt;s[k];</span><br><span class="line">count++;</span><br><span class="line">if(count&lt;n)cout&lt;&lt;&quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;数组元素循环右移问题&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：数字分类</title>
+    <link href="http://javastar.club/archives/d9de9b3d.html"/>
+    <id>http://javastar.club/archives/d9de9b3d.html</id>
+    <published>2019-10-28T06:39:31.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>数字分类</p><a id="more"></a><p>链接：<a href="https://www.nowcoder.com/questionTerminal/473c219f9e4d4ab2851ed388895a9c86" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/473c219f9e4d4ab2851ed388895a9c86</a><br>来源：牛客网</p><p>给定一系列正整数，请按要求对数字进行分类，并输出以下5个数字：</p><p>A1 = 能被5整除的数字中所有偶数的和；</p><p>A2 = 将被5除后余1的数字按给出顺序进行交错求和，即计算n1-n2+n3-n4…；</p><p>A3 = 被5除后余2的数字的个数；</p><p>A4 = 被5除后余3的数字的平均数，精确到小数点后1位；</p><p>A5 = 被5除后余4的数字中最大数字。</p><p>输入描述:</p><p>每个输入包含1个测试用例。每个测试用例先给出一个不超过1000的正整数N，随后给出N个不超过1000的待分类的正整数。数字间以空格分隔。</p><p>输出描述:</p><p>  对给定的N个正整数，按题目要求计算A1~A5并在一行中顺序输出。数字间以空格分隔，但行末不得有多余空格。<br>若其中某一类数字不存在，则在相应位置输出“N”。</p><p>示例1<br>输入</p><p>13 1 2 3 4 5 6 7 8 9 10 20 16 18</p><p>输出</p><p>30 11 2 9.7 9</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;iomanip&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int s[1200];</span><br><span class="line">int main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    int c1=0,c2=0,c3=0,c4Num=0,c5=0;// 偶数和 交错求和 个数 平均数 最大数字 </span><br><span class="line">    float c4=0;</span><br><span class="line">    int n,x,i=1;</span><br><span class="line">    cin&gt;&gt;n;//n 是测试数据个数  x是输入数据   </span><br><span class="line">    while(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;x;</span><br><span class="line">        switch(x%5)</span><br><span class="line">        &#123;</span><br><span class="line">            case 0:if(x%2==0) c1+=x; break;</span><br><span class="line">            case 1:c2+=(i*x);i=-i;break;</span><br><span class="line">            case 2:c3++;break;</span><br><span class="line">            case 3:c4+=x;c4Num++;break;</span><br><span class="line">            case 4:if(x&gt;c5)c5=x;break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    (c1&gt;0)?(cout&lt;&lt;c1&lt;&lt;&quot; &quot;):(cout&lt;&lt;&quot;N &quot;);</span><br><span class="line">    (c2!=0)?(cout&lt;&lt;c2&lt;&lt;&quot; &quot;):(cout&lt;&lt;&quot;N &quot;);</span><br><span class="line">    (c3&gt;0)?(cout&lt;&lt;c3&lt;&lt;&quot; &quot;):(cout&lt;&lt;&quot;N &quot;);</span><br><span class="line">    (c4&gt;0)?(cout&lt;&lt;fixed&lt;&lt;setprecision(1)&lt;&lt;c4/c4Num&lt;&lt;&quot; &quot;):(cout&lt;&lt;&quot;N &quot;);</span><br><span class="line">    (c5&gt;0)?(cout&lt;&lt;c5):(cout&lt;&lt;&quot;N&quot;);</span><br><span class="line">  </span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;数字分类&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：害死人不偿命的(3n+1)猜想</title>
+    <link href="http://javastar.club/archives/1a873310.html"/>
+    <id>http://javastar.club/archives/1a873310.html</id>
+    <published>2019-10-28T06:39:22.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>害死人不偿命的(3n+1)猜想</p><a id="more"></a><p>链接：<a href="https://www.nowcoder.com/questionTerminal/b8a2f1d0d0e144409b163090b5c001ed" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/b8a2f1d0d0e144409b163090b5c001ed</a><br>来源：牛客网</p><p>卡拉兹(Callatz)猜想：</p><p>对任何一个自然数n，如果它是偶数，那么把它砍掉一半；如果它是奇数，那么把(3n+1)砍掉一半。这样一直反复砍下去，最后一定在某一步</p><p>得到n=1。卡拉兹在1950年的世界数学家大会上公布了这个猜想，传说当时耶鲁大学师生齐动员，拼命想证明这个貌似很傻很天真的命题，</p><p>结果闹得学生们无心学业，一心只证(3n+1)，以至于有人说这是一个阴谋，卡拉兹是在蓄意延缓美国数学界教学与科研的进展……</p><p>我们今天的题目不是证明卡拉兹猜想，而是对给定的任一不超过1000的正整数n，简单地数一下，需要多少步（砍几下）才能得到n=1？</p><p>输入描述:</p><p>每个测试输入包含1个测试用例，即给出自然数n的值。</p><p>输出描述:</p><p>输出从n计算到1需要的步数。</p><p>示例1<br>输入</p><p>3</p><p>输出</p><p>5</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int query(int n)&#123;</span><br><span class="line">int flag=0;</span><br><span class="line">while(n!=1)&#123;</span><br><span class="line">if(n%2==0)</span><br><span class="line"> &#123;</span><br><span class="line">   n/=2; flag++;</span><br><span class="line"> &#125;</span><br><span class="line"> else&#123;</span><br><span class="line"> n=(3*n+1)/2;flag++; //flag==1  </span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">return flag;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int n;</span><br><span class="line">while(cin&gt;&gt;n)&#123;</span><br><span class="line">cout&lt;&lt;query(n)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;害死人不偿命的(3n+1)猜想&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：锤子剪刀布</title>
+    <link href="http://javastar.club/archives/8a29459f.html"/>
+    <id>http://javastar.club/archives/8a29459f.html</id>
+    <published>2019-10-28T06:39:06.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>锤子剪刀布</p><a id="more"></a><p>链接：<a href="https://www.nowcoder.com/questionTerminal/79db907555c24b15a9c73f7f7d0e2471" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/79db907555c24b15a9c73f7f7d0e2471</a><br>来源：牛客网</p><p>大家应该都会玩“锤子剪刀布”的游戏：</p><p>现给出两人的交锋记录，请统计双方的胜、平、负次数，并且给出双方分别出什么手势的胜算最大。</p><p>输入描述:</p><p>  输入第1行给出正整数N（&lt;=105），即双方交锋的次数。随后N行，每行给出一次交锋的信息，即甲、乙双方同时给出的的手势。C代表“锤子”、J代表“剪刀”、B代<br>表“布”，第1个字母代表甲方，第2个代表乙方，中间有1个空格。</p><p>输出描述:</p><p>  输出第1、2行分别给出甲、乙的胜、平、负次数，数字间以1个空格分隔。第3行给出两个字母，分别代表甲、乙获胜次数最多的手势，中间有1个空格。如果解不唯<br>一，则输出按字母序最小的解。</p><p>示例1<br>输入</p><p>10 <br><br>C J<br><br>J B<br><br>C B<br><br>B B<br><br>B C<br><br>C  C<br><br>C B<br><br>J B<br><br>B C<br><br>J J<br></p><p>输出</p><p>5 3 2<br><br>2 3 5<br><br>B B<br></p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int change(char c)&#123;</span><br><span class="line">if(c==&apos;B&apos;) return 0;</span><br><span class="line">if(c==&apos;C&apos;) return 1;</span><br><span class="line">if(c==&apos;J&apos;) return 2;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">ios::sync_with_stdio(false);//  ios::sync_with_stdio(false);</span><br><span class="line">int n;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line">char mp[3]=&#123;&apos;B&apos;,&apos;C&apos;,&apos;J&apos;&#125;;//布锤子剪刀 </span><br><span class="line">int a[3]=&#123;0&#125;,b[3]=&#123;0&#125;;//记录甲、乙的胜负平次数 </span><br><span class="line">int ha[3]=&#123;0&#125;,hb[3]=&#123;0&#125;;//按BCJ顺序分别记录甲乙3种手势的获胜次数 </span><br><span class="line">char c1,c2;</span><br><span class="line">int k1,k2;</span><br><span class="line">for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">cin&gt;&gt;c1&gt;&gt;c2;</span><br><span class="line">k1=change(c1);</span><br><span class="line">k2=change(c2);</span><br><span class="line">if((k1+1)%3==k2)&#123;//甲赢 </span><br><span class="line">a[0]++;//甲赢次数加一 </span><br><span class="line">b[2]++;//乙负次数加一 </span><br><span class="line">ha[k1]++;//甲靠k1赢的次数加一 </span><br><span class="line">&#125;</span><br><span class="line">else if(k1==k2)//平局</span><br><span class="line">&#123;</span><br><span class="line">a[1]++;</span><br><span class="line">b[1]++;</span><br><span class="line"> &#125; </span><br><span class="line"> else &#123;</span><br><span class="line"> a[2]++;</span><br><span class="line"> b[0]++;</span><br><span class="line"> hb[k2]++;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;a[0]&lt;&lt;&quot; &quot;&lt;&lt;a[1]&lt;&lt;&quot; &quot;&lt;&lt;a[2]&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;b[0]&lt;&lt;&quot; &quot;&lt;&lt;b[1]&lt;&lt;&quot; &quot;&lt;&lt;b[2]&lt;&lt;endl;</span><br><span class="line">int d1=0,d2=0;</span><br><span class="line">for(int i=0;i&lt;3;i++)&#123;</span><br><span class="line">if(ha[i]&gt;ha[d1]) d1=i;</span><br><span class="line">if(hb[i]&gt;hb[d1]) d2=i;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;mp[d1]&lt;&lt;&quot; &quot;&lt;&lt;mp[d2]&lt;&lt;endl;//转变回BCJ </span><br><span class="line"></span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;锤子剪刀布&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：部分A+B</title>
+    <link href="http://javastar.club/archives/2bddccd7.html"/>
+    <id>http://javastar.club/archives/2bddccd7.html</id>
+    <published>2019-10-28T06:38:57.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>部分A+B</p><a id="more"></a><p>链接：<a href="https://www.nowcoder.com/questionTerminal/fb581ea099a14f5d97c6149cbeee249f" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/fb581ea099a14f5d97c6149cbeee249f</a><br>来源：牛客网</p><p>正整数A的“DA（为1位整数）部分”定义为由A中所有DA组成的新整数PA。例如：给定A = 3862767，DA =  6，则A的“6部分”PA是66，因为A中有2个6。</p><p>现给定A、DA、B、DB，请编写程序计算PA + PB。</p><p>输入描述:</p><p>输入在一行中依次给出A、DA、B、DB，中间以空格分隔，其中0 &lt; A, B &lt; 1010。</p><p>输出描述:</p><p>在一行中输出PA + PB的值。</p><p>示例1<br>输入</p><p>3862767 6 13530293 3</p><p>输出</p><p>399</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">long long  a,a1,b,b1;//计算a1+b1</span><br><span class="line">ios::sync_with_stdio(false);</span><br><span class="line">cin&gt;&gt;a&gt;&gt;a1&gt;&gt;b&gt;&gt;b1;</span><br><span class="line">long long pa=0,pb=0;</span><br><span class="line">while(a!=0)&#123;</span><br><span class="line">if(a%10==a1) pa=pa*10+a1;</span><br><span class="line">a/=10;</span><br><span class="line">&#125;</span><br><span class="line">while(b!=0)&#123;</span><br><span class="line">if(b%10==b1) pb=pb*10+b1;</span><br><span class="line">b/=10;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;pa+pb&lt;&lt;endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;部分A+B&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：Shortest Distance</title>
+    <link href="http://javastar.club/archives/1ed7dde9.html"/>
+    <id>http://javastar.club/archives/1ed7dde9.html</id>
+    <published>2019-10-28T06:38:48.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Shortest Distance</p><a id="more"></a><p>链接：<a href="https://www.nowcoder.com/questionTerminal/3432b59d01834e53bda8f5eb439bed9b" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/3432b59d01834e53bda8f5eb439bed9b</a><br>来源：牛客网</p><p>The task is really simple: given N exits on a highway which forms a simple  cycle, you are supposed to tell the shortest distance between any pair of  exits.</p><p>输入描述:</p><p>Each input file contains one test case. For each case, the first line  contains an integer N (in [3, 105]), followed by N integer distances D1 D2 …  DN, where Di is the distance between the i-th and the (i+1)-st exits, and DN  is between the N-th and the 1st exits. All the numbers in a line are separated  by a space. The second line gives a positive integer M (&lt;=104), with M  lines follow, each contains a pair of exit numbers, provided that the exits  are numbered from 1 to N. It is guaranteed that the total round trip distance  is no more than 107.</p><p>输出描述:</p><p>For each test case, print your results in M lines, each contains the shortest  distance between the corresponding given pair of exits.</p><p>示例1<br>输入</p><p>5 1 2 4 14 9 <br><br>3 <br><br>1 3 <br><br>2 5<br><br>4 1</p><p>输出</p><p>3 <br><br>10 <br><br>7 <br></p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXN=100005;</span><br><span class="line">int dis[MAXN],a[MAXN]; //dis存放1号到i+1号的距离 a存放i到i+1号顶点距离 </span><br><span class="line">int main()&#123;</span><br><span class="line">ios::sync_with_stdio(false);</span><br><span class="line">int n,sum=0,query,left,right;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">cin&gt;&gt;a[i];</span><br><span class="line">sum+=a[i];</span><br><span class="line">dis[i]=sum;//顺时针存 </span><br><span class="line">&#125;</span><br><span class="line">cin&gt;&gt;query;</span><br><span class="line">for(int i=0;i&lt;query;i++)&#123;</span><br><span class="line">cin&gt;&gt;left&gt;&gt;right;</span><br><span class="line">if(left&gt;right) swap(left,right);</span><br><span class="line">int temp=dis[right-1]-dis[left-1];</span><br><span class="line">cout&lt;&lt;min(temp,sum-temp)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Shortest Distance&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记训练指南：A+B和C</title>
+    <link href="http://javastar.club/archives/135b1a23.html"/>
+    <id>http://javastar.club/archives/135b1a23.html</id>
+    <published>2019-10-28T06:38:36.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>A+B和C</p><a id="more"></a><p>A+B和C</p><p>链接：<a href="https://www.nowcoder.com/questionTerminal/33ceeced8acc475aa0be9603936890a6" rel="external nofollow noopener noreferrer" target="_blank">https://www.nowcoder.com/questionTerminal/33ceeced8acc475aa0be9603936890a6</a></p><p>给定区间[-2的31次方, 2的31次方]内的3个整数A、B和C，请判断A+B是否大于C。</p><p>输入描述:</p><p>输入第1行给出正整数T(&lt;=10)，是测试用例的个数。随后给出T组测试用例，每组占一行，顺序给出A、B和C。整数间以空格分隔。</p><p>输出描述:</p><p>对每组测试用例，在一行中输出“Case #X: true”如果A+B&gt;C，否则输出“Case #X:  false”，其中X是测试用例的编号（从1开始）。</p><p>示例1<br>输入</p><p>4<br><br>1 2 3<br><br>2 3 4<br><br>2147483647 0 2147483646<br><br>0  -2147483648 -2147483647<br></p><p>输出</p><p>Case #1: false <br><br>Case #2: true <br><br>Case #3: true<br><br>Case #4:  false<br></p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int i;</span><br><span class="line">int T;//测试数据组数 </span><br><span class="line">long long  a,b,c;//三个整数 </span><br><span class="line">int flag=1;</span><br><span class="line">cin&gt;&gt;T;</span><br><span class="line">for(int i=0;i&lt;T;i++)</span><br><span class="line">&#123;</span><br><span class="line">/*cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">    if(a+b&gt;c)*/</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">if(a+b&gt;c)</span><br><span class="line">&#123;</span><br><span class="line">cout&lt;&lt;&quot;Case #&quot;&lt;&lt;flag++&lt;&lt;&quot;: true&quot;&lt;&lt;endl;</span><br><span class="line"> &#125; </span><br><span class="line"> else cout&lt;&lt;&quot;Case #&quot;&lt;&lt;flag++&lt;&lt;&quot;: false&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A+B和C&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CG平台刷题记录：CG3010</title>
+    <link href="http://javastar.club/archives/fa24861f.html"/>
+    <id>http://javastar.club/archives/fa24861f.html</id>
+    <published>2019-10-28T06:34:03.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>螺旋矩阵</p><a id="more"></a><ol start="3010">  <li>螺旋矩阵</li></ol><p>  【题目】给定一个正整数N，生成一个N×N的矩阵，矩阵中元素取值为1～N2，1在左上角，其余各数按顺时针方向旋转前进，依次递增放置。例如，当N=4时，矩阵各元素如下：<br>  1 2 3 4<br>12 13 14 5<br>11 16 15 6<br>10 9 8  7<br>给定N，及矩阵中某个位置（用行坐标i和列坐标j表示，均从1开始记起），输出该位置上的元素。<br>【输入】输入文件中包含多个测试数据。每个测试数据占一行，为3个正整数N  i j，1≤N≤100，1≤i, j≤N。输入文件最后一行为3个0，代表输入结束。<br>【输出】对输入文件中的每个测试数据，输出对应的元素。</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">/*</span><br><span class="line">模拟螺旋填数过程.</span><br><span class="line">用两个变量x，y存当前填数的格子的坐标。当x=i，y=j的时候，输出当前要填的数。</span><br><span class="line">如果一个格子一个格子的去填数字一定会超时，</span><br><span class="line">而且在一条直线上直到转弯前需要填的格子数目是可以通过计算得出的。</span><br><span class="line">只要在转弯处判断目标格子是否在当前要填的直线段上，</span><br><span class="line">在的话就用已经填的格子数目加上目标格子相应坐标与当前直线段的端点坐标的差，</span><br><span class="line">否则加上当前直线段所有要填的格子数目，然后转弯。</span><br><span class="line">*/</span><br><span class="line">int luoxuan(int n ,int x, int y)&#123;</span><br><span class="line">    int xx=1,yy=1;//当前直线段  </span><br><span class="line">    long long int ans = 1;//</span><br><span class="line">    int a=n,b=n,c=1,d=1;//a为第n行  b为第n列 c为第1行  d为第一列 </span><br><span class="line">    if(n%2==1&amp;&amp;(n+1)/2==x&amp;&amp;(n+1)/2==y)//特判n为奇数且求中心格子</span><br><span class="line">        ans=n*n;//不执行 </span><br><span class="line">    else &#123;</span><br><span class="line">        while(1) &#123;</span><br><span class="line">            if(xx==x&amp;&amp;y&gt;=yy&amp;&amp;y&lt;a) &#123; //xx==x=1  y&gt;=yy=1 y&lt;4 </span><br><span class="line">                ans+=(y-yy);//y是目标格子-yy当前直线段的端点坐标  ans=1+0;</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123; //n=x=y=4</span><br><span class="line">                ans+=(a-yy); //ans=1+3</span><br><span class="line">                yy=a;// yy=4</span><br><span class="line">            &#125;</span><br><span class="line">            a--;//3</span><br><span class="line">            if(yy==y&amp;&amp;x&gt;=xx&amp;&amp;x&lt;b) &#123; //yy==y=1 x&gt;=x x&lt;3   yy=4=y x=4&gt;=xx=1 x&lt;</span><br><span class="line">                ans+=(x-xx);//ans=1</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123; //</span><br><span class="line">                ans+=(b-xx);//ans=4+3=7</span><br><span class="line">                xx=b;//xx=4</span><br><span class="line">            &#125;</span><br><span class="line">            b--;//3</span><br><span class="line">            if(xx==x&amp;&amp;y&lt;=yy&amp;&amp;y&gt;c) &#123;//</span><br><span class="line">                ans+=(yy-y);//ans=7</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                ans+=(yy-c);</span><br><span class="line">                yy=c;</span><br><span class="line">            &#125;</span><br><span class="line">            c++;</span><br><span class="line">            if(yy==y&amp;&amp;x&lt;=xx&amp;&amp;x&gt;d) &#123;</span><br><span class="line">                ans+=(xx-x);</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                ans+=(xx-d);</span><br><span class="line">                xx=d+1;</span><br><span class="line">                yy=c;</span><br><span class="line">            &#125;</span><br><span class="line">            d++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans; </span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    while(cin&gt;&gt;n)&#123; //4 </span><br><span class="line">         int x,y;//当前格子坐标 </span><br><span class="line">         cin&gt;&gt;x&gt;&gt;y; //1 1  4 4</span><br><span class="line">    if(n==0&amp;&amp;x==0&amp;&amp;y==0)&#123;</span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;luoxuan(n,x,y)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;螺旋矩阵&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CG平台刷题记录：CG3009</title>
+    <link href="http://javastar.club/archives/9ae30ffa.html"/>
+    <id>http://javastar.club/archives/9ae30ffa.html</id>
+    <published>2019-10-28T06:32:53.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>前N项和1</p><a id="more"></a><ol start="3009">  <li>前N项和1</li></ol><p>  【题目】求数列1、2、3、2、3、4、3、4、5、4、5、6、…前N项和。输入N的值（1≤N≤1000），输出前N项和。<br>【输入】输入文件中有多个测试数据，每个测试数据占一行，为整数N。输入文件最后一行为0，代表输入结束。<br>【输出】对每个测试数据，输出占一行，为求得的前N项和。</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int sum(int n)&#123;//n=4</span><br><span class="line">int sum=0;</span><br><span class="line">int flag=0;</span><br><span class="line">int s=1;</span><br><span class="line">while(1)&#123;</span><br><span class="line">  for(int i=s; i&lt;=s+2; i++)&#123;</span><br><span class="line">  sum+=i; flag++;</span><br><span class="line">  if(flag==n) return sum;</span><br><span class="line">  &#125;</span><br><span class="line">  s++;  </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int n;</span><br><span class="line">while(cin&gt;&gt;n)</span><br><span class="line">&#123;</span><br><span class="line">if(n==0)</span><br><span class="line">break;</span><br><span class="line">cout&lt;&lt;sum(n)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前N项和1&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CG平台刷题记录：CG3008</title>
+    <link href="http://javastar.club/archives/ede43f6c.html"/>
+    <id>http://javastar.club/archives/ede43f6c.html</id>
+    <published>2019-10-28T06:32:06.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>闰年判断</p><a id="more"></a><ol start="3008">  <li>闰年判断</li></ol><p>  【题目】输入一个年份，判断是否为润年，并输出相应的信息。<br>【输入】输入文件中有多个测试数据，第1行为整数K，代表测试数据数目；接下来有K行，每个测试数据占一行，为一个年份y。<br>【输出】对每个测试数据，输出占一行，如果y为闰年(假设为2016)，则输出“2016  is a leap year”；如果a不是闰年(假设为2015)，则输出“2015 is not a leap year”。</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">bool isLeap(int year)&#123;</span><br><span class="line">if((year%4!=0)||(year%100==0&amp;&amp;year%400!=0))</span><br><span class="line">    return false;</span><br><span class="line">else </span><br><span class="line">   return true;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int year,k;</span><br><span class="line">cin&gt;&gt;k;</span><br><span class="line">for(int i=0;i&lt;k;i++)&#123;</span><br><span class="line">cin&gt;&gt;year;</span><br><span class="line">    if(isLeap(year))</span><br><span class="line">cout&lt;&lt;year&lt;&lt;&quot; is a leap year&quot;&lt;&lt;endl;</span><br><span class="line">else</span><br><span class="line">cout&lt;&lt;year&lt;&lt;&quot; is not a leap year&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;闰年判断&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CG平台刷题记录：CG3012</title>
+    <link href="http://javastar.club/archives/142ae733.html"/>
+    <id>http://javastar.club/archives/142ae733.html</id>
+    <published>2019-10-28T06:31:13.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>素数判断</p><a id="more"></a><ol start="3012">  <li>素数判断</li></ol><p>【题目】输入一个[2,  1000]范围内的自然数，判断是否为素数，并输出相应的信息。<br>【输入】输入文件中有多个测试数据，每个测试数据占一行，为一个自然数a。输入文件最后一行为0，代表输入结束。<br>【输出】对每个测试数据，输出占一行，如果a为素数(假设为97)，则输出“97  is a prime number”；如果a不是素数(假设为99)，则输出“99 is not a prime number”。</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">bool isPrime(int c)</span><br><span class="line">&#123;    </span><br><span class="line">      if(c == 1) return false;</span><br><span class="line">      for(int i=2;i&lt;=sqrt(c);i++)</span><br><span class="line">             if(c%i==0) return false;</span><br><span class="line">      return true; </span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int n;</span><br><span class="line">while(cin&gt;&gt;n)&#123;</span><br><span class="line">if(n==0)&#123;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">if(isPrime(n))</span><br><span class="line">  cout&lt;&lt;n&lt;&lt;&quot; is a prime number&quot;&lt;&lt;endl;</span><br><span class="line">else</span><br><span class="line">  cout&lt;&lt;n&lt;&lt;&quot; is not a prime number&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;素数判断&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CG平台刷题记录：CG2841</title>
+    <link href="http://javastar.club/archives/46fb7411.html"/>
+    <id>http://javastar.club/archives/46fb7411.html</id>
+    <published>2019-10-28T06:30:24.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的猜想</p><a id="more"></a><ol start="2841">  <li>我的猜想</li></ol><p>【问题描述】</p><p>1742年，德国数学家哥德巴赫(Goldbach)提出了著名的哥德巴赫猜想(Goldbach  Conjecture)：任何一个不小于4的偶数可以表示为两个素数之和。这个猜想至今都没有完全被证明是正确的。</p><p>但是，对于一个大于或等于5的奇数，有的可以表示成两个素数之和，有的则不能。给定一个大于或等于5的奇数，判断是否能分解成两个素数之和。</p><p>【输入形式】</p><p>输入中包含多个测试数据，每个测试数据占一行，为一个正整数m，m为奇数，且不小于5，不大于32767。</p><p>【输出形式】<br>对每个测试数据，如果m能分解成两个素数之和，输出yes，否则输出no。</p><p>【样例输入】</p><p>21</p><p>75</p><p>99</p><p>113</p><p>【样例输出】</p><p>yes</p><p>yes</p><p>yes</p><p>no</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">bool prime(int c)</span><br><span class="line">&#123;    </span><br><span class="line">      if(c == 1) return false;</span><br><span class="line">      for(int i=2;i&lt;=sqrt(c);i++)</span><br><span class="line">             if(c%i==0) return false;</span><br><span class="line">      return true;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br><span class="line">bool gdb(int n)&#123;</span><br><span class="line">for (int a=2;a&lt;n;a++) </span><br><span class="line">      &#123;  </span><br><span class="line">    int b;       </span><br><span class="line">        if(prime(a))</span><br><span class="line">&#123;</span><br><span class="line">    b=n-a;</span><br><span class="line">    if(prime(b))</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">    if(a=n-1)</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    while(cin&gt;&gt;n)&#123;  </span><br><span class="line">      if(gdb(n)) cout&lt;&lt;&quot;yes&quot;&lt;&lt;endl; </span><br><span class="line">  else cout&lt;&lt;&quot;no&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;   </span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我的猜想&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CG平台刷题记录：CG3018</title>
+    <link href="http://javastar.club/archives/f4ff0e2d.html"/>
+    <id>http://javastar.club/archives/f4ff0e2d.html</id>
+    <published>2019-10-28T06:29:10.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>前N项和2</p><a id="more"></a><ol start="3018">  <li>前N项和2</li></ol><p>  【题目】求数列1、1、2、1、2、3、1、2、3、4、1、2、3、4、5、…前N项和。输入N的值（1≤N≤10000），输出前N项和。<br>【输入】输入文件中有多个测试数据，第1行为整数K，代表测试数据数目；接下来有K行，每个测试数据占一行，为整数N。<br>【输出】对每个测试数据，输出占一行，为求得的前N项和。</p><p>【问题描述】<br>【输入形式】<br>【输出形式】<br>【样例输入】</p><p>2</p><p>1</p><p>2  【样例输出】</p><p>1</p><p>2</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int sum(int s)&#123;</span><br><span class="line">int n=1;</span><br><span class="line">int flag=0;</span><br><span class="line">int sum=0;</span><br><span class="line">while(1)&#123;</span><br><span class="line">for(int i=1;i&lt;n;i++)&#123;</span><br><span class="line">sum+=i;</span><br><span class="line">flag++;</span><br><span class="line">if(flag==s)</span><br><span class="line">&#123;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if(flag==s)</span><br><span class="line">  break;</span><br><span class="line">n++;</span><br><span class="line"> &#125; </span><br><span class="line"> return sum;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int m;</span><br><span class="line">cin&gt;&gt;m;</span><br><span class="line">int s;</span><br><span class="line">for(int i=0;i&lt;m;i++)</span><br><span class="line">&#123;</span><br><span class="line">  cin&gt;&gt;s;</span><br><span class="line">  cout&lt;&lt;sum(s)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前N项和2&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CG平台刷题记录：CG3020</title>
+    <link href="http://javastar.club/archives/d109d5dc.html"/>
+    <id>http://javastar.club/archives/d109d5dc.html</id>
+    <published>2019-10-28T06:28:10.000Z</published>
+    <updated>2019-11-01T02:36:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>2月份天数</p><a id="more"></a><ol start="3020">  <li>2月份天数</li></ol><p>  【题目】输入一个年份，输出该年2月份的天数。<br>【输入】输入文件中包含多个测试数据。每个测试数据占一行，为一个年份，范围在1800～2000。测试数据一直到文件尾。<br>【输出】对每个测试数据，输出占一行，为该年2月份的天数。</p><p>【问题描述】<br>【输入形式】<br>【输出形式】<br>【样例输入】</p><p>2000</p><p>1999<br>【样例输出】</p><p>29</p><p>28</p><figure class="highlight plain">  <table>    <tr>      <td class="gutter">        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre>      </td>      <td class="code">        <pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int year;</span><br><span class="line">while(cin&gt;&gt;year)&#123;</span><br><span class="line">if((year%4!=0)||(year%100==0&amp;&amp;year%400!=0))&#123;</span><br><span class="line">cout&lt;&lt;&quot;28&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">else cout&lt;&lt;&quot;29&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre>      </td>    </tr>  </table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2月份天数&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法刷题" scheme="http://javastar.club/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法刷题" scheme="http://javastar.club/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+</feed>
